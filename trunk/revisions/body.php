@@ -35,11 +35,48 @@
 		}
 	}
 	
+	/* Total Male Patient Records */
+	$patient_male_num = 0;
+	$query_patient_num = "SELECT COUNT(*) as 'male' FROM `patient_list` WHERE `dentist_id` = ".$dentist_id." AND `patient_gender` LIKE 'male'";
+	$res_patient_num   = mysql_query($query_patient_num);
+	if($res_patient_num)
+	{
+		while($row_patient_num = mysql_fetch_array($res_patient_num))
+		{
+			$patient_male_num = $row_patient_num['male'];
+		}
+	}
+	
+	/* Total Female Patient Records */
+	$patient_female_num = 0;
+	$query_patient_num = "SELECT COUNT(*) as 'female' FROM `patient_list` WHERE `dentist_id` = ".$dentist_id." AND `patient_gender` LIKE 'female'";
+	$res_patient_num   = mysql_query($query_patient_num);
+	if($res_patient_num)
+	{
+		while($row_patient_num = mysql_fetch_array($res_patient_num))
+		{
+			$patient_female_num = $row_patient_num['female'];
+		}
+	}
+	
+	/* Average Age Patient Records */
+	$patient_average_age = 0;
+	$query_patient_num = "SELECT AVG( `patient_age` ) as 'average_age' FROM `patient_list` WHERE `dentist_id` = ".$dentist_id."";
+	$res_patient_num   = mysql_query($query_patient_num);
+	if($res_patient_num)
+	{
+		while($row_patient_num = mysql_fetch_array($res_patient_num))
+		{
+			$patient_average_age = $row_patient_num['average_age'];
+		}
+	}
+	
 	/* Patients Added in the last 7 days */
 	$patient_count 	= 0;
 	$date_today 	= date("Y-m-d") . " " . date('G:i:s');
 	$date_less_than	= date("Y-m-d",strtotime($date_today. '-7 days')) . " " . date('G:i:s');
 	$query_patient	= "SELECT COUNT(*) as patient_count FROM patient_list WHERE date_of_entry >= '$date_less_than' and date_of_entry <= '$date_today' AND `dentist_id` = ".$dentist_id."";
+echo $query_patient;
 	$res_patient	= mysql_query($query_patient);
 	if ($res_patient)
 	{
@@ -55,13 +92,26 @@
 			<div class="header">
 				<div class="landing_center_blue">
 					<span> Dashboard </span>
+					<div style="float: right;">
+						<div class="addpatient" style="display: inline-block; vertical-align: middle;">
+							<a href="http://mydentistpal.com/add_patient.php" class="btn_design">
+								+ ADD PATIENT
+							</a>
+						</div>
+						<div style="display: inline-block;">
+							<form action="patient_list.php" method="post">
+								<input type="text" name="search_field" class="search" value="Search patient here" onfocus="if (this.value == 'Search patient here') {this.value = '';}" onblur="if (this.value == '') {this.value = 'Search patient here';}" style="color:#999;"/>
+								<input type="submit" name="search" value="SEARCH" class="submit btn_design" />
+							</form>
+						</div>
+					</div>
 				</div>
 			</div>
 			<div class="inner_content" style="background-color: #FDFDFD;">
-				<div style="padding: 10px 20px 40px;">
+				<div style="padding: 10px 20px 40px; display: inline-block; width: 100%;">
 
 <!-- Notification Alert -->
-					<div id="notification_alert" style="width: 30%; display: inline-block;">
+					<div id="notification_alert" class="notification_alert">
 						<table cellspacing="1" cellpadding="8">
 							<tr>
 								<td><span style="font-size:15px;color:#333;font-family:Arial, Helvetica, sans-serif;"> Today&rsquo;s Appointment: </span></td>
@@ -81,21 +131,25 @@
 							</tr>
 						</table>
 					</div>
+					<div class="notification_alert">
+						<table cellspacing="1" cellpadding="8">
+							<tr>
+								<td><span style="font-size:15px;color:#333;font-family:Arial, Helvetica, sans-serif;"> Total Male Patients: </span></td>
+								<td><a href="scheduler/wdCalendar/index.php" style="text-decoration:none;" target="_blank"><span style="font-size:14px;color:#F00;"><?php echo $patient_male_num;?></span></a></td>
+							</tr>
+							<tr>
+								<td><span style="font-size:15px;color:#333;font-family:Arial, Helvetica, sans-serif;"> Total Female Patients: </span></td>
+								<td><a href="message_received.php" style="text-decoration:none;" target="_blank"><span style="font-size:14px;color:#F00;"><?php echo $patient_female_num;?></span></a></td>
+							</tr>
+							<tr>
+								<td><span style="font-size:15px;color:#333;font-family: Arial, Helvetica, sans-serif;"> Average Patient Age: </span></td>
+								<td><span style="font-size:14px;color:#F00;"><?php echo round($patient_average_age);?></span></td>
+							</tr>
+						</table>
+					</div>
 <!-- end Notification Alert -->
 
-					<div style="float: right;">
-						<div class="addpatient" style="display: inline-block;">
-							<a href="add_patient.php" class="btn_design">
-								+ ADD PATIENT
-							</a>
-						</div>
-						<div style="display: inline-block;">
-							<form action="patient_list.php" method="post">
-								<input type="text" name="search_field" class="search" value="Search patient here" onfocus="if (this.value == 'Search patient here') {this.value = '';}" onblur="if (this.value == '') {this.value = 'Search patient here';}" style="color:#999;"/>
-								<input type="submit" name="search" value="SEARCH" class="submit btn_design" />
-							</form>
-						</div>
-					</div>
+
 
 				</div>
 			</div>
