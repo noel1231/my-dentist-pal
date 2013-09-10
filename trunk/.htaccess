@@ -1,0 +1,5 @@
+ErrorDocument 404 /error-page.html
+ErrorDocument 500 /control_error.html
+ErrorDocument 500 /unavailable.html
+
+##DirectoryIndex index.php index.html
