@@ -628,7 +628,7 @@ color:#FFF;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
     overflow: hidden;
-    padding: 10px 20px;
+    padding: 9px 20px;
 }
 
 .header span {
@@ -637,10 +637,16 @@ color:#FFF;
     font-size: 20px;
 }
 
-
-#notification_alert table td {
+.notification_alert {
+	width: 50%;
+	float: left;
+}
+.notification_alert table td {
 	border-bottom: 1px dotted #333333;
 	text-align: right;
+}
+.notification_alert table td:first-child {
+	width: 215px;
 }
 
 .btn_design {
