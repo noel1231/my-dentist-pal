@@ -76,7 +76,6 @@
 	$date_today 	= date("Y-m-d") . " " . date('G:i:s');
 	$date_less_than	= date("Y-m-d",strtotime($date_today. '-7 days')) . " " . date('G:i:s');
 	$query_patient	= "SELECT COUNT(*) as patient_count FROM patient_list WHERE date_of_entry >= '$date_less_than' and date_of_entry <= '$date_today' AND `dentist_id` = ".$dentist_id."";
-echo $query_patient;
 	$res_patient	= mysql_query($query_patient);
 	if ($res_patient)
 	{
