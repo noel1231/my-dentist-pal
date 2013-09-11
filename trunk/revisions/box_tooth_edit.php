@@ -221,7 +221,7 @@ echo "..." ;
             </tr>
            
            <!--content-->
-		<tr><td style="background-color:#FFF;">
+           <tr><td style="background-color:#FFF;">
            <table id="print_it" cellpadding="0" cellspacing="0" border="0" style="font-family:Arial, Helvetica, sans-serif;font-size:14px;">
 <tr><td style="padding-top:20px;padding-left:20px;padding-bottom:20px;">
 <div>
@@ -293,17 +293,24 @@ echo "<option value=\"$idx\">$name</option>";
 <tr><td style="padding-left:27px;">
 <!--<img src="img/map_teeth_red.png" />-->
 <div style="clear:both;height:20px;"></div>
-<div style="border:1px solid #999;width:635px;height:250px;">
+<div style="border:1px solid #999;width:635px;">
 <div style="margin:0 auto;width:55px;font-family:Arial, Helvetica, sans-serif;color:#999;font-size:14px;margin-top:5px;">FACIAL</div>
 <div style="clear:both;height:10px;"></div>
-<?php if($what_chart==1) {?>
+
+<?php /*
+if($what_chart==1) {
+?>
 <div style="margin:0 auto;width:520px;">
 <?php include('tooth_chart_patient.php');?>
 </div><?php } else { ?>
 <div style="margin:0 auto;width:340px;">
 <?php include('tooth_chart_child_view.php');?>
 </div>
-<?php } ?>
+<?php 
+} */
+?>
+<?php include('revisions/tooth_chart_patient.php');?>
+
 <div style="margin:0 auto;width:55px;font-family:Arial, Helvetica, sans-serif;color:#999;font-size:14px;margin-top:5px;">FACIAL</div>
 </div>
 </td></tr>

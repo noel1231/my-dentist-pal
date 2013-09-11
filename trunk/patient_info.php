@@ -1,6 +1,5 @@
 <?php
 session_start();
-//var_dump($_SESSION);die();
 if(!$_SESSION["id"])
 {
     //Do not show protected data, redirect to login...

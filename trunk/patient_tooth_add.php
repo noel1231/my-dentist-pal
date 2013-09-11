@@ -1085,28 +1085,11 @@ header('Location: patient_tooth_chart.php?id='.$id.'');
 <?php include('includes/top.php');?>
 <!--dentisit dashboard--></td></tr>
 
-<!--menubar--><tr><td width="100%" height="54" style="background-image:url('images/menubar.png');">
-<!--menuinblack--><div style="margin:0 auto;width:520px;">
-<table cellpadding="0" cellspacing="0" border="0">
-<tr>
-<td><img src="images/patient_list_black.png"/></td>
-<td width="13">&nbsp;</td>
-<td><img src="images/line.png"/></td>
-<td width="13">&nbsp;</td>
-<td><img src="img/bar_add_tooth.png"  /></td>
-</tr>
-</table>
-
-<!--menuinblack--></div>
-<!--menubar--></td></tr>
-
 <!--include sidebar--><tr><td>
 <div style="margin:0 auto;width:960px;">
 <!--sidebar and content container--><table cellpadding="0" cellspacing="0" border="0">
 <!--sidebar--><tr><td valign="top">
-<div style="margin-top:-38px;">
-<?php include('includes/sidebar.php');?>
-</div>
+
 <!--sidebar--></td>
 <!--content--><td valign="top" style="padding-top:26px;">
 <?php include('includes/box_patient_tooth.php');?>
