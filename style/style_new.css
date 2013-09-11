@@ -134,16 +134,15 @@
 .wrapper .head_video_container .menu
 {
     float: left;
-    margin: 0 0 0 14%;
+    margin: 0 0 0 8%;
     padding: 0;
-    width: 80%;
-    text-align: center;
+    width: 84%;
 }
 
 .wrapper .head_video_container .menu .button
 {
     float: left;
-    margin: 10px 0 0 2%;
+    margin: 10px 0 0 5%;
     padding: 0;
     background-color: #00aeef;
     text-align: center;

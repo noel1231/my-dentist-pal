@@ -110,16 +110,38 @@
 
 @media (min-width: 1200px) {
     
-  .wrapper .upper_footer .rightpanel img
-  {
-      margin: 10% 0 0 30%;
-  }
+   
+   
+  /* table */
   
-  .wrapper .upper_footer .leftpanel img
-  {
-      margin: 10% 30% 0 0;
-  }
-  
+  .wrapper .upper_footer .tbl_pricing
+{
+    float: left;
+    width: 70%;
+    margin: 0 0 0 15%;
+    padding: 0;
+    text-align: center;
+    text-transform: uppercase;
+    font:normal 14px arial;
+    border: 2px solid #8c8c8c;
+}
+
+.wrapper .upper_footer .tbl_pricing th
+{
+    font:bold 20px arial;
+    padding: 10px 0;
+    width: 30%;
+    border: 2px solid #8c8c8c;
+    color: #464646;
+}
+.wrapper .upper_footer .tbl_pricing td
+{
+    font:normal 14px arial;
+    color: #464646;
+    padding: 10px 0;
+    width: 30%;
+    border: 2px solid #8c8c8c;
+}
   /* Custom */
   
   .video
@@ -137,7 +159,199 @@
       padding: 10px 0 20px;
       
   }
+  
+  .wrapper .footer .link
+{
+    float: left;
+    margin: 4% 6% 0 0;
+    padding: 10px 0;
+    width: 30%;
+    text-align: center;
+}
+
+.wrapper .footer .link a
+{
+    margin: 0 3px;
+    text-decoration: none;
+    border: none;
+}
+
+.wrapper .footer .link a img
+{
+   margin: 0;
+   padding: 0;
+}
+
+.wrapper .footer .logo_footer
+{
+    float: left;
+    margin: 0 10% 0 0;
+    padding: 10px 0;
+    width: 30%;
+    text-align: center;
+}
+
+.wrapper .footer .logo_footer img
+{
+   margin: 0;
+   padding: 0;
+}
+
+.wrapper .footer .company
+{
+    float: right;
+    margin: 6% 0 0 0;
+    width: 24%;
+    text-align: center;
+}
+
+.wrapper .footer .company p
+{
+    color: #00a6e5;
+}
+
+.wrapper .footer .company p a
+{
+    color: #000;
+    text-decoration: none;
+}
+
+.wrapper .footer .company p a:hover
+{
+    text-decoration: underline;
+}
+
+/* contact */
+
+.contact_container
+{
+    float: left;
+    width: 80%;
+    margin: 0 0 30px 10%;
+    font-family: helvi;
+    -webkit-box-shadow : 0 2px 10px rgba(0, 0, 0, 0.1);
+    -moz-box-shadow    : 0 2px 10px rgba(0, 0, 0, 0.1);
+    box-shadow         : 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.contact_container .leftpanel
+{
+    float: left;
+    margin: 0;
+    padding: 0;
+    width: 40%;
+}
+.contact_container .leftpanel .info
+{
+    float: left;
+    margin: 2% 0 0 4%;
+    padding: 0;
+    font-family: helvi;
+}
+
+.contact_container .leftpanel .info h2
+{
+    float: left;
+    width: 100%;
+    font-family: helvi;
+}
+
+.contact_container .leftpanel .info p
+{
+    float: left;
+    width: 100%;
+    font-family: arial;
+}
+
+.contact_container .leftpanel .form
+{
+    float: left;
+    margin: 2% 0 0 4%;
+    padding: 0;
+    font-family: helvi;
+    width: 95%;
+}
+
+.contact_container .leftpanel .form .form_row
+{
+    float: left;
+    margin: 0 0 10px;
+    padding: 0;
+    width: 100%
+}
+
+.contact_container .leftpanel .form .form_row input
+{
+    float: left;
+    margin: 0;
+    width: 90%;
+}
+
+.contact_container .leftpanel .form .form_row textarea
+{
+    float: left;
+    margin: 0;
+    width: 90%;
+}
+
+.contact_container .leftpanel .form .form_row .register
+{
+   float: left;
+   background-color: #00aeef;
+   padding: 10px 15px;
+   border-radius: 10px;
+   cursor: pointer;
+   width: 15%;
+   min-width: 80px;
+   text-align: center;
+   margin: 0 0 0 65%;
+}
+
+.contact_container .leftpanel .form .form_row .register:hover
+{
+    background-color: #0093ca;
+}
+
+.contact_container .leftpanel .form .form_row .register p
+{
+   color: #fff;
+   margin: 0 !important;
+   padding: 0;
+   width: auto;
+}
+
+.contact_container .leftpanel .form .form_row label
+{
+    color: #F00;
+    text-align: center;
+    clear: both;
+    width: 80%;
+    font-size: 20px;
+    font-family: helvi;
+    display: none;
+}
+
+.contact_container .rightpanel
+{
+    float: right;
+    width: 60%;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+.contact_container .rightpanel iframe
+{
+    margin: 20px 0 0;
+    padding: 0;
+    text-align: center;
+    font-family: arial;
+    width: 90%;
+    height: 500px;
+}
+
   /* Custom */
+  
   .row {
     margin-left: -30px;
     *zoom: 1;
@@ -489,6 +703,50 @@
 
 @media (min-width: 768px) and (max-width: 979px) {
     
+    /* menu*/
+    
+        .wrapper .head_video_container .menu .button
+        {
+            float: left;
+            margin: 10px 0 0 1%;
+            padding: 0;
+            background-color: #00aeef;
+            text-align: center;
+            cursor: pointer;
+            border-radius: 10px;
+        }
+        
+    /* table */
+    
+    .wrapper .upper_footer .tbl_pricing
+{
+    float: left;
+    width: 80%;
+    margin: 0 0 0 10%;
+    padding: 0;
+    text-align: center;
+    text-transform: uppercase;
+    font:normal 14px arial;
+    border: 2px solid #8c8c8c;
+}
+
+.wrapper .upper_footer .tbl_pricing th
+{
+    font:bold 20px arial;
+    padding: 10px 0;
+    width: 30%;
+    border: 2px solid #8c8c8c;
+    color: #464646;
+}
+.wrapper .upper_footer .tbl_pricing td
+{
+    font:normal 14px arial;
+    color: #464646;
+    padding: 10px 0;
+    width: 30%;
+    border: 2px solid #8c8c8c;
+}
+
     /* custom */
   .wrapper .upper_footer .rightpanel img
   {
@@ -497,11 +755,205 @@
   
   .wrapper .upper_footer .leftpanel img
   {
-      margin: 10% 30% 0 0;
+        margin: 10% 30% 0 0;
   }
   
   
-  
+.wrapper .footer .link
+{
+    float: left;
+    margin: 4% 6% 0 0;
+    padding: 10px 0;
+    width: 30%;
+    text-align: center;
+}
+
+.wrapper .footer .link a
+{
+    margin: 0 3px;
+    text-decoration: none;
+    border: none;
+}
+
+.wrapper .footer .link a img
+{
+   margin: 0;
+   padding: 0;
+}
+
+.wrapper .footer .logo_footer
+{
+    float: left;
+    margin: 0 10% 0 0;
+    padding: 10px 0;
+    width: 30%;
+    text-align: center;
+}
+
+.wrapper .footer .logo_footer img
+{
+   margin: 0;
+   padding: 0;
+}
+
+.wrapper .footer .company
+{
+    float: right;
+    margin: 6% 0 0 0;
+    width: 24%;
+    text-align: center;
+}
+
+.wrapper .footer .company p
+{
+    color: #00a6e5;
+}
+
+.wrapper .footer .company p a
+{
+    color: #000;
+    text-decoration: none;
+}
+
+.wrapper .footer .company p a:hover
+{
+    text-decoration: underline;
+}
+
+.contact_container
+{
+    float: left;
+    width: 80%;
+    margin: 0 0 30px 10%;
+    font-family: helvi;
+    -webkit-box-shadow : 0 2px 10px rgba(0, 0, 0, 0.1);
+    -moz-box-shadow    : 0 2px 10px rgba(0, 0, 0, 0.1);
+    box-shadow         : 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.contact_container .leftpanel
+{
+    float: left;
+    margin: 0;
+    padding: 0;
+    width: 40%;
+}
+.contact_container .leftpanel .info
+{
+    float: left;
+    margin: 2% 0 0 4%;
+    padding: 0;
+    font-family: helvi;
+}
+
+.contact_container .leftpanel .info h2
+{
+    float: left;
+    width: 100%;
+    font-family: helvi;
+}
+
+.contact_container .leftpanel .info p
+{
+    float: left;
+    width: 100%;
+    font-family: arial;
+}
+
+.contact_container .leftpanel .form
+{
+    float: left;
+    margin: 2% 0 0 4%;
+    padding: 0;
+    font-family: helvi;
+    width: 95%;
+}
+
+.contact_container .leftpanel .form .form_row
+{
+    float: left;
+    margin: 0 0 10px;
+    padding: 0;
+    width: 100%
+}
+
+.contact_container .leftpanel .form .form_row input
+{
+    float: left;
+    margin: 0;
+    width: 90%;
+}
+
+.contact_container .leftpanel .form .form_row textarea
+{
+    float: left;
+    margin: 0;
+    width: 90%;
+}
+
+.contact_container .leftpanel .form .form_row .register
+{
+   float: left;
+   background-color: #00aeef;
+   padding: 10px 15px;
+   border-radius: 10px;
+   cursor: pointer;
+   width: 15%;
+   min-width: 80px;
+   text-align: center;
+   margin: 0 0 0 65%;
+}
+
+.contact_container .leftpanel .form .form_row .register:hover
+{
+    background-color: #0093ca;
+}
+
+.contact_container .leftpanel .form .form_row .register p
+{
+   color: #fff;
+   margin: 0 !important;
+   padding: 0;
+   width: auto;
+}
+
+.contact_container .leftpanel .form .form_row label
+{
+    color: #F00;
+    text-align: center;
+    clear: both;
+    width: 80%;
+    font-size: 20px;
+    font-family: helvi;
+    display: none;
+}
+
+.contact_container .rightpanel
+{
+    float: right;
+    width: 60%;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+.contact_container .rightpanel iframe
+{
+    margin: 20px 0 0;
+    padding: 0;
+    text-align: center;
+    font-family: arial;
+    width: 90%;
+    height: 500px;
+}
+
+.wrapper .head_video_container .img_holder img
+    {
+        width: 500px;
+    }
+    
+    
+ 
   /* custom */
   .row {
     margin-left: -20px;
@@ -849,7 +1301,46 @@
     padding-left: 0;
   }
   
+  /* table */
+  
+  .wrapper .upper_footer .tbl_pricing
+{
+    float: left;
+    width: 100%;
+    margin: 0 0 0 0;
+    padding: 0;
+    text-align: center;
+    text-transform: uppercase;
+    font:normal 14px arial;
+    border: 2px solid #8c8c8c;
+}
+
+.wrapper .upper_footer .tbl_pricing th
+{
+    font:bold 20px arial;
+    padding: 10px 0;
+    width: 30%;
+    border: 2px solid #8c8c8c;
+    color: #464646;
+}
+.wrapper .upper_footer .tbl_pricing td
+{
+    font:normal 14px arial;
+    color: #464646;
+    padding: 10px 0;
+    width: 30%;
+    border: 2px solid #8c8c8c;
+}
+  
+  
+  
   /* custom */
+  
+  .wrapper .head_video_container .img_holder img
+  {
+      width: 300px;
+  }
+    
   .wrapper .upper_footer .rightpanel img
   {
       margin: 10% 0 0 10%;
@@ -878,6 +1369,195 @@
   {
       margin: 0 0 0 23%;
   }
+  
+  .wrapper .footer .link
+{
+    float: left;
+    margin: 10px 0;
+    padding: 10px 0;
+    width: 100%;
+    text-align: center;
+}
+
+.wrapper .footer .link a
+{
+    margin: 0 10px;
+    text-decoration: none;
+    border: none;
+}
+
+.wrapper .footer .link a img
+{
+   margin: 0;
+   padding: 0;
+}
+
+.wrapper .footer .logo_footer
+{
+    float: left;
+    margin: 0;
+    padding: 10px 0;
+    width: 100%;
+    text-align: center;
+}
+
+.wrapper .footer .logo_footer img
+{
+   margin: 0;
+   padding: 0;
+}
+
+.wrapper .footer .company
+{
+    float: left;
+    margin: 10px 0;
+    padding: 0;
+    width: 100%;
+    text-align: center;
+}
+
+.wrapper .footer .company p
+{
+    color: #00a6e5;
+}
+
+.wrapper .footer .company p a
+{
+    color: #000;
+    text-decoration: none;
+}
+
+.wrapper .footer .company p a:hover
+{
+    text-decoration: underline;
+}
+
+.contact_container
+{
+    float: left;
+    width: 80%;
+    margin: 0 0 30px 10%;
+    font-family: helvi;
+    -webkit-box-shadow : 0 2px 10px rgba(0, 0, 0, 0.1);
+    -moz-box-shadow    : 0 2px 10px rgba(0, 0, 0, 0.1);
+    box-shadow         : 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.contact_container .leftpanel
+{
+    float: left;
+    margin: 0;
+    padding: 0;
+    width: 40%;
+}
+.contact_container .leftpanel .info
+{
+    float: left;
+    margin: 2% 0 0 4%;
+    padding: 0;
+    font-family: helvi;
+}
+
+.contact_container .leftpanel .info h2
+{
+    float: left;
+    width: 100%;
+    font-family: helvi;
+}
+
+.contact_container .leftpanel .info p
+{
+    float: left;
+    width: 100%;
+    font-family: arial;
+}
+
+.contact_container .leftpanel .form
+{
+    float: left;
+    margin: 2% 0 0 4%;
+    padding: 0;
+    font-family: helvi;
+    width: 95%;
+}
+
+.contact_container .leftpanel .form .form_row
+{
+    float: left;
+    margin: 0 0 10px;
+    padding: 0;
+    width: 100%
+}
+
+.contact_container .leftpanel .form .form_row input
+{
+    float: left;
+    margin: 0;
+    width: 90%;
+}
+
+.contact_container .leftpanel .form .form_row textarea
+{
+    float: left;
+    margin: 0;
+    width: 90%;
+}
+
+.contact_container .leftpanel .form .form_row .register
+{
+   float: left;
+   background-color: #00aeef;
+   padding: 10px 15px;
+   border-radius: 10px;
+   cursor: pointer;
+   width: 15%;
+   min-width: 80px;
+   text-align: center;
+   margin: 0 0 0 65%;
+}
+
+.contact_container .leftpanel .form .form_row .register:hover
+{
+    background-color: #0093ca;
+}
+
+.contact_container .leftpanel .form .form_row .register p
+{
+   color: #fff;
+   margin: 0 !important;
+   padding: 0;
+   width: auto;
+}
+
+.contact_container .leftpanel .form .form_row label
+{
+    color: #F00;
+    text-align: center;
+    clear: both;
+    width: 80%;
+    font-size: 20px;
+    font-family: helvi;
+    display: none;
+}
+
+.contact_container .rightpanel
+{
+    float: right;
+    width: 60%;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+.contact_container .rightpanel iframe
+{
+    margin: 20px 0 0;
+    padding: 0;
+    text-align: center;
+    font-family: arial;
+    width: 90%;
+    height: 500px;
+}
   
   /* custom */
   .navbar-fixed-top,
@@ -971,6 +1651,133 @@
   .modal.fade.in {
     top: 20px;
   }
+  
+  .contact_container
+    {
+        float: left;
+        width: 80%;
+        margin: 0 0 30px 10%;
+        font-family: helvi;
+        -webkit-box-shadow : 0 2px 10px rgba(0, 0, 0, 0.1);
+        -moz-box-shadow    : 0 2px 10px rgba(0, 0, 0, 0.1);
+        box-shadow         : 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .contact_container .leftpanel
+    {
+        float: left;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+    }
+    .contact_container .leftpanel .info
+    {
+        float: left;
+        margin: 2% 0 0 4%;
+        padding: 0;
+        font-family: helvi;
+    }
+
+    .contact_container .leftpanel .info h2
+    {
+        float: left;
+        width: 100%;
+        font-family: helvi;
+    }
+
+    .contact_container .leftpanel .info p
+    {
+        float: left;
+        width: 100%;
+        font-family: arial;
+    }
+
+    .contact_container .leftpanel .form
+    {
+        float: left;
+        margin: 2% 0 0 4%;
+        padding: 0;
+        font-family: helvi;
+        width: 95%;
+    }
+
+    .contact_container .leftpanel .form .form_row
+    {
+        float: left;
+        margin: 0 0 10px;
+        padding: 0;
+        width: 100%
+    }
+
+    .contact_container .leftpanel .form .form_row input
+    {
+        float: left;
+        margin: 0;
+        width: 90%;
+    }
+
+    .contact_container .leftpanel .form .form_row textarea
+    {
+        float: left;
+        margin: 0;
+        width: 90%;
+    }
+
+    .contact_container .leftpanel .form .form_row .register
+    {
+       float: left;
+       background-color: #00aeef;
+       padding: 10px 15px;
+       border-radius: 10px;
+       cursor: pointer;
+       width: 15%;
+       min-width: 80px;
+       text-align: center;
+       margin: 0 0 0 52%;
+    }
+
+    .contact_container .leftpanel .form .form_row .register:hover
+    {
+        background-color: #0093ca;
+    }
+
+    .contact_container .leftpanel .form .form_row .register p
+    {
+       color: #fff;
+       margin: 0 !important;
+       padding: 0;
+       width: auto;
+    }
+
+    .contact_container .leftpanel .form .form_row label
+    {
+        color: #F00;
+        text-align: center;
+        clear: both;
+        width: 80%;
+        font-size: 20px;
+        font-family: helvi;
+        display: none;
+    }
+
+    .contact_container .rightpanel
+    {
+        float: right;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        text-align: center;
+    }
+
+    .contact_container .rightpanel iframe
+    {
+        margin: 20px 0 0;
+        padding: 0;
+        text-align: center;
+        font-family: arial;
+        width: 90%;
+        height: 500px;
+    }
 }
 
 @media (max-width: 480px) {
@@ -1023,6 +1830,141 @@
   .carousel-caption {
     position: static;
   }
+  
+  /* custom */
+  
+  .contact_container
+    {
+        float: left;
+        width: 80%;
+        margin: 0 0 30px 10%;
+        font-family: helvi;
+        -webkit-box-shadow : 0 2px 10px rgba(0, 0, 0, 0.1);
+        -moz-box-shadow    : 0 2px 10px rgba(0, 0, 0, 0.1);
+        box-shadow         : 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .contact_container .leftpanel
+    {
+        float: left;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+    }
+    .contact_container .leftpanel .info
+    {
+        float: left;
+        margin: 2% 0 0 4%;
+        padding: 0;
+        font-family: helvi;
+    }
+
+    .contact_container .leftpanel .info h2
+    {
+        float: left;
+        width: 100%;
+        font-family: helvi;
+    }
+
+    .contact_container .leftpanel .info p
+    {
+        float: left;
+        width: 100%;
+        font-family: arial;
+    }
+
+    .contact_container .leftpanel .form
+    {
+        float: left;
+        margin: 2% 0 0 4%;
+        padding: 0;
+        font-family: helvi;
+        width: 95%;
+    }
+
+    .contact_container .leftpanel .form .form_row
+    {
+        float: left;
+        margin: 0 0 10px;
+        padding: 0;
+        width: 100%
+    }
+
+    .contact_container .leftpanel .form .form_row input
+    {
+        float: left;
+        margin: 0;
+        width: 90%;
+    }
+
+    .contact_container .leftpanel .form .form_row textarea
+    {
+        float: left;
+        margin: 0;
+        width: 90%;
+    }
+
+    .contact_container .leftpanel .form .form_row .register
+    {
+       float: left;
+       background-color: #00aeef;
+       padding: 10px 15px;
+       border-radius: 10px;
+       cursor: pointer;
+       width: 15%;
+       min-width: 80px;
+       text-align: center;
+       margin: 0 0 0 52%;
+    }
+
+    .contact_container .leftpanel .form .form_row .register:hover
+    {
+        background-color: #0093ca;
+    }
+
+    .contact_container .leftpanel .form .form_row .register p
+    {
+       color: #fff;
+       margin: 0 !important;
+       padding: 0;
+       width: auto;
+    }
+
+    .contact_container .leftpanel .form .form_row label
+    {
+        color: #F00;
+        text-align: center;
+        clear: both;
+        width: 80%;
+        font-size: 20px;
+        font-family: helvi;
+        display: none;
+    }
+
+    .contact_container .rightpanel
+    {
+        float: right;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        text-align: center;
+    }
+
+    .contact_container .rightpanel iframe
+    {
+        margin: 20px 0 0;
+        padding: 0;
+        text-align: center;
+        font-family: arial;
+        width: 90%;
+        height: 500px;
+    }
+    
+    .wrapper .head_video_container .img_holder img
+    {
+        width: 300px;
+    }
+  
 }
 
 @media (max-width: 979px) {
@@ -1175,17 +2117,242 @@
     padding-right: 10px;
     padding-left: 10px;
   }
+  
+  
 }
 
-@media (min-width: 980px) {
+@media (min-width: 980px)
+{
+    
+  
+    /* table */
+    .wrapper .upper_footer .tbl_pricing
+{
+    float: left;
+    width: 70%;
+    margin: 0 0 0 15%;
+    padding: 0;
+    text-align: center;
+    text-transform: uppercase;
+    font:normal 14px arial;
+    border: 2px solid #8c8c8c;
+}
+
+.wrapper .upper_footer .tbl_pricing th
+{
+    font:bold 20px arial;
+    padding: 10px 0;
+    width: 30%;
+    border: 2px solid #8c8c8c;
+    color: #464646;
+}
+.wrapper .upper_footer .tbl_pricing td
+{
+    font:normal 14px arial;
+    color: #464646;
+    padding: 10px 0;
+    width: 30%;
+    border: 2px solid #8c8c8c;
+}
+    /* table */
     
     .menu
     {
         width: 30%;
         margin: 0 0 0 20%;
     }
+    
   .nav-collapse.collapse {
     height: auto !important;
     overflow: visible !important;
   }
+  
+  
+  .wrapper .footer .link
+{
+    float: left;
+    margin: 4% 6% 0 0;
+    padding: 10px 0;
+    width: 30%;
+    text-align: center;
+}
+
+.wrapper .footer .link a
+{
+    margin: 0 3px;
+    text-decoration: none;
+    border: none;
+}
+
+.wrapper .footer .link a img
+{
+   margin: 0;
+   padding: 0;
+}
+
+.wrapper .footer .logo_footer
+{
+    float: left;
+    margin: 0 10% 0 0;
+    padding: 10px 0;
+    width: 30%;
+    text-align: center;
+}
+
+.wrapper .footer .logo_footer img
+{
+   margin: 0;
+   padding: 0;
+}
+
+.wrapper .footer .company
+{
+    float: right;
+    margin: 6% 0 0 0;
+    width: 24%;
+    text-align: center;
+}
+
+.wrapper .footer .company p
+{
+    color: #00a6e5;
+}
+
+.wrapper .footer .company p a
+{
+    color: #000;
+    text-decoration: none;
+}
+
+.wrapper .footer .company p a:hover
+{
+    text-decoration: underline;
+}
+
+.contact_container
+{
+    float: left;
+    width: 80%;
+    margin: 0 0 30px 10%;
+    font-family: helvi;
+    -webkit-box-shadow : 0 2px 10px rgba(0, 0, 0, 0.1);
+    -moz-box-shadow    : 0 2px 10px rgba(0, 0, 0, 0.1);
+    box-shadow         : 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.contact_container .leftpanel
+{
+    float: left;
+    margin: 0;
+    padding: 0;
+    width: 40%;
+}
+.contact_container .leftpanel .info
+{
+    float: left;
+    margin: 2% 0 0 4%;
+    padding: 0;
+    font-family: helvi;
+}
+
+.contact_container .leftpanel .info h2
+{
+    float: left;
+    width: 100%;
+    font-family: helvi;
+}
+
+.contact_container .leftpanel .info p
+{
+    float: left;
+    width: 100%;
+    font-family: arial;
+}
+
+.contact_container .leftpanel .form
+{
+    float: left;
+    margin: 2% 0 0 4%;
+    padding: 0;
+    font-family: helvi;
+    width: 95%;
+}
+
+.contact_container .leftpanel .form .form_row
+{
+    float: left;
+    margin: 0 0 10px;
+    padding: 0;
+    width: 100%
+}
+
+.contact_container .leftpanel .form .form_row input
+{
+    float: left;
+    margin: 0;
+    width: 90%;
+}
+
+.contact_container .leftpanel .form .form_row textarea
+{
+    float: left;
+    margin: 0;
+    width: 90%;
+}
+
+.contact_container .leftpanel .form .form_row .register
+{
+   float: right;
+   background-color: #00aeef;
+   padding: 10px 15px;
+   border-radius: 10px;
+   cursor: pointer;
+   width: 15%;
+   min-width: 80px;
+   text-align: center;
+   margin: 0 6% 0 0;
+}
+
+.contact_container .leftpanel .form .form_row .register:hover
+{
+    background-color: #0093ca;
+}
+
+.contact_container .leftpanel .form .form_row .register p
+{
+   color: #fff;
+   margin: 0 !important;
+   padding: 0;
+   width: auto;
+}
+
+.contact_container .leftpanel .form .form_row label
+{
+    color: #F00;
+    text-align: center;
+    clear: both;
+    width: 80%;
+    font-size: 20px;
+    font-family: helvi;
+    display: none;
+}
+
+.contact_container .rightpanel
+{
+    float: right;
+    width: 60%;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+.contact_container .rightpanel iframe
+{
+    margin: 20px 0 0;
+    padding: 0;
+    text-align: center;
+    font-family: arial;
+    width: 90%;
+    height: 500px;
+}
 }
