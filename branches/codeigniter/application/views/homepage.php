@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Bootstrap 101 Template</title>
+    <title><?php echo $title; ?></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bootstrap -->
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
@@ -13,7 +13,9 @@
     <![endif]-->
 
         <link href="style/style_new.css" rel="stylesheet">
-        
+<?php
+	if($_SERVER['HTTP_HOST'] != 'localhost') {
+?>        
         <script type="text/javascript">
             var _gaq = _gaq || [];
             _gaq.push(['_setAccount', 'UA-39650233-1']);
@@ -25,10 +27,13 @@
               var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
             })();
        </script>
+<?php
+	}
+?>
 
   </head>
   <body>
-    <h1>Hello, world!</h1>
+    <?php echo $this->load->view('homepage/body'); ?>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="//code.jquery.com/jquery.js"></script>
