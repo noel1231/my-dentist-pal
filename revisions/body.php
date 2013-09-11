@@ -93,7 +93,7 @@
 					<span> Dashboard </span>
 					<div style="float: right;">
 						<div class="addpatient" style="display: inline-block; vertical-align: middle;">
-							<a href="http://mydentistpal.com/add_patient.php" class="btn_design">
+							<a href="add_patient.php" class="btn_design">
 								+ ADD PATIENT
 							</a>
 						</div>

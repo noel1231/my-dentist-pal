@@ -158,7 +158,7 @@
 <span style="color:#F00;font-weight:bold;font-size:14px;font-family:Arial, Helvetica, sans-serif;">Close</span>
 </td>
 <td>
-<img src="../../img/icon_address_delete.png" width="15" height="15"/></td>
+<img src="img/icon_address_delete.png" width="15" height="15"/></td>
 </tr></table>
 </div>
 </td></tr>

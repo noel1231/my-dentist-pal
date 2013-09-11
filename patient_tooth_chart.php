@@ -6,8 +6,9 @@ if(!$_SESSION["id"])
     //Do not show protected data, redirect to login...
     header('Location: dentist_login.php');
 }
-
-include('config.php');?>
+include('config.php');
+$page_now =3;
+?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -32,7 +33,7 @@ include('config.php');?>
 
 <!--sidebar--></td>
 <!--content--><td valign="top" style="padding-top:26px;">
-<?php include('includes/box_tooth_edit.php');?>
+<?php include('revisions/box_tooth_edit.php');?>
 <!--content--></td>
 </tr>
 

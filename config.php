@@ -1,6 +1,6 @@
 <?php
 date_default_timezone_set('Asia/Manila');
-error_reporting(E_ERROR);
+// error_reporting(E_ERROR);
 
 $server = "localhost";
 

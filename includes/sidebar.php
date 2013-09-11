@@ -91,7 +91,7 @@ $rad="10px";
 <img src="images/play.png" style="margin-top:8px;"/>
 </td></tr></table>
 </div>--><div id="nav3" class="navside2" style="float:left;border:1px solid #ccd3da;height:38px;width:90%;background-color:<?php if($back_now3) { echo $back_now3; } else { echo "#fff";}?>;"><a href="patient_list.php" id="link3" style="color:<?php if($color_now3) { echo $color_now3; } else { echo "#333"; }?>;text-decoration:none;" onclick="ChangeDesign(3)">
-<span style="float:left;margin-top:8px;margin-left:20px;font-size:18px;font-family:Arial, Helvetica, sans-serif;">Patient List</span></a></div>
+<span style="float:left;margin-top:8px;margin-left:20px;font-size:18px;font-family:Arial, Helvetica, sans-serif;">Patient Records</span></a></div>
 
 <div id="nav4" class="navside2" style="float:left;border:1px solid #ccd3da;height:38px;width:90%;background-color:<?php if($back_now4) { echo $back_now4; } else { echo "#fff";}?>;"><a href="dentist_addressbook.php" id="link4" style="color:<?php if($color_now4) { echo $color_now4; } else { echo "#333"; }?>;text-decoration:none;" onclick="ChangeDesign(4)">
 <span style="float:left;margin-top:8px;margin-left:20px;font-size:18px;font-family:Arial, Helvetica, sans-serif;">Address Book</span></a>
@@ -104,7 +104,7 @@ $rad="10px";
 <span style="float:left;margin-top:8px;margin-left:20px;font-size:18px;color:#000;font-family:Arial, Helvetica, sans-serif;">Patient Notes</span></a>
 </div>-->
 <div id="nav6" class="navside2" style="float:left;border:1px solid #ccd3da;height:38px;width:90%;background-color:<?php if($back_now6) { echo $back_now6; } else { echo "#fff";}?>;"><a href="dentist_simple_accounting.php" style="color:<?php if($color_now6) { echo $color_now6; } else { echo "#333"; }?>;text-decoration:none;" id="link6" onclick="ChangeDesign(6)">
-<span style="float:left;margin-top:8px;margin-left:20px;font-size:18px;font-family:Arial, Helvetica, sans-serif;">Simple Accounting</span></a>
+<span style="float:left;margin-top:8px;margin-left:20px;font-size:18px;font-family:Arial, Helvetica, sans-serif;">Accounting</span></a>
 </div>
 
 <div id="nav7" class="navside3" style="float:left;border:1px solid #ccd3da;height:38px;width:90%;background-color:<?php if($back_now7) { echo $back_now7; } else { echo "#fff";}?>;-webkit-border-bottom-left-radius: <?php echo $rad;?>;
@@ -119,8 +119,6 @@ $rad="10px";
 border-bottom-left-radius: <?php echo $rad;?>;
 border-bottom-right-radius: <?php echo $rad;?>; 
 overflow:hidden;"><a href="blog.php" id="link7" style="color:<?php if($color_now7) { echo $color_now7; } else { echo "#333"; }?>;text-decoration:none;" onclick="ChangeDesign(7)"> 
-<span style="float:left;margin-top:8px;margin-left:20px;font-size:18px;font-family:Arial, Helvetica, sans-serif;
-
- ">Blogging</span></a>
+<span style="float:left;margin-top:8px;margin-left:20px;font-size:18px;font-family:Arial, Helvetica, sans-serif;">Blog</span></a>
 </div>
 </div><!--end of leftbox-->
