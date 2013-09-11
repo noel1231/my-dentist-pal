@@ -26,21 +26,6 @@ include('config.php');?>
 <?php include('includes/top.php');?>
 <!--dentisit dashboard--></td></tr>
 
-<!--menubar--><tr><td width="100%" height="54" style="background-image:url('images/menubar.png');">
-<!--menuinblack--><div style="margin:0 auto;width:520px;">
-<table cellpadding="0" cellspacing="0" border="0">
-<tr>
-<td><img src="images/patient_list_black.png"/></td>
-<td width="13">&nbsp;</td>
-<td><img src="images/line.png"/></td>
-<td width="13">&nbsp;</td>
-<td><img src="img/bar_medical.png" style="margin-top:4px;"/></td>
-</tr>
-</table>
-
-<!--menuinblack--></div>
-<!--menubar--></td></tr>
-
 <!--include sidebar--><tr><td>
 <div style="margin:0 auto;width:960px;">
 <!--sidebar and content container--><table cellpadding="0" cellspacing="0" border="0">

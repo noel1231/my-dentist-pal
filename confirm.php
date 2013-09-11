@@ -38,7 +38,7 @@ if($uname&&$pass)
             $_SESSION['license_number']=$lnum;
             
             $date_login = date("M/d/Y") . " " . date('h:i:s A');
-            
+
             $sqlD="DELETE FROM dentist_login_info where dentist='$id'";
             mysql_query($sqlD);
             
