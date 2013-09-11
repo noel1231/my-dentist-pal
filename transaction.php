@@ -46,9 +46,6 @@ $page_now="6";
 <div style="margin:0 auto;width:960px;">
 <!--sidebar and content container--><table cellpadding="0" cellspacing="0" border="0">
 <!--sidebar--><tr><td valign="top">
-<div style="margin-top:-38px;">
-<?php include('includes/sidebar_message.php');?>
-</div>
 <!--sidebar--></td>
 <!--content--><td valign="top" style="padding-top:26px;">
 
