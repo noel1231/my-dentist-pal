@@ -25,20 +25,7 @@ $page_now="7";
 <?php include('includes/top.php');?>
 <!--dentisit dashboard--></td></tr>
 
-<!--menubar--><tr><td width="100%" height="54" style="background-image:url('images/menubar.png');">
-<!--menuinblack--><div style="margin:0 auto;width:520px;">
-<table cellpadding="0" cellspacing="0" border="0">
-<tr>
-<td><img src="img/blogging.png"/></td>
-<td width="13">&nbsp;</td>
-<td><img src="images/line.png"/></td>
-<td width="13">&nbsp;</td>
-<td><img src="img/add_blog.png"  /></td>
-</tr>
-</table>
-
-<!--menuinblack--></div>
-<!--menubar--></td></tr>
+<!--menubar-->
 
 <!--include sidebar--><tr><td>
 <div style="margin:0 auto;width:960px;">

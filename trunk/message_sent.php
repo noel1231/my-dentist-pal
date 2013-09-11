@@ -45,31 +45,14 @@ if(isset($_POST['delete_all']))
 <!--top--></td></tr>
 
 <!--tooth--><tr><td>
-<?php include('includes/top_message.php');?>
+<?php include('includes/top.php');?>
 <!--dentisit dashboard--></td></tr>
-
-<!--menubar--><tr><td width="100%" height="54" style="background-image:url('images/menubar.png');">
-<!--menuinblack--><div style="margin:0 auto;width:520px;">
-<table cellpadding="0" cellspacing="0" border="0">
-<tr>
-<td><img src="img/bar_message_main.png"/></td>
-<td width="13">&nbsp;</td>
-<td><img src="images/line.png"/></td>
-<td width="13">&nbsp;</td>
-<td><img src="img/bar_sent_black.png" style="margin-top:6px;" /></td>
-</tr>
-</table>
-
-<!--menuinblack--></div>
-<!--menubar--></td></tr>
 
 <!--include sidebar--><tr><td>
 <div style="margin:0 auto;width:960px;">
 <!--sidebar and content container--><table cellpadding="0" cellspacing="0" border="0">
 <!--sidebar--><tr><td valign="top">
-<div style="margin-top:-38px;">
-<?php include('includes/sidebar_message.php');?>
-</div>
+
 <!--sidebar--></td>
 <!--content--><td valign="top" style="padding-top:26px;">
 <?php include('includes/box_sent_message.php');?>
