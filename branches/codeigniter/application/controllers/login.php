@@ -15,7 +15,7 @@ class Login extends CI_Controller {
 		$this->load->library('encrypt');
 	}
 	
-	public function index()
+	function index()
 	{
 		$data['title'] = 'My Dentist Pal - Digitize your dental management practice. A full-featured online tool that integrates dental practice management and confidential patient clinical charting, which dentist can access wherever they are.';
 		$data['header'] = $this->load->view('homepage/header', '', true);

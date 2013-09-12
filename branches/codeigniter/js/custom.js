@@ -112,5 +112,21 @@ $( document ).ready(function()
 			
 		}
 	});
+	
+	$('#form_patient_login').ajaxForm({
+		type: 'POST',
+		url: base_url+'login/check_login',
+		success: function(html)
+		{
+			if(html == 'denied')
+			{
+				$('.invalid_login').show();
+			}else
+			{
+				window.location.href = base_url+'dentist_dashboard';
+			}
+			
+		}
+	});
     
 });
