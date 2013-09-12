@@ -2,7 +2,7 @@
 
 	$pass_date = date('Y-m-d');
 	$ctr=0;
-	$sql='SELECT * FROM `jqcalendar` WHERE `dentist_id`="'.$dentist_id.'"';
+	$sql='SELECT * FROM `jqcalendar` WHERE `dentist_id`="'.$id.'"';
 	$res=mysql_query($sql);
 	while( $row=mysql_fetch_array($res) ){
 		$date=date('Y-m-d',strtotime($row['StartTime']));
@@ -11,21 +11,21 @@
 	}
 	
 	$no="no";
-	$sql="SELECT COUNT(*) AS num FROM message_received WHERE message_read='".$no."' AND dentist_id='".$dentist_id."'";
+	$sql="SELECT COUNT(*) AS num FROM message_received WHERE message_read='".$no."' AND dentist_id='".$id."'";
 	$res=mysql_query($sql);
 	$query=mysql_fetch_assoc($res);
 	$rows=$query['num'];
 	
 	$count = 0;
 	$my_var="";
-	$sql="SELECT COUNT(*) AS counter FROM patient_list WHERE dentist_id='".$dentist_id."' AND referred_by<>'".$my_var."'";
+	$sql="SELECT COUNT(*) AS counter FROM patient_list WHERE dentist_id='".$id."' AND referred_by<>'".$my_var."'";
 	$res=mysql_query($sql);
 	$query=mysql_fetch_assoc($res);
 	$row=$query['counter'];
 	
 	/* Total Patient Records */
 	$patient_num = 0;
-	$query_patient_num = "SELECT COUNT(*) AS `count` FROM `patient_list` WHERE `dentist_id` = ".$dentist_id."";
+	$query_patient_num = "SELECT COUNT(*) AS `count` FROM `patient_list` WHERE `dentist_id` = ".$id."";
 	$res_patient_num   = mysql_query($query_patient_num);
 	if($res_patient_num)
 	{
@@ -37,7 +37,7 @@
 	
 	/* Total Male Patient Records */
 	$patient_male_num = 0;
-	$query_patient_num = "SELECT COUNT(*) as 'male' FROM `patient_list` WHERE `dentist_id` = ".$dentist_id." AND `patient_gender` LIKE 'male'";
+	$query_patient_num = "SELECT COUNT(*) as 'male' FROM `patient_list` WHERE `dentist_id` = ".$id." AND `patient_gender` LIKE 'male'";
 	$res_patient_num   = mysql_query($query_patient_num);
 	if($res_patient_num)
 	{
@@ -49,7 +49,7 @@
 	
 	/* Total Female Patient Records */
 	$patient_female_num = 0;
-	$query_patient_num = "SELECT COUNT(*) as 'female' FROM `patient_list` WHERE `dentist_id` = ".$dentist_id." AND `patient_gender` LIKE 'female'";
+	$query_patient_num = "SELECT COUNT(*) as 'female' FROM `patient_list` WHERE `dentist_id` = ".$id." AND `patient_gender` LIKE 'female'";
 	$res_patient_num   = mysql_query($query_patient_num);
 	if($res_patient_num)
 	{
@@ -61,7 +61,7 @@
 	
 	/* Average Age Patient Records */
 	$patient_average_age = 0;
-	$query_patient_num = "SELECT AVG( `patient_age` ) as 'average_age' FROM `patient_list` WHERE `dentist_id` = ".$dentist_id."";
+	$query_patient_num = "SELECT AVG( `patient_age` ) as 'average_age' FROM `patient_list` WHERE `dentist_id` = ".$id."";
 	$res_patient_num   = mysql_query($query_patient_num);
 	if($res_patient_num)
 	{
@@ -75,7 +75,7 @@
 	$patient_count 	= 0;
 	$date_today 	= date("Y-m-d") . " " . date('G:i:s');
 	$date_less_than	= date("Y-m-d",strtotime($date_today. '-7 days')) . " " . date('G:i:s');
-	$query_patient	= "SELECT COUNT(*) as patient_count FROM patient_list WHERE date_of_entry >= '$date_less_than' and date_of_entry <= '$date_today' AND `dentist_id` = ".$dentist_id."";
+	$query_patient	= "SELECT COUNT(*) as patient_count FROM patient_list WHERE date_of_entry >= '$date_less_than' and date_of_entry <= '$date_today' AND `dentist_id` = ".$id."";
 	$res_patient	= mysql_query($query_patient);
 	if ($res_patient)
 	{

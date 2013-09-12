@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Dentist_Dashboard extends CI_Controller {
+class Patient_Records extends CI_Controller {
 
 	public function __construct()
 	{
@@ -18,12 +18,11 @@ class Dentist_Dashboard extends CI_Controller {
 		   date_default_timezone_set('GMT');
 		}
 
-		// $sess_id=$_SESSION['id'];
-		$data['sess_id'] = $this->session->userdata('id');
-		if(!$this->session->userdata('id')) {
-			$data['sess_id'] = '00000000022';
+		$data['sess_id']='00000000022';
+		// $data['sess_id'] = $this->session->userdata('id');
+		// if(!$this->session->userdata('id')) {
 			// redirect(base_url().'dentist_login');
-		}
+		// }
 
 		$this->db->where('id', $data['sess_id']);
 		$qdentist_list = $this->db->get('dentist_list');
@@ -35,14 +34,14 @@ class Dentist_Dashboard extends CI_Controller {
 		$data['fname'] = $rdentist_list['first_name'];
 		$data['lname'] = $rdentist_list['sur_name'];
 
-		$data['page_now'] = 1;
+		$data['page_now'] = 3;
 
 		$data['title'] = 'My Dentist Pal';
-		$data['body'] = $this->load->view('dentist_dashboard_view', $data, true);
+		$data['body'] = $this->load->view('patient_list', $data, true);
 
 		$this->load->view('homepage', $data);
 	}
 }
 
-/* End of file welcome.php */
-/* Location: ./application/controllers/welcome.php */
+/* End of file patient_list.php */
+/* Location: ./application/controllers/patient_list.php */
