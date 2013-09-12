@@ -15,7 +15,7 @@
                         <a href="<?php echo base_url('login'); ?>"><img class="register"src="images/dentist_access.png" alt="DENTIST ACCESS"/></a>
                     </div>
                     <div class="button">
-                        <img class="register" src="images/patient_access.png" alt="PATIENT ACCESS"/>
+                        <a href="<?php echo base_url('login/patient'); ?>"><img class="register" src="images/patient_access.png" alt="PATIENT ACCESS"/></a>
                     </div>
                     <div id="watch" class="button">
                         <img class="register" src="images/watch_video.png" alt="WATCH VIDEO"/>

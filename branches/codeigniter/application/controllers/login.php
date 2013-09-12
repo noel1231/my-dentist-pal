@@ -24,6 +24,14 @@ class Login extends CI_Controller {
 		
 	}
 	
+	function patient()
+	{
+		$data['title'] = 'My Dentist Pal - Digitize your dental management practice. A full-featured online tool that integrates dental practice management and confidential patient clinical charting, which dentist can access wherever they are.';
+		$data['header'] = $this->load->view('homepage/header', '', true);
+		$data['body'] = $this->load->view('login/patient_login','',true);
+		$this->load->view('homepage', $data);
+	}
+	
 	function  check_login()
 	{
 		$email = $this->input->post('input_email');
@@ -36,9 +44,29 @@ class Login extends CI_Controller {
 		if($query->num_rows() > 0)
 		{
 			echo 'success';
-		}else
+		}
+		else
 		{
 			echo 'denied';
 		}
 	}	
+	
+	function patient_login()
+	{
+		$email = $this->input->post('input_email');
+		$pass = $this->input->post('input_pass');
+		$pass = md5($pass);
+		
+		$this->db->where('email',$email);
+		$this->db->where('password',$pass);
+		$query = $this->db->get('patient_list');
+		if($query->num_rows() > 0)
+		{
+			echo 'success';
+		}
+		else
+		{
+			echo 'denied';
+		}
+	}
 }
