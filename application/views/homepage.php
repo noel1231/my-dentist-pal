@@ -34,7 +34,7 @@
 
   </head>
   <body>
-  <div id="base_url" class="<?php echo base_url(); ?>">
+  <div id="base_url" class="<?php echo base_url(); ?>"></div>
 	<?php echo isset($header) ? $header : ''; ?>
 	<?php echo $body; ?>
 
