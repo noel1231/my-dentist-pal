@@ -105,9 +105,6 @@ $( document ).ready(function()
 			if(html == 'denied')
 			{
 				$('.invalid_login').show();
-				setTimeout(function(){
-					$('.invalid_login').hide();
-				},1500);
 			}else
 			{
 				window.location.href = base_url+'dentist_dashboard';
