@@ -34,6 +34,7 @@
 
   </head>
   <body>
+        <?php echo $nav; ?>
 	<?php echo $body; ?>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
