@@ -45,5 +45,6 @@
 
     <script src="<?php echo base_url();?>js/jquery.blockui.js"></script>
     <script src="<?php echo base_url();?>js/custom.js"></script>
+    <script src="<?php echo base_url();?>js/jquery.form.js"></script>
   </body>
 </html>
