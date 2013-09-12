@@ -1,11 +1,4 @@
-<<<<<<< .mine
-        <div class="wrapper">
-            <div class="head_content">
-                <h2>Digitize your <em>dental management practice.</em></h2>
-                <p>A full-featured online tool that integrates dental practice management</p>
-                <p>and confidential patient clinical charting,</p>
-                <p>which dentist can access wherever they are.</p>
-=======
+
 <div class="wrapper">
     <div class="head_content">
         <h2>Digitize your <em>dental management practice.</em></h2>
@@ -13,14 +6,7 @@
         <p>and confidential patient clinical charting,</p>
         <p>which dentist can access wherever they are.</p>
     </div>
-    <div class="head_video_container">
-        <div class="menu">
-            <div class="button">
-                <img class="register" src="images/register.png" alt="REGISTER"/>
->>>>>>> .r19
-            </div>
-<<<<<<< .mine
-            <div class="head_video_container">
+        <div class="head_video_container">
                 <div class="menu">
                     <div class="button">
                         <img class="register" src="images/register.png" alt="REGISTER"/>
@@ -38,10 +24,8 @@
                 <div class="img_holder">
                     <img src="images/monitor.png" alt="monitor" />
                 </div>
-=======
             <div class="button">
                 <img class="register"src="images/dentist_access.png" alt="DENTIST ACCESS"/>
->>>>>>> .r19
             </div>
             <div class="button">
                 <img class="register" src="images/patient_access.png" alt="PATIENT ACCESS"/>
@@ -50,10 +34,6 @@
                 <img class="register" src="images/watch_video.png" alt="WATCH VIDEO"/>
             </div>
         </div>
-        <div class="img_holder">
-            <img src="images/monitor.png" alt="monitor" />
-        </div>
-    </div>
     <div class="content">
         <div class="leftpanel">
             <div class="feature">
