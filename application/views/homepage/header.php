@@ -9,6 +9,9 @@
 	<a class="navbar-brand" href="#"><img src="img/logo.png" alt="Logo" /></a>
   </div>
   <div class="collapse navbar-collapse navbar-ex1-collapse">
+<?php
+	if(uri_string() == null) {
+?>
 	<ul class="nav navbar-nav navbar-right">
 		<li>
 			<a href="<?php echo base_url(); ?>" class="active">HOME</a>
@@ -17,5 +20,8 @@
 			<a href="<?php echo base_url('contact_us'); ?>">CONTACT US</a>
 		</li>
 	</ul>
+<?php
+	}
+?>
   </div>
 </nav>
