@@ -49,8 +49,8 @@ $active_group = 'default';
 $active_record = TRUE;
 
 $db['default']['hostname'] = 'localhost';
-$db['default']['username'] = 'mydentis_dent2';
-$db['default']['password'] = '$3EAhH.4Ld8b';
+$db['default']['username'] = 'root';
+$db['default']['password'] = '';
 $db['default']['database'] = 'mydentis_mydentist';
 $db['default']['dbdriver'] = 'mysql';
 $db['default']['dbprefix'] = '';
