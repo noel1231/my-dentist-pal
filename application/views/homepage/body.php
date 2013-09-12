@@ -84,6 +84,7 @@
     </div>
                 
 <div class="upper_footer">
+	<a name="pricing"></a>
     <h2 class="text-center">Pricing</h2>
     <table class="tbl_pricing table table-bordered">
         <tr>

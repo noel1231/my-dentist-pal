@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Dentist_Dashboard extends CI_Controller {
+class Patient_Info extends CI_Controller {
 
 	public function __construct()
 	{
@@ -37,12 +37,13 @@ class Dentist_Dashboard extends CI_Controller {
 
 		$data['page_now'] = 1;
 
-		$data['title'] = 'My Dentist Pal';
-		$data['body'] = $this->load->view('dentist_dashboard_view', $data, true);
+		$data['content'] = $this->load->view('box_patient_info', $data, true);
+		$data['body'] = $this->load->view('dentist_dashboard', $data, true);
 
+		$data['title'] = 'My Dentist Pal';
 		$this->load->view('homepage', $data);
 	}
 }
 
-/* End of file welcome.php */
-/* Location: ./application/controllers/welcome.php */
+/* End of file patient_info.php */
+/* Location: ./application/controllers/patient_info.php */

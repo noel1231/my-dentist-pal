@@ -42,6 +42,8 @@
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="bootstrap/js/bootstrap.min.js"></script>
     <script src="bootstrap/js/bootstrap.js"></script>
+    <script src="<?php echo base_url();?>js/email.blockui.js"></script>
+    <script src="<?php echo base_url();?>js/jquery.blockui.js"></script>
     <script src="<?php echo base_url();?>js/custom.js"></script>
   </body>
 </html>
