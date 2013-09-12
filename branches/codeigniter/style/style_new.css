@@ -402,6 +402,141 @@
     border: 2px solid #8c8c8c;
 }
 
+/* Contact */
+
+.contact_container
+{
+    float: left;
+    width: 80%;
+    margin: 0 0 30px 10%;
+    font-family: helvi;
+    -webkit-box-shadow : 0 2px 10px rgba(0, 0, 0, 0.1);
+    -moz-box-shadow    : 0 2px 10px rgba(0, 0, 0, 0.1);
+    box-shadow         : 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.contact_container .leftpanel
+{
+    float: left;
+    margin: 0;
+    padding: 0;
+    width: 40%;
+}
+.contact_container .leftpanel .info
+{
+    float: left;
+    margin: 2% 0 0 4%;
+    padding: 0;
+    font-family: helvi;
+}
+
+.contact_container .leftpanel .info h2
+{
+    float: left;
+    width: 100%;
+    font-family: helvi;
+}
+
+.contact_container .leftpanel .info p
+{
+    float: left;
+    width: 100%;
+    font-family: arial;
+}
+
+.contact_container .leftpanel .form
+{
+    float: left;
+    margin: 2% 0 0 4%;
+    padding: 0;
+    font-family: helvi;
+    width: 95%;
+}
+
+.contact_container .leftpanel .form .form_row
+{
+    float: left;
+    margin: 0 0 10px;
+    padding: 0;
+    width: 100%
+}
+
+.contact_container .leftpanel .form .form_row input
+{
+    float: left;
+    margin: 0;
+    width: 90%;
+    border-radius: 4px;
+    border: 1px solid #CCC;
+    padding: 6px 4px;
+}
+
+.contact_container .leftpanel .form .form_row textarea
+{
+    float: left;
+    margin: 0;
+    width: 90%;
+    border-radius: 4px;
+    border: 1px solid #CCC;
+    padding: 6px 4px;
+}
+
+.contact_container .leftpanel .form .form_row .register
+{
+   float: left;
+   background-color: #00aeef;
+   padding: 10px 15px;
+   border-radius: 10px;
+   cursor: pointer;
+   width: 25%;
+   min-width: 80px;
+   text-align: center;
+   margin: 0 0 0 65%;
+}
+
+.contact_container .leftpanel .form .form_row .register:hover
+{
+    background-color: #0093ca;
+}
+
+.contact_container .leftpanel .form .form_row .register p
+{
+   color: #fff;
+   margin: 0 !important;
+   padding: 0;
+   width: auto;
+}
+
+.contact_container .leftpanel .form .form_row label
+{
+    color: #F00;
+    text-align: center;
+    clear: both;
+    width: 80%;
+    font-size: 20px;
+    font-family: helvi;
+    display: none;
+}
+
+.contact_container .rightpanel
+{
+    float: right;
+    width: 60%;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+.contact_container .rightpanel iframe
+{
+    margin: 20px 0 0;
+    padding: 0;
+    text-align: center;
+    font-family: arial;
+    width: 90%;
+    height: 500px;
+}
+
 frameset {
     border: medium none !important;
     display: block !important;
