@@ -1,5 +1,9 @@
 $( document ).ready(function()
 {
+	/* global variable for base URL */
+	var base_url = $('#base_url').attr('class');
+	
+	
     $(window).scroll(function()
     {
         if (document.body.scrollTop === 0)
@@ -92,5 +96,24 @@ $( document ).ready(function()
               });
         }
    });
+   
+   	$('#form_dentist_login').ajaxForm({
+		type: 'POST',
+		url: base_url+'login/check_login',
+		success: function(html)
+		{
+			if(html == 'denied')
+			{
+				$('.invalid_login').show();
+				setTimeout(function(){
+					$('.invalid_login').hide();
+				},1500);
+			}else
+			{
+				window.location.href = base_url+'dentist_dashboard';
+			}
+			
+		}
+	});
     
 });
