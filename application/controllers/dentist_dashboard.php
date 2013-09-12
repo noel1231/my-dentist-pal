@@ -38,6 +38,7 @@ class Dentist_Dashboard extends CI_Controller {
 		$data['page_now'] = 1;
 
 		$data['title'] = 'My Dentist Pal';
+		
 		$data['body'] = $this->load->view('dentist_dashboard_view', $data, true);
 
 		$this->load->view('homepage', $data);

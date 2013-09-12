@@ -34,15 +34,15 @@
 
   </head>
   <body>
-        <?php echo $nav; ?>
+  <div id="base_url" class="<?php echo base_url(); ?>">
+	<?php echo isset($header) ? $header : ''; ?>
 	<?php echo $body; ?>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="//code.jquery.com/jquery.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="bootstrap/js/bootstrap.min.js"></script>
-    <script src="bootstrap/js/bootstrap.js"></script>
-    <script src="<?php echo base_url();?>js/email.blockui.js"></script>
+
     <script src="<?php echo base_url();?>js/jquery.blockui.js"></script>
     <script src="<?php echo base_url();?>js/custom.js"></script>
   </body>
