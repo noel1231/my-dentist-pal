@@ -4,7 +4,7 @@ class Contact_Us extends CI_Controller {
 
 	function index()
 	{
-		echo 'contact_us';
+		echo 'contact_us'; 
 	}
 }
 

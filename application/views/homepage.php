@@ -12,7 +12,8 @@
       <script src="../../assets/js/respond.min.js"></script>
     <![endif]-->
 
-        <link href="style/style_new.css" rel="stylesheet">
+	<link href="style/style.css" rel="stylesheet">
+	<link href="style/style_new.css" rel="stylesheet">
 <?php
 	if($_SERVER['HTTP_HOST'] != 'localhost') {
 ?>        
@@ -33,7 +34,7 @@
 
   </head>
   <body>
-    <?php echo $this->load->view('homepage/body'); ?>
+	<?php echo $body; ?>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="//code.jquery.com/jquery.js"></script>
