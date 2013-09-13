@@ -28,12 +28,3 @@
 ?>
     </div>
 </nav>
-<script>
-    
-       if(window.location.hash == '#prices')
-    {
-        $('a.home').removeClass('active');
-        $('a.contact_us').removeClass('active');
-        $('a.prices').addClass('active');
-    }
-</script>
