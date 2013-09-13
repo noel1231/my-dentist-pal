@@ -20,7 +20,7 @@
 			</div>
 			<div class="form-group">
 				<div class="col-lg-offset-2 col-lg-10">
-					<a href="<?php echo uri_string(); ?>">Forgot Password?</a>
+					<a href="<?php echo base_url('login/patient'); ?>">Forgot Password?</a>
 				</div>
 			</div>
 			<div class="form-group">
@@ -28,6 +28,7 @@
 					<button type="submit" class="btn btn-default">Sign in</button>
 				</div>				
 			</div>
+			
 		</form>
 	</div>
 	</div>

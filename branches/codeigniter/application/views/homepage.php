@@ -41,9 +41,9 @@
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     
+	<script src="<?php echo base_url();?>bootstrap/js/bootstrap.min.js"></script>
+	
     <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="<?php echo base_url();?>bootstrap/js/bootstrap.min.js"></script>
-
     <script src="<?php echo base_url();?>js/jquery.blockui.js"></script>
     <script src="<?php echo base_url();?>js/custom.js"></script>
     <script src="<?php echo base_url();?>js/jquery.form.js"></script>
