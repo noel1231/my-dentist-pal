@@ -127,9 +127,10 @@ $( document ).ready(function()
 		e.preventDefault();
 		$(this).tab('show');
 	});
-	$('#button_next').on('click',function(e){
+	$('.button_next').on('click',function(e){
 		e.preventDefault();
-		$('#myTab a[href="#profile"]').tab('show')
+		var tab = $(this).attr('alt');
+		$('#myTab a[href="#'+tab+'"]').tab('show');
 	});
         
 	$('a.prices').click(function(){
@@ -144,6 +145,46 @@ $( document ).ready(function()
 		$('a.contact_us').removeClass('active');
 	   
 		return false;
+	});
+	$('input[name=medical_treatment_patient]').on('click',function(){
+		if($(this).val() == 'yes')
+		{
+			$('.show_question').show();
+		}else
+		{
+			$('.show_question').hide();
+			$('.show_question').find('input').val('');
+		}
+	});
+	$('input[name=surgical_patient]').on('click',function(){
+		if($(this).val() == 'yes')
+		{
+			$('.show_question2').show();
+		}else
+		{
+			$('.show_question2').hide();
+			$('.show_question2').find('input').val('');
+		}
+	});
+	$('input[name=hospitalized_patient]').on('click',function(){
+		if($(this).val() == 'yes')
+		{
+			$('.show_question3').show();
+		}else
+		{
+			$('.show_question3').hide();
+			$('.show_question3').find('input').val('');
+		}
+	});
+	$('input[name=presciption_patient]').on('click',function(){
+		if($(this).val() == 'yes')
+		{
+			$('.show_question4').show();
+		}else
+		{
+			$('.show_question4').hide();
+			$('.show_question4').find('input').val('');
+		}
 	});
     
 });
