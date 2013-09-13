@@ -1,7 +1,5 @@
 $( document ).ready(function()
 {
-	/* global variable for base URL */
-	var base_url = $('#base_url').attr('class');
 	
 	
     $(window).scroll(function()
@@ -99,7 +97,6 @@ $( document ).ready(function()
    
    	$('#form_dentist_login').ajaxForm({
 		type: 'POST',
-		url: base_url+'login/check_login',
 		success: function(html)
 		{
 			if(html == 'denied')
@@ -115,7 +112,6 @@ $( document ).ready(function()
 	
 	$('#form_patient_login').ajaxForm({
 		type: 'POST',
-		url: base_url+'login/check_login',
 		success: function(html)
 		{
 			if(html == 'denied')
@@ -130,6 +126,10 @@ $( document ).ready(function()
 	$('#myTab a').on('click',function (e) {
 		e.preventDefault();
 		$(this).tab('show');
+	});
+	$('#button_next').on('click',function(e){
+		e.preventDefault();
+		$('#myTab a[href="#profile"]').tab('show')
 	});
         
 	$('a.prices').click(function(){
