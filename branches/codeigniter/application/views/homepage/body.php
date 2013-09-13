@@ -8,18 +8,19 @@
     </div>
         <div class="head_video_container">
                 <div class="menu">
-                    <div class="button">
+                    <a href="" class="button">
                         <img class="register" src="images/register.png" alt="REGISTER"/>
-                    </div>
-                    <div class="button">
-                        <a href="<?php echo base_url('login'); ?>"><img class="register"src="images/dentist_access.png" alt="DENTIST ACCESS"/></a>
-                    </div>
-                    <div class="button">
-                        <a href="<?php echo base_url('login/patient'); ?>"><img class="register" src="images/patient_access.png" alt="PATIENT ACCESS"/></a>
-                    </div>
-                    <div id="watch" class="button">
+                    </a>
+             
+                    <a href="" class="button">
+                        <img class="register"src="images/dentist_access.png" alt="DENTIST ACCESS"/>
+                    </a>
+                    <a class="button">
+                        <img class="register" src="images/patient_access.png" alt="PATIENT ACCESS"/>
+                    </a>
+                    <a id="watch" class="button">
                         <img class="register" src="images/watch_video.png" alt="WATCH VIDEO"/>
-                    </div>
+                    </a>
                 </div>
                 <div class="img_holder">
                     <img src="images/monitor.png" alt="monitor" />
