@@ -3,7 +3,7 @@
   <head>
     <title><?php echo $title; ?></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="//code.jquery.com/jquery.js"></script>
+
     <!-- Bootstrap -->
     <link href="<?php echo base_url();?>bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
 
@@ -13,8 +13,13 @@
       <script src="../../assets/js/respond.min.js"></script>
     <![endif]-->
 
-	<link href="<?php echo base_url();?>style/style.css" rel="stylesheet">
-	<link href="<?php echo base_url();?>style/style_new.css" rel="stylesheet">
+	<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+
+	<link href="style/style.css" rel="stylesheet">
+	<link href="style/style_new.css" rel="stylesheet">
+
+	<link rel='stylesheet' type='text/css' href='fullcalendar/fullcalendar.css' />
+
 <?php
 	if($_SERVER['HTTP_HOST'] != 'localhost') {
 ?>        
@@ -35,17 +40,23 @@
 
   </head>
   <body>
-  <div id="base_url" class="<?php echo base_url(); ?>"></div>
+
 	<?php echo isset($header) ? $header : ''; ?>
 	<?php echo $body; ?>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    
+    <script src="//code.jquery.com/jquery.js"></script>
 	<script src="<?php echo base_url();?>bootstrap/js/bootstrap.min.js"></script>
 	
+    <script src="//code.jquery.com/ui/1.10.3/jquery-ui.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="<?php echo base_url();?>js/jquery.blockui.js"></script>
-    <script src="<?php echo base_url();?>js/custom.js"></script>
     <script src="<?php echo base_url();?>js/jquery.form.js"></script>
+
+	<script type='text/javascript' src='fullcalendar/fullcalendar.js'></script>
+	<script type='text/javascript' src='js/appointments.js'></script>
+
+    <script src="<?php echo base_url();?>js/custom.js"></script>
+
   </body>
 </html>

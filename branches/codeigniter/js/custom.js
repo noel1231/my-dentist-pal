@@ -1,5 +1,4 @@
-$( document ).ready(function()
-{
+$(function() {
 	
 	
     $(window).scroll(function()
@@ -104,7 +103,7 @@ $( document ).ready(function()
 				$('.invalid_login').show();
 			}else
 			{
-				window.location.href = base_url+'dentist_dashboard';
+				window.location.href = 'dentist_dashboard';
 			}
 			
 		}
@@ -146,6 +145,13 @@ $( document ).ready(function()
 	   
 		return false;
 	});
+
+    if(window.location.hash == '#prices')
+    {
+        $('a.home').removeClass('active');
+        $('a.contact_us').removeClass('active');
+        $('a.prices').addClass('active');
+    }
 	$('input[name=medical_treatment_patient]').on('click',function(){
 		if($(this).val() == 'yes')
 		{

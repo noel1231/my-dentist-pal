@@ -1,5 +1,5 @@
 <?php 
-	
+	echo base_url();
 ?>
 <div class="wrapper">
 	<div class="container" style="width:60%;">
