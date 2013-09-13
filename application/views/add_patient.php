@@ -176,21 +176,18 @@
 							</div>
 							<div class="form-group">
 								<div class="col-lg-5 col-md-offset-9">
-									<button type="button" id="button_next" class="btn btn-primary col-lg-5">Next</button>
+									<button type="button" id="button_next" alt="dentist_history" class="btn btn-primary col-lg-5">Next</button>
 								</div>
 							</div>
 						</form>
 					</div>
 				</div>
 				<div class="tab-pane" id="dentist_history">
-					continue
+					<div class="well well-lg">
+						<form class="form-horizontal" role="form">
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
-<script>
-	$('.btn-primary').click(function(){
-		alert('asd')
-	});
-</script>
