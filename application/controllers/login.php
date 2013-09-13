@@ -30,6 +30,7 @@ class Login extends CI_Controller {
 		$data['header'] = $this->load->view('homepage/header', '', true);
 		$data['body'] = $this->load->view('login/patient_login','',true);
 		$this->load->view('homepage', $data);
+		
 	}
 	
 	function  check_login()

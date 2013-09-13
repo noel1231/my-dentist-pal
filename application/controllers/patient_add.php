@@ -21,4 +21,10 @@ class Patient_add extends CI_Controller {
 		$data['body'] = $this->load->view('add_patient','',true);
 		$this->load->view('homepage', $data);
 	}
+	
+	function submit_patient()
+	{
+		$cavity = $this->input->post('cavity');
+		print_r($cavity);
+	}
 }
