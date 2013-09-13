@@ -43,6 +43,15 @@ class Login extends CI_Controller {
 		$query = $this->db->get('dentist_list');
 		if($query->num_rows() > 0)
 		{
+			$row = $query->row_array();
+			$newdata = array(
+                   'email'  			=> $row['email'],
+                   'id'     			=> $row['id'],
+                   'license_number'     => $row['license_number'],
+                   'logged_in' 			=> TRUE
+            );
+			$this->session->set_userdata($newdata);  
+			   
 			echo 'success';
 		}
 		else

@@ -121,27 +121,29 @@ $( document ).ready(function()
 			if(html == 'denied')
 			{
 				$('.invalid_login').show();
-			}else
-			{
-				window.location.href = base_url+'dentist_dashboard';
+				return false;
 			}
 			
 		}
 	});
+	
+	$('#myTab a').on('click',function (e) {
+		e.preventDefault();
+		$(this).tab('show');
+	});
         
-        $('a.prices').click(function()
-        {
-            $('html, body').animate({
-                    scrollTop:$('#prices').offset().top
-            }, 800, function() {
-                    //parallaxScroll(); // Callback is required for iOS
-            });
-            
-            $(this).addClass('active');
-            $('a.home').removeClass('active');
-            $('a.contact_us').removeClass('active');
-           
-            return false;
-        });
+	$('a.prices').click(function(){
+		$('html, body').animate({
+				scrollTop:$('#prices').offset().top
+		}, 800, function() {
+				//parallaxScroll(); // Callback is required for iOS
+		});
+		
+		$(this).addClass('active');
+		$('a.home').removeClass('active');
+		$('a.contact_us').removeClass('active');
+	   
+		return false;
+	});
     
 });
