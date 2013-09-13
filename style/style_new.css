@@ -135,13 +135,13 @@
     margin: 0 0 0 8%;
     padding: 0;
     width: 84%;
+    text-align: center;
 }
 
 .wrapper .head_video_container .menu .button
 {
-    float: left;
-    margin: 10px 0 0 5%;
-    padding: 0;
+    margin: 20px 0 0 5%;
+    padding: 15px;
     background-color: #00aeef;
     text-align: center;
     cursor: pointer;
@@ -164,7 +164,7 @@
 .wrapper .head_video_container .menu #watch img
 {
     margin: 0;
-    padding: 10px;
+    padding: 0;
     cursor: pointer;
     max-width: 190px;
 }
@@ -548,6 +548,7 @@ frameset {
     .wrapper .head_video_container .menu .button
     {
         margin: 10px 0 0 7%;
+        float: left;
     }
         
     .wrapper .head_video_container .img_holder img
@@ -599,6 +600,11 @@ frameset {
 
 @media (max-width: 799px) and (min-width: 600px)
 {
+    .wrapper .head_video_container .menu .button
+    {
+        float: left;
+    }
+    
     .wrapper .head_video_container .img_holder img
     {
         max-width: 580px;
@@ -629,6 +635,7 @@ frameset {
     .wrapper .head_video_container .menu .button
     {
         margin: 10px 0 0 0.2%;
+        float: left;
     }
     
     .contact_container .leftpanel,
@@ -656,6 +663,7 @@ frameset {
     .wrapper .head_video_container .menu .button
     {
         margin: 10px 0 0 2%;
+        float: left;
     }
 }
 
