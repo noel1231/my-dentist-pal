@@ -9,7 +9,7 @@ class Contact_Us extends CI_Controller
 
     public function index()
     {
-        $data['nav'] = $this->load->view('nav', '', true);
+        $data['nav'] = $this->load->view('homepage/header', '', true);
         $this->load->view('contact_us', $data);
     }
     

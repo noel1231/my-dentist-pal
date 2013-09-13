@@ -128,5 +128,20 @@ $( document ).ready(function()
 			
 		}
 	});
+        
+        $('a.prices').click(function()
+        {
+            $('html, body').animate({
+                    scrollTop:$('#prices').offset().top
+            }, 800, function() {
+                    //parallaxScroll(); // Callback is required for iOS
+            });
+            
+            $(this).addClass('active');
+            $('a.home').removeClass('active');
+            $('a.contact_us').removeClass('active');
+           
+            return false;
+        });
     
 });

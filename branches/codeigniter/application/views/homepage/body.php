@@ -62,7 +62,7 @@
                     Keep in touch with patients and remind them of their appointments,
                     follow-up treatment, or inform them of overdue accounts.
                 </p>
-                <p class="skyblue">blog</p>
+                <p class="skyblue" id="prices">blog</p>
                 <p>
                     Share thoughts or views with fellow dentists in the My Dentist Pal
                     online community.
@@ -91,10 +91,11 @@
                 <img src="images/scheduler.png" alt="patient dashboard" />
             </div>
         </div>
+        
     </div>
                 
 <div class="upper_footer">
-	<a name="pricing"></a>
+
     <h2 class="text-center">Pricing</h2>
     <table class="tbl_pricing table table-bordered">
         <tr>

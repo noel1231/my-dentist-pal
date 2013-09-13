@@ -11,6 +11,7 @@
     </head>
     <body data-spy="scroll" data-target=".bs-docs-sidebar">
         <?php echo $nav ?>
+        
         <div class="wrapper">
             <div class="holder">
                 <div class="contact_container">
@@ -24,7 +25,7 @@
                         </div>
                         <div class="form">
                             <div class="form_row">
-                                <label id="error">ee</label>
+                                <label id="error"></label>
                             </div>
                             <div class="form_row">
                                 <input name="full_name" maxlength="30" type="text" Placeholder="Full Name" id="fullname"/>

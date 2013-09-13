@@ -17,22 +17,22 @@
     margin: 0 0 0 5%;
 }
 
-.navbar, .navbar-inverse, .navbar-fixed-top, .navbar-inner, .container
+#menu.navbar, #menu.navbar .navbar-inverse, #menu.navbar .navbar-fixed-top, #menu.navbar .navbar-inner
 {
-    background-color: transparent !important;
-    background-image: url('../img/header_bg.png') !important;
-    border:none !important;
+    background-color: transparent;
+    background-image: url('../img/header_bg.png');
+    border:none;
 }
 
-.navbar .nav
+#menu.navbar .nav
 {
-    margin: 50px 5% 0 0 !important;
+    margin: 50px 5% 0 0;
 }
 
-.navbar .btn-navbar
+#menu.navbar .btn-navbar
 {
-    background-color: #c3c3c3 !important;
-    background-image: none !important;
+    background-color: #c3c3c3;
+    background-image: none;
 }
 
 .brand
@@ -576,6 +576,25 @@ frameset {
         width: 100%;
         margin: 5px 0 0;
     }
+
+    /* contact us */
+    
+    .contact_container
+    {
+        margin: 80px 0 0 10%;
+    }
+    .contact_container .leftpanel,
+    .contact_container .rightpanel
+    {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+    }
+    
+    .contact_container .leftpanel .form .form_row .register
+    {
+        margin: 0 0 0 55%;
+    }
 }
 
 @media (max-width: 799px) and (min-width: 600px)
@@ -583,6 +602,14 @@ frameset {
     .wrapper .head_video_container .img_holder img
     {
         max-width: 580px;
+    }
+    
+    .contact_container .leftpanel,
+    .contact_container .rightpanel
+    {
+        width: 100%;
+        margin: 0;
+        padding: 0;
     }
 }
 
@@ -602,6 +629,14 @@ frameset {
     .wrapper .head_video_container .menu .button
     {
         margin: 10px 0 0 0.2%;
+    }
+    
+    .contact_container .leftpanel,
+    .contact_container .rightpanel
+    {
+        width: 100%;
+        margin: 0;
+        padding: 0;
     }
 }
 
