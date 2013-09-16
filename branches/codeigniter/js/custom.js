@@ -97,6 +97,19 @@ $(function() {
 	$(function() {
 		$( ".datepicker" ).datepicker();
 	});
+	
+	$('a[data-toggle="tab"]').on('show.bs.tab', function (e) {
+		e.target // activated tab
+		e.relatedTarget // previous tab
+		
+		if($(e.target).attr('href') == '#dentist_history')
+		{
+			// alert('asd');
+			e.stopPropagation();
+		}
+		
+	});
+	
 	$('.submit_all_form').click(function(){
 		
 		var formDental = $('#dental_history_form').serialize();
