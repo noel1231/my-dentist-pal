@@ -199,38 +199,59 @@ $(function() {
 		}
 	});
 		
-		$('#form_dentist_signup').ajaxForm({
-		//var email = $('#email1').val();
+	$('#form_dentist_signup').ajaxForm({
 		
 		type: 'POST',
 		beforeSubmit: function (){
-			if($('#fname').val().trim() == '' || $('#middle').val().trim() == '' || $('#lname').val().trim() == ''){
+			var fname = $('#fname').val();
+			var middle = $('#middle').val();
+			var lname = $('#lname').val();
+			var email1 = $('#email1').val();
+			var email2 = $('#email2').val();
+			var pass1 = $('#pass1').val();
+			var pass2 = $('#pass2').val(); 
+			
+			if(fname.trim() == '' || middle.trim() == '' || lname.trim() == ''){
 				$('.alert_msg').html('Enter your full name in the required field to proceed.').show();
 				return false;
-			}else if($('#email1').val().trim() == '')
+			}else if(email1.trim() == '')
 			{
 				$('.alert_msg').html('Enter your email address in the required field to proceed.').show();
 				return false;
-			}else if(!email.match(/^([a-z0-9._-]+@[a-z0-9._-]+\.[a-z]{2,4}$)/i))
+			}else if(!email1.match(/^([a-z0-9._-]+@[a-z0-9._-]+\.[a-z]{2,4}$)/i))
 			{
 				$('.alert_msg').html('Enter valid email address in the required field to proceed.').show();
 				return false;
-			}else if($('#email2').val().trim() == '')
+			}else if(email2.trim() == '')
 			{
-				$('.alert_msg').html('Re-type you email address in the required field to proceed.').show();
+				$('.alert_msg').html('Re-type your email address in the required field to proceed.').show();
+				return false;
+			}else if(email2 != email1)
+			{
+				$('.alert_msg').html('Email address did not match!').show();
+				return false;
+			}else if(pass1.trim() == '')
+			{
+				$('.alert_msg').html('Enter your password in the required field to proceed.').show();
+				return false;
+			}else if(pass2.trim() == '')
+			{
+				$('.alert_msg').html('Re-type your password in the required field to proceed.').show();
+				return false;
+			}else if(pass2 != pass1)
+			{
+				$('.alert_msg').html('Password did not match!').show();
 				return false;
 			}
 		},
 		
 		success: function(html)
 		{
-			if(html == 'denied')
-			{
-				$('.invalid_login').show();
-			}else
-			{
-				window.location.href = base_url+'dentist_dashboard';
-			}
+			
+			$('.alert_msg').hide();
+			// $('.success_msg').html('Registration Success!').show();
+			$('#mySuccessReg').modal('show');
+
 			
 		}
 	});
