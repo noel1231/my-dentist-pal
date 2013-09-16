@@ -93,11 +93,25 @@ $(function() {
               });
         }
    });
-	
+   
+	$(function() {
+		$( ".datepicker" ).datepicker();
+	});
 	$('.submit_all_form').click(function(){
 		
-		var form1 = $('#patient_info_form').serialize();
-		alert(form1);
+		var formDental = $('#dental_history_form').serialize();
+		var formMedical = $('#medical_history_form').serialize();
+		var formInfo = $('#patient_info_form').serialize();
+		var dataString = formInfo+'&'+formDental+'&'+formMedical;
+		$.ajax({
+			type: 'POST',
+			url: 'patient_add/submit_patient',
+			data: dataString,
+			success: function(html){
+				alert(html);
+			}
+		});
+		
 	});
 	
    	$('#form_dentist_login').ajaxForm({
@@ -168,7 +182,7 @@ $(function() {
 			$('.show_question').find('input').val('');
 		}
 	});
-	$('input[name=surgical_patient]').on('click',function(){
+	$('input[name=illness_patient]').on('click',function(){
 		if($(this).val() == 'yes')
 		{
 			$('.show_question2').show();
