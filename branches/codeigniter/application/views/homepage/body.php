@@ -12,10 +12,10 @@
                         <img class="register" src="images/register.png" alt="REGISTER"/>
                     </a>
              
-                    <a href="" class="button">
+                    <a href="<?php echo base_url('login'); ?>" class="button">
                         <img class="register"src="images/dentist_access.png" alt="DENTIST ACCESS"/>
                     </a>
-                    <a class="button">
+                    <a href="<?php echo base_url('login/patient'); ?>" class="button">
                         <img class="register" src="images/patient_access.png" alt="PATIENT ACCESS"/>
                     </a>
                     <a id="watch" class="button">

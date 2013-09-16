@@ -4,7 +4,7 @@
 <style>
 #myTab {
 	position: absolute;
-	left: -111px;
+	left: -110px;
 	top: 30px;
 }
 #myTab li {
@@ -50,13 +50,13 @@
 			<div class="tab-content">
 				<div class="tab-pane active" id="add_patient">
 					<div class="well well-lg">
-						<form class="form-horizontal" role="form">
+						<form class="form-horizontal" role="form" id="patient_info_form">
 							<h3 style="font-weight:bold">Patient Info</h3>
 							<div class="form-group">
 								<label for="inputEmail1" class="col-lg-4 control-label">Patient ID number</label>
 								<div class="col-lg-5">
 									<span style="line-height: 27px;"><?php echo time(); ?></span>
-									<input type="text" class="form-control" id="patient_id" style="display:none;">
+									<input type="hidden" class="form-control" id="patient_id" name="patient_id">
 								</div>
 							</div>
 							<div class="form-group">
@@ -223,7 +223,7 @@
 				</div>
 				<div class="tab-pane" id="dentist_history">
 					<div class="well well-lg">
-						<form class="form-horizontal" role="form">
+						<form class="form-horizontal" role="form" id="dental_history_form">
 							<h3 style="font-weight:bold">Dentist History</h3>
 							<div class="form-group">
 								<label for="inputEmail1" class="col-lg-4 control-label">Previous Dentist</label>
@@ -381,7 +381,7 @@
 				</div>
 				<div class="tab-pane" id="medical_history">
 					<div class="well well-lg">
-						<form class="form-horizontal" role="form">
+						<form class="form-horizontal" role="form" id="medical_history_form">
 							<h3 style="font-weight:bold">Medical History</h3>
 							<div class="form-group">
 								<label for="inputEmail1" class="col-lg-4 control-label">Name of physician</label>
@@ -737,7 +737,7 @@
 							<div class="form-group">
 								<div class="col-lg-5 col-md-offset-7">
 									<button type="button" alt="dentist_patient" class="button_next btn btn-primary col-lg-5">Back</button>
-									<button type="button" class="button_submit btn btn-primary col-lg-5">Next</button>
+									<button type="button" class="submit_all_form btn btn-primary col-lg-5">Submit</button>
 								</div>
 							</div>
 						</form>
