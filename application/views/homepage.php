@@ -15,8 +15,8 @@
 
 	<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
 
-	<link href="style/style.css" rel="stylesheet">
-	<link href="style/style_new.css" rel="stylesheet">
+	<link href="<?php echo base_url();?>style/style.css" rel="stylesheet">
+	<link href="<?php echo base_url();?>style/style_new.css" rel="stylesheet">
 
 	<link rel='stylesheet' type='text/css' href='fullcalendar/fullcalendar.css' />
 
@@ -53,8 +53,8 @@
     <script src="<?php echo base_url();?>js/jquery.blockui.js"></script>
     <script src="<?php echo base_url();?>js/jquery.form.js"></script>
 
-	<script type='text/javascript' src='fullcalendar/fullcalendar.js'></script>
-	<script type='text/javascript' src='js/appointments.js'></script>
+	<script type='text/javascript' src='<?php echo base_url();?>fullcalendar/fullcalendar.js'></script>
+	<script type='text/javascript' src='<?php echo base_url();?>js/appointments.js'></script>
 
     <script src="<?php echo base_url();?>js/custom.js"></script>
 
