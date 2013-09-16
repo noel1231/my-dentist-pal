@@ -93,7 +93,13 @@ $(function() {
               });
         }
    });
-   
+	
+	$('.submit_all_form').click(function(){
+		
+		var form1 = $('#patient_info_form').serialize();
+		alert(form1);
+	});
+	
    	$('#form_dentist_login').ajaxForm({
 		type: 'POST',
 		success: function(html)
