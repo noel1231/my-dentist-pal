@@ -54,11 +54,6 @@ class Dentist_Signup extends CI_Controller {
 		$data['d_mname'] = rtrim($this->input->post('middle'));
 		$data['d_email'] = rtrim($this->input->post('email1'));
 		$data['d_password'] = rtrim($this->input->post('pass1'));
-		//$data['d_register_date'] = rtrim($this->input->post('date_reg'));
-		//$data['d_bmonth'] = $this->input->post('bmonth');
-		//$data['d_bday'] = $this->input->post('bday');
-		//$data['d_byear'] = $this->input->post('byear');
-		//$data['d_gender'] = $this->input->post('gender');
 		
 		$this->dentist_signup_model->register_dentist($data);
 		

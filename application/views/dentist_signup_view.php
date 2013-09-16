@@ -8,13 +8,15 @@
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
 <script type="text/javascript" src="img/jquery-1.3.2.min.js"></script>      
   -->
-        <script style="type/javascript">
+       <!-- <script style="type/javascript">
 			$(document).ready(function(){
 				$("submit").click(function(event){
 			$(".alert").show(); //fadeout the slide div for automotive
 			});
 		});
+		
 		</script>
+		-->
         <style type="text/css">
             body{
                 
@@ -69,13 +71,13 @@
 		#dr-title-wrapper { background-color:#e0e2e4;width:100%;height:90px;}
 		#form-wrapper { background-color:#fff; height:410px;border:solid 0px red;}
 		
-		label { margin-left:100px;}
-		#lname{ position:relative; margin-top:-34px; margin-left:273px;}
-		#middle{ position:relative; margin-top:-34px; margin-left:135px;}
+		label { margin-left:135px;}
+		#middle{ position:relative; margin-top:-34px; margin-left:162px;}
+		#lname{ position:relative; margin-top:-34px; margin-left:325px;}
 		#bday2{ position:relative; margin-top:-31px; margin-left:240px;}
 		#bday3{ position:relative; margin-top:-31px; margin-left:480px;}
-		.alert_msg {width:380px; margin-left:235px;}
-		
+		.alert_msg {width:450px; margin-left:300px;}
+		.success_msg {width:450px; margin-left:300px;}
         </style>
 
 </head>
@@ -99,13 +101,13 @@
 			<?php //echo validation_errors(); ?>
 			<!--start dentist registration form-->
 			<div id="form-wrapper"><!-- start dentist registration form wrapper-->
-				<div class="" style="border:solid 0px green; height:410px; width:60%;">
-					<div id="" class="well well-sm" style="position:relative;margin-top:15px;left:300px;">
+				<div class="" style="border:solid 0px green; height:410px; width:960px;">
+					<div id="" class="well well-sm" style="position:relative;margin-top:15px;left:210px;">
 					<div style="clear:both;">&nbsp;</div>
 						<form class="form-horizontal" id="form_dentist_signup" role="form" method="post" action="<?php base_url('dentist_signup')?>" enctype="multipart/form-data" name="ContactForm"><!--Registration form for Dentist-->
 							<div><!--start form content wrapper-->
 								<div class="alert alert-danger alert_msg" style="text-align:center;display:none;"><?php //echo validation_errors(); ?><?php //echo form_error('fname'); //echo form_error('lname');?><?php  ?></div>
-								
+								<div class="alert alert-success success_msg" style="text-align:center;display:none;"></div>
 								<div class="form-group"><!--start full name-->
 									<label for="inputEmail1" class="col-lg-2 control-label">Name:</label>
 									<div class="col-lg-2">
@@ -144,7 +146,7 @@
 									</div>	
 								</div><!--end confirm password-->
 								
-								<div style="margin-left:238px; margin-top:14px;"><!--start submit and back button-->
+								<div style="margin-left:298px; margin-top:14px;"><!--start submit and back button-->
 									<input type="submit" name="submit" value="Submit" class="btn btn-primary" id="submit"/>
 									<!--<input type="button" name="cancel" value="Back" class="btn btn-primary"/>
 								</div><!--end submit and back button-->
@@ -159,6 +161,25 @@
 			
 		</div>
 	</div>
+	 
+
+  <!-- Modal -->
+  <div class="modal fade" id="mySuccessReg" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title">Registration Successfully</h4>
+        </div>
+        <div class="modal-body">
+          <p>Please verify your email</p>
+        </div>
+        <div class="modal-footer">
+          <a href="<?php echo base_url(); ?>" class="btn btn-default">OK</a>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
 	<!--
 </body>
 </html>
