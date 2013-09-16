@@ -43,9 +43,9 @@
 	<div class="row">
 		<div class="col-md-6 col-md-offset-3">
 			<ul class="nav nav-tabs" id="myTab">
-				<li class="active"><a href="#add_patient">Add Patient</a></li>
-				<li><a href="#dentist_history">Dentist History</a></li>
-				<li><a href="#medical_history">Medical History</a></li>
+				<li class="active"><a href="#add_patient" data-toggle="tab">Add Patient</a></li>
+				<li><a href="#dentist_history" data-toggle="tab">Dentist History</a></li>
+				<li><a href="#medical_history" data-toggle="tab">Medical History</a></li>
 			</ul>
 			<div class="tab-content">
 				<div class="tab-pane active" id="add_patient">
