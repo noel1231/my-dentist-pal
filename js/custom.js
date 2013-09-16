@@ -192,5 +192,41 @@ $(function() {
 			$('.show_question4').find('input').val('');
 		}
 	});
+		
+		$('#form_dentist_signup').ajaxForm({
+		//var email = $('#email1').val();
+		
+		type: 'POST',
+		beforeSubmit: function (){
+			if($('#fname').val().trim() == '' || $('#middle').val().trim() == '' || $('#lname').val().trim() == ''){
+				$('.alert_msg').html('Enter your full name in the required field to proceed.').show();
+				return false;
+			}else if($('#email1').val().trim() == '')
+			{
+				$('.alert_msg').html('Enter your email address in the required field to proceed.').show();
+				return false;
+			}else if(!email.match(/^([a-z0-9._-]+@[a-z0-9._-]+\.[a-z]{2,4}$)/i))
+			{
+				$('.alert_msg').html('Enter valid email address in the required field to proceed.').show();
+				return false;
+			}else if($('#email2').val().trim() == '')
+			{
+				$('.alert_msg').html('Re-type you email address in the required field to proceed.').show();
+				return false;
+			}
+		},
+		
+		success: function(html)
+		{
+			if(html == 'denied')
+			{
+				$('.invalid_login').show();
+			}else
+			{
+				window.location.href = base_url+'dentist_dashboard';
+			}
+			
+		}
+	});
     
 });
