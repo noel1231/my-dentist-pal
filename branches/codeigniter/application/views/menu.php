@@ -9,11 +9,13 @@
 				<span> Patient Records </span>
 			</a>
 		</li>
+<!--
 		<li class="btn btn-default">
 			<a href="dentist_addressbook" id="link4">
 				<span> Address Book </span>
 			</a>
 		</li>
+-->
 		<li class="btn btn-default">
 			<a href="scheduler/wdCalendar/index.php" id="link5" target="_blank">
 				<span> Scheduler </span>

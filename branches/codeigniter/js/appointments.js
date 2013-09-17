@@ -1,15 +1,57 @@
 $(function(){
 
-	$('#calendar').fullCalendar({
-		header: [{
-			left:   'title',
-			center: '',
-			right:  'today prev,next'
-		}],
-		dayClick: function(a,b,c,d) {
+	function append_to_table(appointment_obj) {
+		$('#tbody_appointment').html('');
+		if(appointment_obj.length > 0) {
+			for(var i=0; i<appointment_obj.length; i++) {
+				var title = appointment_obj[i].title;
+				var description = appointment_obj[i].description;
+				var start_time = appointment_obj[i].start_time;
+				var end_time = appointment_obj[i].end_time;
+				$('#tbody_appointment').append('<tr><td>'+title+'</td><td>'+description+'</td><td>'+start_time+' to '+end_time+'</td><td> Status here </td></tr>');
+			}
+		} else {
+			$('#tbody_appointment').append('<tr><td colspan="4"> No Appoinment for this day. </td></tr>');
+		}
+	}
+
+	var calendar = $('#calendar');
+
+	calendar.fullCalendar({
+		header: {
+			left:   'prev,next today',
+			center: 'title',
+			right:  'month,agendaWeek,agendaDay '
+		},
+		dayClick: function(date, allDay, jsEvent, view) {
+			var click_date = $.fullCalendar.formatDate(date, 'MM/dd/yyyy');
+			if(click_date == $.fullCalendar.formatDate(new Date(), 'MM/dd/yyyy')) {
+				$('#date_appoint').html('Today&rsquo;s');
+			} else {
+				$('#date_appoint').text($.fullCalendar.formatDate(date, 'MMMM d'));
+			}
+
+				$('#inputDate1').val(click_date);
 			
-			console.log(c.target);
-			alert("date clicked");
+			if (allDay) {
+				var dataString = { start_date: click_date };
+				$.ajax({
+					type: 'post',
+					url: 'dashboard/feed',
+					data: dataString,
+					beforeSend: function() {},
+					success: function(data) {
+						var html = JSON.parse(data);
+						$('#num_of_appoint').text(html.length);
+						append_to_table(html);
+					}
+				});
+			} else {
+				alert('Clicked on the slot: ' + new Date);
+			}
+
+			$('td.fc-day').css('background-color', 'transparent');
+			$(this).css('background-color', '#BCE8F1');
 		},
 		eventRender: function(event, element) {
 			element.tooltip({
@@ -17,9 +59,11 @@ $(function(){
 				placement: 'bottom'
 			});
 		},
+		// eventAfterRender: function( event, element, view ) {
+			// if($.fullCalendar.formatDate(new Date(), 'MMMM d') != $.fullCalendar.formatDate(event.start, 'MMMM d'));
+				// $('#date_appoint').text($.fullCalendar.formatDate(event.start, 'MMMM d'));
+		// },
 		eventSources: [
-
-			// your event source
 			{
 				url: 'dashboard/feed',
 				type: 'POST',
@@ -30,42 +74,99 @@ $(function(){
 				error: function() {
 					alert('there was an error while fetching events!');
 				},
-				success: function(event) {
-					$('#calendar').fullCalendar('updateEvent', event);
-				},
-				// color: 'black',   // a non-ajax option
-				// textColor: 'yellow' // a non-ajax option
+				color: '#3A87AD',   // a non-ajax option
+				textColor: '#FFFFFF' // a non-ajax option
+			},
+			{
+
 			}
-
-			// any other sources...
-
-		]
+		],
+		eventClick: function(calEvent, jsEvent, view) {
+			$('#appointment_id').val(calEvent.id);
+			$('#inputTitle1').val(calEvent.title);
+			$('#inputDescription1').val(calEvent.description);
+			$('#inputDate1').val(calEvent.start_date);
+			$('#inputTime1').val(calEvent.start_time);
+			$('#inputTime2').val(calEvent.end_time);
+			
+			$('#add_sched').find('.modal-title').html('Edit Schedule');
+			$('#add_sched').find('#submit_appointment').val('update');
+			$('#add_sched').modal('toggle');
+		}
     });
 
 	$('#show_add_sched').click(function(){
+		$('#add_sched').find('.modal-title').html('Add Schedule');
+		$('#add_sched').find('#submit_appointment').val('insert');
 		$('#add_sched').modal('toggle');
-		$('#appointment_form')[0].reset();
-	})
-
-		$( ".datepicker" ).datepicker({
-			minDate: '-0D',
-		});
-
-	$('#add_sched').on('shown.bs.modal', function () {
-		$(this).find( ".datepicker" ).datepicker('setDate', new Date());
 	});
 
-	$('#submit_appointment').click(function(){
+	$( ".datepicker" ).datepicker({
+		minDate: '-0D',
+	});
+
+	$('#add_sched').on('shown.bs.modal', function () {
+		var click_day = $('#inputDate1').val();
+		$(this).find( ".datepicker" ).datepicker('setDate', click_day);
+	});
+
+	$('.form-control').tooltip({
+		'trigger': 'manual',
+		'placement': 'top',
+		'delay': { show: 500, hide: 100 }
+	});
+
+	$('#submit_appointment').click(function() {
+		var action = $(this).val();
 		$('#appointment_form').ajaxForm({
 			url: 'dashboard/add_appointment',
 			type: 'post',
-			beforeSubmit: function() {
+			data: { action: action },
+			beforeSubmit: function(formData, jqForm, options) {
+				var form = jqForm[0]; 
+				if (!form.title.value) {
+					form.title.focus();
+					$(form.title).popover('show');
+					// alert('Please enter a value for title');
+					return false; 
+				}
+				if (!form.date1.value) {
+					form.date1.focus();
+					// alert('Please enter a value for starting date'); 
+					return false; 
+				}
+				if (!form.time1.value) {
+					form.time1.focus();
+					// alert('Please enter a value for starting time'); 
+					return false; 
+				}
+				if (!form.time2.value) {
+					form.time2.focus();
+					// alert('Please enter a value for ending time'); 
+					return false; 
+				}
 			},
 			success: function(html) {
+				// event = JSON.parse(html);
+				// append_to_table(event);
+
 				$('#calendar').fullCalendar( 'refetchEvents' );
 				$('#add_sched').modal('hide');
 			}
 		}).submit();
+	});
+
+	$('.timepicker').timepicker({
+		'minTime': '8:00am',
+		'maxTime': '10:30pm'
+	});
+
+	$('#inputTime1').on('selectTime', function () {
+		$('#inputTime2').timepicker('option', { 'disableTimeRanges': [['8:00am', $('#inputTime1').val()]] });
+	});
+
+	$('#add_sched').on('hidden.bs.modal', function () {
+		$('#appointment_form')[0].reset();
 	});
 
 });
