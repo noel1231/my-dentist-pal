@@ -34,11 +34,7 @@ class Dentist_Signup_Model extends CI_Model{
 			'middle_name' => $data['d_mname'],
 			'email' => $data['d_email'],
 			'dentist_pass' => md5($data['d_password']),
-			//'register_date' => $data['d_register_date']
-			//'birth_month' => $data['d_bmonth'],
-			//'birth_day' => $data['d_bday'],
-			//'birth_year' => $data['d_byear'],
-			//'dentist_gender' => $data['d_gender']
+			'register_date' => date('Y-m-d')
 		);
 		
 		$query = $this->db->insert('dentist_list', $value);

@@ -227,8 +227,12 @@ $(function() {
 			var pass1 = $('#pass1').val();
 			var pass2 = $('#pass2').val(); 
 			
-			if(fname.trim() == '' || middle.trim() == '' || lname.trim() == ''){
+			if(fname.trim() == '' || lname.trim() == ''){
 				$('.alert_msg').html('Enter your full name in the required field to proceed.').show();
+				return false;
+			}else if(!fname.match(/^[A-Za-z . -]+$/) || !lname.match(/^[A-Za-z . -]+$/))
+			{
+				$('.alert_msg').html('Enter valid name in the required field to proceed.').show();
 				return false;
 			}else if(email1.trim() == '')
 			{
@@ -263,11 +267,10 @@ $(function() {
 		
 		success: function(html)
 		{
-			
+			alert(html);
 			$('.alert_msg').hide();
 			// $('.success_msg').html('Registration Success!').show();
-			$('#mySuccessReg').modal('show');
-
+			// $('#mySuccessReg').modal('show');
 			
 		}
 	});
