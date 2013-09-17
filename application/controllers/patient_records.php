@@ -19,10 +19,6 @@ class Patient_Records extends CI_Controller {
 		}
 
 		$data['sess_id']='00000000022';
-		// $data['sess_id'] = $this->session->userdata('id');
-		// if(!$this->session->userdata('id')) {
-			// redirect(base_url().'dentist_login');
-		// }
 
 		$this->db->where('id', $data['sess_id']);
 		$qdentist_list = $this->db->get('dentist_list');
@@ -30,14 +26,11 @@ class Patient_Records extends CI_Controller {
 
 		$data = $rdentist_list;
 
-		$data['bday'] = $rdentist_list['last_login'];
-		$data['fname'] = $rdentist_list['first_name'];
-		$data['lname'] = $rdentist_list['sur_name'];
-
-		$data['page_now'] = 3;
+		$data['dentist_id'] = $rdentist_list['id'];
 
 		$data['title'] = 'My Dentist Pal';
-		$data['body'] = $this->load->view('patient_list', $data, true);
+		$data['header'] = $this->load->view('homepage/header', '', true);
+		$data['body'] = $this->load->view('box_patient_list', $data, true);
 
 		$this->load->view('homepage', $data);
 	}

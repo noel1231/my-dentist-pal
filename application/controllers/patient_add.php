@@ -25,32 +25,6 @@ class Patient_add extends CI_Controller {
 	function submit_patient()
 	{
 		/* patient info */
-		$data_info = array(
-			'id'=> $this->input->post('patient_id'),
-			'date_of_entry'=> strtotime($this->input->post('patient_date')),
-			'patient_first_name'=> $this->input->post('patient_fname'),
-			'patient_middle_name'=> $this->input->post('patient_mname'),
-			'patient_last_name'=> $this->input->post('patient_lname'),
-			'patient_nickname'=> $this->input->post('patient_nname'),
-			'patient_gender'=> $this->input->post('patient_sex'),
-			'patient_bday'=> strtotime($this->input->post('patient_bday')),
-			'patient_age'=> $this->input->post('patient_age'),
-			'patient_address'=> $this->input->post('patient_address'),
-			'email'=> $this->input->post('patient_email'),
-			'patient_home_number'=> $this->input->post('patient_homeNum'),
-			'patient_office_number'=> $this->input->post('patient_officeName'),
-			'patient_fax_number'=> $this->input->post('patient_faxNum'),
-			'patient_mobile_number'=> $this->input->post('patient_mobileNum'),
-			'patient_occupation'=> $this->input->post('patient_occupation'),
-			'patient_nationality'=> $this->input->post('patient_nationality'),
-			'patient_religion'=> $this->input->post('patient_religion'),
-			'patient_dental_insurance'=> $this->input->post('patient_insurance'),
-			'effective_date'=> strtotime($this->input->post('patient_effectiveDate')),
-			'patient_guardian'=> $this->input->post('patient_parent'),
-			'guardian_occupation'=> $this->input->post('patient_occupation_minor'),
-			'referred_by'=> $this->input->post('patient_referral'),
-			'dental_reason'=> $this->input->post('patient_consultation'),
-		);
 		
 		/* dental history */
 		if($this->input->post('cavity'))
@@ -82,27 +56,7 @@ class Patient_add extends CI_Controller {
 			$sensitive_biting 		= false;
 			$sore_in_mouth 			= false;
 		}
-		
-		$data_dentist_history = array(
-			'former_dentist'=>$this->input->post('patient_previews_dentist'),
-			'date_of_last_visit'=>$this->input->post('patient_last_visit'),
-			'reason_for_visit'=>$this->input->post('patient_reason_visit'),
-			'how_many_floss'=>$this->input->post('patient_many_floss'),
-			'how_many_brush'=>$this->input->post('patient_many_brush'),
-			'bad_breath'=> $bad_breath !== false ? 'yes' : 'no',
-			'bleeding_gums'=> $bleeding_gums !== false ? 'yes' : 'no',
-			'clicking_popping_jaw'=> $clicking_jaw !== false ? 'yes' : 'no',
-			'food_collect'=> $food_collect !== false ? 'yes' : 'no',
-			'grinding_teeth'=> $grinding_teeth !== false ? 'yes' : 'no',
-			'loose_teeth'=> $loose_teeth !== false ? 'yes' : 'no',
-			'periodental_treatment'=> $periodental_treatment !== false ? 'yes' : 'no',
-			'sensitive_hot'=> $sensitive_hot !== false ? 'yes' : 'no',
-			'sensitive_cold'=> $sensitive_cold !== false ? 'yes' : 'no',
-			'sensitive_sweet'=> $sensitive_sweet !== false ? 'yes' : 'no',
-			'sensitive_bite'=> $sensitive_biting !== false ? 'yes' : 'no',
-			'sores_in_mouth'=> $sore_in_mouth !== false ? 'yes' : 'no',
-			'other_info'=>$this->input->post('patient_other_info')
-		);
+
 		
 		/* medical	history */
 		$data_gh = array();
@@ -151,28 +105,73 @@ class Patient_add extends CI_Controller {
 		
 		
 		$data_medical_history = array(
+			'id'=> $this->input->post('patient_id'),
+			'date_of_entry'=> $this->input->post('patient_date'),
+			'patient_first_name'=> $this->input->post('patient_fname'),
+			'patient_middle_name'=> $this->input->post('patient_mname'),
+			'patient_last_name'=> $this->input->post('patient_lname'),
+			'patient_nickname'=> $this->input->post('patient_nname'),
+			'patient_name'=> $this->input->post('patient_fname').' '.$this->input->post('patient_mname').' '.$this->input->post('patient_mname').' '.$this->input->post('patient_lname'),
+			'patient_gender'=> $this->input->post('patient_sex'),
+			'patient_bday'=> strtotime($this->input->post('patient_bday')),
+			'patient_age'=> $this->input->post('patient_age'),
+			'patient_address'=> $this->input->post('patient_address'),
+			'email'=> $this->input->post('patient_email'),
+			'patient_home_number'=> $this->input->post('patient_homeNum'),
+			'patient_office_number'=> $this->input->post('patient_officeName'),
+			'patient_fax_number'=> $this->input->post('patient_faxNum'),
+			'patient_mobile_number'=> $this->input->post('patient_mobileNum'),
+			'patient_phone'=> $this->input->post('patient_mobileNum'),
+			'patient_occupation'=> $this->input->post('patient_occupation'),
+			'patient_nationality'=> $this->input->post('patient_nationality'),
+			'patient_religion'=> $this->input->post('patient_religion'),
+			'patient_dental_insurance'=> $this->input->post('patient_insurance'),
+			'effective_date'=> strtotime($this->input->post('patient_effectiveDate')),
+			'patient_guardian'=> $this->input->post('patient_parent'),
+			'guardian_occupation'=> $this->input->post('patient_occupation_minor'),
+			'referred_by'=> $this->input->post('patient_referral'),
+			'dental_reason'=> $this->input->post('patient_consultation'),
+			'former_dentist'=>$this->input->post('patient_previews_dentist'),
+			'date_of_last_visit'=>$this->input->post('patient_last_visit'),
+			'reason_for_visit'=>$this->input->post('patient_reason_visit'),
+			'how_many_floss'=>$this->input->post('patient_many_floss'),
+			'how_many_brush'=>$this->input->post('patient_many_brush'),
+			'bad_breath'=> $bad_breath !== false ? 'yes' : 'no',
+			'bleeding_gums'=> $bleeding_gums !== false ? 'yes' : 'no',
+			'clicking_popping_jaw'=> $clicking_jaw !== false ? 'yes' : 'no',
+			'food_collect'=> $food_collect !== false ? 'yes' : 'no',
+			'grinding_teeth'=> $grinding_teeth !== false ? 'yes' : 'no',
+			'loose_teeth'=> $loose_teeth !== false ? 'yes' : 'no',
+			'periodental_treatment'=> $periodental_treatment !== false ? 'yes' : 'no',
+			'sensitive_hot'=> $sensitive_hot !== false ? 'yes' : 'no',
+			'sensitive_cold'=> $sensitive_cold !== false ? 'yes' : 'no',
+			'sensitive_sweet'=> $sensitive_sweet !== false ? 'yes' : 'no',
+			'sensitive_bite'=> $sensitive_biting !== false ? 'yes' : 'no',
+			'sores_in_mouth'=> $sore_in_mouth !== false ? 'yes' : 'no',
+			'other_info'=>$this->input->post('patient_other_info'),
 			'physician_name'=>$this->input->post('patient_physician'),
 			'physician_specialty'=>$this->input->post('patient_physician_specialty'),
 			'physician_address'=>$this->input->post('patient_physician_office_address'),
-			'good_health'=>$this->input->post('health_patient'),
-			'medical_treatment'=>$data_gh ? $data_gh : null,
-			'illness_operation'=>$data_illness ? $data_illness : null,
-			'hospitalized'=>$data_hospitalized ? $data_hospitalized : null,
-			'precription_medication'=>$data_prescription ? $data_prescription : null,
+			'good_health'=> $this->input->post('health_patient'),
+			'medical_treatment'=>$data_gh ? json_encode($data_gh) : null,
+			'illness_operation'=>$data_illness ? json_encode($data_illness) : ' ',
+			'hospitalized'=>$data_hospitalized ? json_encode($data_hospitalized) : ' ',
+			'precription_medication'=>$data_prescription ? json_encode($data_prescription) : ' ',
 			'local_anesthetic'=>$anesthetic !== false ? 'yes' : 'no',
 			'penicillin'=>$penicillin !== false ? 'yes' : 'no',
 			'sulfa'=>$sulfa !== false ? 'yes' : 'no',
 			'aspirin'=>$aspirin !== false ? 'yes' : 'no',
 			'latex'=>$latex !== false ? 'yes' : 'no',
-			'patient_bleeding_time'=>$this->input->post('menstruation'),
+			'menstruation'=>$this->input->post('patient_bleeding_time'),
 			'pregnant'=>$this->input->post('pregnant_patient'),
 			'nursing'=>$this->input->post('nursing_patient'),
 			'control_pills'=>$this->input->post('pills_patient'),
 			'blood_type'=>$this->input->post('patient_blood_type'),
 			'blood_presure'=>$this->input->post('patient_blood_presure'),
-			'sickness'=>$this->input->post('sickness')
+			'sickness'=>$this->input->post('sickness') ? json_encode($this->input->post('sickness')) : ' '
 		);
 		
-		print_r($data_medical_history);
+		// print_r($data_medical_history);
+		$this->db->insert('patient_list',$data_medical_history);
 	}
 }

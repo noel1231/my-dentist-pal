@@ -70,7 +70,7 @@
 							<div class="form-group">
 								<label for="inputEmail1" class="col-lg-4 control-label">Entry Date</label>
 								<div class="col-lg-5">
-									<input type="text" class="form-control datepicker" name="patient_date">
+									<input type="text" class="form-control" name="patient_date" value="<?php echo date('Y-m-d H:i:s',time()); ?>" readonly>
 								</div>
 							</div>
 							<div class="form-group">
@@ -460,7 +460,7 @@
 							<div class="row show_question3" style="display:none;">
 								<div class="col-md-4" style="padding-right: 0;text-align: right;">If so, when and why?&nbsp;</div>
 								<div class="col-md-8" style="padding-left:0;text-align: right;">
-									<input type="text" class="col-md-6" name="patient_when_hospitalized">
+									<input type="text" class="col-md-6 datepicker" name="patient_when_hospitalized">
 									<input type="text" class="col-md-6" name="patient_why_hospitalized">
 								</div>
 							</div>
@@ -576,10 +576,10 @@
 								<div class="col-md-6">11. Blood type?</div>
 								<div class="col-md-6">
 									<select name="patient_blood_type">
-										<option>Select...</option>
-										<option>Type A</option>
-										<option>Type B</option>
-										<option>Type O</option>
+										<option value="">Select...</option>
+										<option value="a">Type A</option>
+										<option value="b">Type B</option>
+										<option value="c">Type O</option>
 									</select>
 								</div>
 							</div>
