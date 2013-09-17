@@ -1,17 +1,17 @@
-<?php //if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class Dentist_Signup extends CI_Controller {
 	
-	function __constructor() {
-		parent::__constructor();	
-		//$this->load->helper(array('form', 'url'));
-		//$this->load->library("form_validation");
+	function __construct() {
+		parent::__construct();	
+		// $this->load->library('phpmailer/PHPMailer');
+		$this->load->database();
   	}
 	
 	function index() {	
 		
 		$this->set_pages_rules();
-		$this->process_registration();
+		//$this->process_registration();
    	}
 	
 	function set_pages_rules()
@@ -33,14 +33,11 @@ class Dentist_Signup extends CI_Controller {
 			$data['body'] = $this->load->view('dentist_signup_view', '', true);
 			$data['header'] = $this->load->view('homepage/header', '', true);
 			$this->load->view('homepage', $data);
-			//echo "<div class='alert alert-danger' id='alert'>Registration Failed. Error in member detail information.</div>";
 		} else {
 			//return true;
 			$data['body'] = $this->load->view('dentist_signup_view', '', true);
 			$data['header'] = $this->load->view('homepage/header', '', true);
 			$this->load->view('homepage', $data);
-		//echo "<divclass='alert alert-success'>Registration success..</div>";
-			
 		}			
 	}
 	
@@ -57,6 +54,89 @@ class Dentist_Signup extends CI_Controller {
 		
 		$this->dentist_signup_model->register_dentist($data);
 		
+	}
+	
+	function verification()
+	{
+		$this->process_registration();
+		$email1 = $this->input->post('email1');
+		$passkey = md5($email1);
+		// $email1 = 'sample email';
+		// $passkey = 'sample passkey';
+		$this->db->where('email', $email1);
+		
+		$query = $this->db->get('dentist_list');
+		
+		if($query)
+		{
+			$message = "
+				Thank you for signing up!<br> 
+				Please click the link below to verify and activate your account.<br>
+				<a href='".base_url()."dentist_signup/confirm?email=$email1&passkey=$passkey'>".base_url()."dentist_signup/confirm?email=$email1&passkey=$passkey</a>";
+			$this->load->library('email');
+			
+			$config['protocol'] = 'smtp';
+			$config['smtp_host'] = 'mail.mydentistpal.com';
+			$config['smtp_user'] = 'info@mydentistpal.com';
+			$config['smtp_pass'] = 'mdp2468';
+			$config['smtp_port'] = 26;
+			
+			$this->email->initialize($config);
+			
+			$this->email->from('info@mydentistpal.com', 'MyDentistPal');
+			$this->email->to($email1); 
+			// $this->email->to($email1); 
+			// $this->email->cc('another@another-example.com'); 
+			// $this->email->bcc('them@their-example.com'); 
+			$this->email->subject("Confirmation from MyDentistPal to $email1");
+			$this->email->message($message);	
+
+			$sentmail = $this->email->send();
+			
+			if ($sentmail) {
+				$update_array = array(
+					'forgot_key' => $passkey
+				);
+				$this->db->where('email', $update_array);
+				$this->db->update('dentist_list');
+				$message_status = "Yes";		
+			} else {
+				$message_status = "No";
+			}
+			echo $this->email->print_debugger();
+		}
+	}
+	
+	function confirm()
+	{
+		$email1 = $this->input->get('email');
+		$passkey = $this->input->get('passkey'); 
+		
+		
+		// if($query_dentist_list->num_rows() > 0) {
+			// $result_dentist_list = $query_dentist_list->row_array();
+			// $dentist_id = $result_dentist_list['id'];
+			
+			$update_array = array(
+				'status' => 1,
+			);
+			$this->db->where('email', $email1);
+			$this->db->where('forgot_key', $passkey);
+
+			$this->db->update('dentist_list', $update_array);
+			
+			redirect(base_url('dentist_login'));
+		// }  
+		// $query = $this->db->update('dentist_list');
+		
+		// if($query)
+		// {
+			// $this->load->view('homepage', $data);
+			// echo "Your account is now activate!";
+		// }else
+		// {
+			// echo "Error: Please contact mydentistpal";
+		// }		
 	}
 	
 }

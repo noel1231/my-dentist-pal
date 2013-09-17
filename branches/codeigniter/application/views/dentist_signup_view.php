@@ -77,7 +77,6 @@
 		#bday2{ position:relative; margin-top:-31px; margin-left:240px;}
 		#bday3{ position:relative; margin-top:-31px; margin-left:480px;}
 		.alert_msg {width:450px; margin-left:300px;}
-		.success_msg {width:450px; margin-left:300px;}
         </style>
 
 </head>
@@ -104,16 +103,16 @@
 				<div class="" style="border:solid 0px green; height:410px; width:960px;">
 					<div id="" class="well well-sm" style="position:relative;margin-top:15px;left:210px;">
 					<div style="clear:both;">&nbsp;</div>
-						<form class="form-horizontal" id="form_dentist_signup" role="form" method="post" action="<?php base_url('dentist_signup')?>" enctype="multipart/form-data" name="ContactForm"><!--Registration form for Dentist-->
+						<form class="form-horizontal" id="form_dentist_signup" role="form" method="post" action="<?php echo base_url('dentist_signup/verification')?>" enctype="multipart/form-data" name="ContactForm"><!--Registration form for Dentist-->
 							<div><!--start form content wrapper-->
 								<div class="alert alert-danger alert_msg" style="text-align:center;display:none;"><?php //echo validation_errors(); ?><?php //echo form_error('fname'); //echo form_error('lname');?><?php  ?></div>
-								<div class="alert alert-success success_msg" style="text-align:center;display:none;"></div>
+								<!--<div class="alert alert-success success_msg" style="text-align:center;display:none;"></div>-->
 								<div class="form-group"><!--start full name-->
 									<label for="inputEmail1" class="col-lg-2 control-label">Name:</label>
 									<div class="col-lg-2">
-										<input type="text" id="fname" name="fname" class="form-control" value="<?php echo set_value('fname') ?>" placeholder="First">
-										<input type="text" id="middle" name="middle" class="form-control" value="<?php echo set_value('middle') ?>" placeholder="Middle">
-										<input type="text" id="lname" name="lname" class="form-control" value="<?php echo set_value('lname') ?>" placeholder="Last">
+										<input type="text" id="fname" name="fname" class="form-control" value="<?php echo set_value('fname') ?>" placeholder="First name">
+										<input type="text" id="middle" name="middle" class="form-control" value="<?php echo set_value('middle') ?>" placeholder="Middle name">
+										<input type="text" id="lname" name="lname" class="form-control" value="<?php echo set_value('lname') ?>" placeholder="Last name">
 										
 									</div>	
 								</div><!--end full name-->
@@ -152,7 +151,6 @@
 								</div><!--end submit and back button-->
 								<div style="clear:both;">&nbsp;</div>
 							</div><!--end form content wrapper-->
-							<input type="hidden" name="date_reg" value="<?php $x=date('d/m/Y'); echo $x;?>"><!--date registered of dentist -->
 						</form>
 					</div>
 				</div>
@@ -172,7 +170,8 @@
           <h4 class="modal-title">Registration Successfully</h4>
         </div>
         <div class="modal-body">
-          <p>Please verify your email</p>
+			<p>Thank you for registering! A confirmation email has been sent to <?php echo "your email" ?>. Please click on the Activation Link to Activate your account.</p>
+          <!--<p>Please verify your email to activate your account.</p>-->
         </div>
         <div class="modal-footer">
           <a href="<?php echo base_url(); ?>" class="btn btn-default">OK</a>
