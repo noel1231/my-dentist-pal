@@ -50,8 +50,10 @@
 							<td><?php echo date('Y/m/s',strtotime($row['date_of_entry'])); ?></td>
 							<td><?php echo date('Y/m/s',strtotime($row['date_of_last_visit'])); ?></td>
 							<td>
-								<span class="glyphicon glyphicon-edit" title="Edit" style="cursor:pointer"></span>
-								<span class="glyphicon glyphicon-trash" title="Delete" style="cursor:pointer"></span>
+								<a href="<?php echo base_url('patient_edit?id='.$row['id']); ?>" style="color: #333;">
+									<span class="glyphicon glyphicon-edit" title="Edit" style="cursor:pointer" class="edit_patient"></span>
+								</a>
+								<span class="glyphicon glyphicon-trash" title="Delete" style="cursor:pointer" class=""></span>
 							</td>
 						</tr>
 <?php

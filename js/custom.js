@@ -98,12 +98,29 @@ $(function() {
 		$( ".datepicker" ).datepicker();
 	});
 	
-	
 	$('.submit_all_form').click(function(){
+		
+		/* for trimming the inputs */
+		// var trimming1 = $('#dental_history_form').serializeArray();
+		// for(var i=0,len=trimming1.length;i<len;i++)
+		// {
+			// trimming1[i] = $.trim(trimming1[i]);
+		// }
+		// var trimming2 = $('#medical_history_form').serializeArray();
+		// for(var i=0,len=trimming2.length;i<len;i++)
+		// {
+			// trimming2[i] = $.trim(trimming2[i]);
+		// }
+		// var trimming3 = $('#patient_info_form').serializeArray();
+		// for(var i=0,len=trimming3.length;i<len;i++)
+		// {
+			// trimming3[i] = $.trim(trimming3[i]);
+		// }
 		
 		var formDental = $('#dental_history_form').serialize();
 		var formMedical = $('#medical_history_form').serialize();
 		var formInfo = $('#patient_info_form').serialize();
+		
 		var dataString = formInfo+'&'+formDental+'&'+formMedical;
 		$.ajax({
 			type: 'POST',
