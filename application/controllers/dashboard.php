@@ -13,18 +13,22 @@ class Dashboard extends CI_Controller {
 
 	function index()
 	{
-		// $this->db->query(
-			// 'CREATE TABLE IF NOT EXISTS `dentist_appointments` (
-			  // `id` int(11) NOT NULL AUTO_INCREMENT,
-			  // `dentist_id` int(11) NOT NULL,
-			  // `title` text NOT NULL,
-			  // `description` text NOT NULL,
-			  // `start` text NOT NULL,
-			  // `end` text,
-			  // `timestamp` int(11) DEFAULT NULL,
-			  // PRIMARY KEY (`id`)
-			// ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;'
-		// );
+		$this->db->query('
+			CREATE TABLE IF NOT EXISTS `dentist_appointments` (
+			  `id` int(11) NOT NULL AUTO_INCREMENT,
+			  `dentist_id` text NOT NULL,
+			  `title` text NOT NULL,
+			  `description` text NOT NULL,
+			  `start` text NOT NULL,
+			  `end` text,
+			  `start_date` text NOT NULL,
+			  `start_time` text NOT NULL,
+			  `end_date` text NOT NULL,
+			  `end_time` text NOT NULL,
+			  `timestamp` int(11) DEFAULT NULL,
+			  PRIMARY KEY (`id`)
+			) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=37 ;
+		');
 
 		if( ! ini_get('date.timezone') )
 		{
@@ -35,8 +39,10 @@ class Dashboard extends CI_Controller {
 		if($this->session->userdata('id')) {
 			$data['sess_id'] = $this->session->userdata('id');
 		} else {
-			redirect(base_url().'dentist_login');
-		}	
+			redirect(base_url().'login');
+		}
+
+		// $data['sess_id'] = '00000000022';
 
 		$this->db->where('id', $data['sess_id']);
 		$qdentist_list = $this->db->get('dentist_list');
@@ -62,18 +68,31 @@ class Dashboard extends CI_Controller {
 	function feed() {
 		$feeds = array();
 
+		$start_date = $this->input->post('start_date');
+
 		if ($this->db->table_exists('dentist_appointments'))
 		{
+			if($start_date)
+				$this->db->where('start_date', $start_date);
+
 			$qappointments = $this->db->get('dentist_appointments');
 			$rappointments = $qappointments->result_array();
 
 			foreach($rappointments as $appointment) {
 				$feed = array(
+					'id' => $appointment['id'],
 					'title' => $appointment['title'],
-					'start' => $appointment['start'],
 					'description' => $appointment['description'],
+					'start' => $appointment['start'],
 					'end' => $appointment['end'],
+					'start_date' => $appointment['start_date'],
+					'start_time' => $appointment['start_time'],
+					'end_date' => $appointment['end_date'],
+					'end_time' => $appointment['end_time']
 				);
+				if($appointment['end'])
+					$feed['allDay'] = false;
+
 				array_push($feeds, $feed);
 			}
 		}
@@ -84,25 +103,45 @@ class Dashboard extends CI_Controller {
 	function add_appointment() {
 
 		$start = $this->input->post('date1');
-		if($this->input->post('time1'))
-			$start .= ' '.$this->input->post('time1');
+		$end = $this->input->post('date2');
 
-		$end = null;
+		$time1 = new DateTime($this->input->post('time1'));
+		$time2 = new DateTime($this->input->post('time2'));
+
+		if($this->input->post('time1'))
+			$start .= ' '.$time1->format('H:i:s');
+
+		if($this->input->post('time2'))
+			if($end == null)
+				$end = $this->input->post('date1');
+			$end .= ' '.$time2->format('H:i:s');
 		
 		$insert_data = array(
-			'dentist_id' => '',
+			'dentist_id' => $this->input->post('dentist_id'),
 			'title' => $this->input->post('title'),
 			'description' => $this->input->post('description'),
 			'start' => $start,
 			'end' => $end,
-			'timestamp' => time(),
+			'start_date' => $this->input->post('date1'),
+			'start_time' => $this->input->post('time1'),
+			'end_date' => $this->input->post('date2'),
+			'end_time' => $this->input->post('time2'),
+			'timestamp' => time()
 		);
+
 		if ($this->db->table_exists('dentist_appointments'))
 		{
+			if($this->input->post('action') == 'insert') {
 				$this->db->insert('dentist_appointments', $insert_data);
+			} else {
+				$this->db->where('id', $this->input->post('appointment_id'));
+				$this->db->update('dentist_appointments', $insert_data);
+			}
 		}
+
+		echo json_encode($insert_data);
 	}
 }
 
-/* End of file welcome.php */
-/* Location: ./application/controllers/welcome.php */
+/* End of file dashboard.php */
+/* Location: ./application/controllers/dashboard.php */

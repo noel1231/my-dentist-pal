@@ -59,5 +59,5 @@ class Contact_Us extends CI_Controller
     }
 }
 
-/* End of file welcome.php */
-/* Location: ./application/controllers/welcome.php */
+/* End of file contact_us.php */
+/* Location: ./application/controllers/contact_us.php */

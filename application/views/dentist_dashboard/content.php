@@ -87,23 +87,10 @@
 
 ?>
 	<div id="dashboard_content">
-		<div class="container" style="width: 940px; padding: 10px; margin: auto">
+		<div class="container">
 			<div class="header">
 				<div class="landing_center_blue">
-					<span> Dashboard </span>
-					<div style="float: right;">
-						<div class="addpatient" style="display: inline-block; vertical-align: middle;">
-							<a href="add_patient.php" class="btn_design">
-								+ ADD PATIENT
-							</a>
-						</div>
-						<div style="display: inline-block;">
-							<form action="patient_list.php" method="post">
-								<input type="text" name="search_field" class="search" value="Search patient here" onfocus="if (this.value == 'Search patient here') {this.value = '';}" onblur="if (this.value == '') {this.value = 'Search patient here';}" style="color:#999;"/>
-								<input type="submit" name="search" value="SEARCH" class="submit btn_design" />
-							</form>
-						</div>
-					</div>
+					<span> Clinic Overview </span>
 				</div>
 			</div>
 			<div class="inner_content" style="background-color: #FDFDFD;">

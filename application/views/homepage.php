@@ -18,7 +18,8 @@
 	<link href="<?php echo base_url();?>style/style.css" rel="stylesheet">
 	<link href="<?php echo base_url();?>style/style_new.css" rel="stylesheet">
 
-	<link rel='stylesheet' type='text/css' href='fullcalendar/fullcalendar.css' />
+	<link rel='stylesheet' type='text/css' href='<?php echo base_url();?>fullcalendar/fullcalendar.css' />
+	<link rel='stylesheet' type='text/css' href='<?php echo base_url();?>jonthornton-jquery-timepicker/jquery.timepicker.css' />
 
 <?php
 	if($_SERVER['HTTP_HOST'] != 'localhost') {
@@ -46,16 +47,17 @@
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="//code.jquery.com/jquery.js"></script>
-	<script src="<?php echo base_url();?>bootstrap/js/bootstrap.min.js"></script>
+	<script src="<?php echo base_url();?>bootstrap/js/bootstrap.js"></script>
 	
     <script src="//code.jquery.com/ui/1.10.3/jquery-ui.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="<?php echo base_url();?>js/jquery.blockui.js"></script>
-    <script src="<?php echo base_url();?>js/jquery.form.js"></script>
 
 	<script type='text/javascript' src='<?php echo base_url();?>fullcalendar/fullcalendar.js'></script>
-	<script type='text/javascript' src='<?php echo base_url();?>js/appointments.js'></script>
+	<script type='text/javascript' src='<?php echo base_url();?>jonthornton-jquery-timepicker/jquery.timepicker.min.js'></script>
 
+    <script src="<?php echo base_url();?>js/jquery.blockui.js"></script>
+    <script src="<?php echo base_url();?>js/jquery.form.js"></script>
+	<script src='<?php echo base_url();?>js/appointments.js'></script>
     <script src="<?php echo base_url();?>js/custom.js"></script>
 
   </body>
