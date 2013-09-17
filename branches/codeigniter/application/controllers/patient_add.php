@@ -103,6 +103,14 @@ class Patient_add extends CI_Controller {
 			$latex 			= false;
 		}
 		
+		$convert = array();
+		if($this->input->post('sickness'))
+		{
+			foreach($this->input->post('sickness') as $key => $rr)
+			{
+				$convert['sick'.$key] = $rr;
+			}
+		}
 		
 		$data_medical_history = array(
 			'id'=> $this->input->post('patient_id'),
@@ -113,7 +121,7 @@ class Patient_add extends CI_Controller {
 			'patient_nickname'=> $this->input->post('patient_nname'),
 			'patient_name'=> $this->input->post('patient_fname').' '.$this->input->post('patient_mname').' '.$this->input->post('patient_mname').' '.$this->input->post('patient_lname'),
 			'patient_gender'=> $this->input->post('patient_sex'),
-			'patient_bday'=> strtotime($this->input->post('patient_bday')),
+			'patient_bday'=> $this->input->post('patient_bday'),
 			'patient_age'=> $this->input->post('patient_age'),
 			'patient_address'=> $this->input->post('patient_address'),
 			'email'=> $this->input->post('patient_email'),
@@ -126,7 +134,7 @@ class Patient_add extends CI_Controller {
 			'patient_nationality'=> $this->input->post('patient_nationality'),
 			'patient_religion'=> $this->input->post('patient_religion'),
 			'patient_dental_insurance'=> $this->input->post('patient_insurance'),
-			'effective_date'=> strtotime($this->input->post('patient_effectiveDate')),
+			'effective_date'=> $this->input->post('patient_effectiveDate'),
 			'patient_guardian'=> $this->input->post('patient_parent'),
 			'guardian_occupation'=> $this->input->post('patient_occupation_minor'),
 			'referred_by'=> $this->input->post('patient_referral'),
@@ -157,6 +165,8 @@ class Patient_add extends CI_Controller {
 			'illness_operation'=>$data_illness ? json_encode($data_illness) : ' ',
 			'hospitalized'=>$data_hospitalized ? json_encode($data_hospitalized) : ' ',
 			'precription_medication'=>$data_prescription ? json_encode($data_prescription) : ' ',
+			'tabacco_products'=>$this->input->post('tabacco_patient'),
+			'alcohol_drugs'=>$this->input->post('drugs_patient'),
 			'local_anesthetic'=>$anesthetic !== false ? 'yes' : 'no',
 			'penicillin'=>$penicillin !== false ? 'yes' : 'no',
 			'sulfa'=>$sulfa !== false ? 'yes' : 'no',
@@ -168,10 +178,16 @@ class Patient_add extends CI_Controller {
 			'control_pills'=>$this->input->post('pills_patient'),
 			'blood_type'=>$this->input->post('patient_blood_type'),
 			'blood_presure'=>$this->input->post('patient_blood_presure'),
-			'sickness'=>$this->input->post('sickness') ? json_encode($this->input->post('sickness')) : ' '
+			'sickness'=>$this->input->post('sickness') ? json_encode($convert) : ' '
 		);
 		
-		// print_r($data_medical_history);
-		$this->db->insert('patient_list',$data_medical_history);
+		$patient_query = $this->db->where('id',$this->input->post('patient_id'))->get('patient_list');
+		if($patient_query->num_rows() > 0)
+		{
+			$this->db->where('id',$this->input->post('patient_id'))->update('patient_list',$data_medical_history);
+		}else
+		{
+			$this->db->insert('patient_list',$data_medical_history);
+		}
 	}
 }
