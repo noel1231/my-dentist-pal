@@ -27,7 +27,6 @@
 
 	<link rel='stylesheet' type='text/css' href='<?php echo base_url();?>fullcalendar/fullcalendar.css' />
 	<link rel='stylesheet' type='text/css' href='<?php echo base_url();?>jonthornton-jquery-timepicker/jquery.timepicker.css' />
-	<link rel='stylesheet' type='text/css' href='<?php echo base_url();?>bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css' />
 
 <?php
 	if($_SERVER['HTTP_HOST'] == 'mydentistpal.com') {
@@ -62,7 +61,6 @@
 
 	<script type='text/javascript' src='<?php echo base_url();?>fullcalendar/fullcalendar.js'></script>
 	<script type='text/javascript' src='<?php echo base_url();?>jonthornton-jquery-timepicker/jquery.timepicker.min.js'></script>
-	<script type='text/javascript' src='<?php echo base_url();?>bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js'></script>
 
     <script src="<?php echo base_url();?>js/jquery.blockui.js"></script>
     <script src="<?php echo base_url();?>js/jquery.form.js"></script>
