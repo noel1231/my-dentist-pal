@@ -12,6 +12,7 @@ class Patient_add extends CI_Controller {
 		$this->load->library('image_lib');
 		$this->load->library('cart');
 		$this->load->library('encrypt');
+		$this->load->model('upload_model');
 	}
 	
 	function index()
@@ -114,6 +115,7 @@ class Patient_add extends CI_Controller {
 		$data_medical_history = array(
 			'id'=> $this->input->post('patient_id'),
 			'dentist_id'=> $this->input->post('dentist_id'),
+			'patient_picture'=> $this->input->post('patient_photo_file'),
 			'date_of_entry'=> $this->input->post('patient_date'),
 			'patient_first_name'=> $this->input->post('patient_fname'),
 			'patient_middle_name'=> $this->input->post('patient_mname'),
@@ -189,5 +191,38 @@ class Patient_add extends CI_Controller {
 		{
 			$this->db->insert('patient_list',$data_medical_history);
 		}
+	}
+	
+	function upload_patient_picture()
+	{
+		if(isset($_FILES['patient_photo']))
+		{
+			$uploaded = $this->upload_model->upload('patient_photo');
+			if(isset($uploaded['file_name']))
+			{
+				echo $uploaded['file_name'];
+			}else
+			{
+				echo 'error';
+			}
+		}
+	}
+	
+	function deleteFiles(){
+		$name = $this->input->post('name');
+		$path = 'patient_picture/';
+		$files = glob($path.$name); // get all file names
+
+		foreach($files as $file){ // iterate files
+			if(is_file($file))
+			{
+				unlink($file); // delete file
+				echo 'deleted';
+			}else
+			{
+				echo 'failed';
+			}
+		
+		}   
 	}
 }

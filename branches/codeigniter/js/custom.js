@@ -101,21 +101,21 @@ $(function() {
 	$('.submit_all_form').click(function(){
 		
 		/* for trimming the inputs */
-		// var trimming1 = $('#dental_history_form').serializeArray();
-		// for(var i=0,len=trimming1.length;i<len;i++)
-		// {
-			// trimming1[i] = $.trim(trimming1[i]);
-		// }
-		// var trimming2 = $('#medical_history_form').serializeArray();
-		// for(var i=0,len=trimming2.length;i<len;i++)
-		// {
-			// trimming2[i] = $.trim(trimming2[i]);
-		// }
-		// var trimming3 = $('#patient_info_form').serializeArray();
-		// for(var i=0,len=trimming3.length;i<len;i++)
-		// {
-			// trimming3[i] = $.trim(trimming3[i]);
-		// }
+		var trimming1 = $('#dental_history_form').serializeArray();
+		for(var i=0,len=trimming1.length;i<len;i++)
+		{
+			trimming1[i] = $.trim(trimming1[i]);
+		}
+		var trimming2 = $('#medical_history_form').serializeArray();
+		for(var i=0,len=trimming2.length;i<len;i++)
+		{
+			trimming2[i] = $.trim(trimming2[i]);
+		}
+		var trimming3 = $('#patient_info_form').serializeArray();
+		for(var i=0,len=trimming3.length;i<len;i++)
+		{
+			trimming3[i] = $.trim(trimming3[i]);
+		}
 		
 		var formDental = $('#dental_history_form').serialize();
 		var formMedical = $('#medical_history_form').serialize();
@@ -132,7 +132,26 @@ $(function() {
 		});
 		
 	});
-	
+	$('#patient_photo').on('change',function(){
+		var dis = $(this);
+		var formDental = $('#patient_info_form');
+		
+		formDental.ajaxForm({
+			type: 'POST',
+			url: 'patient_add/upload_patient_picture',
+			success: function(html)
+			{
+				if(html != 'error')
+				{
+					$('#patient_photo_file').val(html);
+					$('.patient_photo_view').attr('src','patient_picture/'+html).css('width','200px');
+				}else
+				{
+					$('.patient_photo_view').attr('src','http://www.placehold.it/200x150/EFEFEF/AAAAAA&text=Error+Upload');
+				}
+			}
+		}).submit();
+	});
    	$('#form_dentist_login').ajaxForm({
 		type: 'POST',
 		success: function(html)
