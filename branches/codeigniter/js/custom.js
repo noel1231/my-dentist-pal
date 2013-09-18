@@ -304,8 +304,9 @@ $(function() {
 		success: function(html)
 		{
 			$('.alert_msg').hide();
-			$('.success_msg').html('Registration Success!').show();
+			// $('.success_msg').html('Registration Success!').show();
 			$('#mySuccessReg').modal('show');
+			
 		}
 	});
     
