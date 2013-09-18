@@ -17,25 +17,9 @@ class Patient_add extends CI_Controller {
 	
 	function index()
 	{
-		if($this->session->userdata('id')) {
-			$data['sess_id'] = $this->session->userdata('id');
-		} else {
-			redirect(base_url().'login');
-		}
-
-		$this->db->where('id', $data['sess_id']);
-		$qdentist_list = $this->db->get('dentist_list');
-		$rdentist_list = $qdentist_list->row_array();
-
-		$data = $rdentist_list;
-
 		$data['title'] = 'My Dentist Pal - Digitize your dental management practice. A full-featured online tool that integrates dental practice management and confidential patient clinical charting, which dentist can access wherever they are.';
 		$data['header'] = $this->load->view('homepage/header', '', true);
-
-		$data['dashboard_title'] = 'Add Patients';
-		$data['dashboard_content'] = $this->load->view('add_patient', $data, true);
-
-		$data['body'] = $this->load->view('dentist_dashboard', $data, true);
+		$data['body'] = $this->load->view('add_patient','',true);
 		$this->load->view('homepage', $data);
 	}
 	
@@ -207,6 +191,22 @@ class Patient_add extends CI_Controller {
 		{
 			$this->db->insert('patient_list',$data_medical_history);
 		}
+		
+		/* for deleting existing profile pic */
+		if($this->input->post('patient_photo_existing_file') || $this->input->post('patient_photo_file'))
+		{
+			$file_name_existing = $this->input->post('patient_photo_existing_file');
+			$file_name = $this->input->post('patient_photo_file');
+			if($file_name_existing == $file_name)
+			{
+				/* do nothing */
+			}
+			else
+			{
+				$this->deleteFiles($file_name_existing);
+			}
+			
+		}
 	}
 	
 	function upload_patient_picture()
@@ -224,8 +224,7 @@ class Patient_add extends CI_Controller {
 		}
 	}
 	
-	function deleteFiles(){
-		$name = $this->input->post('name');
+	function deleteFiles($name=null){
 		$path = 'patient_picture/';
 		$files = glob($path.$name); // get all file names
 
