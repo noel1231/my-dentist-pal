@@ -50,7 +50,7 @@
 		<div class="col-md-6 col-md-offset-3">
 			<ul class="nav nav-tabs" id="myTab">
 				<li class="active"><a href="#add_patient" data-toggle="tab">Add Patient</a></li>
-				<li><a href="#dentist_history" data-toggle="tab">Dentist History</a></li>
+				<li><a href="#dentist_history" data-toggle="tab">Dental History</a></li>
 				<li><a href="#medical_history" data-toggle="tab">Medical History</a></li>
 			</ul>
 			<div class="tab-content">
@@ -71,6 +71,7 @@
 								<div class="col-lg-5">
 									<span style="line-height: 27px;"><?php echo time(); ?></span>
 									<input type="hidden" class="form-control" id="patient_id" name="patient_id" value="<?php echo isset($row) ? $row['id'] : time(); ?>">
+									<input type="hidden" class="form-control" id="dentist_id" name="dentist_id" value="<?php echo $this->session->userdata('sess_id'); ?>">
 								</div>
 							</div>
 							<div class="form-group">
@@ -247,7 +248,7 @@
 				<div class="tab-pane" id="dentist_history">
 					<div class="well well-lg">
 						<form class="form-horizontal" role="form" id="dental_history_form" method="post">
-							<h3 style="font-weight:bold">Dentist History</h3>
+							<h3 style="font-weight:bold">Dental History</h3>
 							<div class="form-group">
 								<label for="inputEmail1" class="col-lg-4 control-label">Previous Dentist</label>
 								<div class="col-lg-5">
@@ -433,24 +434,25 @@
 								if(isset($row))
 								{
 									$dataextract = json_decode($row['medical_treatment']);
+									
 								}	
 							?>
 							<div class="row" style="margin-bottom:5px">
 								<div class="col-md-6">2. Are you under medical treatment now?</div>
 								<div class="col-md-6">
 									<label class="checkbox-inline" style="padding-top:0;">
-										<input type="radio" id="treatment_yes" name="medical_treatment_patient" value="yes" <?php if(isset($row)){ if($dataextract->answer == 'yes'){ echo 'checked'; } } ?>> Yes
+										<input type="radio" id="treatment_yes" name="medical_treatment_patient" value="yes" <?php if(isset($row)){ if(isset($dataextract) && $dataextract->answer == 'yes'){ echo 'checked'; } } ?>> Yes
 									</label>
 									<label class="checkbox-inline" style="padding-top:0;">
-										<input type="radio" id="treatment_no" name="medical_treatment_patient" value="no" <?php if(isset($row)){ if($dataextract->answer == 'no'){ echo 'checked'; } } ?>> No
+										<input type="radio" id="treatment_no" name="medical_treatment_patient" value="no" <?php if(isset($row)){ if(isset($dataextract) && $dataextract->answer == 'no'){ echo 'checked'; } } ?>> No
 									</label>
 								</div>
 							</div>
 							
-							<div class="row show_question" style="<?php if(isset($row) && $dataextract->because != ' '){ echo 'display:block;'; }else{ echo 'display:none;'; }?>">
+							<div class="row show_question" style="<?php if(isset($row) && isset($dataextract) && $dataextract->because != ' '){ echo 'display:block;'; }else{ echo 'display:none;'; }?>">
 								<div class="col-md-6" style="padding-right: 0;text-align: right;">If so, what is the condition being treated?&nbsp;</div>
 								<div class="col-md-6" style="padding-left:0;text-align: right;">
-									<input type="text" class="col-md-12" name="patient_what_treatment" value="<?php echo isset($row) ? $dataextract->because : null; ?>">
+									<input type="text" class="col-md-12" name="patient_what_treatment" value="<?php if(isset($row) && isset($dataextract)){ echo $dataextract->because; } ?>">
 								</div>
 							</div>
 							<?php
@@ -463,19 +465,19 @@
 								<div class="col-md-6">3. Have you ever had serious illness or surgical operation?</div>
 								<div class="col-md-6">
 									<label class="checkbox-inline" style="padding-top:0;">
-										<input type="radio" name="illness_patient" value="yes" <?php if(isset($row)){ if($illness->answer == 'yes'){ echo 'checked'; } } ?>> 
+										<input type="radio" name="illness_patient" value="yes" <?php if(isset($row)){ if(isset($illness) && $illness->answer == 'yes'){ echo 'checked'; } } ?>> 
 										Yes
 									</label>
 									<label class="checkbox-inline" style="padding-top:0;">
-										<input type="radio" name="illness_patient" value="no" <?php if(isset($row)){ if($illness->answer == 'no'){ echo 'checked'; } } ?>> 
+										<input type="radio" name="illness_patient" value="no" <?php if(isset($row)){ if(isset($illness) && $illness->answer == 'no'){ echo 'checked'; } } ?>> 
 										No
 									</label>
 								</div>
 							</div>
-							<div class="row show_question2" style="<?php if(isset($row) && $illness->because != ' '){ echo 'display:block;'; }else{ echo 'display:none;'; } ?>">
+							<div class="row show_question2" style="<?php if(isset($row) && isset($illness) && $illness->because != ' '){ echo 'display:block;'; }else{ echo 'display:none;'; } ?>">
 								<div class="col-md-6" style="padding-right: 0;text-align: right;">If so, what illness or operation?&nbsp;</div>
 								<div class="col-md-6" style="padding-left:0;text-align: right;">
-									<input type="text" class="col-md-12" name="patient_what_illness" value="<?php echo isset($row) ? $illness->because : null; ?>">
+									<input type="text" class="col-md-12" name="patient_what_illness" value="<?php if(isset($row) && isset($illness)){ echo $illness->because; } ?>">
 								</div>
 							</div>
 							<?php
@@ -488,18 +490,18 @@
 								<div class="col-md-6">4. Have you ever been hospitalized?</div>
 								<div class="col-md-6">
 									<label class="checkbox-inline" style="padding-top:0;">
-										<input type="radio" name="hospitalized_patient" value="yes" <?php if(isset($row)){ if($hospitalized->answer == 'yes'){ echo 'checked'; } } ?>> Yes
+										<input type="radio" name="hospitalized_patient" value="yes" <?php if(isset($row)){ if(isset($hospitalized) && $hospitalized->answer == 'yes'){ echo 'checked'; } } ?>> Yes
 									</label>
 									<label class="checkbox-inline" style="padding-top:0;">
-										<input type="radio" name="hospitalized_patient" value="no" <?php if(isset($row)){ if($hospitalized->answer == 'no'){ echo 'checked'; } } ?>> No
+										<input type="radio" name="hospitalized_patient" value="no" <?php if(isset($row)){ if(isset($hospitalized) && $hospitalized->answer == 'no'){ echo 'checked'; } } ?>> No
 									</label>
 								</div>
 							</div>
-							<div class="row show_question3" style="<?php if(isset($row) && $hospitalized->because != ' '){ echo 'display:block;'; }else{ echo 'display:none;'; }?>">
+							<div class="row show_question3" style="<?php if(isset($row) && isset($hospitalized) && $hospitalized->because != ' '){ echo 'display:block;'; }else{ echo 'display:none;'; }?>">
 								<div class="col-md-4" style="padding-right: 0;text-align: right;">If so, when and why?&nbsp;</div>
 								<div class="col-md-8" style="padding-left:0;text-align: right;">
-									<input type="text" class="col-md-6 datepicker" name="patient_when_hospitalized" value="<?php echo isset($row) ? $hospitalized->when : null; ?>">
-									<input type="text" class="col-md-6" name="patient_why_hospitalized" value="<?php echo isset($row) ? $hospitalized->because : null; ?>">
+									<input type="text" class="col-md-6 datepicker" name="patient_when_hospitalized" value="<?php if(isset($row) && isset($hospitalized)){ echo $hospitalized->when; } ?>">
+									<input type="text" class="col-md-6" name="patient_why_hospitalized" value="<?php if(isset($row) && isset($hospitalized)){ echo $hospitalized->because; } ?>">
 								</div>
 							</div>
 							<?php
@@ -512,17 +514,17 @@
 								<div class="col-md-6">5. Are you taking any presciption or non prescription medication?</div>
 								<div class="col-md-6">
 									<label class="checkbox-inline" style="padding-top:0;">
-										<input type="radio" name="presciption_patient" value="yes" <?php if(isset($row)){ if($precription_medication->answer == 'yes'){ echo 'checked'; } } ?>> Yes
+										<input type="radio" name="presciption_patient" value="yes" <?php if(isset($row)){ if(isset($precription_medication) && $precription_medication->answer == 'yes'){ echo 'checked'; } } ?>> Yes
 									</label>
 									<label class="checkbox-inline" style="padding-top:0;">
-										<input type="radio" name="presciption_patient" value="no" <?php if(isset($row)){ if($precription_medication->answer == 'no'){ echo 'checked'; } } ?>> No
+										<input type="radio" name="presciption_patient" value="no" <?php if(isset($row)){ if(isset($precription_medication) && $precription_medication->answer == 'no'){ echo 'checked'; } } ?>> No
 									</label>
 								</div>
 							</div>
-							<div class="row show_question4" style="display:none;">
+							<div class="row show_question4" style="<?php if(isset($row)){ if(isset($precription_medication) && $precription_medication->because != ' '){ echo 'display:block;'; }else{ echo 'display:none;'; } } ?>">
 								<div class="col-md-6" style="padding-right: 0;text-align: right;">If so, please specify?&nbsp;</div>
 								<div class="col-md-6" style="padding-left:0;text-align: right;">
-									<input type="text" class="col-md-12" name="patient_specify_prescription" value="<?php echo isset($row) ? $precription_medication->because : null; ?>">
+									<input type="text" class="col-md-12" name="patient_specify_prescription" value="<?php if(isset($row) && isset($precription_medication)){ echo $precription_medication->because; } ?>">
 								</div>
 							</div>
 							<div class="row" style="margin-bottom:5px">
@@ -649,156 +651,182 @@
 								<?php 
 									if(isset($row))
 									{
-										$ececec = json_decode($row['sickness']);
-										print_r($ececec);
-										
-										$aaaa = array('hala1'=>'hello','hala2'=>'hello2');
-										$hihi = json_decode(json_encode($aaaa));
-										print_r($hihi);
-									}else
-									{
-										
+										$highBlood = array_search('highBlood',json_decode($row['sickness'],true));
+										$lowBlood = array_search('lowBlood',json_decode($row['sickness'],true));
+										$epilepsy = array_search('epilepsy',json_decode($row['sickness'],true));
+										$aids = array_search('aids',json_decode($row['sickness'],true));
+										$std = array_search('std',json_decode($row['sickness'],true));
+										$ulcers = array_search('ulcers',json_decode($row['sickness'],true));
+										$seizure = array_search('seizure',json_decode($row['sickness'],true));
+										$weightLoss = array_search('weightLoss',json_decode($row['sickness'],true));
+										$radiation = array_search('radiation',json_decode($row['sickness'],true));
+										$implant = array_search('implant',json_decode($row['sickness'],true));
+										$heartSurgery = array_search('heartSurgery',json_decode($row['sickness'],true));
+										$heartAttack = array_search('heartAttack',json_decode($row['sickness'],true));
+										$thyroid = array_search('thyroid',json_decode($row['sickness'],true));
+										$heartDisease = array_search('heartDisease',json_decode($row['sickness'],true));
+										$heartmurmur = array_search('heartmurmur',json_decode($row['sickness'],true));
+										$liverDisease = array_search('liverDisease',json_decode($row['sickness'],true));
+										$rheumatic = array_search('rheumatic',json_decode($row['sickness'],true));
+										$allergies = array_search('allergies',json_decode($row['sickness'],true));
+										$respiratory = array_search('respiratory',json_decode($row['sickness'],true));
+										$Jaundice = array_search('Jaundice',json_decode($row['sickness'],true));
+										$tuberculosis = array_search('tuberculosis',json_decode($row['sickness'],true));
+										$swollenAnkles = array_search('swollenAnkles',json_decode($row['sickness'],true));
+										$kidneyDisease = array_search('kidneyDisease',json_decode($row['sickness'],true));
+										$diabetes = array_search('diabetes',json_decode($row['sickness'],true));
+										$chestPain = array_search('chestPain',json_decode($row['sickness'],true));
+										$stroke = array_search('stroke',json_decode($row['sickness'],true));
+										$cancer = array_search('cancer',json_decode($row['sickness'],true));
+										$anemia = array_search('anemia',json_decode($row['sickness'],true));
+										$angina = array_search('angina',json_decode($row['sickness'],true));
+										$asthma = array_search('asthma',json_decode($row['sickness'],true));
+										$emphysemia = array_search('emphysemia',json_decode($row['sickness'],true));
+										$bleedingProblems = array_search('bleedingProblems',json_decode($row['sickness'],true));
+										$headInjuries = array_search('headInjuries',json_decode($row['sickness'],true));
+										$arthritis = array_search('arthritis',json_decode($row['sickness'],true));
 									}
+									
 								?>
 								<div class="col-md-4">
 									<div class="checkbox">
-										<input type="checkbox" name="sickness[]" value="highBlood">
+										<input type="checkbox" name="sickness[]" value="highBlood" <?php if(isset($highBlood) && $highBlood != ''){ echo 'checked'; } ?>>
 										High blood pressure
 									</div>
 									<div class="checkbox">
-										<input type="checkbox" name="sickness[]" value="lowBlood">
+										<input type="checkbox" name="sickness[]" value="lowBlood" <?php if(isset($lowBlood) && $lowBlood != ''){ echo 'checked'; } ?>>
 										Low blood pressure
 									</div>
 									<div class="checkbox">
-										<input type="checkbox" name="sickness[]" value="epilepsy">
+										<input type="checkbox" name="sickness[]" value="epilepsy" <?php if(isset($epilepsy) && $epilepsy != ''){ echo 'checked'; } ?>>
 										Epilepsy or Convulsions
 									</div>
 									<div class="checkbox">
-										<input type="checkbox" name="sickness[]" value="aids">
+										<input type="checkbox" name="sickness[]" value="aids" <?php if(isset($aids) && $aids != ''){ echo 'checked'; } ?>>
 										AIDS or HIV infection
 									</div>
 									<div class="checkbox">
-										<input type="checkbox" name="sickness[]" value="std">
+										<input type="checkbox" name="sickness[]" value="std" <?php if(isset($std) && $std != ''){ echo 'checked'; } ?>>
 										Sexually transmitted disease
 									</div>
 									<div class="checkbox">
-										<input type="checkbox" name="sickness[]" value="ulcers">
+										<input type="checkbox" name="sickness[]" value="ulcers" <?php if(isset($ulcers) && $ulcers != ''){ echo 'checked'; } ?>>
 										Stomach Troubles or Ulcers
 									</div>
 									<div class="checkbox">
-										<input type="checkbox" name="sickness[]" value="seizure">
+										<input type="checkbox" name="sickness[]" value="seizure" <?php if(isset($seizure) && $seizure != ''){ echo 'checked'; } ?>>
 										Fainting Seizure
 									</div>
 									<div class="checkbox">
-										<input type="checkbox" name="sickness[]" value="weightLoss">
+										<input type="checkbox" name="sickness[]" value="weightLoss" <?php if(isset($weightLoss) && $weightLoss != ''){ echo 'checked'; } ?>>
 										Rapid Weight Loss
 									</div>
 									<div class="checkbox">
-										<input type="checkbox" name="sickness[]" value="radiation">
+										<input type="checkbox" name="sickness[]" value="radiation" <?php if(isset($radiation) && $radiation != ''){ echo 'checked'; } ?>>
 										Radiation Therapy
 									</div>
 									<div class="checkbox">
-										<input type="checkbox" name="sickness[]" value="implant">
+										<input type="checkbox" name="sickness[]" value="implant" <?php if(isset($implant) && $implant != ''){ echo 'checked'; } ?>>
 										Joint Replacement or Implant
 									</div>
 									<div class="checkbox">
-										<input type="checkbox" name="sickness[]" value="heartSurgery">
+										<input type="checkbox" name="sickness[]" value="heartSurgery" <?php if(isset($heartSurgery) && $heartSurgery != ''){ echo 'checked'; } ?>>
 										Heart Surgery
 									</div>
 									<div class="checkbox">
-										<input type="checkbox" name="sickness[]" value="heartAttack">
+										<input type="checkbox" name="sickness[]" value="heartAttack" <?php if(isset($heartAttack) && $heartAttack != ''){ echo 'checked'; } ?>>
 										Heart Attack
 									</div>
 									<div class="checkbox">
-										<input type="checkbox" name="sickness[]" value="thyroid">
+										<input type="checkbox" name="sickness[]" value="thyroid" <?php if(isset($thyroid) && $thyroid != ''){ echo 'checked'; } ?>>
 										Thyroid Problem
 									</div>
 								</div>
 								<div class="col-md-4">
 									<div class="checkbox">
-										<input type="checkbox" name="sickness[]" value="heartDisease">
+										<input type="checkbox" name="sickness[]" value="heartDisease" <?php if(isset($heartDisease) && $heartDisease != ''){ echo 'checked'; } ?>>
 										Heart Disease
 									</div>
 									<div class="checkbox">
-										<input type="checkbox" name="sickness[]" value="heartmurmur">
+										<input type="checkbox" name="sickness[]" value="heartmurmur" <?php if(isset($heartmurmur) && $heartmurmur != ''){ echo 'checked'; } ?>>
 										Heart Murmur
 									</div>
 									<div class="checkbox">
-										<input type="checkbox" name="sickness[]" value="liverDisease">
+										<input type="checkbox" name="sickness[]" value="liverDisease" <?php if(isset($liverDisease) && $liverDisease != ''){ echo 'checked'; } ?>>
 										Hepatitis or Liver Disease
 									</div>
 									<div class="checkbox">
-										<input type="checkbox" name="sickness[]" value="rheumatic">
+										<input type="checkbox" name="sickness[]" value="rheumatic" <?php if(isset($rheumatic) && $rheumatic != ''){ echo 'checked'; } ?>>
 										Rheumatic Fever
 									</div>
 									<div class="checkbox">
-										<input type="checkbox" name="sickness[]" value="allergies">
+										<input type="checkbox" name="sickness[]" value="allergies" <?php if(isset($allergies) && $allergies != ''){ echo 'checked'; } ?>>
 										Hay Fever or Allergies
 									</div>
 									<div class="checkbox">
-										<input type="checkbox" name="sickness[]" value="respiratory">
+										<input type="checkbox" name="sickness[]" value="respiratory" <?php if(isset($respiratory) && $respiratory != ''){ echo 'checked'; } ?>>
 										Respiratory Problems
 									</div>
 									<div class="checkbox">
-										<input type="checkbox" name="sickness[]" value="Jaundice">
+										<input type="checkbox" name="sickness[]" value="Jaundice" <?php if(isset($Jaundice) && $Jaundice != ''){ echo 'checked'; } ?>>
 										Hepatitis or Jaundice
 									</div>
 									<div class="checkbox">
-										<input type="checkbox" name="sickness[]" value="tuberculosis">
+										<input type="checkbox" name="sickness[]" value="tuberculosis" <?php if(isset($tuberculosis) && $tuberculosis != ''){ echo 'checked'; } ?>>
 										Tuberculosis
 									</div>
 									<div class="checkbox">
-										<input type="checkbox" name="sickness[]" value="swollenAnkles">
+										<input type="checkbox" name="sickness[]" value="swollenAnkles" <?php if(isset($swollenAnkles) && $swollenAnkles != ''){ echo 'checked'; } ?>>
 										Swollen Ankles
 									</div>
 									<div class="checkbox">
-										<input type="checkbox" name="sickness[]" value="kidneyDisease">
+										<input type="checkbox" name="sickness[]" value="kidneyDisease" <?php if(isset($kidneyDisease) && $kidneyDisease != ''){ echo 'checked'; } ?>>
 										Kidney Disease
 									</div>
 									<div class="checkbox">
-										<input type="checkbox" name="sickness[]" value="diabetes">
+										<input type="checkbox" name="sickness[]" value="diabetes" <?php if(isset($diabetes) && $diabetes != ''){ echo 'checked'; } ?>>
 										Diabetes
 									</div>
 									<div class="checkbox">
-										<input type="checkbox" name="sickness[]" value="chestPain">
+										<input type="checkbox" name="sickness[]" value="chestPain" <?php if(isset($chestPain) && $chestPain != ''){ echo 'checked'; } ?>>
 										Chest Pain
 									</div>
 									<div class="checkbox">
-										<input type="checkbox" name="sickness[]" value="stroke">
+										<input type="checkbox" name="sickness[]" value="stroke" <?php if(isset($stroke) && $stroke != ''){ echo 'checked'; } ?>>
 										Stroke
 									</div>
 								</div>
 								<div class="col-md-4">
 									<div class="checkbox">
-										<input type="checkbox" name="sickness[]" value="cancer">
+										<input type="checkbox" name="sickness[]" value="cancer" <?php if(isset($cancer) && $cancer != ''){ echo 'checked'; } ?>>
 										Cancer or Tumors
 									</div>
 									<div class="checkbox">
-										<input type="checkbox" name="sickness[]" value="anemia">
+										<input type="checkbox" name="sickness[]" value="anemia" <?php if(isset($anemia) && $anemia != ''){ echo 'checked'; } ?>>
 										Anemia
 									</div>
 									<div class="checkbox">
-										<input type="checkbox" name="sickness[]" value="angina">
+										<input type="checkbox" name="sickness[]" value="angina" <?php if(isset($angina) && $angina != ''){ echo 'checked'; } ?>>
 										Angina
 									</div>
 									<div class="checkbox">
-										<input type="checkbox" name="sickness[]" value="asthma">
+										<input type="checkbox" name="sickness[]" value="asthma" <?php if(isset($asthma) && $asthma != ''){ echo 'checked'; } ?>>
 										Asthma
 									</div>
 									<div class="checkbox">
-										<input type="checkbox" name="sickness[]" value="emphysemia">
+										<input type="checkbox" name="sickness[]" value="emphysemia" <?php if(isset($emphysemia) && $emphysemia != ''){ echo 'checked'; } ?>>
 										Emphysemia
 									</div>
 									<div class="checkbox">
-										<input type="checkbox" name="sickness[]" value="bleedingProblems">
+										<input type="checkbox" name="sickness[]" value="bleedingProblems" <?php if(isset($bleedingProblems) && $bleedingProblems != ''){ echo 'checked'; } ?>>
 										Bleeding Problems
 									</div>
 									<div class="checkbox">
-										<input type="checkbox" name="sickness[]" value="headInjuries">
+										<input type="checkbox" name="sickness[]" value="headInjuries" <?php if(isset($headInjuries) && $headInjuries != ''){ echo 'checked'; } ?>>
 										Head Injuries
 									</div>
 									<div class="checkbox">
-										<input type="checkbox" name="sickness[]" value="arthritis">
+										<input type="checkbox" name="sickness[]" value="arthritis" <?php if(isset($arthritis) && $arthritis != ''){ echo 'checked'; } ?>>
 										Arthritis or Rheumatism
 									</div>
 								</div>

@@ -24,7 +24,6 @@ class Patient_add extends CI_Controller {
 	
 	function submit_patient()
 	{
-		/* patient info */
 		
 		/* dental history */
 		if($this->input->post('cavity'))
@@ -114,6 +113,7 @@ class Patient_add extends CI_Controller {
 		
 		$data_medical_history = array(
 			'id'=> $this->input->post('patient_id'),
+			'dentist_id'=> $this->input->post('dentist_id'),
 			'date_of_entry'=> $this->input->post('patient_date'),
 			'patient_first_name'=> $this->input->post('patient_fname'),
 			'patient_middle_name'=> $this->input->post('patient_mname'),
