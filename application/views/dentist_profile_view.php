@@ -51,7 +51,7 @@
 					</div><!--end center-->
 				</div>
 				<div id="dp-wrapper-form" style="border:solid 0px red; margin:0 auto; width:100%;"><!--start dentist profile form-->
-					<div id="dp-body-wraper" style="border:solid 1px gray;width:960px;margin-left:210px;margin-top:20px;">
+					<div id="dp-body-wraper" style="border:solid 1px gray;width:960px;margin-left:200px;margin-top:20px;">
 						<form class="form-horizontal" id="form_dentist_signup" role="form" method="post" nctype="multipart/form-data" name="DentistProfileForm">
 							<div>
 								<div>
