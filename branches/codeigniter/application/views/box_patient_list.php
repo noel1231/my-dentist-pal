@@ -43,7 +43,7 @@
 							<td><?php echo date('Y/m/s',strtotime($row['date_of_last_visit'])); ?></td>
 							<td>
 								<a href="<?php echo base_url('patient_edit?id='.$row['id']); ?>" style="color: #333;">
-									<span class="glyphicon glyphicon-edit" title="Edit" style="cursor:pointer" class="edit_patient"></span>
+									<span class="edit_patient glyphicon glyphicon-edit" title="Edit"></span>
 								</a>
 								<a href="<?php echo base_url('patient_access?id='.$row['id']); ?>" style="color: #333;">
 									<span class="glyphicon glyphicon-globe" title="Manage Account"></span>
