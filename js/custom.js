@@ -93,7 +93,46 @@ $(function() {
               });
         }
    });
-   
+	
+	$('.delete_patient').click(function(){
+		var dis = $(this);
+		var id = dis.attr('id');
+		
+		$('.p_id').val(id);
+		$('#myModalDeletePatient').modal('show');
+		
+	});
+	$('.delete_patient_success').click(function(){
+		var id = $('.p_id').val();
+		
+		$.ajax({
+			type: 'POST',
+			data: {'patient_id':id},
+			url: 'patient_edit/delete_patient',
+			success: function(html){
+				$('#myModalDeletePatient').modal('hide');
+				$('span[id='+id+']').parents('tr').fadeOut(500);
+				
+			} 
+		});
+	});
+	
+	$('.checkall').click(function(){
+		var dis = $(this);
+		if(dis.is(':checked'))
+		{
+			$('.check_each').each(function(key,value){
+				$(this).prop('checked',true);
+			});	
+		}else
+		{
+			$('.check_each').each(function(key,value){
+				$(this).prop('checked',false);
+			});
+		}
+		
+	});
+	
 	$(function() {
 		$( ".datepicker" ).datepicker();
 	});

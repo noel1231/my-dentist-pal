@@ -71,7 +71,7 @@
 								<div class="col-lg-5">
 									<span style="line-height: 27px;"><?php echo time(); ?></span>
 									<input type="hidden" class="form-control" id="patient_id" name="patient_id" value="<?php echo isset($row) ? $row['id'] : time(); ?>">
-									<input type="hidden" class="form-control" id="dentist_id" name="dentist_id" value="<?php echo $this->session->userdata('sess_id'); ?>">
+									<input type="hidden" class="form-control" id="dentist_id" name="dentist_id" value="<?php echo $this->session->userdata('id'); ?>">
 								</div>
 							</div>
 							<div class="form-group">
@@ -94,7 +94,7 @@
 							<div class="form-group">
 								<label for="inputEmail1" class="col-lg-4 control-label">First Name</label>
 								<div class="col-lg-5">
-									<input type="text" class="form-control" id="patient_fname" name="patient_fname" value="<?php echo isset($row) ? $row['patient_first_name'] : null; ?>">
+									<input type="text" class="form-control" id="patient_fname" name="patient_fname" value="<?php echo isset($row) ? $row['patient_name'] : null; ?>">
 								</div>
 							</div>
 							<div class="form-group">
@@ -106,7 +106,7 @@
 							<div class="form-group">
 								<label for="inputEmail1" class="col-lg-4 control-label">Last Name</label>
 								<div class="col-lg-5">
-									<input type="text" class="form-control" id="patient_lname" name="patient_lname" value="<?php echo isset($row) ? $row['patient_last_name'] : null; ?>">
+									<input type="text" class="form-control" id="patient_lname" name="patient_lname" value="<?php echo isset($row) ? $row['patient_surname'] : null; ?>">
 								</div>
 							</div>
 							<div class="form-group">
@@ -161,13 +161,13 @@
 							<div class="form-group">
 								<label for="inputEmail1" class="col-lg-4 control-label">Home Number</label>
 								<div class="col-lg-5">
-									<input type="text" class="form-control" id="patient_homeNum" name="patient_homeNum" value="<?php echo isset($row) ? $row['patient_home_number'] : null; ?>">
+									<input type="text" class="form-control" id="patient_homeNum" name="patient_homeNum" value="<?php echo isset($row) ? $row['patient_phone'] : null; ?>">
 								</div>
 							</div>
 							<div class="form-group">
 								<label for="inputEmail1" class="col-lg-4 control-label">Office Number</label>
 								<div class="col-lg-5">
-									<input type="text" class="form-control" id="patient_officeName" name="patient_officeName" value="<?php echo isset($row) ? $row['patient_office_number'] : null; ?>">
+									<input type="text" class="form-control" id="patient_officeName" name="patient_officeName" value="<?php echo isset($row) ? $row['occupation_phone'] : null; ?>">
 								</div>
 							</div>
 							<div class="form-group">
