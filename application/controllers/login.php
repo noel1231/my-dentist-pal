@@ -47,7 +47,7 @@ class Login extends CI_Controller {
 			$row = $query->row_array();
 			$newdata = array(
                    'email'  			=> $row['email'],
-                   'sess_id'     			=> $row['id'],
+                   'id'     			=> $row['id'],
                    'license_number'     => $row['license_number'],
                    'logged_in' 			=> TRUE
             );

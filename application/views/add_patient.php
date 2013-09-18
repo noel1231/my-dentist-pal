@@ -83,7 +83,7 @@
 							<div class="form-group">
 								<label for="inputPassword1" class="col-lg-4 control-label">Photo</label>
 								<div class="col-lg-5">
-									<input type="file" class="form-control" id="patient_photo" name="patien_photo">
+									<input type="file" id="patient_photo" name="patien_photo">
 									<div class="col-sm-12" style="margin-top: 10px;">
 										<img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&text=no+image" >
 									</div>
