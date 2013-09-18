@@ -1,5 +1,6 @@
 <!--wrapper-->
 <div style="background-color: #f6f5f5;">
+	<?php echo $this->session->userdata('sess_id'); ?>
 	  <!--top-->
 		<?php $this->load->view('top_patient'); ?>
 		  <!--top-->
