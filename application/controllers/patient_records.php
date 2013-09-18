@@ -18,7 +18,11 @@ class Patient_Records extends CI_Controller {
 		   date_default_timezone_set('GMT');
 		}
 
-		$data['sess_id']='00000000022';
+		if($this->session->userdata('id')) {
+			$data['sess_id'] = $this->session->userdata('id');
+		} else {
+			redirect(base_url().'login');
+		}
 
 		$this->db->where('id', $data['sess_id']);
 		$qdentist_list = $this->db->get('dentist_list');
@@ -30,7 +34,12 @@ class Patient_Records extends CI_Controller {
 
 		$data['title'] = 'My Dentist Pal';
 		$data['header'] = $this->load->view('homepage/header', '', true);
-		$data['body'] = $this->load->view('box_patient_list', $data, true);
+
+		$data['dashboard_title'] = 'Patient Records';
+		$data['add_patient_search'] = $this->load->view('add_patient_search', '', true);
+		$data['dashboard_content'] = $this->load->view('box_patient_list', $data, true);
+
+		$data['body'] = $this->load->view('dentist_dashboard', $data, true);
 
 		$this->load->view('homepage', $data);
 	}

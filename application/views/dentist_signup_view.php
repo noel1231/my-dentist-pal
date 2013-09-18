@@ -146,7 +146,7 @@
 								</div><!--end confirm password-->
 								
 								<div style="margin-left:298px; margin-top:14px;"><!--start submit and back button-->
-									<input type="submit" name="submit" value="Submit" class="btn btn-primary" id="submit"/>
+									<input type="submit" name="submit" value="Submit" class="btn btn-primary" />
 									<!--<input type="button" name="cancel" value="Back" class="btn btn-primary"/>
 								</div><!--end submit and back button-->
 								<div style="clear:both;">&nbsp;</div>

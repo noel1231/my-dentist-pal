@@ -1,7 +1,14 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><?php echo $title; ?></title>
+<?php
+	if($_SERVER == 'alpha.mydentistpal.com') {
+?>
+	<meta name="robots" content="noindex">
+<?php
+	}
+?>
+    <title><?php echo isset($title) ? $title : 'My Dentist Pal'; ?></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Bootstrap -->

@@ -1,5 +1,5 @@
 	<ul class="top_menu btn-group">
-		<li class="btn btn-default active">
+		<li class="btn btn-default">
 			<a href="dentist_dashboard" id="link1">
 				<span> Dashboard </span>
 			</a>
@@ -17,7 +17,7 @@
 		</li>
 -->
 		<li class="btn btn-default">
-			<a href="scheduler/wdCalendar/index.php" id="link5" target="_blank">
+			<a href="<?php echo base_url('dentist_dashboard'); ?>" id="link5" target="_blank">
 				<span> Scheduler </span>
 			</a>
 		</li>

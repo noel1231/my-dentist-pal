@@ -45,9 +45,9 @@
 	}
 }
 </style>
-<div class="wrapper">
+<div>
 	<div class="row">
-		<div class="col-md-6 col-md-offset-3">
+		<div class="col-md-8 col-md-offset-2">
 			<ul class="nav nav-tabs" id="myTab">
 				<li class="active"><a href="#add_patient" data-toggle="tab">Add Patient</a></li>
 				<li><a href="#dentist_history" data-toggle="tab">Dental History</a></li>

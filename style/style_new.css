@@ -35,34 +35,29 @@
     background-image: none;
 }
 
-.brand
+#menu .brand
 {
     margin: 10px 0 0;
     
 }
 
-.brand img
+#menu .brand img
 {
     float: left;
     max-height: 90px;
 }
 
-.navbar .nav > li > a
+#menu.navbar .nav > li > a
 {
     color: #4c4c4c; 
     text-shadow: none;
-    font: normal 16px arial;
+	font-size: 16px;
 }
 
-.navbar .nav > li > a:hover
+#menu.navbar .nav > li > a:hover
 {
     color: #00aeef;
-    background-image: none !important;
-}
-
-.active
-{
-    color: #00aeef !important;
+    background-image: none;
 }
 
 .fake_div
@@ -495,7 +490,7 @@
 .contact_container .leftpanel .form .form_row .register p
 {
    color: #fff;
-   margin: 0 !important;
+   margin: 0;
    padding: 0;
    width: auto;
 }
@@ -531,11 +526,11 @@
 }
 
 frameset {
-    border: medium none !important;
-    display: block !important;
-    float: none !important;
+    border: medium none;
+    display: block;
+    float: none;
     overflow: -moz-hidden-unscrollable;
-    position: static !important;
+    position: static;
 }
 [dir="ltr"] {
     direction: ltr;
