@@ -8,7 +8,7 @@ class Upload_Model extends CI_Model {
 	
 	function upload()
 	{
-		$upload_dir = 'uploads/';
+		$upload_dir = 'patient_picture/';
 		if(!is_dir($upload_dir))
 		{
 		   mkdir($upload_dir, 0755, true);

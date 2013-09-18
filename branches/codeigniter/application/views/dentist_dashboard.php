@@ -43,7 +43,7 @@
 			<div class="col-md-6">
 				<div class="row">
 					<div class="addpatient col-md-3">
-						<a href="add_patient.php" class="btn btn-primary">
+						<a href="<?php echo base_url('patient_add'); ?>" class="btn btn-primary">
 							+ ADD PATIENT
 						</a>
 					</div>
