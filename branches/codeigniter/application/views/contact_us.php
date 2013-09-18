@@ -1,17 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        
-        <title>My Dentist Pal</title>
-        
-        <!-- twitter bootstrap-->
-        <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
-        <link href="bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
-        <link href="style/style_new.css" rel="stylesheet">
-    </head>
-    <body data-spy="scroll" data-target=".bs-docs-sidebar">
-        <?php echo $nav ?>
-        
         <div class="wrapper">
             <div class="holder">
                 <div class="contact_container">
@@ -62,12 +48,3 @@
                 </div>
             </div>
         </div>
-        <script src="//code.jquery.com/jquery.js"></script>
-        <!-- Include all compiled plugins (below), or include individual files as needed -->
-        <script src="bootstrap/js/bootstrap.min.js"></script>
-        <script src="bootstrap/js/bootstrap.js"></script>
-        
-        <script src="js/email.blockui.js"></script>
-        <script src="js/custom.js"></script>
-  </body>
-</html>

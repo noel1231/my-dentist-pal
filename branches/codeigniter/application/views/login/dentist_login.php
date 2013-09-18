@@ -4,6 +4,9 @@
 <div class="wrapper">
 	<div class="container" style="width:60%;">
 	<div class="well well-lg">
+		<div>
+			<h1> Dentist Login </h1>
+		</div>
 		<div class="alert alert-danger invalid_login" style="display:none;text-align:center">Invalid email/password</div>
 		<form class="form-horizontal" role="form" method="post" id="form_dentist_login" action="<?php echo base_url('login/check_login'); ?>">
 			<div class="form-group">

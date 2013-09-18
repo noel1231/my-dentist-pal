@@ -17,9 +17,25 @@ class Patient_add extends CI_Controller {
 	
 	function index()
 	{
+		if($this->session->userdata('id')) {
+			$data['sess_id'] = $this->session->userdata('id');
+		} else {
+			redirect(base_url().'login');
+		}
+
+		$this->db->where('id', $data['sess_id']);
+		$qdentist_list = $this->db->get('dentist_list');
+		$rdentist_list = $qdentist_list->row_array();
+
+		$data = $rdentist_list;
+
 		$data['title'] = 'My Dentist Pal - Digitize your dental management practice. A full-featured online tool that integrates dental practice management and confidential patient clinical charting, which dentist can access wherever they are.';
 		$data['header'] = $this->load->view('homepage/header', '', true);
-		$data['body'] = $this->load->view('add_patient','',true);
+
+		$data['dashboard_title'] = 'Add Patients';
+		$data['dashboard_content'] = $this->load->view('add_patient', $data, true);
+
+		$data['body'] = $this->load->view('dentist_dashboard', $data, true);
 		$this->load->view('homepage', $data);
 	}
 	

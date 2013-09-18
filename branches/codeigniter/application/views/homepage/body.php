@@ -8,7 +8,7 @@
     </div>
         <div class="head_video_container">
                 <div class="menu">
-                    <a href="" class="button">
+                    <a href="<?php echo base_url('dentist_signup'); ?>" class="button">
                         <img class="register" src="images/register.png" alt="REGISTER"/>
                     </a>
              

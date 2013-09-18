@@ -20,12 +20,12 @@
 					</div>
 					<div class="col-md-10">
 						<div class="row">
-							<div class="col-md-3 col-md-offset-3">
+							<div class="col-md-6">
 								<h1>
 									Hi, <?php echo $first_name; ?>
 								</h1>
 							</div>
-							<div class="col-md-6">
+							<div class="col-md-6 pull-right">
 								<?php $this->load->view('menu'); ?>
 							</div>
 						</div>
@@ -38,107 +38,15 @@
 
 	<div class="row">
 			<div class="col-md-6">
-				<h1> Dashboard </h1>
+				<h1> <?php echo $dashboard_title; ?> </h1>
 			</div>
 			<div class="col-md-6">
-				<div class="row">
-					<div class="addpatient col-md-3">
-						<a href="<?php echo base_url('patient_add'); ?>" class="btn btn-primary">
-							+ ADD PATIENT
-						</a>
-					</div>
-					<div class="col-md-8">
-						<form action="patient_list.php" method="post">
-							<input type="text" name="search_field" class="search" value="Search patient here" onfocus="if (this.value == 'Search patient here') {this.value = '';}" onblur="if (this.value == '') {this.value = 'Search patient here';}" style="color:#999;"/>
-							<input type="submit" name="search" value="SEARCH" class="submit btn_design" />
-						</form>
-					</div>
-				</div>
+				<?php echo isset($add_patient_search) ? $add_patient_search : ''; ?>
 			</div>
 	</div>
 
 	<div class="row">
-		<div id="scheduler" class="col-md-7">
-			<div id="calendar"></div>
-		</div>
-
-<?php
-if ($this->db->table_exists('dentist_appointments'))
-{
-						$today = date('m/d/Y', time());
-						$this->db->like('start_date', $today);
-						$this->db->order_by('timestamp');
-						$qdentist_appointments = $this->db->get('dentist_appointments');
-?>
-
-		<div id="appointment" class="col-md-5">
-			<div class="container">
-				<div class="row">
-					<div class="pull-left">
-						<h4> <span id="date_appoint"> Today's </span> Appointment(s): <strong id="num_of_appoint"> <?php echo $qdentist_appointments->num_rows(); ?> </strong> </h4>
-					</div>
-					<div class="pull-right">
-						<div class="btn-group">
-							<button id="show_add_sched" type="button" class="btn btn-default"> + Add Schedule </button>
-						</div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="panel panel-default">
-
-<table class="table">
-	<thead>
-		<tr>
-			<th> Title </th>
-			<th> Description </th>
-			<th> Time </th>
-			<th> Status </th>
-		</tr>
-	</thead>
-	<tbody id="tbody_appointment">
-<?php
-	if($qdentist_appointments->num_rows() > 0) {
-		foreach($qdentist_appointments->result_array() as $appointments)
-		{
-			$time = $appointments['start_time'] . " to " . $appointments['end_time'];
-?>
-		<tr>
-			<td> <?php echo $appointments['title']; ?> </td>
-			<td> <?php echo $appointments['description']; ?> </td>
-			<td> <?php echo $appointments['start_time']; ?> <?php echo $appointments['end_time'] ? ' to '.$appointments['end_time'] : ''; ?></td>
-			<td>
-				<select>
-					<option> Select.. </option>
-					<option> Confirmed </option>
-					<option> Cancelled </option>
-				</select>
-			</td>
-		</tr>
-<?php
-		}
-	} else {
-?>
-		<tr><td colspan="4"> No Appoinment for this day. </td></tr>
-<?php
-	}
-?>
-	</tbody>
-</table>
-<?php
-}
-?>					
-					</div>
-				</div>
-			</div>
-		</div>
-
-	</div>
-
-
-
-
-			</div>
-		</div>
+		<?php echo $dashboard_content; ?>
 	</div>
 
 	  <!--top-->
@@ -147,7 +55,7 @@ if ($this->db->table_exists('dentist_appointments'))
 	  <!--tooth-->
 		<?php // $this->load->view('top'); ?>
 		  <!--dentisit dashboard--></td>
-				<?php echo $content; ?>
+				<?php echo isset($content) ? $content: ''; ?>
 	  <!--wrapper-->
 	  <!--bottom-content-->
 			<?php // $this->load->view('dentist_dashboard/bottom.php'); ?>

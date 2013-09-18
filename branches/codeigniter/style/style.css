@@ -216,9 +216,10 @@ background-color:#e5eef7;
 width:184px;
 height:38px;
 }
-
+/*
 .submit
 {
+
 background-image:url(../img/buttonbak.png);	
 
 
@@ -232,12 +233,9 @@ background-image:url(../img/buttonbak.png);
 
 
 border-radius: 5px;
-/*behavior: url(../border-radius.htc);*/
+
 overflow:hidden;
-/*
- -moz-border-radius: 5px;
- -webkit-border-radius: 5px;
- border-radius: 5px;*/
+
  
  border:none;
  width:90px;
@@ -253,10 +251,7 @@ overflow:hidden;
 .submit:hover 
 {
 background-image:url(../img/buttonbak2.png);	
-/* -moz-border-radius: 5px;
- -webkit-border-radius: 5px;
- border-radius: 5px;
- */
+
  
  
  -webkit-border-radius: 5px;
@@ -269,7 +264,7 @@ background-image:url(../img/buttonbak2.png);
 
 
 border-radius: 5px;
-/*behavior: url(../border-radius.htc); */
+
 overflow:hidden;
 
  border:none;
@@ -281,7 +276,7 @@ overflow:hidden;
  font-family:Arial, Helvetica, sans-serif;
 
 }
-
+*/
 .button_like {
 background-image:url(../img/buttonbak.png);	
  -moz-border-radius: 5px;
@@ -630,7 +625,7 @@ color:#FFF;
 .notification_alert table td:first-child {
 	width: 215px;
 }
-
+/*
 .btn_design {
     background-image: url("../img/buttonbak.png");
     border: medium none;
@@ -647,6 +642,7 @@ color:#FFF;
 .btn_design:hover {
     background-image: url("../img/buttonbak2.png");
 }
+*/
 .input_txt_design {
     border: medium none;
     border-radius: 5px 5px 5px 5px;

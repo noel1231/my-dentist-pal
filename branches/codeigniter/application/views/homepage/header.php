@@ -1,5 +1,5 @@
 <?php
-	$menu_array = array(null, 'welcome', 'contact_us', 'logout', 'login');
+	$menu_array = array(null, 'welcome', 'contact_us', 'logout', 'login', 'dentist_signup');
 	if(in_array(uri_string(), $menu_array)) {
 ?>
 <nav id='menu' class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -14,14 +14,14 @@
   </div>
   <div class="collapse navbar-collapse navbar-ex1-collapse">
           <ul class="nav navbar-nav navbar-right">
-                  <li>
-                      <a href="<?php echo base_url();?>welcome" class="<?php echo uri_string() == null || uri_string() == 'welcome' ? "active" : " "; ?> home">HOME</a>
+                  <li class="<?php echo uri_string() == null || uri_string() == 'welcome' ? "active" : " "; ?>">
+                      <a href="<?php echo base_url();?>welcome" class="home">HOME</a>
                   </li>
-                  <li>
+                  <li class="">
                       <a href="<?php echo base_url();?>#prices" class="prices">PRICE</a>
                   </li>
-                  <li>
-                      <a href="<?php echo base_url();?>contact_us" class="<?php echo uri_string() == 'contact_us' ? "active" : " "; ?> contact_us">CONTACT US</a>
+                  <li class="<?php echo uri_string() == 'contact_us' ? "active" : " "; ?>">
+                      <a href="<?php echo base_url();?>contact_us" class="contact_us">CONTACT US</a>
                   </li>
           </ul>
     </div>

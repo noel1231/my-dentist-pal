@@ -192,14 +192,14 @@ $(function() {
         
 	$('a.prices').click(function(){
 		$('html, body').animate({
-				scrollTop:$('#prices').offset().top
+				scrollTop: $('#prices').offset().top
 		}, 800, function() {
 				//parallaxScroll(); // Callback is required for iOS
 		});
 		
-		$(this).addClass('active');
-		$('a.home').removeClass('active');
-		$('a.contact_us').removeClass('active');
+		$(this).parent().addClass('active');
+		$('a.home').parent().removeClass('active');
+		$('a.contact_us').parent().removeClass('active');
 	   
 		return false;
 	});
@@ -303,11 +303,9 @@ $(function() {
 		
 		success: function(html)
 		{
-			alert(html);
 			$('.alert_msg').hide();
-			// $('.success_msg').html('Registration Success!').show();
-			// $('#mySuccessReg').modal('show');
-			
+			$('.success_msg').html('Registration Success!').show();
+			$('#mySuccessReg').modal('show');
 		}
 	});
     

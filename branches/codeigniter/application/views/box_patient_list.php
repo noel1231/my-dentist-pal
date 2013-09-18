@@ -5,28 +5,7 @@
 	
 ?>
 
-<div class="wrapper">
-	<div class="container">
-		<div class="row" style="margin-bottom:15px;">
-			<div class="col-md-6">
-				<h3 style="margin-top:0;">Patient Records</h3>
-			</div>
-			<div class="col-md-6">
-				<div class="row">
-					<div class="col-md-3 col-md-offset-3">
-						<a href="<?php echo base_url('patient_add'); ?>" class="btn btn-primary">
-							<span class="glyphicon glyphicon-plus"></span>Add Patient
-						</a>
-					</div>
-					<div class="col-md-6">
-						<div class="input-group">
-							<span class="input-group-addon">@</span>
-							<input type="text" class="form-control" placeholder="Search Patients">
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
+<div>
 		<div class="container">
 			<div class="table-responsive">
 				<table class="table">

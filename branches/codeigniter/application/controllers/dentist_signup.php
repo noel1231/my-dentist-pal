@@ -73,7 +73,7 @@ class Dentist_Signup extends CI_Controller {
 			$message = "
 				Thank you for signing up!<br> 
 				Please click the link below to verify and activate your account.<br>
-				<a href='".base_url()."dentist_signup/confirm?email=$email1&passkey=$passkey'>".base_url()."dentist_signup/confirm?email=$email1&passkey=$passkey</a>";
+				<a href='".base_url()."dentist_signup/confirm?email=$email1&passkey=$passkey'> Click here to activate </a>";
 			$this->load->library('email');
 			
 			$config['protocol'] = 'smtp';
@@ -81,6 +81,7 @@ class Dentist_Signup extends CI_Controller {
 			$config['smtp_user'] = 'info@mydentistpal.com';
 			$config['smtp_pass'] = 'mdp2468';
 			$config['smtp_port'] = 26;
+			$config['mailtype'] = 'html';
 			
 			$this->email->initialize($config);
 			
@@ -98,13 +99,13 @@ class Dentist_Signup extends CI_Controller {
 				$update_array = array(
 					'forgot_key' => $passkey
 				);
-				$this->db->where('email', $update_array);
-				$this->db->update('dentist_list');
+				$this->db->where('email', $email1);
+				$this->db->update('dentist_list', $update_array);
 				$message_status = "Yes";		
 			} else {
 				$message_status = "No";
 			}
-			echo $this->email->print_debugger();
+			// echo $this->email->print_debugger();
 		}
 	}
 	
