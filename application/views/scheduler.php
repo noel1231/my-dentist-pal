@@ -7,6 +7,7 @@ if ($this->db->table_exists('dentist_appointments'))
 {
 						$today = date('m/d/Y', time());
 						$this->db->like('start_date', $today);
+						$this->db->where('dentist_id', $id);
 						$this->db->order_by('timestamp');
 						$qdentist_appointments = $this->db->get('dentist_appointments');
 ?>
@@ -19,7 +20,7 @@ if ($this->db->table_exists('dentist_appointments'))
 					</div>
 					<div class="pull-right">
 						<div class="btn-group">
-							<button id="show_add_sched" type="button" class="btn btn-default"> + Add Schedule </button>
+							<button id="show_add_sched" type="button" class="btn btn-primary"> + Add Schedule </button>
 						</div>
 					</div>
 				</div>

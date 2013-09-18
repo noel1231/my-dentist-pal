@@ -74,11 +74,14 @@ class Dentist_Dashboard extends CI_Controller {
 		$feeds = array();
 
 		$start_date = $this->input->post('start_date');
+		$dentist_id = $this->session->userdata('id');
 
 		if ($this->db->table_exists('dentist_appointments'))
 		{
 			if($start_date)
 				$this->db->where('start_date', $start_date);
+
+			$this->db->where('dentist_id', $dentist_id);
 
 			$qappointments = $this->db->get('dentist_appointments');
 			$rappointments = $qappointments->result_array();

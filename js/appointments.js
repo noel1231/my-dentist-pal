@@ -15,6 +15,34 @@ $(function(){
 		}
 	}
 
+	function update_scheduler( date, endDate, allDay, jsEvent, view ) {
+		var click_date = $.fullCalendar.formatDate(date, 'MM/dd/yyyy');
+		if(click_date == $.fullCalendar.formatDate(new Date(), 'MM/dd/yyyy')) {
+			$('#date_appoint').html('Today&rsquo;s');
+		} else {
+			$('#date_appoint').text($.fullCalendar.formatDate(date, 'MMMM d'));
+		}
+
+		$('#inputDate1').val(click_date);
+		
+		if (allDay) {
+			var dataString = { start_date: click_date };
+			$.ajax({
+				type: 'post',
+				url: 'dentist_dashboard/feed',
+				data: dataString,
+				beforeSend: function() {},
+				success: function(data) {
+					var html = JSON.parse(data);
+					$('#num_of_appoint').text(html.length);
+					append_to_table(html);
+				}
+			});
+		} else {
+			alert('Clicked on the slot: ' + new Date);
+		}
+	}
+
 	var calendar = $('#calendar');
 
 	calendar.fullCalendar({
@@ -23,36 +51,13 @@ $(function(){
 			center: 'title',
 			right:  'month,agendaWeek,agendaDay '
 		},
-		dayClick: function(date, allDay, jsEvent, view) {
-			var click_date = $.fullCalendar.formatDate(date, 'MM/dd/yyyy');
-			if(click_date == $.fullCalendar.formatDate(new Date(), 'MM/dd/yyyy')) {
-				$('#date_appoint').html('Today&rsquo;s');
-			} else {
-				$('#date_appoint').text($.fullCalendar.formatDate(date, 'MMMM d'));
-			}
-
-				$('#inputDate1').val(click_date);
-			
-			if (allDay) {
-				var dataString = { start_date: click_date };
-				$.ajax({
-					type: 'post',
-					url: 'dashboard/feed',
-					data: dataString,
-					beforeSend: function() {},
-					success: function(data) {
-						var html = JSON.parse(data);
-						$('#num_of_appoint').text(html.length);
-						append_to_table(html);
-					}
-				});
-			} else {
-				alert('Clicked on the slot: ' + new Date);
-			}
-
-			$('td.fc-day').css('background-color', 'transparent');
-			$(this).css('background-color', '#BCE8F1');
+		selectable: true,
+		select: function( startDate, endDate, allDay, jsEvent, view ) {
+			update_scheduler( startDate, endDate, allDay, jsEvent, view );
 		},
+		// dayClick: function(date, allDay, jsEvent, view) {
+
+		// },
 		eventRender: function(event, element) {
 			element.tooltip({
 				title: event.description,
@@ -65,7 +70,7 @@ $(function(){
 		// },
 		eventSources: [
 			{
-				url: 'dashboard/feed',
+				url: 'dentist_dashboard/feed',
 				type: 'POST',
 				data: {
 					custom_param1: 'something',
@@ -101,7 +106,7 @@ $(function(){
 		$('#add_sched').modal('toggle');
 	});
 
-	$( ".datepicker" ).datepicker({
+	$( "#inputDate1.datepicker" ).datepicker({
 		minDate: '-0D',
 	});
 
@@ -119,7 +124,7 @@ $(function(){
 	$('#submit_appointment').click(function() {
 		var action = $(this).val();
 		$('#appointment_form').ajaxForm({
-			url: 'dashboard/add_appointment',
+			url: 'dentist_dashboard/add_appointment',
 			type: 'post',
 			data: { action: action },
 			beforeSubmit: function(formData, jqForm, options) {

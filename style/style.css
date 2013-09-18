@@ -1,11 +1,15 @@
 @charset "utf-8";
 /* CSS Document */
 
+body {
+    overflow-y: scroll;
+}
+
 textarea {
   resize: none;
 }
 img{
-border:none;	
+	border:none;
 }
 
 .select {

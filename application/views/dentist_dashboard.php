@@ -15,7 +15,7 @@
 				<div class="row">
 					<div class="col-sm-6 col-md-2">
 						<a href="#" class="thumbnail">
-							<img data-src="holder.js/100%x180" alt="Profile Pic" src="<?php echo trim($profile_pic); ?>">
+							<img alt="Profile Pic" src="<?php echo trim($profile_pic) != null ? base_url().$profile_pic : base_url('img/profile_pic.gif'); ?>">
 						</a>
 					</div>
 					<div class="col-md-10">
@@ -84,7 +84,7 @@
 	echo form_open('', $form_attrib);
 ?>
 	<input type="hidden" id="appointment_id" name="appointment_id" />
-	<input type="hidden" name="dentist_id" value="<?php echo $sess_id; ?>" />
+	<input type="hidden" name="dentist_id" value="<?php echo $id; ?>" />
 	<div class="form-group">
 		<label for="inputTitle1" class="col-lg-3 control-label"> Title: </label>
 		<div class="col-lg-9">
