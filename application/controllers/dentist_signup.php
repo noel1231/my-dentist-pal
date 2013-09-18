@@ -8,10 +8,11 @@ class Dentist_Signup extends CI_Controller {
 		$this->load->database();
   	}
 	
-	function index() {	
+	function index()
+	{	
 		
 		$this->set_pages_rules();
-		//$this->process_registration();
+		// $this->process_registration();
    	}
 	
 	function set_pages_rules()
@@ -111,7 +112,6 @@ class Dentist_Signup extends CI_Controller {
 	{
 		$email1 = $this->input->get('email');
 		$passkey = $this->input->get('passkey'); 
-		
 		
 		// if($query_dentist_list->num_rows() > 0) {
 			// $result_dentist_list = $query_dentist_list->row_array();
