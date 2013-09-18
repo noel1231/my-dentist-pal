@@ -83,9 +83,10 @@
 							<div class="form-group">
 								<label for="inputPassword1" class="col-lg-4 control-label">Photo</label>
 								<div class="col-lg-5">
-									<input type="file" id="patient_photo" name="patien_photo">
+									<input type="file" id="patient_photo" name="patient_photo">
+									<input type="hidden" id="patient_photo_file" name="patient_photo_file" value="<?php if(isset($row) && $row['patient_picture'] != ' '){ echo $row['patient_picture']; } ?>">
 									<div class="col-sm-12" style="margin-top: 10px;">
-										<img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&text=no+image" >
+										<img class="patient_photo_view" <?php if(isset($row) && trim($row['patient_picture']) != null) { echo 'src="'.base_url('patient_picture/'.$row['patient_picture']).'"'; } else{ echo 'src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&text=no+image"'; } ?> style="width:200px;" onerror="this.src='http://www.placehold.it/200x150/EFEFEF/AAAAAA&text=File+Remove'">
 									</div>
 								</div>
 							</div>
@@ -651,6 +652,8 @@
 								<?php 
 									if(isset($row))
 									{
+										if($row['sickness'])
+										{
 										$highBlood = array_search('highBlood',json_decode($row['sickness'],true));
 										$lowBlood = array_search('lowBlood',json_decode($row['sickness'],true));
 										$epilepsy = array_search('epilepsy',json_decode($row['sickness'],true));
@@ -685,6 +688,7 @@
 										$bleedingProblems = array_search('bleedingProblems',json_decode($row['sickness'],true));
 										$headInjuries = array_search('headInjuries',json_decode($row['sickness'],true));
 										$arthritis = array_search('arthritis',json_decode($row['sickness'],true));
+										}
 									}
 									
 								?>

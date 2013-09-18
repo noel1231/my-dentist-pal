@@ -6,7 +6,7 @@ class Upload_Model extends CI_Model {
 		$this->load->helper(array('form', 'url'));
 	}
 	
-	function upload()
+	function upload($field_name=null)
 	{
 		$upload_dir = 'patient_picture/';
 		if(!is_dir($upload_dir))
@@ -20,8 +20,17 @@ class Upload_Model extends CI_Model {
 		$config['encrypt_name']  = TRUE;
 		
 		$this->upload->initialize($config);
-		
-		
+
+			if (!$this->upload->do_upload($field_name))
+			{
+				$uploaded = $this->upload->display_errors();
+			}
+			else
+			{
+				$uploaded = $this->upload->data();
+				
+			}
+		return $uploaded; /* prints the result of the operation and analyze the data */
 	}
 }
 ?>
