@@ -1,155 +1,64 @@
-<?php
-
-
-
-$dentist_id=$this->session->userdata('id');
-
-
-
-?>
-
-
 <style type="text/css">
-
 #blanket {
-
-background-color:#111;
-
-opacity: 0.9;
-
-filter:alpha(opacity=90);
-
-position:fixed;
-
-z-index: 9001;
-
-top:0px;
-
-left:0px;
-
-width:100%;
-
+	background-color:#111;
+	opacity: 0.9;
+	filter:alpha(opacity=90);
+	position:fixed;
+	z-index: 9001;
+	top:0px;
+	left:0px;
+	width:100%;
 }
-
-
 
 #popUpDiv {
-
-position:fixed;
-
-background-color:#FFF;
-
-width:300px;
-
-height:330px;
-
-
-
-
-
-z-index: 9002;
-
-
-
- border-style: solid;
-
- border-width: 2px;
-
- -moz-border-radius: 5px;
-
- -webkit-border-radius: 5px;
-
- border-radius: 5px;
-
-
-
+	position:fixed;
+	background-color:#FFF;
+	width:300px;
+	height:330px;
+	z-index: 9002;
+	border-style: solid;
+	border-width: 2px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
 }
-
-
 
 #popUpDiv1 {
-
-position:fixed;
-
-background-color:#FFF;
-
-width:300px;
-
-height:250px;
-
-
-
-
-
-z-index: 9002;
-
-
-
- border-style: solid;
-
- border-width: 2px;
-
- -moz-border-radius: 5px;
-
- -webkit-border-radius: 5px;
-
- border-radius: 5px;
-
-
-
+	position:fixed;
+	background-color:#FFF;
+	width:300px;
+	height:250px;
+	z-index: 9002;
+	border-style: solid;
+	border-width: 2px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
 }
-
-
-
-
 
 .toothtable img {
-
-			cursor:pointer;
-
-	}
-
-.toothtable {
-
-color:#999;	
-
+	cursor:pointer;
 }
 
-	
+.toothtable {
+	color:#999;	
+}
 
 </style>
-
 <script src="<?php echo base_url(); ?>js/first_tooth.js"></script>
-
 <script src="<?php echo base_url(); ?>js/popup.js"></script>
-
 <script src="<?php echo base_url(); ?>js/child_tooth.js"></script>
 
-<!--<script src="img/popup_child.js"></script>
-
--->
-
- <script language="JavaScript"> 
-		function onSave()  
-{  
-if(confirm('Do you want to save changes ?')==true)  
-{  
-return true;  
+<script language="JavaScript"> 
+function onSave() {  
+	if(confirm('Do you want to save changes ?')==true)  
+	{
+		return true;  
+	} else {
+		return false;  
+	}
 }  
-else  
-{  
-return false;  
-}  
-}  
-        </script>
-
-</head>
-
-
-
-<body>
-
-
+</script>
 
 <map name="Map" id="Map">
 
@@ -311,7 +220,7 @@ echo "..." ;
 
            <?php 
 
-		   $sql="SELECT * FROM patient_list WHERE id=".$id." AND dentist_id='".$dentist_id."'";
+		   $sql="SELECT * FROM patient_list WHERE id=".$patient_id." AND dentist_id='".$dentist_id."'";
 
 		   $res=mysql_query($sql);
 
@@ -333,7 +242,7 @@ echo "..." ;
 
 		if($val==1) { 
 
-		 $sql="SELECT * FROM patient_adult_tooth WHERE patient_id='".$id."' AND dentist_id='".$dentist_id."'";
+		 $sql="SELECT * FROM patient_adult_tooth WHERE patient_id='".$patient_id."' AND dentist_id='".$dentist_id."'";
 
 		 $res=mysql_query($sql);
 
@@ -349,7 +258,7 @@ echo "..." ;
 
 		else if($val==2) { 
 
-		 $sql="SELECT * FROM patient_child_tooth WHERE patient_id='".$id."' AND dentist_id='".$dentist_id."'";
+		 $sql="SELECT * FROM patient_child_tooth WHERE patient_id='".$patient_id."' AND dentist_id='".$dentist_id."'";
 
 		 $res=mysql_query($sql);
 
@@ -381,11 +290,11 @@ echo "..." ;
 
 <input type="submit" name="save" value="Save" class="submit2" onclick="return onSave();">&nbsp;
 
-<input type="button" name="cancel" value="Cancel" class="submit2" onclick="window.location='patient_tooth_chart.php?id=<?php echo $id;?>'"></div>
+<input type="button" name="cancel" value="Cancel" class="submit2" onclick="window.location='patient_tooth_chart?id=<?php echo $patient_id;?>'"></div>
 
 <div style="clear:both;height:20px;"></div>
 
-<div style="float:left;font-weight:bold;color:#373838;font-size:14px;">Chart Name &nbsp;&nbsp;&nbsp;<input type="text" name="chart_name"  value="<?php echo $chart_name;?>"/></div>
+<div style="float:left;font-weight:bold;color:#373838;font-size:14px;">Chart Name &nbsp;&nbsp;&nbsp;<input type="text" name="chart_name"  value="<?php echo isset($chart_name) ? $chart_name : ''; ?>"/></div>
 
 <div style="clear:both;height:20px;"></div>
 
@@ -438,8 +347,29 @@ echo "..." ;
 <?php if($val==1) { ?>
 
 <div style="margin:0 auto;width:520px;">
+<?php 
+if(isset($_GET['key'])) {
+$key=$_GET['key'];
+//var_dump($key);die();
+$sqls="SELECT * FROM patient_tooth_chart_extra_adult WHERE id='".$key."'";
+$ress=mysql_query($sqls);
+//var_dump($ress);die();
+//echo mysql_error();
+$x="chart_remarks";
+}
+else {
+$sqls="SELECT * FROM patient_adult_tooth WHERE patient_id=".$patient_id."";
+$ress=mysql_query($sqls); 
+$x="tooth_remarks";
+}
 
-<?php include('tooth_chart_patient.php');?>
+while($row=mysql_fetch_array($ress))
+{
+	$chart_remarks=$row[''.$x.''];
+	$data_tooth_chart_patient = $row;
+}
+?>
+<?php $this->load->view('patient/tooth_chart_patient', $data_tooth_chart_patient); ?>
 
 </div>
 
@@ -491,7 +421,7 @@ echo "..." ;
 
 <div style="margin:0 auto;width:340px;">
 
-<?php include('tooth_chart_child.php');?>
+<?php $this->load->view('patient/tooth_chart_child'); ?>
 
 </div>
 
@@ -553,9 +483,9 @@ Remarks</td></tr>
 
 <input type="submit" name="save" value="Save" class="submit2" onclick="return onSave();">&nbsp;
 
-<input type="button" name="cancel" value="Cancel" class="submit2" onclick="window.location='patient_tooth_chart.php?id=<?php echo $id;?>'">
+<input type="button" name="cancel" value="Cancel" class="submit2" onclick="window.location='patient_tooth_chart?id=<?php echo $patient_id;?>'">
 
-<input type="hidden" value="<?php echo $id;?>" name="pt_id" />
+<input type="hidden" value="<?php echo $patient_id;?>" name="pt_id" />
 
 </form>
 

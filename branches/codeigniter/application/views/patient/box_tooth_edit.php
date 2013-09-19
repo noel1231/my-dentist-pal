@@ -1,10 +1,7 @@
 <script type="text/javascript">
 
-function Refresh(id,key) {
-	var x=id;
-	var y=key;
-	//alert(y);
-	window.location="patient_tooth_chart.php?id="+y+"&key="+x;	
+function Refresh(key,id) {
+	window.location="<?php echo base_url(); ?>test/patient_tooth_chart?id="+id+"&key="+key;
 }
 </script>
 
@@ -28,10 +25,7 @@ return false;
   <area shape="rect" coords="138,2,263,41" href="received_message.php" />-->
   <area shape="rect" coords="638,2,689,33" href="patient_dental_edit.php" />
 </map>
-<table width="100%" border="0" cellspacing="0" cellpadding="0">
-  <tr>
-    <td>&nbsp;</td>
-  </tr>
+<table>
   <tr>
     <td><table width="739" border="0" align="center" cellpadding="0" cellspacing="0">
       <tr>
@@ -112,40 +106,37 @@ echo "..." ;
 <div style="clear:both;height:20px;"></div>-->
 <div style="float:left;width:650px;">
 <div style="float:left;margin-left:8px;">
-<form action="patient_tooth_add.php" method="get" enctype="multipart/form-data">
-<?php //var_dump($id);die();?>
-<input type="hidden" name="pass" value="<?php echo $patient_id;?>" />
-<input type="submit" name="new" value="Add Chart" class="submit2" />
-</form>
+	<form action="patient_tooth_add" method="get" enctype="multipart/form-data">
+		<input type="hidden" name="id" value="<?php echo $patient_id;?>" />
+		<input type="submit" name="new" value="Add Chart" class="submit2" />
+	</form>
 </div><!--&nbsp;
 <input type="submit" name="child" value="Child" class="submit2"></div>-->
 <div style="float:left;margin-left:20px;">
 
-<?php if($what_chart==1) 
-
-
-{
-	//var_dump($pt_ids);die();
-	?>
-
-<select name="adult" onchange="Refresh(this.options[this.selectedIndex].value,'<?php echo $pt_ids;?>');">
+<?php 
+	if($what_chart==1) 
+	{
+?>
+<select name="adult" onchange="Refresh(this.options[this.selectedIndex].value,'<?php echo $patient_id;?>');">
 <option value="none">--Select one--</option>
 <?php
-$sql="SELECT * FROM patient_tooth_chart_extra_adult WHERE patient_id='".$id."'";
-$res=mysql_query($sql);
-while($row=mysql_fetch_array($res)) {
-$idx=$row['id'];
-$name=$row['chart_name'];
-echo "<option value=\"$idx\">$name</option>";	
-}
+		$sql="SELECT * FROM patient_tooth_chart_extra_adult WHERE patient_id='".$patient_id."'";
+		$res=mysql_query($sql);
+		while($row=mysql_fetch_array($res)) {
+			$idx=$row['id'];
+			$name=$row['chart_name'];
+			echo "<option value=\"$idx\">$name</option>";	
+		}
 ?>
 </select>
-
-<?php } else if($what_chart==2) {?>
-<select name="child" onchange="Refresh(this.options[this.selectedIndex].value,'<?php echo $pt_ids;?>');">
+<?php
+	} else if($what_chart==2) {
+?>
+<select name="child" onchange="Refresh(this.options[this.selectedIndex].value,'<?php echo $patient_id;?>');">
 <option value="none">--Select one--</option>
 <?php
-$sql="SELECT * FROM patient_tooth_chart_extra_child WHERE patient_id='".$id."'";
+$sql="SELECT * FROM patient_tooth_chart_extra_child WHERE patient_id='".$patient_id."'";
 $res=mysql_query($sql);
 while($row=mysql_fetch_array($res)) {
 $idx=$row['id'];
@@ -170,21 +161,105 @@ echo "<option value=\"$idx\">$name</option>";
 </tr>
 
 <tr><td style="padding-left:27px;">
-<!--<img src="img/map_teeth_red.png" />-->
-<div style="clear:both;height:20px;"></div>
-<div style="border:1px solid #999;width:635px;height:250px;">
-<div style="margin:0 auto;width:55px;font-family:Arial, Helvetica, sans-serif;color:#999;font-size:14px;margin-top:5px;">FACIAL</div>
-<div style="clear:both;height:10px;"></div>
-<?php if($what_chart==1) {?>
-<div style="margin:0 auto;width:520px;">
-<?php $this->load->view('patient/tooth_chart_patient'); ?>
-</div><?php } else { ?>
-<div style="margin:0 auto;width:340px;">
-<?php include('tooth_chart_child_view.php'); ?>
-</div>
-<?php } ?>
-<div style="margin:0 auto;width:55px;font-family:Arial, Helvetica, sans-serif;color:#999;font-size:14px;margin-top:5px;">FACIAL</div>
-</div>
+	<div style="clear:both;height:20px;"></div>
+	<div style="border:1px solid #999;">
+	<div class="text-center">FACIAL</div>
+	<div style="clear:both;height:10px;"></div>
+	<?php if($what_chart==1) {?>
+	<div style="margin:0 auto;width:520px;">
+<?php
+if(isset($_GET['key'])) {
+$key=$_GET['key'];
+//var_dump($key);die();
+$sqls="SELECT * FROM patient_tooth_chart_extra_adult WHERE id='".$key."'";
+$ress=mysql_query($sqls);
+//var_dump($ress);die();
+//echo mysql_error();
+$x="chart_remarks";
+}
+else {
+$sqls="SELECT * FROM patient_adult_tooth WHERE patient_id=".$patient_id."";
+$ress=mysql_query($sqls); 
+$x="tooth_remarks";
+}
+
+while($row=mysql_fetch_array($ress))
+{
+	$chart_remarks=$row[''.$x.''];
+	$data_tooth_chart_patient = $row;
+}
+?>
+	<?php $this->load->view('patient/tooth_chart_patient', $data_tooth_chart_patient); ?>
+	</div><?php } else { ?>
+	<div style="margin:0 auto;width:340px;">
+<?php 
+
+$tooth_1=1;
+
+$tooth_2=1;
+
+$tooth_3=1;
+
+$tooth_4=1;
+
+$tooth_5=1;
+
+$tooth_6=1;
+
+$tooth_7=1;
+
+$tooth_8=1;
+
+$tooth_9=1;
+
+$tooth_10=1;
+
+$tooth_11=1;
+
+$tooth_12=1;
+
+$tooth_13=1;
+
+$tooth_14=1;
+
+$tooth_15=1;
+
+$tooth_16=1;
+
+$tooth_17=1;
+
+$tooth_18=1;
+
+$tooth_19=1;
+
+$tooth_20=1;
+
+
+
+if(isset($_GET['key'])) {
+$key=$_GET['key'];	
+
+$sqls="SELECT * FROM patient_tooth_chart_extra_child WHERE id='".$key."'";
+$ress=mysql_query($sqls);
+$x="chart_remarks";
+}
+else {
+$sqls="SELECT * FROM patient_child_tooth WHERE patient_id=".$patient_id."";
+$ress=mysql_query($sqls);
+$x="tooth_remarks";
+}
+
+while($row=mysql_fetch_array($ress))
+{
+	$chart_remarks=$row[''.$x.''];
+	$data_tooth_chart_child_view = $row;
+}
+?>
+	<?php $this->load->view('patient/tooth_chart_child_view', $data_tooth_chart_child_view); ?>
+	</div>
+	<?php } ?>
+	<div style="margin:0 auto;width:55px;font-family:Arial, Helvetica, sans-serif;color:#999;font-size:14px;margin-top:5px;">FACIAL</div>
+	</div>
 </td></tr>
 
 
@@ -229,8 +304,7 @@ $sql="SELECT * FROM patient_tooth_chart_extra_child WHERE patient_id='".$patient
 $res=mysql_query($sql);
 }
 while($row=mysql_fetch_array($res)) {
-//$chart_remarks=$row['chart_remarks'];
-//var_dump($chart_remarks);die();
+$chart_remarks=$row['chart_remarks'];
 $i++;
  $f=$i%2;
 	if($f==0)
@@ -353,7 +427,7 @@ echo $chart_remarks;?></textarea></div>
       <tr>
         <td colspan="2"><img src="img/4.jpg" width="739" height="6" alt="" /></td>
       </tr>
-    </table></td>
+    </table></tr></td>
   </tr>
 </table>
 

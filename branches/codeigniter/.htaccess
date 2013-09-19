@@ -11,20 +11,20 @@
     RewriteRule ^(.*)/index/?$ $1 [L,R=301]
  
     # Removes trailing slashes (prevents SEO duplicate content issues)
-	RewriteCond %{HTTP_HOST} ^(www.)mydentistpal.com [NC]
+	RewriteCond %{HTTP_HOST} ^(www.)medix.ph [NC]
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteRule ^(.+)/$ $1 [L,R=301]
  
     # Enforce www
     # If you have subdomains, you can add them to 
     # the list using the "|" (OR) regex operator
-    RewriteCond %{HTTP_HOST} ^mydentistpal.com [NC]
+    RewriteCond %{HTTP_HOST} ^medix.ph [NC]
     RewriteCond %{HTTP_HOST} !^(www|subdomain) [NC]
-    RewriteRule ^(.*)$ http://www.mydentistpal.com/$1 [L,R=301]
+    RewriteRule ^(.*)$ http://www.medix.ph/$1 [L,R=301]
  
     # Enforce NO www
     #RewriteCond %{HTTP_HOST} ^www [NC]
-    #RewriteRule ^(.*)$ http://mydentistpal.com/$1 [L,R=301]
+    #RewriteRule ^(.*)$ http://medix.ph/$1 [L,R=301]
  
     ###
  

@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Patient_edit extends CI_Controller {
+class Test extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
@@ -16,31 +16,7 @@ class Patient_edit extends CI_Controller {
 	
 	function index()
 	{
-		if($this->session->userdata('id')) {
-			$data['sess_id'] = $this->session->userdata('id');
-		} else {
-			redirect(base_url().'login');
-		}
-
-		$this->db->where('id', $data['sess_id']);
-		$qdentist_list = $this->db->get('dentist_list');
-		$rdentist_list = $qdentist_list->row_array();
-
-		$data = $rdentist_list;
-		
-		$patient_id = $this->input->get('id');
-		$query = $this->db->where('id',$patient_id)->get('patient_list');
-		$data['patient_query'] = $query;
-		
-		$data['title'] = 'My Dentist Pal - Digitize your dental management practice. A full-featured online tool that integrates dental practice management and confidential patient clinical charting, which dentist can access wherever they are.';
-		$data['header'] = $this->load->view('homepage/header', '', true);
-
-		$data['dashboard_title'] = 'Add Patients';
-		$data['dashboard_content'] = $this->load->view('add_patient', $data, true);
-
-		$data['body'] = $this->load->view('dentist_dashboard', $data, true);
-		$this->load->view('homepage', $data);
-		
+	
 	}
 
 	function patient_tooth_chart() {
@@ -116,7 +92,8 @@ class Patient_edit extends CI_Controller {
 
 			}
 
-			$this->load->view('patient/box_tooth_edit', $data);
+			$data['body'] = $this->load->view('patient/box_tooth_edit', $data, true);
+			$this->load->view('homepage', $data);
 
 		} else {
 			$this->index();
@@ -126,8 +103,8 @@ class Patient_edit extends CI_Controller {
 	function patient_tooth_add() {
 		$data['dentist_id']=$this->session->userdata('id');
 
-		$id=$this->input->get('pass');
-		$data['id'] = $id;
+		$id=$this->input->get('id');
+		$data['patient_id'] = $id;
 
 		$this->db->where('id', $id);
 		$sql = $this->db->get('patient_list');
