@@ -70,49 +70,49 @@
 								<label for="inputEmail1" class="col-lg-4 control-label">Patient ID number</label>
 								<div class="col-lg-5">
 									<span style="line-height: 27px;"><?php echo time(); ?></span>
-									<input type="hidden" class="form-control" id="patient_id" name="patient_id" value="<?php echo isset($row) ? $row['id'] : time(); ?>">
+									<input type="hidden" class="form-control" id="patient_id" name="patient_id" value="<?php echo isset($row['id']) ? $row['id'] : time(); ?>">
 									<input type="hidden" class="form-control" id="dentist_id" name="dentist_id" value="<?php echo $this->session->userdata('id'); ?>">
 								</div>
 							</div>
 							<div class="form-group">
 								<label for="inputEmail1" class="col-lg-4 control-label">Entry Date</label>
 								<div class="col-lg-5">
-									<input type="text" class="form-control" name="patient_date" value="<?php echo isset($row) ? $row['date_of_entry'] : date('Y-m-d H:i:s',time()); ?>" readonly>
+									<input type="text" class="form-control" name="patient_date" value="<?php echo isset($row['date_of_entry']) ? $row['date_of_entry'] : date('Y-m-d H:i:s',time()); ?>" readonly>
 								</div>
 							</div>
 							<div class="form-group">
 								<label for="inputPassword1" class="col-lg-4 control-label">Photo</label>
 								<div class="col-lg-5">
 									<input type="file" id="patient_photo" name="patient_photo">
-									<input type="hidden" id="patient_photo_existing_file" name="patient_photo_existing_file" value="<?php if(isset($row) && $row['patient_picture'] != ' '){ echo $row['patient_picture']; } ?>">
-									<input type="hidden" id="patient_photo_file" name="patient_photo_file" value="<?php if(isset($row) && $row['patient_picture'] != ' '){ echo $row['patient_picture']; } ?>">
+									<input type="hidden" id="patient_photo_existing_file" name="patient_photo_existing_file" value="<?php if(isset($row['patient_picture']) && $row['patient_picture'] != ' '){ echo $row['patient_picture']; } ?>">
+									<input type="hidden" id="patient_photo_file" name="patient_photo_file" value="<?php if(isset($row['patient_picture']) && $row['patient_picture'] != ' '){ echo $row['patient_picture']; } ?>">
 									<div class="col-sm-12" style="margin-top: 10px;">
-										<img class="patient_photo_view" <?php if(isset($row) && trim($row['patient_picture']) != null) { echo 'src="'.base_url('patient_picture/'.$row['patient_picture']).'"'; } else{ echo 'src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&text=no+image"'; } ?> style="width:200px;" >
+										<img class="patient_photo_view" <?php if(isset($row['patient_picture']) && trim($row['patient_picture']) != null) { echo 'src="'.base_url('patient_picture/'.$row['patient_picture']).'"'; } else{ echo 'src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&text=no+image"'; } ?> style="width:200px;" >
 									</div>
 								</div>
 							</div>
 							<div class="form-group">
 								<label for="inputEmail1" class="col-lg-4 control-label">First Name</label>
 								<div class="col-lg-5">
-									<input type="text" class="form-control" id="patient_fname" name="patient_fname" value="<?php echo isset($row) ? $row['patient_name'] : null; ?>">
+									<input type="text" class="form-control" id="patient_fname" name="patient_fname" value="<?php echo isset($row['patient_name']) ? $row['patient_name'] : null; ?>">
 								</div>
 							</div>
 							<div class="form-group">
 								<label for="inputEmail1" class="col-lg-4 control-label">Middle Name</label>
 								<div class="col-lg-5">
-									<input type="text" class="form-control" id="patient_mname" name="patient_mname" value="<?php echo isset($row) ? $row['patient_middle_name'] : null; ?>">
+									<input type="text" class="form-control" id="patient_mname" name="patient_mname" value="<?php echo isset($row['patient_middle_name']) ? $row['patient_middle_name'] : null; ?>">
 								</div>
 							</div>
 							<div class="form-group">
 								<label for="inputEmail1" class="col-lg-4 control-label">Last Name</label>
 								<div class="col-lg-5">
-									<input type="text" class="form-control" id="patient_lname" name="patient_lname" value="<?php echo isset($row) ? $row['patient_surname'] : null; ?>">
+									<input type="text" class="form-control" id="patient_lname" name="patient_lname" value="<?php echo isset($row['patient_surname']) ? $row['patient_surname'] : null; ?>">
 								</div>
 							</div>
 							<div class="form-group">
 								<label for="inputEmail1" class="col-lg-4 control-label">Nick Name</label>
 								<div class="col-lg-5">
-									<input type="text" class="form-control" id="patient_nname" name="patient_nname" value="<?php echo isset($row) ? $row['patient_nickname'] : null; ?>">
+									<input type="text" class="form-control" id="patient_nname" name="patient_nname" value="<?php echo isset($row['patient_nickname']) ? $row['patient_nickname'] : null; ?>">
 								</div>
 							</div>
 							<div class="form-group">

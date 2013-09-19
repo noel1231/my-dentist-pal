@@ -26,8 +26,7 @@
 			if(trim($row['patient_surname']) == null)
 			{
 				$nameFormat = $row['patient_name'];
-			}else
-			{
+			} else {
 				$nameFormat = ucwords($row['patient_surname']).', '.ucwords($row['patient_name']).' '.ucwords($row['patient_middle_name']);
 			}
 ?>
