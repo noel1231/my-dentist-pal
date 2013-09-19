@@ -348,5 +348,16 @@ $(function() {
 			
 		}
 	});
-    
+	
+	$(function() {
+		$( "#datepicker" ).datepicker();
+	});
+	$(document).ready(function(){
+		$('input[name="time"]').ptTimeSelect();
+	});
+	
+	// $('#timepicker').timepicker({
+		// showPeriod: true,
+		// showLeadingZero: true
+	// });
 });
