@@ -21,9 +21,12 @@
     <![endif]-->
 
 	<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
-
+	<link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.21/themes/smoothness/jquery-ui.css" />
+	
 	<link href="<?php echo base_url();?>style/style.css" rel="stylesheet">
 	<link href="<?php echo base_url();?>style/style_new.css" rel="stylesheet">
+	<link href="<?php echo base_url();?>style/timepicker.css" rel="stylesheet">
+	
 
 	<link rel='stylesheet' type='text/css' href='<?php echo base_url();?>fullcalendar/fullcalendar.css' />
 	<link rel='stylesheet' type='text/css' href='<?php echo base_url();?>jonthornton-jquery-timepicker/jquery.timepicker.css' />
@@ -67,6 +70,7 @@
 
 	<script src='<?php echo base_url();?>js/appointments.js'></script>
     <script src="<?php echo base_url();?>js/custom.js"></script>
+	<script src="<?php echo base_url();?>js/timepicker.js"></script>
 
   </body>
 </html>
