@@ -68,11 +68,12 @@ class Login extends CI_Controller {
 		$pass = md5($pass);
 		
 		$this->db->where('email',$email);
-		$this->db->where('password',$pass);
+		$this->db->where('keyword',$pass);
 		$query = $this->db->get('patient_list');
+		$row = $query->row_array();
 		if($query->num_rows() > 0)
 		{
-			echo 'success';
+			echo $row['id'];
 		}
 		else
 		{
