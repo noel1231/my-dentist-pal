@@ -1063,75 +1063,38 @@ $adult42 = "&nbsp;";
 
 
 
-<input type="hidden" id="pic1" value="<?php echo (($tooth_18)?$tooth_18:""); ?>" name="newvalue" />
-
-<input type="hidden" id="pic2" value="<?php echo (($tooth_17)?$tooth_17:""); ?>" name="newvalue1" />
-
-<input type="hidden" id="pic3" value="<?php echo (isset($tooth_16)?$tooth_16:""); ?>" name="newvalue2" />
-
-<input type="hidden" id="pic4" value="<?php echo (isset($tooth_15)?$tooth_15:""); ?>" name="newvalue3" />
-
-<input type="hidden" id="pic5" value="<?php echo (isset($tooth_14)?$tooth_14:""); ?>" name="newvalue4" />
-
-<input type="hidden" id="pic6" value="<?php echo (isset($tooth_13)?$tooth_13:""); ?>" name="newvalue5" />
-
-<input type="hidden" id="pic7" value="<?php echo (isset($tooth_12)?$tooth_12:""); ?>" name="newvalue6" />
-
-<input type="hidden" id="pic8" value="<?php echo (isset($tooth_11)?$tooth_11:""); ?>" name="newvalue7" />
-
-
-
-<input type="hidden" id="pic9" value="<?php echo (isset($tooth_21)?$tooth_21:""); ?>" name="newvalue8" />
-
-<input type="hidden" id="pic10" value="<?php echo (isset($tooth_22)?$tooth_22:""); ?>" name="newvalue9" />
-
-<input type="hidden" id="pic11" value="<?php echo (isset($tooth_23)?$tooth_23:""); ?>" name="newvalue10" />
-
-<input type="hidden" id="pic12" value="<?php echo (isset($tooth_24)?$tooth_24:""); ?>" name="newvalue11" />
-
-<input type="hidden" id="pic13" value="<?php echo (isset($tooth_25)?$tooth_25:""); ?>" name="newvalue12" />
-
-<input type="hidden" id="pic14" value="<?php echo (isset($tooth_26)?$tooth_26:""); ?>" name="newvalue13" />
-
-<input type="hidden" id="pic15" value="<?php echo (isset($tooth_27)?$tooth_27:""); ?>" name="newvalue14" />                    
-
-<input type="hidden" id="pic16" value="<?php echo (isset($tooth_28)?$tooth_28:""); ?>" name="newvalue15" />
-
-
-
-<input type="hidden" id="pic17" value="<?php echo (isset($tooth_48)?$tooth_48:""); ?>" name="newvalue16" />
-
-<input type="hidden" id="pic18" value="<?php echo (isset($tooth_47)?$tooth_47:""); ?>" name="newvalue17" />
-
-<input type="hidden" id="pic19" value="<?php echo (isset($tooth_46)?$tooth_46:""); ?>" name="newvalue18" />
-
-<input type="hidden" id="pic20" value="<?php echo (isset($tooth_45)?$tooth_45:""); ?>" name="newvalue19" />
-
-<input type="hidden" id="pic21" value="<?php echo (isset($tooth_44)?$tooth_44:""); ?>" name="newvalue20" />
-
-<input type="hidden" id="pic22" value="<?php echo (isset($tooth_43)?$tooth_43:""); ?>" name="newvalue21" />
-
-<input type="hidden" id="pic23" value="<?php echo (isset($tooth_42)?$tooth_42:""); ?>" name="newvalue22" />
-
-<input type="hidden" id="pic24" value="<?php echo (isset($tooth_41)?$tooth_41:""); ?>" name="newvalue23" />
-
-
-
-<input type="hidden" id="pic25" value="<?php echo (isset($tooth_31)?$tooth_31:""); ?>" name="newvalue24" />
-
-<input type="hidden" id="pic26" value="<?php echo (isset($tooth_32)?$tooth_32:""); ?>" name="newvalue25" />
-
-<input type="hidden" id="pic27" value="<?php echo (isset($tooth_33)?$tooth_33:""); ?>" name="newvalue26" />
-
-<input type="hidden" id="pic28" value="<?php echo (isset($tooth_34)?$tooth_34:""); ?>" name="newvalue27" />
-
-<input type="hidden" id="pic29" value="<?php echo (isset($tooth_35)?$tooth_35:""); ?>" name="newvalue28" />
-
-<input type="hidden" id="pic30" value="<?php echo (isset($tooth_36)?$tooth_36:""); ?>" name="newvalue29" />
-
-<input type="hidden" id="pic31" value="<?php echo (isset($tooth_37)?$tooth_37:""); ?>" name="newvalue30" />
-
-<input type="hidden" id="pic32" value="<?php echo (isset($tooth_38)?$tooth_38:""); ?>" name="newvalue31" />
+<input type="hidden" id="pic1" value="<?php echo (($tooth_18)?$tooth_18:""); ?>" name="newvalue1" />
+<input type="hidden" id="pic2" value="<?php echo (($tooth_17)?$tooth_17:""); ?>" name="newvalue2" />
+<input type="hidden" id="pic3" value="<?php echo (isset($tooth_16)?$tooth_16:""); ?>" name="newvalue3" />
+<input type="hidden" id="pic4" value="<?php echo (isset($tooth_15)?$tooth_15:""); ?>" name="newvalue4" />
+<input type="hidden" id="pic5" value="<?php echo (isset($tooth_14)?$tooth_14:""); ?>" name="newvalue5" />
+<input type="hidden" id="pic6" value="<?php echo (isset($tooth_13)?$tooth_13:""); ?>" name="newvalue6" />
+<input type="hidden" id="pic7" value="<?php echo (isset($tooth_12)?$tooth_12:""); ?>" name="newvalue7" />
+<input type="hidden" id="pic8" value="<?php echo (isset($tooth_11)?$tooth_11:""); ?>" name="newvalue8" />
+<input type="hidden" id="pic9" value="<?php echo (isset($tooth_21)?$tooth_21:""); ?>" name="newvalue9" />
+<input type="hidden" id="pic10" value="<?php echo (isset($tooth_22)?$tooth_22:""); ?>" name="newvalue10" />
+<input type="hidden" id="pic11" value="<?php echo (isset($tooth_23)?$tooth_23:""); ?>" name="newvalue11" />
+<input type="hidden" id="pic12" value="<?php echo (isset($tooth_24)?$tooth_24:""); ?>" name="newvalue12" />
+<input type="hidden" id="pic13" value="<?php echo (isset($tooth_25)?$tooth_25:""); ?>" name="newvalue13" />
+<input type="hidden" id="pic14" value="<?php echo (isset($tooth_26)?$tooth_26:""); ?>" name="newvalue14" />
+<input type="hidden" id="pic15" value="<?php echo (isset($tooth_27)?$tooth_27:""); ?>" name="newvalue15" />                    
+<input type="hidden" id="pic16" value="<?php echo (isset($tooth_28)?$tooth_28:""); ?>" name="newvalue16" />
+<input type="hidden" id="pic17" value="<?php echo (isset($tooth_48)?$tooth_48:""); ?>" name="newvalue17" />
+<input type="hidden" id="pic18" value="<?php echo (isset($tooth_47)?$tooth_47:""); ?>" name="newvalue18" />
+<input type="hidden" id="pic19" value="<?php echo (isset($tooth_46)?$tooth_46:""); ?>" name="newvalue19" />
+<input type="hidden" id="pic20" value="<?php echo (isset($tooth_45)?$tooth_45:""); ?>" name="newvalue20" />
+<input type="hidden" id="pic21" value="<?php echo (isset($tooth_44)?$tooth_44:""); ?>" name="newvalue21" />
+<input type="hidden" id="pic22" value="<?php echo (isset($tooth_43)?$tooth_43:""); ?>" name="newvalue22" />
+<input type="hidden" id="pic23" value="<?php echo (isset($tooth_42)?$tooth_42:""); ?>" name="newvalue23" />
+<input type="hidden" id="pic24" value="<?php echo (isset($tooth_41)?$tooth_41:""); ?>" name="newvalue24" />
+<input type="hidden" id="pic25" value="<?php echo (isset($tooth_31)?$tooth_31:""); ?>" name="newvalue25" />
+<input type="hidden" id="pic26" value="<?php echo (isset($tooth_32)?$tooth_32:""); ?>" name="newvalue26" />
+<input type="hidden" id="pic27" value="<?php echo (isset($tooth_33)?$tooth_33:""); ?>" name="newvalue27" />
+<input type="hidden" id="pic28" value="<?php echo (isset($tooth_34)?$tooth_34:""); ?>" name="newvalue28" />
+<input type="hidden" id="pic29" value="<?php echo (isset($tooth_35)?$tooth_35:""); ?>" name="newvalue29" />
+<input type="hidden" id="pic30" value="<?php echo (isset($tooth_36)?$tooth_36:""); ?>" name="newvalue30" />
+<input type="hidden" id="pic31" value="<?php echo (isset($tooth_37)?$tooth_37:""); ?>" name="newvalue31" />
+<input type="hidden" id="pic32" value="<?php echo (isset($tooth_38)?$tooth_38:""); ?>" name="newvalue32" />
 
 <?php
 	$x=1;$y=1;$leg=1;

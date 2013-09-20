@@ -34,63 +34,63 @@ class Test extends CI_Controller {
 				$age=$row['patient_age'];
 
 
-			if($data['what_chart']==1) {
-				$this->db->where('patient_id', $id);
-				$sql = $this->db->get('patient_adult_tooth');
-				$row = $sql->row_array();
+			// if($data['what_chart']==1) {
+				// $this->db->where('patient_id', $id);
+				// $sql = $this->db->get('patient_adult_tooth');
+				// $row = $sql->row_array();
 
-					$chart_name=$row["tooth_chart_name"];
-					$chart_date=$row["tooth_chart_date"];
-					$data['chart_remarks']=$row["tooth_remarks"];
+					// $chart_name=$row["tooth_chart_name"];
+					// $chart_date=$row["tooth_chart_date"];
+					// $data['chart_remarks']=$row["tooth_remarks"];
 
-			} else {
-				$this->db->where('patient_id', $id);
-				$sql = $this->db->get('patient_child_tooth');
-				$row = $sql->row_array();
+			// } else {
+				// $this->db->where('patient_id', $id);
+				// $sql = $this->db->get('patient_child_tooth');
+				// $row = $sql->row_array();
 
-					$chart_name=$row["tooth_chart_name"];
-					$chart_date=$row["tooth_chart_date"];
-					$chart_remarks=$row["tooth_remarks"];
-			}
+					// $chart_name=$row["tooth_chart_name"];
+					// $chart_date=$row["tooth_chart_date"];
+					// $chart_remarks=$row["tooth_remarks"];
+			// }
 
-			if(empty($chart_name))
-			{ $chart_name="";}
-			if(empty($chart_date))
-			{ $chart_date="";}
-			if(empty($chart_remarks))
-			{ $chart_remarks="";}
+			// if(empty($chart_name))
+			// { $chart_name="";}
+			// if(empty($chart_date))
+			// { $chart_date="";}
+			// if(empty($chart_remarks))
+			// { $chart_remarks="";}
 
-			if($this->input->post('save_rem'))
-			{
-				$rem=$this->input->post('remarks');
-				$id=$this->input->post('id_for_remarks');
-				$what_chart=$this->input->post('what_chart');
+			// if($this->input->post('save_rem'))
+			// {
+				// $rem=$this->input->post('remarks');
+				// $id=$this->input->post('id_for_remarks');
+				// $what_chart=$this->input->post('what_chart');
 
-				if($what_chart==1) {
-					$sql="UPDATE patient_adult_tooth SET tooth_remarks='".$rem."' WHERE patient_id=".$id."";
-					$res=mysql_query($sql);
-					$sql="SELECT * FROM patient_adult_tooth WHERE patient_id=".$id."";
-					$res=mysql_query($sql);
-					while($row=mysql_fetch_array($res))
-					{
-						$chart_name=$row["tooth_chart_name"];
-						$chart_date=$row["tooth_chart_date"];
-						$chart_remarks=$row["tooth_remarks"];
-					}
-				} else {
-					$sql="UPDATE patient_child_tooth SET tooth_remarks='".$rem."' WHERE patient_id=".$id."";
-					$res=mysql_query($sql);
-					$sql="SELECT * FROM patient_child_tooth WHERE patient_id=".$id."";
-					$res=mysql_query($sql);
-					while($row=mysql_fetch_array($res))
-					{
-						$chart_name=$row["tooth_chart_name"];
-						$chart_date=$row["tooth_chart_date"];
-						$chart_remarks=$row["tooth_remarks"];
-					}
-				}
+				// if($what_chart==1) {
+					// $sql="UPDATE patient_adult_tooth SET tooth_remarks='".$rem."' WHERE patient_id=".$id."";
+					// $res=mysql_query($sql);
+					// $sql="SELECT * FROM patient_adult_tooth WHERE patient_id=".$id."";
+					// $res=mysql_query($sql);
+					// while($row=mysql_fetch_array($res))
+					// {
+						// $chart_name=$row["tooth_chart_name"];
+						// $chart_date=$row["tooth_chart_date"];
+						// $chart_remarks=$row["tooth_remarks"];
+					// }
+				// } else {
+					// $sql="UPDATE patient_child_tooth SET tooth_remarks='".$rem."' WHERE patient_id=".$id."";
+					// $res=mysql_query($sql);
+					// $sql="SELECT * FROM patient_child_tooth WHERE patient_id=".$id."";
+					// $res=mysql_query($sql);
+					// while($row=mysql_fetch_array($res))
+					// {
+						// $chart_name=$row["tooth_chart_name"];
+						// $chart_date=$row["tooth_chart_date"];
+						// $chart_remarks=$row["tooth_remarks"];
+					// }
+				// }
 
-			}
+			// }
 
 			$data['body'] = $this->load->view('patient/box_tooth_edit', $data, true);
 			$this->load->view('homepage', $data);
@@ -114,153 +114,70 @@ class Test extends CI_Controller {
 
 		if(isset($_POST['adult']))
 		{
-		$id=mysql_real_escape_string($_POST['pt_id']);
-		$val=1;
-		$sql="UPDATE patient_list SET what_chart='".$val."' WHERE id=".$id."";
-		$res=mysql_query($sql);
+			$id=mysql_real_escape_string($_POST['pt_id']);
+			$val=1;
+			$sql="UPDATE patient_list SET what_chart='".$val."' WHERE id=".$id."";
+			$res=mysql_query($sql);
 
-		$sql2="SELECT patient_name FROM patient_list WHERE id=".$id."";
-		$res2=mysql_query($sql2);
-		while($row=mysql_fetch_array($res2))
-		{$name=$row["patient_name"];}
+			$sql2="SELECT patient_name FROM patient_list WHERE id=".$id."";
+			$res2=mysql_query($sql2);
+			while($row=mysql_fetch_array($res2))
+			{$name=$row["patient_name"];}
 		}
 
 		if(isset($_POST['child']))
 		{
-		$id=mysql_real_escape_string($_POST['pt_id']);
-		//var_dump($id);
-		$val=2;
-		$sql="UPDATE patient_list SET what_chart='".$val."' WHERE id=".$id."";
-		$res=mysql_query($sql);
+			$id=mysql_real_escape_string($_POST['pt_id']);
+			$val=2;
+			$sql="UPDATE patient_list SET what_chart='".$val."' WHERE id=".$id."";
+			$res=mysql_query($sql);
 
-		$sql2="SELECT patient_name FROM patient_list WHERE id=".$id."";
-		$res2=mysql_query($sql2);
-		while($row=mysql_fetch_array($res2))
-		{$name=$row["patient_name"];}
+			$sql2="SELECT patient_name FROM patient_list WHERE id=".$id."";
+			$res2=mysql_query($sql2);
+			while($row=mysql_fetch_array($res2))
+			{$name=$row["patient_name"];}
 		}
 
 if(isset($_POST['save']))
 {
-//var_dump($_POST);die();	
-//$legend=mysql_real_escape_string($_POST['legend']);	
 	$id=mysql_real_escape_string($_POST['pt_id']);
 
-$tooth1=mysql_real_escape_string($_POST['newvalue']);
-$tooth2=mysql_real_escape_string($_POST['newvalue1']);
-$tooth3=mysql_real_escape_string($_POST['newvalue2']);
-$tooth4=mysql_real_escape_string($_POST['newvalue3']);
-$tooth5=mysql_real_escape_string($_POST['newvalue4']);
-$tooth6=mysql_real_escape_string($_POST['newvalue5']);
-$tooth7=mysql_real_escape_string($_POST['newvalue6']);
-$tooth8=mysql_real_escape_string($_POST['newvalue7']);
+	for($adultnum = 1; $adultnum <= 32; $adultnum++)
+	{
+		${'tooth'.$adultnum} = $this->input->post('newvalue'.$adultnum);
+		${'legend'.$adultnum} = $this->input->post('leg_'.$adultnum);
+	}
 
-$tooth9=mysql_real_escape_string($_POST['newvalue8']);
-$tooth10=mysql_real_escape_string($_POST['newvalue9']);
-$tooth11=mysql_real_escape_string($_POST['newvalue10']);
-$tooth12=mysql_real_escape_string($_POST['newvalue11']);
-$tooth13=mysql_real_escape_string($_POST['newvalue12']);
-$tooth14=mysql_real_escape_string($_POST['newvalue13']);
-$tooth15=mysql_real_escape_string($_POST['newvalue14']);
-$tooth16=mysql_real_escape_string($_POST['newvalue15']);
+	for($childnum = 1; $childnum <= 20; $childnum++)
+	{
+		${'child'.$childnum} = $this->input->post('childvalue'.$childnum);
+	}
 
-$tooth17=mysql_real_escape_string($_POST['newvalue16']);
-$tooth18=mysql_real_escape_string($_POST['newvalue17']);
-$tooth19=mysql_real_escape_string($_POST['newvalue18']);
-$tooth20=mysql_real_escape_string($_POST['newvalue19']);
-$tooth21=mysql_real_escape_string($_POST['newvalue20']);
-$tooth22=mysql_real_escape_string($_POST['newvalue21']);
-$tooth23=mysql_real_escape_string($_POST['newvalue22']);
-$tooth24=mysql_real_escape_string($_POST['newvalue23']);
+	for($child_leg_num = 1; $child_leg_num <= 20; $child_leg_num++)
+	{
+		${'child_leg'.$child_leg_num} = $this->input->post('legs_'.($child_leg_num+10));
+	}
 
-$tooth25=mysql_real_escape_string($_POST['newvalue24']);
-$tooth26=mysql_real_escape_string($_POST['newvalue25']);
-$tooth27=mysql_real_escape_string($_POST['newvalue26']);
-$tooth28=mysql_real_escape_string($_POST['newvalue27']);
-$tooth29=mysql_real_escape_string($_POST['newvalue28']);
-$tooth30=mysql_real_escape_string($_POST['newvalue29']);
-$tooth31=mysql_real_escape_string($_POST['newvalue30']);
-$tooth32=mysql_real_escape_string($_POST['newvalue31']);
-
-
-$child1=mysql_real_escape_string($_POST['childvalue']);
-$child2=mysql_real_escape_string($_POST['childvalue1']);
-$child3=mysql_real_escape_string($_POST['childvalue2']);
-$child4=mysql_real_escape_string($_POST['childvalue3']);
-$child5=mysql_real_escape_string($_POST['childvalue4']);
-
-$child6=mysql_real_escape_string($_POST['childvalue8']);
-$child7=mysql_real_escape_string($_POST['childvalue9']);
-$child8=mysql_real_escape_string($_POST['childvalue10']);
-$child9=mysql_real_escape_string($_POST['childvalue11']);
-$child10=mysql_real_escape_string($_POST['childvalue12']);
-
-$child11=mysql_real_escape_string($_POST['childvalue16']);
-$child12=mysql_real_escape_string($_POST['childvalue17']);
-$child13=mysql_real_escape_string($_POST['childvalue18']);
-$child14=mysql_real_escape_string($_POST['childvalue19']);
-$child15=mysql_real_escape_string($_POST['childvalue20']);
-
-$child16=mysql_real_escape_string($_POST['childvalue24']);
-$child17=mysql_real_escape_string($_POST['childvalue25']);
-$child18=mysql_real_escape_string($_POST['childvalue26']);
-$child19=mysql_real_escape_string($_POST['childvalue27']);
-$child20=mysql_real_escape_string($_POST['childvalue28']);
-
-
-$legend1=mysql_real_escape_string($_POST['leg_1']);
-$legend2=mysql_real_escape_string($_POST['leg_2']);
-$legend3=mysql_real_escape_string($_POST['leg_3']);
-$legend4=mysql_real_escape_string($_POST['leg_4']);
-$legend5=mysql_real_escape_string($_POST['leg_5']);
-$legend6=mysql_real_escape_string($_POST['leg_6']);
-$legend7=mysql_real_escape_string($_POST['leg_7']);
-$legend8=mysql_real_escape_string($_POST['leg_8']);
-$legend9=mysql_real_escape_string($_POST['leg_9']);
-$legend10=mysql_real_escape_string($_POST['leg_10']);
-$legend11=mysql_real_escape_string($_POST['leg_11']);
-$legend12=mysql_real_escape_string($_POST['leg_12']);
-$legend13=mysql_real_escape_string($_POST['leg_13']);
-$legend14=mysql_real_escape_string($_POST['leg_14']);
-$legend15=mysql_real_escape_string($_POST['leg_15']);
-$legend16=mysql_real_escape_string($_POST['leg_16']);
-$legend17=mysql_real_escape_string($_POST['leg_17']);
-$legend18=mysql_real_escape_string($_POST['leg_18']);
-$legend19=mysql_real_escape_string($_POST['leg_19']);
-$legend20=mysql_real_escape_string($_POST['leg_20']);
-$legend21=mysql_real_escape_string($_POST['leg_21']);
-$legend22=mysql_real_escape_string($_POST['leg_22']);
-$legend23=mysql_real_escape_string($_POST['leg_23']);
-$legend24=mysql_real_escape_string($_POST['leg_24']);
-$legend25=mysql_real_escape_string($_POST['leg_25']);
-$legend26=mysql_real_escape_string($_POST['leg_26']);
-$legend27=mysql_real_escape_string($_POST['leg_27']);
-$legend28=mysql_real_escape_string($_POST['leg_28']);
-$legend29=mysql_real_escape_string($_POST['leg_29']);
-$legend30=mysql_real_escape_string($_POST['leg_30']);
-$legend31=mysql_real_escape_string($_POST['leg_31']);
-$legend32=mysql_real_escape_string($_POST['leg_32']);
-
-
-$child_leg1=mysql_real_escape_string($_POST['legs_11']);
-$child_leg2=mysql_real_escape_string($_POST['legs_12']);
-$child_leg3=mysql_real_escape_string($_POST['legs_13']);
-$child_leg4=mysql_real_escape_string($_POST['legs_14']);
-$child_leg5=mysql_real_escape_string($_POST['legs_15']);
-$child_leg6=mysql_real_escape_string($_POST['legs_16']);
-$child_leg7=mysql_real_escape_string($_POST['legs_17']);
-$child_leg8=mysql_real_escape_string($_POST['legs_18']);
-$child_leg9=mysql_real_escape_string($_POST['legs_19']);
-$child_leg10=mysql_real_escape_string($_POST['legs_20']);
-$child_leg11=mysql_real_escape_string($_POST['legs_21']);
-$child_leg12=mysql_real_escape_string($_POST['legs_22']);
-$child_leg13=mysql_real_escape_string($_POST['legs_23']);
-$child_leg14=mysql_real_escape_string($_POST['legs_24']);
-$child_leg15=mysql_real_escape_string($_POST['legs_25']);
-$child_leg16=mysql_real_escape_string($_POST['legs_26']);
-$child_leg17=mysql_real_escape_string($_POST['legs_27']);
-$child_leg18=mysql_real_escape_string($_POST['legs_28']);
-$child_leg19=mysql_real_escape_string($_POST['legs_29']);
-$child_leg20=mysql_real_escape_string($_POST['legs_30']);
+// $child_leg1=mysql_real_escape_string($_POST['legs_11']);
+// $child_leg2=mysql_real_escape_string($_POST['legs_12']);
+// $child_leg3=mysql_real_escape_string($_POST['legs_13']);
+// $child_leg4=mysql_real_escape_string($_POST['legs_14']);
+// $child_leg5=mysql_real_escape_string($_POST['legs_15']);
+// $child_leg6=mysql_real_escape_string($_POST['legs_16']);
+// $child_leg7=mysql_real_escape_string($_POST['legs_17']);
+// $child_leg8=mysql_real_escape_string($_POST['legs_18']);
+// $child_leg9=mysql_real_escape_string($_POST['legs_19']);
+// $child_leg10=mysql_real_escape_string($_POST['legs_20']);
+// $child_leg11=mysql_real_escape_string($_POST['legs_21']);
+// $child_leg12=mysql_real_escape_string($_POST['legs_22']);
+// $child_leg13=mysql_real_escape_string($_POST['legs_23']);
+// $child_leg14=mysql_real_escape_string($_POST['legs_24']);
+// $child_leg15=mysql_real_escape_string($_POST['legs_25']);
+// $child_leg16=mysql_real_escape_string($_POST['legs_26']);
+// $child_leg17=mysql_real_escape_string($_POST['legs_27']);
+// $child_leg18=mysql_real_escape_string($_POST['legs_28']);
+// $child_leg19=mysql_real_escape_string($_POST['legs_29']);
+// $child_leg20=mysql_real_escape_string($_POST['legs_30']);
 
 
 $remark=mysql_real_escape_string($_POST['remarks']);

@@ -20,67 +20,9 @@ return false;
         </script>
 
 
-<map name="Map" id="Map">
-  <!--<area shape="rect" coords="8,1,131,42" href="messaging.php" />
-  <area shape="rect" coords="138,2,263,41" href="received_message.php" />-->
-  <area shape="rect" coords="638,2,689,33" href="patient_dental_edit.php" />
-</map>
 <table>
   <tr>
     <td><table width="739" border="0" align="center" cellpadding="0" cellspacing="0">
-      <tr>
-        <td height="39" colspan="2" valign="top"><div>
-          <div style="width:140px; margin-left:20px; margin-bottom:-2px; float:left;">
-            <table width="100%" border="0" cellspacing="0" cellpadding="0">
-              <tr>
-                <td width="6"><img src="img/t1.jpg" width="6" height="41" alt="" /></td>
-                <td width="661" align="center" style="background: url(img/t3.jpg);"><a href="patient_list.php"><img src="img/t_patient_list.png"  width="98" height="18" alt="" /></a></td>
-                <td width="6"><img src="img/t2.jpg" width="6" height="41" alt="" /></td>
-              </tr>
-            </table>
-          </div>
-          <div style="width:120px; margin-left:10px; margin-bottom:-2px; float:left;">
-            <table width="100%" border="0" cellspacing="0" cellpadding="0">
-              <tr>
-                <td width="6"><img src="img/t1.jpg" width="6" height="41" alt="" /></td>
-                <td width="661" align="center" style="background: url(img/t3.jpg);"><a href="add_patient.php"><img src="img/t_add.png" width="82" height="18" alt="" /></a></td>
-                <td width="6"><img src="img/t2.jpg" width="6" height="41" alt="" /></td>
-              </tr>
-            </table>
-          </div>
-          <!--<div style="width:110px; margin-left:10px; margin-bottom:-2px; float:left">
-            <table width="100%" border="0" cellspacing="0" cellpadding="0">
-              <tr>
-                <td width="6"><img src="img/t1.jpg" width="6" height="41" alt="" /></td>
-                <td width="661" align="center" style="background: url(img/t3.jpg);"><img src="img/t-sent.png" width="72" height="17" alt="" /></td>
-                <td width="6"><img src="img/t2.jpg" width="6" height="41" alt="" /></td>
-              </tr>
-            </table>
-          </div>-->
-          <div style="width:130px; margin-left:10px; margin-bottom:-2px; float:left; z-index:999999999">
-            <table width="100%" border="0" cellspacing="0" cellpadding="0">
-              <tr>
-                <td width="6"><img src="img/u1.jpg" width="6" height="41" alt="" /></td>
-                <td width="661" align="center" style="background: url(img/u3.jpg);font-family:Arial, Helvetica, sans-serif; font-size:13px; color:#3e4447;"><!--Joselito Galvez--><?php
-				
-				$length=14;
-$name1=$name;
-//$name=strlen($name);
-//echo $name;
-$display = substr($name1, 0, $length) ;
-echo "<span style=\"margin-left:4px;color:#333;font-family:Arial, Helvetica, sans-serif;font-size:13px;\">$display</span>";
-echo "..." ;
-				
-				//echo $name;?></td>
-                <td width="6"><img src="img/u2.jpg" width="6" height="41" alt="" /></td>
-              </tr>
-            </table>
-          </div>
-        </div></td>
-      </tr>
-      <tr>
-        <td colspan="2"><img src="img/1.jpg" width="739" height="12" alt="" /></td>
-      </tr>
       <tr>
         <td height="47" style="background:url(img/2.jpg);">
         <table width="100%"><tr><td>
@@ -133,18 +75,18 @@ echo "..." ;
 <?php
 	} else if($what_chart==2) {
 ?>
-<select name="child" onchange="Refresh(this.options[this.selectedIndex].value,'<?php echo $patient_id;?>');">
-<option value="none">--Select one--</option>
-<?php
-$sql="SELECT * FROM patient_tooth_chart_extra_child WHERE patient_id='".$patient_id."'";
-$res=mysql_query($sql);
-while($row=mysql_fetch_array($res)) {
-$idx=$row['id'];
-$name=$row['chart_name'];
-echo "<option value=\"$idx\">$name</option>";	
-}
+		<select name="child" onchange="Refresh(this.options[this.selectedIndex].value,'<?php echo $patient_id;?>');">
+		<option value="none">--Select one--</option>
+		<?php
+		$sql="SELECT * FROM patient_tooth_chart_extra_child WHERE patient_id='".$patient_id."'";
+		$res=mysql_query($sql);
+		while($row=mysql_fetch_array($res)) {
+		$idx=$row['id'];
+		$name=$row['chart_name'];
+		echo "<option value=\"$idx\">$name</option>";	
+		}
 ?>
-</select>
+	</select>
 <?php } ?>
 
 </div>
@@ -189,68 +131,28 @@ while($row=mysql_fetch_array($ress))
 	$data_tooth_chart_patient = $row;
 }
 ?>
-	<?php $this->load->view('patient/tooth_chart_patient', $data_tooth_chart_patient); ?>
+	<?php $this->load->view('charting/tooth_chart_patient', $data_tooth_chart_patient); ?>
 	</div><?php } else { ?>
 	<div style="margin:0 auto;width:340px;">
 <?php 
 
-$tooth_1=1;
-
-$tooth_2=1;
-
-$tooth_3=1;
-
-$tooth_4=1;
-
-$tooth_5=1;
-
-$tooth_6=1;
-
-$tooth_7=1;
-
-$tooth_8=1;
-
-$tooth_9=1;
-
-$tooth_10=1;
-
-$tooth_11=1;
-
-$tooth_12=1;
-
-$tooth_13=1;
-
-$tooth_14=1;
-
-$tooth_15=1;
-
-$tooth_16=1;
-
-$tooth_17=1;
-
-$tooth_18=1;
-
-$tooth_19=1;
-
-$tooth_20=1;
-
-
+for($num = 1; $num <= 20; $num ++) {
+	${'tooth_'.$num} = 1;
+}
 
 if(isset($_GET['key'])) {
-$key=$_GET['key'];	
+	$key=$_GET['key'];	
 
-$sqls="SELECT * FROM patient_tooth_chart_extra_child WHERE id='".$key."'";
-$ress=mysql_query($sqls);
-$x="chart_remarks";
-}
-else {
-$sqls="SELECT * FROM patient_child_tooth WHERE patient_id=".$patient_id."";
-$ress=mysql_query($sqls);
-$x="tooth_remarks";
+	$sqls="SELECT * FROM patient_tooth_chart_extra_child WHERE id='".$key."'";
+	$ress=mysql_query($sqls);
+	$x="chart_remarks";
+} else {
+	$sqls="SELECT * FROM patient_child_tooth WHERE patient_id=".$patient_id."";
+	$ress=mysql_query($sqls);
+	$x="tooth_remarks";
 }
 
-while($row=mysql_fetch_array($ress))
-{
+while($row=mysql_fetch_array($ress)) {
 	$chart_remarks=$row[''.$x.''];
 	$data_tooth_chart_child_view = $row;
 }
