@@ -94,6 +94,34 @@ $(function() {
         }
    });
 	
+	$('#patient_access_form').ajaxForm({
+		type: 'POST',
+		url: 'patient_access/patient_access_account',
+		beforeSubmit: function(arr, jform, option){
+			var form = jform[0];
+			$('button[name=submit_access]').prop('disabled',true);
+			if(!form.emailAccess.value.trim())
+			{
+				form.emailAccess.focus();return false;
+			}else if(!form.emailPass.value.trim())
+			{
+				form.emailPass.focus();return false;
+			}
+		},
+		success:  function(html){
+			if(html == 'save')
+			{
+				$('#myModalAccess').find('p').html('Saved Successfully!');
+				$('#myModalAccess').modal('show');
+			}else
+			{
+				$('#myModalAccess').find('p').html('Emailed Successfully!');
+				$('#myModalAccess').modal('show');
+			}
+			$('button[name=submit_access]').prop('disabled',false);
+		}
+	});
+	
 	$('.delete_patient').click(function(){
 		var dis = $(this);
 		var id = dis.attr('id');
@@ -110,6 +138,7 @@ $(function() {
 			data: {'patient_id':id},
 			url: 'patient_edit/delete_patient',
 			success: function(html){
+				
 				$('#myModalDeletePatient').modal('hide');
 				$('span[id='+id+']').parents('tr').fadeOut(500);
 				
@@ -214,6 +243,10 @@ $(function() {
 			{
 				$('.invalid_login').show();
 				return false;
+			}else
+			{
+				window.location = '../patient_edit?id='+html+'&access=granted';
+				
 			}
 			
 		}
