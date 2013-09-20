@@ -218,64 +218,28 @@ echo "..." ;
 
            <tr><td style="background-color:#FFF;">
 
-           <?php 
+           <?php
+				$this->db->where('id', $patient_id);
+				$sql = $this->db->get('patient_list'); 
 
-		   $sql="SELECT * FROM patient_list WHERE id=".$patient_id." AND dentist_id='".$dentist_id."'";
+				$row = $sql->row_array();
 
-		   $res=mysql_query($sql);
+				$val = $row["what_chart"];
 
-		   while($row=mysql_fetch_array($res))
+		if($val==1) {
+			$this->db->where('patient_id', $patient_id);
+			$sql = $this->db->get('patient_adult_tooth');
 
-		   {
-
-			$val=$row["what_chart"]; 
-
+			$row = $sql->row_array();
+				$chart_name=$row['tooth_chart_name'];
+				$data = $row;
+		} else if($val==2) {
+			$this->db->where('patient_id', $patient_id);
+			$sql = $this->db->get('patient_child_tooth');
 			
-
-		   }
-
-		
-
-		     //var_dump($val);die();
-
-		 
-
-		if($val==1) { 
-
-		 $sql="SELECT * FROM patient_adult_tooth WHERE patient_id='".$patient_id."' AND dentist_id='".$dentist_id."'";
-
-		 $res=mysql_query($sql);
-
-		 while($row=mysql_fetch_array($res))
-
-		 {
-
-			$chart_name=$row['tooth_chart_name']; 
-
-		 }
-
+			$row = $sql->row_array();
+				$chart_name=$row['tooth_chart_name']; 
 		}
-
-		else if($val==2) { 
-
-		 $sql="SELECT * FROM patient_child_tooth WHERE patient_id='".$patient_id."' AND dentist_id='".$dentist_id."'";
-
-		 $res=mysql_query($sql);
-
-		 while($row=mysql_fetch_array($res))
-
-		 {
-
-			$chart_name=$row['tooth_chart_name']; 
-
-		 }
-
-		}
-
-		 
-
-		    //var_dump($id);die();
-
 		   ?>
 
            <table id="table1" cellpadding="0" cellspacing="0" border="0" style="font-family:Arial, Helvetica, sans-serif;font-size:14px;">
@@ -349,18 +313,14 @@ echo "..." ;
 <div style="margin:0 auto;width:520px;">
 <?php 
 if(isset($_GET['key'])) {
-$key=$_GET['key'];
-//var_dump($key);die();
-$sqls="SELECT * FROM patient_tooth_chart_extra_adult WHERE id='".$key."'";
-$ress=mysql_query($sqls);
-//var_dump($ress);die();
-//echo mysql_error();
-$x="chart_remarks";
-}
-else {
-$sqls="SELECT * FROM patient_adult_tooth WHERE patient_id=".$patient_id."";
-$ress=mysql_query($sqls); 
-$x="tooth_remarks";
+	$key=$_GET['key'];
+	$sqls="SELECT * FROM patient_tooth_chart_extra_adult WHERE id='".$key."'";
+	$ress=mysql_query($sqls);
+	$x="chart_remarks";
+} else {
+	$sqls="SELECT * FROM patient_adult_tooth WHERE patient_id=".$patient_id."";
+	$ress=mysql_query($sqls); 
+	$x="tooth_remarks";
 }
 
 while($row=mysql_fetch_array($ress))
@@ -395,7 +355,7 @@ while($row=mysql_fetch_array($ress))
 
 </div>
 
-<?php } else { ?>
+<?php } else if($val==1) { ?>
 
 <div style="margin:0 auto;width:340px;">
 
@@ -524,130 +484,6 @@ Remarks</td></tr>
         
 
       </tr>
-
-      <!--<input type="hidden" id="childs1" value="none" name="childvalue" />
-
-<input type="hidden" id="childa2" value="none" name="childvalue1" />
-
-<input type="hidden" id="childs3" value="none" name="childvalue2" />
-
-<input type="hidden" id="childs4" value="none" name="childvalue3" />
-
-<input type="hidden" id="childs5" value="none" name="childvalue4" />
-
-
-
-<input type="hidden" id="childs9" value="none" name="childvalue8" />
-
-<input type="hidden" id="childs10" value="none" name="childvalue9" />
-
-<input type="hidden" id="childs11" value="none" name="childvalue10" />
-
-<input type="hidden" id="childs12" value="none" name="childvalue11" />
-
-<input type="hidden" id="childs13" value="none" name="childvalue12" />
-
-
-
-
-
-<input type="hidden" id="childs17" value="none" name="childvalue16" />
-
-<input type="hidden" id="childs18" value="none" name="childvalue17" />
-
-<input type="hidden" id="childs19" value="none" name="childvalue18" />
-
-<input type="hidden" id="childs20" value="none" name="childvalue19" />
-
-<input type="hidden" id="childs21" value="none" name="childvalue20" />
-
-
-
-
-
-<input type="hidden" id="childs25" value="none" name="childvalue24" />
-
-<input type="hidden" id="childs26" value="none" name="childvalue25" />
-
-<input type="hidden" id="childs27" value="none" name="childvalue26" />
-
-<input type="hidden" id="childs28" value="none" name="childvalue27" />
-
-<input type="hidden" id="childs29" value="none" name="childvalue28" />
-
-
-
-<input type="hidden" id="pic1" value="none" name="newvalue" />
-
-<input type="hidden" id="pic2" value="none" name="newvalue1" />
-
-<input type="hidden" id="pic3" value="none" name="newvalue2" />
-
-<input type="hidden" id="pic4" value="none" name="newvalue3" />
-
-<input type="hidden" id="pic5" value="none" name="newvalue4" />
-
-<input type="hidden" id="pic6" value="none" name="newvalue5" />
-
-<input type="hidden" id="pic7" value="none" name="newvalue6" />
-
-<input type="hidden" id="pic8" value="none" name="newvalue7" />
-
-
-
-<input type="hidden" id="pic9" value="none" name="newvalue8" />
-
-<input type="hidden" id="pic10" value="none" name="newvalue9" />
-
-<input type="hidden" id="pic11" value="none" name="newvalue10" />
-
-<input type="hidden" id="pic12" value="none" name="newvalue11" />
-
-<input type="hidden" id="pic13" value="none" name="newvalue12" />
-
-<input type="hidden" id="pic14" value="none" name="newvalue13" />
-
-<input type="hidden" id="pic15" value="none" name="newvalue14" />                    
-
-<input type="hidden" id="pic16" value="none" name="newvalue15" />
-
-
-
-<input type="hidden" id="pic17" value="none" name="newvalue16" />
-
-<input type="hidden" id="pic18" value="none" name="newvalue17" />
-
-<input type="hidden" id="pic19" value="none" name="newvalue18" />
-
-<input type="hidden" id="pic20" value="none" name="newvalue19" />
-
-<input type="hidden" id="pic21" value="none" name="newvalue20" />
-
-<input type="hidden" id="pic22" value="none" name="newvalue21" />
-
-<input type="hidden" id="pic23" value="none" name="newvalue22" />
-
-<input type="hidden" id="pic24" value="none" name="newvalue23" />
-
-
-
-<input type="hidden" id="pic25" value="none" name="newvalue24" />
-
-<input type="hidden" id="pic26" value="none" name="newvalue25" />
-
-<input type="hidden" id="pic27" value="none" name="newvalue26" />
-
-<input type="hidden" id="pic28" value="none" name="newvalue27" />
-
-<input type="hidden" id="pic29" value="none" name="newvalue28" />
-
-<input type="hidden" id="pic30" value="none" name="newvalue29" />
-
-<input type="hidden" id="pic31" value="none" name="newvalue30" />
-
-<input type="hidden" id="pic32" value="none" name="newvalue31" />-->
-
-
 
       <tr>
 

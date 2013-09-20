@@ -161,17 +161,33 @@ $(function(){
 		}).submit();
 	});
 
-	$('.timepicker').timepicker({
-		'minTime': '8:00am',
-		'maxTime': '10:30pm'
-	});
+	var opt = {	}
+	opt.date = {preset : 'date'};
+	opt.datetime = { preset : 'datetime', minDate: new Date(2012,3,10,9,22), maxDate: new Date(2014,7,30,15,44), stepMinute: 5  };
+	opt.time = {preset : 'time'};
+	opt.tree_list = {preset : 'list', labels: ['Region', 'Country', 'City']};
+	opt.image_text = {preset : 'list', labels: ['Cars']};
+	opt.select = {preset : 'select'};
 
-	$('#inputTime1').on('selectTime', function () {
-		$('#inputTime2').timepicker('option', { 'disableTimeRanges': [['8:00am', $('#inputTime1').val()]] });
-	});
+	$('.timepicker').val('').scroller('destroy').scroller(
+		$.extend(
+			opt['time'], 
+			{ theme: 'wp light', mode: 'scroller', display: 'inline' }
+		)
+	);
 
-	$('#add_sched').on('hidden.bs.modal', function () {
-		$('#appointment_form')[0].reset();
-	});
+
+	// $('.timepicker').timepicker({
+		// 'minTime': '8:00am',
+		// 'maxTime': '10:30pm'
+	// });
+
+	// $('#inputTime1').on('selectTime', function () {
+		// $('#inputTime2').timepicker('option', { 'disableTimeRanges': [['8:00am', $('#inputTime1').val()]] });
+	// });
+
+	// $('#add_sched').on('hidden.bs.modal', function () {
+		// $('#appointment_form')[0].reset();
+	// });
 
 });

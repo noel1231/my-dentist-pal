@@ -878,57 +878,13 @@ $le75 = "&nbsp;";
 
 
 
-
-
-<input type="hidden" id="childs1" value="<?php echo (($tooth_1)?$tooth_1:"none");?>" name="childvalue" />
-
-<input type="hidden" id="childs2" value="<?php echo (($tooth_2)?$tooth_2:"none");?>" name="childvalue1" />
-
-<input type="hidden" id="childs3" value="<?php echo (($tooth_3)?$tooth_3:"none");?>" name="childvalue2" />
-
-<input type="hidden" id="childs4" value="<?php echo (($tooth_4)?$tooth_4:"none");?>" name="childvalue3" />
-
-<input type="hidden" id="childs5" value="<?php echo (($tooth_5)?$tooth_5:"none");?>" name="childvalue4" />
-
-
-
-<input type="hidden" id="childs9" value="<?php echo (($tooth_6)?$tooth_6:"none");?>" name="childvalue8" />
-
-<input type="hidden" id="childs10" value="<?php echo (($tooth_7)?$tooth_7:"none");?>" name="childvalue9" />
-
-<input type="hidden" id="childs11" value="<?php echo (($tooth_8)?$tooth_8:"none");?>" name="childvalue10" />
-
-<input type="hidden" id="childs12" value="<?php echo (($tooth_9)?$tooth_9:"none");?>" name="childvalue11" />
-
-<input type="hidden" id="childs13" value="<?php echo (($tooth_10)?$tooth_10:"none");?>" name="childvalue12" />
-
-
-
-
-
-<input type="hidden" id="childs17" value="<?php echo (($tooth_11)?$tooth_11:"none");?>" name="childvalue16" />
-
-<input type="hidden" id="childs18" value="<?php echo (($tooth_12)?$tooth_12:"none");?>" name="childvalue17" />
-
-<input type="hidden" id="childs19" value="<?php echo (($tooth_13)?$tooth_13:"none");?>" name="childvalue18" />
-
-<input type="hidden" id="childs20" value="<?php echo (($tooth_14)?$tooth_14:"none");?>" name="childvalue19" />
-
-<input type="hidden" id="childs21" value="<?php echo (($tooth_15)?$tooth_15:"none");?>" name="childvalue20" />
-
-
-
-
-
-<input type="hidden" id="childs25" value="<?php echo (($tooth_16)?$tooth_16:"none");?>" name="childvalue24" />
-
-<input type="hidden" id="childs26" value="<?php echo (($tooth_17)?$tooth_17:"none");?>" name="childvalue25" />
-
-<input type="hidden" id="childs27" value="<?php echo (($tooth_18)?$tooth_18:"none");?>" name="childvalue26" />
-
-<input type="hidden" id="childs28" value="<?php echo (($tooth_19)?$tooth_19:"none");?>" name="childvalue27" />
-
-<input type="hidden" id="childs29" value="<?php echo (($tooth_20)?$tooth_20:"none");?>" name="childvalue28" />
+<?php
+	for($childnum=1; $childnum <= 28; $childnum++) {
+?>
+	<input type="hidden" id="childs<?php echo $childnum; ?>" value="<?php echo ${'tooth_'.$childnum} ? ${'tooth_'.$childnum} : "none"; ?>" name="childvalue<?php echo $childnum; ?>" />
+<?php
+	}
+?>
 
 
 <input type="hidden" id="legs_11" name="legs_11" value="<?php echo (($legend_55)?$legend_55:"none");?>" />
