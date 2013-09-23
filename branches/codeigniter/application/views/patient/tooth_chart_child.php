@@ -109,7 +109,7 @@ $le54 = "&nbsp;";
 if($legend_53!="none") {
 $le53 = $legend_53; }
 else {
-$le53 = "&nbsp;";	
+$le53 = "&nbsp;";
 }
 ?>
 <input type="text" id="le53" style="background-color:#FFF;border:none;width:30px;text-align:center;font-size:10px;color:#999;" value="<?php echo $le53;?>" disabled="disabled"/>

@@ -4,7 +4,11 @@
 
 
 
-<?php $this->load->view('patient/tooth/table_first_tooth');?>
+<?php
+	/* popup div */
+	$this->load->view('patient/tooth/table_first_tooth');
+
+?>
 
 
 

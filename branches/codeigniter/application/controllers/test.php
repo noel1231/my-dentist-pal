@@ -101,9 +101,8 @@ class Test extends CI_Controller {
 	}
 
 	function patient_tooth_add() {
-		$data['dentist_id']=$this->session->userdata('id');
-
-		$id=$this->input->get('id');
+		$data['dentist_id'] = $this->session->userdata('id');
+		$id = $this->input->get('id');
 		$data['patient_id'] = $id;
 
 		$this->db->where('id', $id);
@@ -112,32 +111,32 @@ class Test extends CI_Controller {
 
 			$data['name']=$row["patient_name"];
 
-		if(isset($_POST['adult']))
-		{
-			$id=mysql_real_escape_string($_POST['pt_id']);
-			$val=1;
-			$sql="UPDATE patient_list SET what_chart='".$val."' WHERE id=".$id."";
-			$res=mysql_query($sql);
+		// if(isset($_POST['adult']))
+		// {
+			// $id=mysql_real_escape_string($_POST['pt_id']);
+			// $val=1;
+			// $sql="UPDATE patient_list SET what_chart='".$val."' WHERE id=".$id."";
+			// $res=mysql_query($sql);
 
-			$sql2="SELECT patient_name FROM patient_list WHERE id=".$id."";
-			$res2=mysql_query($sql2);
-			while($row=mysql_fetch_array($res2))
-			{$name=$row["patient_name"];}
-		}
+			// $sql2="SELECT patient_name FROM patient_list WHERE id=".$id."";
+			// $res2=mysql_query($sql2);
+			// while($row=mysql_fetch_array($res2))
+			// {$name=$row["patient_name"];}
+		// }
 
-		if(isset($_POST['child']))
-		{
-			$id=mysql_real_escape_string($_POST['pt_id']);
-			$val=2;
-			$sql="UPDATE patient_list SET what_chart='".$val."' WHERE id=".$id."";
-			$res=mysql_query($sql);
+		// if(isset($_POST['child']))
+		// {
+			// $id=mysql_real_escape_string($_POST['pt_id']);
+			// $val=2;
+			// $sql="UPDATE patient_list SET what_chart='".$val."' WHERE id=".$id."";
+			// $res=mysql_query($sql);
 
-			$sql2="SELECT patient_name FROM patient_list WHERE id=".$id."";
-			$res2=mysql_query($sql2);
-			while($row=mysql_fetch_array($res2))
-			{$name=$row["patient_name"];}
-		}
-
+			// $sql2="SELECT patient_name FROM patient_list WHERE id=".$id."";
+			// $res2=mysql_query($sql2);
+			// while($row=mysql_fetch_array($res2))
+			// {$name=$row["patient_name"];}
+		// }
+/*
 if(isset($_POST['save']))
 {
 	$id=mysql_real_escape_string($_POST['pt_id']);
@@ -1049,8 +1048,8 @@ else if($what_chart==2) {
 
 
 // header('Location: patient_tooth_chart.php?id='.$id.'');
-}
-		$this->load->view('patient/box_patient_tooth', $data);
+} */
+		$this->load->view('charting/box_patient_tooth', $data);
 	}
 }
 

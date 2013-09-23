@@ -100,7 +100,7 @@ class Forgot_Password extends CI_Controller {
 				$this->email->initialize($config);
 
 				$this->email->from('info@mydentistpal.com', 'My Dentist Pal');
-				$this->email->to('jemanangan@yahoo.com');
+				$this->email->to($email);
 				// $this->email->cc('another@another-example.com');
 				// $this->email->bcc('them@their-example.com');
 

@@ -172,7 +172,7 @@ $(function(){
 	$('.timepicker').val('').scroller('destroy').scroller(
 		$.extend(
 			opt['time'], 
-			{ theme: 'wp light', mode: 'scroller', display: 'inline' }
+			{ theme: 'default', mode: 'scroller', display: 'inline' }
 		)
 	);
 
