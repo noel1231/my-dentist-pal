@@ -105,7 +105,7 @@
 							<div class="form-group">
 								<label for="inputEmail1" class="col-lg-4 control-label">First Name</label>
 								<div class="col-lg-5">
-									<input type="text" class="form-control" id="patient_fname" name="patient_fname" value="<?php echo isset($row) ? $row['patient_name'] : null; ?>" <?php echo $disabled; ?>>
+									<input type="text" class="form-control" id="patient_fname" name="patient_fname" value="<?php echo isset($row) ? $row['patient_first_name'] : null; ?>" <?php echo $disabled; ?>>
 								</div>
 							</div>
 							<div class="form-group">
@@ -664,42 +664,43 @@
 								<?php 
 									if(isset($row))
 									{
-										if($row['sickness'])
+										if(trim($row['sickness']) != '')
 										{
-										$highBlood = array_search('highBlood',json_decode($row['sickness'],true));
-										$lowBlood = array_search('lowBlood',json_decode($row['sickness'],true));
-										$epilepsy = array_search('epilepsy',json_decode($row['sickness'],true));
-										$aids = array_search('aids',json_decode($row['sickness'],true));
-										$std = array_search('std',json_decode($row['sickness'],true));
-										$ulcers = array_search('ulcers',json_decode($row['sickness'],true));
-										$seizure = array_search('seizure',json_decode($row['sickness'],true));
-										$weightLoss = array_search('weightLoss',json_decode($row['sickness'],true));
-										$radiation = array_search('radiation',json_decode($row['sickness'],true));
-										$implant = array_search('implant',json_decode($row['sickness'],true));
-										$heartSurgery = array_search('heartSurgery',json_decode($row['sickness'],true));
-										$heartAttack = array_search('heartAttack',json_decode($row['sickness'],true));
-										$thyroid = array_search('thyroid',json_decode($row['sickness'],true));
-										$heartDisease = array_search('heartDisease',json_decode($row['sickness'],true));
-										$heartmurmur = array_search('heartmurmur',json_decode($row['sickness'],true));
-										$liverDisease = array_search('liverDisease',json_decode($row['sickness'],true));
-										$rheumatic = array_search('rheumatic',json_decode($row['sickness'],true));
-										$allergies = array_search('allergies',json_decode($row['sickness'],true));
-										$respiratory = array_search('respiratory',json_decode($row['sickness'],true));
-										$Jaundice = array_search('Jaundice',json_decode($row['sickness'],true));
-										$tuberculosis = array_search('tuberculosis',json_decode($row['sickness'],true));
-										$swollenAnkles = array_search('swollenAnkles',json_decode($row['sickness'],true));
-										$kidneyDisease = array_search('kidneyDisease',json_decode($row['sickness'],true));
-										$diabetes = array_search('diabetes',json_decode($row['sickness'],true));
-										$chestPain = array_search('chestPain',json_decode($row['sickness'],true));
-										$stroke = array_search('stroke',json_decode($row['sickness'],true));
-										$cancer = array_search('cancer',json_decode($row['sickness'],true));
-										$anemia = array_search('anemia',json_decode($row['sickness'],true));
-										$angina = array_search('angina',json_decode($row['sickness'],true));
-										$asthma = array_search('asthma',json_decode($row['sickness'],true));
-										$emphysemia = array_search('emphysemia',json_decode($row['sickness'],true));
-										$bleedingProblems = array_search('bleedingProblems',json_decode($row['sickness'],true));
-										$headInjuries = array_search('headInjuries',json_decode($row['sickness'],true));
-										$arthritis = array_search('arthritis',json_decode($row['sickness'],true));
+											echo 'laman';
+											$highBlood = array_search('highBlood',json_decode($row['sickness'],true));
+											$lowBlood = array_search('lowBlood',json_decode($row['sickness'],true));
+											$epilepsy = array_search('epilepsy',json_decode($row['sickness'],true));
+											$aids = array_search('aids',json_decode($row['sickness'],true));
+											$std = array_search('std',json_decode($row['sickness'],true));
+											$ulcers = array_search('ulcers',json_decode($row['sickness'],true));
+											$seizure = array_search('seizure',json_decode($row['sickness'],true));
+											$weightLoss = array_search('weightLoss',json_decode($row['sickness'],true));
+											$radiation = array_search('radiation',json_decode($row['sickness'],true));
+											$implant = array_search('implant',json_decode($row['sickness'],true));
+											$heartSurgery = array_search('heartSurgery',json_decode($row['sickness'],true));
+											$heartAttack = array_search('heartAttack',json_decode($row['sickness'],true));
+											$thyroid = array_search('thyroid',json_decode($row['sickness'],true));
+											$heartDisease = array_search('heartDisease',json_decode($row['sickness'],true));
+											$heartmurmur = array_search('heartmurmur',json_decode($row['sickness'],true));
+											$liverDisease = array_search('liverDisease',json_decode($row['sickness'],true));
+											$rheumatic = array_search('rheumatic',json_decode($row['sickness'],true));
+											$allergies = array_search('allergies',json_decode($row['sickness'],true));
+											$respiratory = array_search('respiratory',json_decode($row['sickness'],true));
+											$Jaundice = array_search('Jaundice',json_decode($row['sickness'],true));
+											$tuberculosis = array_search('tuberculosis',json_decode($row['sickness'],true));
+											$swollenAnkles = array_search('swollenAnkles',json_decode($row['sickness'],true));
+											$kidneyDisease = array_search('kidneyDisease',json_decode($row['sickness'],true));
+											$diabetes = array_search('diabetes',json_decode($row['sickness'],true));
+											$chestPain = array_search('chestPain',json_decode($row['sickness'],true));
+											$stroke = array_search('stroke',json_decode($row['sickness'],true));
+											$cancer = array_search('cancer',json_decode($row['sickness'],true));
+											$anemia = array_search('anemia',json_decode($row['sickness'],true));
+											$angina = array_search('angina',json_decode($row['sickness'],true));
+											$asthma = array_search('asthma',json_decode($row['sickness'],true));
+											$emphysemia = array_search('emphysemia',json_decode($row['sickness'],true));
+											$bleedingProblems = array_search('bleedingProblems',json_decode($row['sickness'],true));
+											$headInjuries = array_search('headInjuries',json_decode($row['sickness'],true));
+											$arthritis = array_search('arthritis',json_decode($row['sickness'],true));
 										}
 									}
 									
@@ -867,3 +868,16 @@
 		</div>
 	</div>
 </div>
+  <!-- Modal -->
+  <div class="modal fade" id="myModalSaveSuccessfully" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-body">
+          Saved Successfully!
+        </div>
+        <div class="modal-footer">
+          <a href="<?php echo base_url('patient_records'); ?>" class="btn btn-default">Close</a>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
