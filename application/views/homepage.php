@@ -74,5 +74,9 @@
     <script src="<?php echo base_url();?>js/custom.js"></script>
 	<script src="<?php echo base_url();?>js/timepicker.js"></script>
 
+	<script src="<?php echo base_url();?>js/pullNotification.js"></script>
+
+
+
   </body>
 </html>

@@ -661,3 +661,7 @@ color:#FFF;
 .search {
 	background-color: #eee;
 }
+
+#add_sched .modal-dialog {
+	width: 918px;
+}
