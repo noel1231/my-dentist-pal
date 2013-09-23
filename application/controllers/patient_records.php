@@ -43,6 +43,28 @@ class Patient_Records extends CI_Controller {
 
 		$this->load->view('homepage', $data);
 	}
+	
+	function deleteCheckbox()
+	{
+		$patient_ids = $this->input->post('patient_ids');
+		
+		$id = explode(',',$patient_ids);
+		
+		$data_patient = array();
+		
+		for($x=0; $x < count($id); $x++)
+		{
+			$data_patient[] = $id[$x];
+		}
+		
+		// $data_insert = array(
+			// 'patient_marital_status'=>'double'
+		// );
+		
+		$query1 = $this->db->where_in('id',$data_patient)->delete('patient_list');
+		echo $query1;
+	}
+	
 }
 
 /* End of file patient_list.php */

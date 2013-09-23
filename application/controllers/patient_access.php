@@ -81,13 +81,8 @@ class Patient_access extends CI_Controller {
 			$query_den = $this->db->get('dentist_list')->row_array();
 			if($query->num_rows() > 0)
 			{
-				if(trim($row['patient_surname']) != null)
-				{
-					$naming = ucwords($row['patient_surname']).', '.ucwords($row['patient_name']).' '.ucwords($row['patient_middle_name']);
-				}else
-				{
-					$naming = ucwords($row['patient_name']);
-				}
+				$naming = ucwords($row['patient_name']);
+			
 				$message = '
 					<p><h3>Dr. '.ucwords($query_den['first_name']).' '.ucwords($query_den['middle_name']).' '.ucwords($query_den['sur_name']).'</h3></p>
 					<p><span>Patient Name:&nbsp;</span><span>'.$naming.'</span></p>

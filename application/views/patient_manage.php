@@ -26,7 +26,7 @@
 		<div class="form-group">
 			<label for="" class="col-lg-4 control-label">Patient:</label>
 			<div class="col-lg-5">
-				<span class="form-control" style="border:none;box-shadow:none;"><?php if(isset($row)){ if($row['patient_surname'] != ''){ echo ucwords($row['patient_surname']).', '.ucwords($row['patient_name']).' '.ucwords($row['patient_middle_name']); }else{ echo $row['patient_name']; } }  ?></span>
+				<span class="form-control" style="border:none;box-shadow:none;"><?php if(isset($row)){ echo ucwords($row['patient_name']); }  ?></span>
 			</div>
 		</div>
 		<div class="form-group">
@@ -39,7 +39,7 @@
 		<div class="form-group">
 			<label for="" class="col-lg-4 control-label">Email Address:</label>
 			<div class="col-lg-5">
-				<input class="form-control" type="email" value="<?php echo isset($row) ? $row['email'] : ''; ?>" name="emailAccess" required>
+				<input class="form-control" type="email" value="<?php echo isset($row) ? $row['email'] : ''; ?>" placeholder="Email" name="emailAccess" required>
 			</div>
 		</div>
 		<div class="form-group">

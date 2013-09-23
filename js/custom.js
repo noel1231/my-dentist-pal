@@ -94,6 +94,42 @@ $(function() {
         }
    });
 	
+	$('#patient_search_from').on('submit',function(){
+		var inputValue = $(this).find('input[name=search_field]').val();
+		if(inputValue.trim() == '')
+		{
+			$(this).find('input[name=search_field]').val('').focus();
+			return false;
+		}
+	});
+	$('.sort_table').click(function(){
+		var search_by = $(this).attr('id');
+		var sortType = $(this).attr('data-sorter');
+		var searchField = $(this).attr('alt');
+		
+		if(sortType == 'asc')
+		{
+			$(this).attr('data-sorter','desc');
+			if(searchField)
+			{
+				window.location.href = 'patient_records?search_field='+searchField+'&by='+search_by+'&type=desc';
+			}else
+			{
+				window.location.href = 'patient_records?by='+search_by+'&type=desc';
+			}
+		}else
+		{
+			$(this).attr('data-sorter','asc');
+			if(searchField)
+			{
+				window.location.href = 'patient_records?search_field='+searchField+'&by='+search_by+'&type=asc';
+			}else
+			{
+				window.location.href = 'patient_records?by='+search_by+'&type=asc';
+			}
+		}
+	});
+	
 	$('#patient_access_form').ajaxForm({
 		type: 'POST',
 		url: 'patient_access/patient_access_account',
@@ -153,13 +189,68 @@ $(function() {
 			$('.check_each').each(function(key,value){
 				$(this).prop('checked',true);
 			});	
+			$('.delete_all_checkbox').show();
 		}else
 		{
 			$('.check_each').each(function(key,value){
 				$(this).prop('checked',false);
 			});
+			$('.delete_all_checkbox').hide();
 		}
 		
+	});
+	
+	$('.delete_checked_patient').click(function(){
+		var data = new Array();
+		var count = 0;
+		$('input[class=check_each]:checked').each(function(key,el){
+			data.push($(el).val());
+			count++;
+		});
+		
+		if(data != '')
+		{
+			$('.saying_body').html('Are you sure do you want to delete '+count+' record?');
+			$('.data_ids').val(data);
+			$('#myModalDeleteAllChecked').modal('show');
+			
+		}
+	});
+	
+	$('.delete_count_success').click(function(){
+		var data = $(this).parent().find('.data_ids').val();
+		var dataString = 'patient_ids='+data;
+		$.ajax({
+			type: 'POST',
+			url: 'patient_records/deleteCheckbox',
+			data: dataString,
+			success: function(html){
+				window.location.href = 'patient_records'
+			}
+		});
+	});
+	
+	$('.check_each').click(function(){
+		var checked = $(this).is(':checked');
+		var all_item = false;
+		if(checked)
+		{
+			$('.delete_all_checkbox').show();
+		}else
+		{
+			$('.check_each').each(function(key,el){
+				if($(el).is(':checked'))
+				{
+					all_item = true;
+				}
+			});
+			
+			if(all_item == false)
+			{
+				$('.delete_all_checkbox').hide();
+				$('.checkall').prop('checked',false);
+			}
+		}
 	});
 	
 	$(function() {
@@ -195,7 +286,7 @@ $(function() {
 			url: 'patient_add/submit_patient',
 			data: dataString,
 			success: function(html){
-				alert(html);
+				$('#myModalSaveSuccessfully').modal('show');
 			}
 		});
 		
