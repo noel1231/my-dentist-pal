@@ -10,7 +10,6 @@ class Dentist_Signup extends CI_Controller {
 	
 	function index()
 	{	
-		
 		$this->set_pages_rules();
 		// $this->process_registration();
    	}
@@ -27,7 +26,6 @@ class Dentist_Signup extends CI_Controller {
 		$this->form_validation->set_rules('email2', 'Confirm Email Address', 'trim|required|valid_email');		
 		$this->form_validation->set_rules('pass1', 'Password', 'trim|required|min_length[6]|xss');
 		$this->form_validation->set_rules('pass2', 'Confirm Password', 'trim|required|matches[pass1]|xss');
-		
 		
 		if ($this->form_validation->run() == false) {
 			//return false;
@@ -73,7 +71,7 @@ class Dentist_Signup extends CI_Controller {
 			$message = '
 				Thank you for signing up!<br> 
 				Please click the link below to verify and activate your account.<br>
-				<a href="'.base_url().'dentist_signup/confirm?email='.$email1.'&passkey='.$passkey.'"> Click here to activate your account.</a>
+				<a href="'.base_url().'dentist_signup/confirm?email='.$email1.'&passkey='.$passkey.'"> Click here to activate.</a>
 			';
 
 			$this->load->library('email');

@@ -337,7 +337,6 @@ $(function() {
 			}else
 			{
 				window.location = '../patient_edit?id='+html+'&access=granted';
-				
 			}
 			
 		}
@@ -505,24 +504,45 @@ $(function() {
 			$('.alert_msg').hide();
 			// $('.success_msg').html('Registration Success!').show();
 			$('#mySuccessReg').modal('show');
-			
 		}
 	});
 	
-	$(function() {
-		$( "#datepicker" ).datepicker();
+	// $(function() {
+		// $( "#datepicker" ).datepicker();
+	// });
+	// $(document).ready(function(){
+            // find the input fields and apply the time select to them.
+		// $('#sample2 input').ptTimeSelect();
+	// });
+	
+	$('.datepick').css('cursor','pointer');
+	$('.datepick').val('').scroller('destroy').scroller({
+		mode: 'clickpick',
+		preset: 'date',
+		theme: 'android-ics light',
+		display: 'bubble',
+		height: 35,
+		width: 100
 	});
 	
-	$(document).ready(function(){
-            // find the input fields and apply the time select to them.
-            $('#sample2 input').ptTimeSelect();
-        });
+	$('.timepick').css('cursor','pointer');
+	$('.timepick').val('').scroller('destroy').scroller({
+		mode: 'clickpick',
+		preset: 'time',
+		theme: 'android-ics light',
+		display: 'bubble',
+		height: 35,
+		width: 100
+	});
+	
 	// $(document).ready(function(){
 		// $('input[name="time"]').ptTimeSelect();
 	// });
-	
 	// $('#timepicker').timepicker({
 		// showPeriod: true,
 		// showLeadingZero: true
 	// });
+		// $('#sample2').click(function(){
+			// $('.dwwr').show('fast');
+		// });
 });

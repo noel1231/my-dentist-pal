@@ -169,12 +169,20 @@ $(function(){
 	opt.image_text = {preset : 'list', labels: ['Cars']};
 	opt.select = {preset : 'select'};
 
-	$('.timepicker').val('').scroller('destroy').scroller(
-		$.extend(
-			opt['time'], 
-			{ theme: 'default', mode: 'scroller', display: 'inline' }
-		)
-	);
+	// $('.timepicker').val('').scroller('destroy').scroller(
+		// $.extend(
+			// opt['time'], 
+			// { theme: 'default', mode: 'scroller', display: 'inline' }
+		// )
+	// );
+	$('.timepicker').val('').scroller('destroy').scroller({
+		mode: 'scroller',
+		preset: 'time',
+		theme: 'android',
+		display: 'inline',
+		height: 32,
+		width: 25
+	});
 
 
 	// $('.timepicker').timepicker({
