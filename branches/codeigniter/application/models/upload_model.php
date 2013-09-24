@@ -6,9 +6,11 @@ class Upload_Model extends CI_Model {
 		$this->load->helper(array('form', 'url'));
 	}
 	
-	function upload($field_name=null)
+	function upload($field_name=null, $directory=null)
 	{
-		$upload_dir = 'patient_picture/';
+		/* patient_picture */
+		
+		$upload_dir = $directory;
 		if(!is_dir($upload_dir))
 		{
 		   mkdir($upload_dir, 0755, true);

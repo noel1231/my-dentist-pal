@@ -208,7 +208,7 @@ class Patient_add extends CI_Controller {
 		}
 		
 		/* for deleting existing profile pic */
-		if($this->input->post('patient_photo_existing_file') || $this->input->post('patient_photo_file'))
+		if($this->input->post('patient_photo_existing_file') || $this->input->post('patient_photo_view'))
 		{
 			$file_name_existing = $this->input->post('patient_photo_existing_file');
 			$file_name = $this->input->post('patient_photo_file');
@@ -228,7 +228,8 @@ class Patient_add extends CI_Controller {
 	{
 		if(isset($_FILES['patient_photo']))
 		{
-			$uploaded = $this->upload_model->upload('patient_photo');
+			$directory = 'patient_picture/';
+			$uploaded = $this->upload_model->upload('patient_photo',$directory);
 			if(isset($uploaded['file_name']))
 			{
 				echo $uploaded['file_name'];

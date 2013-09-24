@@ -1,3 +1,9 @@
+<?php 
+	$this->db->where('id',$id_result);
+	$query = $this->db->get('dentist_list');
+	$results = $query->row_array();
+?>
+
 <style type="text/css">
 	
 	/* #wrapper { border:solid 1px black; width:100%; height:100%; margin-top:160px;} */
@@ -13,7 +19,8 @@
 	#bday3{ position:relative; margin-top:-31px; margin-left:480px;}
 	.alert_msg {width:450px; margin-left:300px;}
 	
-	#dent-profile-pic { border:solid 1px lightgray; position:relative; margin-left:298px; width:130px; height:120px;}
+	#dentist-img { border:solid 1px lightgray; position:relative; margin-left:298px; width:130px; height:120px;}
+	#clinic-img { border:solid 1px lightgray; position:relative; margin-left:298px; width:130px; height:120px;}
 	#c-hours-day{width:80px;margin-left:0px;}
 	#c-hours-to{width:72px;margin-left:0px;text-align:center;}
 	h1 span{color:#CCC;}
@@ -37,33 +44,35 @@
 				</div>
 				<div id="dp-wrapper-form" style="border:solid 0px red; margin:0 auto; width:100%;"><!--start dentist profile form-->
 					<div id="dp-body-wraper" style="border:solid 0px blue;width:960px;margin-left:200px;margin-top:20px;">
-						<form class="form-horizontal" id="form_dentist_signup" role="form" method="post" action="#" enctype="multipart/form-data" name="DentistProfileForm">
+						<form class="form-horizontal" id="form_dentist_profile" role="form" method="post" action="<?php echo base_url('dentist_profile/save_dentist_info'); ?>" enctype="multipart/form-data" name="DentistProfileForm">
 							<div>
 								<div class="well well-sm" style="margin-left:0px;border:solid 0px green;">
 								<!--START PERSONAL INFO-->
 									<div class="form-group" style="margin-left:62px;border:solid 0px red;width:27%;"><!--start personal info-->
 										<h1><span>Personal Info</span></h1>
 									</div><!--end personal info-->
+									<div class="alert alert-danger alert_msg" style="text-align:center;display:none;"></div>
 									<div class="form-group"><!--start dentist id number-->
 										<label for="" class="col-lg-2 control-label">Dentist ID Number:</label>
 										<div class="col-lg-6">
-											<input type="text" id="dent-id" name="dent-id" class="form-control" disabled="disabled"/>
+											<input type="text" id="dentist-id" name="dentist-id" value="<?php echo $id_result; ?>" class="form-control" disabled="disabled"/>
 										</div>
 									</div><!--end dentist id number-->
 									<div class="form-group"><!--start dentist picture-->
 										<div class="col-lg-6">
-											<img src="images/toothlogo.png" alt="dentist image" id="dent-profile-pic" name="dent-img" class="img-rounded">
+											<img src="" alt="dentist image" id="dentist-img" name="dentist-img" class="img-rounded" onerror="this.src='http://www.placehold.it/200x150/EFEFEF/AAAAAA&text=no+image'">
 										</div>
 									</div><!--end dentist picture-->
 									<div style="margin-left:298px; margin-bottom:15px;"><!--start upload dentist img-->
-										<input type="file" id="upload_img" name="upload_img" value="" />
+										<input type="file" id="dentist-photo" name="dentist-photo" value="" />
+										<input type="hidden" id="dentist_photo_file" name="dentist_photo_file" value="<?php if(isset($row) && $row['patient_picture'] != ' '){ echo $row['patient_picture']; } ?>">
 									</div><!--end dentist upload dentist img-->
 									<div class="form-group"><!--start full name-->
 										<label for="" id="dp-label" class="col-lg-2 control-label">Name:</label>
 										<div class="col-lg-2">
-											<input type="text" id="fname" name="fname" class="form-control"  placeholder="First name">
-											<input type="text" id="middle" name="middle" class="form-control" placeholder="Middle name">
-											<input type="text" id="lname" name="lname" class="form-control" placeholder="Last name">
+											<input type="text" id="fname" name="fname" class="form-control"  placeholder="First name" value="<?php echo isset($results) ? $results['first_name'] : ''; ?>">
+											<input type="text" id="middle" name="middle" class="form-control" placeholder="Middle name" value="<?php echo isset($results) ? $results['middle_name'] : ''; ?>">
+											<input type="text" id="lname" name="lname" class="form-control" placeholder="Last name" value="<?php echo isset($results) ? $results['sur_name'] : '' ?>">
 										</div>	
 									</div><!--end full name-->
 								
@@ -76,10 +85,10 @@
 								<div class="form-group"><!--start dob-->
 									<label for="" class="col-lg-2 control-label">Gender:</label>
 									<div class="col-lg-6">
-										<select class="form-control">
-											<option>Select Gender</option>
-											<option>Male</option>
-											<option>Female</option>
+										<select id="dentist-gender" name="dentist-gender" class="form-control">
+											<option value="">Select...</option>
+											<option value="male">Male</option>
+											<option value="female">Female</option>
 										</select>
 									</div>
 								</div><!--end dob-->
@@ -87,7 +96,7 @@
 								<div class="form-group"><!--start license number-->
 									<label for="inputEmail1" class="col-lg-2 control-label">License Number:</label>
 									<div class="col-lg-6">
-										<input type="text" id="license" name="license" id="validate" class="form-control"/><span id="validEmail"></span>
+										<input type="text" id="license" name="license" class="form-control" />
 									</div>
 								</div><!--end license number-->
 								
@@ -102,64 +111,82 @@
 								</div><!--end clinic details-->
 								<div class="form-group"><!--start dentist clinic picture-->
 									<div class="col-lg-6">
-										<img src="images/toothlogo.png" alt="dentist image" id="dent-profile-pic" class="img-rounded">
+										<img src="" alt="dentist image" id="clinic-img" name="clinic-img" class="img-rounded" onerror="this.src='http://www.placehold.it/200x150/EFEFEF/AAAAAA&text=no+image'">
 									</div>
 								</div><!--end dentist clinic picture-->
 								<div style="margin-left:298px; margin-bottom:15px;"><!--start upload clinic details-->
-									<input type="file" id="upload_img" name="upload_img" value="" />
+									<input type="file" id="clinic-photo" name="clinic-photo" value="" />
 								</div><!--end dentist upload clinic details-->
 								<div class="form-group"><!--start clinic name-->
 										<label for="" class="col-lg-2 control-label">Clinic Name:</label>
 										<div class="col-lg-6">
 											<input type="text" id="clinic_name" name="clinic_name" class="form-control"  placeholder="">
+											<input type="hidden" id="clinic_photo_file" name="clinic_photo_file" value="<?php if(isset($row) && $row['patient_picture'] != ' '){ echo $row['patient_picture']; } ?>">
+
 										</div>	
 								</div><!--end clinic name-->
 								<div class="form-group"><!--start dentist service-->
 									<label for="" class="col-lg-2 control-label">Service:</label>
 									<div class="col-lg-3">
-										<div class="checkbox"><input type="checkbox">Dental Emergency-Same Day</div>
-										<div class="checkbox"><input type="checkbox">Bone Grafts</div>
-										<div class="checkbox"><input type="checkbox">Cosmetic Dentistry</div>
-										<div class="checkbox"><input type="checkbox">Crowns and Bridges</div>
-										<div class="checkbox"><input type="checkbox">CT Scan - 3 D Imaging i-cat</div>
-										<div class="checkbox"><input type="checkbox">Dental Implants</div>
-										<div class="checkbox"><input type="checkbox">Dental Medicine</div>
-										<div class="checkbox"><input type="checkbox">Detection of Cancer</div>
-										<div class="checkbox"><input type="checkbox">Dentofacial Orthopedics</div>
-										<div class="checkbox"><input type="checkbox">Endodontic Surgery</div>
-										<div class="checkbox"><input type="checkbox">Extractions</div>
-										<div class="checkbox"><input type="checkbox">Fillings: Teeth Colored</div>
-										<div class="checkbox"><input type="checkbox">Financing</div>
-										<div class="checkbox"><input type="checkbox">General Dentistry</div>
-										<div class="checkbox"><input type="checkbox">Gingival Grafts</div>
-										<div class="checkbox"><input type="checkbox">Gums Treatment - Surgical and Not Surgical</div>
-										<div class="checkbox"><input type="checkbox">Laser Dentistry</div>
-										<div class="checkbox"><input type="checkbox">Lumineers</div>
+										<div class="checkbox"><input type="checkbox" name="service[]" value="Dental Emergency-Same Day">Dental Emergency-Same Day</div>
+										<div class="checkbox"><input type="checkbox" name="service[]" value="Bone Grafts">Bone Grafts</div>
+										<div class="checkbox"><input type="checkbox" name="service[]" value="Cosmetic Dentistry">Cosmetic Dentistry</div>
+										<div class="checkbox"><input type="checkbox" name="service[]" value="Crowns and Bridges">Crowns and Bridges</div>
+										<div class="checkbox"><input type="checkbox" name="service[]" value="CT Scan - 3D Imaging i-cat">CT Scan - 3D Imaging i-cat</div>
+										<div class="checkbox"><input type="checkbox" name="service[]" value="Dental Implants">Dental Implants</div>
+										<div class="checkbox"><input type="checkbox" name="service[]" value="Dental Medicine">Dental Medicine</div>
+										<div class="checkbox"><input type="checkbox" name="service[]" value="Detection of Cancer">Detection of Cancer</div>
+										<div class="checkbox"><input type="checkbox" name="service[]" value="Dentofacial Orthopedics">Dentofacial Orthopedics</div>
+										<div class="checkbox"><input type="checkbox" name="service[]" value="Endodontic Surgery">Endodontic Surgery</div>
+										<div class="checkbox"><input type="checkbox" name="service[]" value="Extractions">Extractions</div>
+										<div class="checkbox"><input type="checkbox" name="service[]" value="Fillings: Teeth Colored">Fillings: Teeth Colored</div>
+										<div class="checkbox"><input type="checkbox" name="service[]" value="Financing">Financing</div>
+										<div class="checkbox"><input type="checkbox" name="service[]" value="General Dentistry">General Dentistry</div>
+										<div class="checkbox"><input type="checkbox" name="service[]" value="Gingival Grafts">Gingival Grafts</div>
+										<div class="checkbox"><input type="checkbox" name="service[]" value="Gums Treatment - Surgical and Not Surgical">Gums Treatment - Surgical and Not Surgical</div>
+										<div class="checkbox"><input type="checkbox" name="service[]" value="Laser Dentistry">Laser Dentistry</div>
+										<div class="checkbox"><input type="checkbox" name="service[]" value="Lumineers">Lumineers</div>
 									</div>
 									<div class="col-lg-3">
-										<div class="checkbox"><input type="checkbox">Medical Insurance Billing</div>
-										<div class="checkbox"><input type="checkbox">Oral Appliance Therapy</div>
-										<div class="checkbox"><input type="checkbox">Oral rehabilitation</div>
-										<div class="checkbox"><input type="checkbox">Oral Systemic connection</div>
-										<div class="checkbox"><input type="checkbox">Oral Surgery</div>
-										<div class="checkbox"><input type="checkbox">Orthodontics</div>
-										<div class="checkbox"><input type="checkbox">Partials and Dentures</div>
-										<div class="checkbox"><input type="checkbox">Preventive Dentistry</div>
-										<div class="checkbox"><input type="checkbox">Root Canals</div>
-										<div class="checkbox"><input type="checkbox">Sealants</div>
-										<div class="checkbox"><input type="checkbox">Smile Makeovers</div>
-										<div class="checkbox"><input type="checkbox">Snoring and Sleep Apnea</div>
-										<div class="checkbox"><input type="checkbox">Sports Dentistry - Mouthguiards</div>
-										<div class="checkbox"><input type="checkbox">TMJ and Facial Pain</div>
-										<div class="checkbox"><input type="checkbox">Whitening your teeth with Laser</div>
-										<div class="checkbox"><input type="checkbox">Wisdom Teeth Removal</div>
-										<div class="checkbox"><input type="checkbox">Implants Planning</div>
+										<div class="checkbox"><input type="checkbox" name="cosmetic" value="Medical Insurance Billing">Medical Insurance Billing</div>
+										<div class="checkbox"><input type="checkbox" name="service[]" value="Oral Appliance Therapy">Oral Appliance Therapy</div>
+										<div class="checkbox"><input type="checkbox" name="service[]" value="Oral rehabilitation">Oral rehabilitation</div>
+										<div class="checkbox"><input type="checkbox" name="service[]" value="Oral Systemic connection">Oral Systemic connection</div>
+										<div class="checkbox"><input type="checkbox" name="service[]" value="Oral Surgery">Oral Surgery</div>
+										<div class="checkbox"><input type="checkbox" name="service[]" value="Orthodontics">Orthodontics</div>
+										<div class="checkbox"><input type="checkbox" name="service[]" value="Partials and Dentures">Partials and Dentures</div>
+										<div class="checkbox"><input type="checkbox" name="service[]" value="Preventive Dentistr">Preventive Dentistry</div>
+										<div class="checkbox"><input type="checkbox" name="service[]" value="Root Canals">Root Canals</div>
+										<div class="checkbox"><input type="checkbox" name="service[]" value="Sealants">Sealants</div>
+										<div class="checkbox"><input type="checkbox" name="service[]" value="Smile Makeovers">Smile Makeovers</div>
+										<div class="checkbox"><input type="checkbox" name="service[]" value="Snoring and Sleep Apne">Snoring and Sleep Apnea</div>
+										<div class="checkbox"><input type="checkbox" name="service[]" value="Sports Dentistry - Mouthguiards">Sports Dentistry - Mouthguiards</div>
+										<div class="checkbox"><input type="checkbox" name="service[]" value="TMJ and Facial Pain">TMJ and Facial Pain</div>
+										<div class="checkbox"><input type="checkbox" name="service[]" value="Whitening your teeth with Laser">Whitening your teeth with Laser</div>
+										<div class="checkbox"><input type="checkbox" name="service[]" value="Wisdom Teeth Removal">Wisdom Teeth Removal</div>
+										<div class="checkbox"><input type="checkbox" name="service[]" value="Implants Planning">Implants Planning</div>
+										<?php
+											// $this->db->where('id',00000000471);
+											// $query1 = $this->db->get('dentist_list');
+											// $row1 = $query1->row_array();
+											// $vararara = json_decode($row1['dentist_services']);
+											
+											// $dental = in_array('Implants Planning',$vararara[0]);
+											// echo $dental;
+											
+										?>
 									</div>
 								</div><!--end dentist service-->
+								<div class="form-group"><!--start dentist service-->
+									<label for="" class="col-lg-2 control-label">Other Service:</label>
+									<div class="col-lg-6">
+										<textarea rows="6" cols="72" id="other_service" name="other_service"><?php echo isset($results) ?  $results['services_offered'] : ''; ?></textarea>
+									</div>
+								</div><!--end dentist other service-->
 								<div class="form-group"><!--start clinic address-->
 										<label for="" class="col-lg-2 control-label">Clinic Address:</label>
 										<div class="col-lg-6">
-											<input type="text" id="fname" name="fname" class="form-control"  placeholder="">
+											<input type="text" id="clinic_address" name="clinic_address" class="form-control"  placeholder="">
 										</div>	
 								</div><!--end clinic address-->
 								<div class="form-group"><!--start landline number-->
@@ -177,7 +204,7 @@
 								<div class="form-group"><!--start email address-->
 										<label for="" class="col-lg-2 control-label">Email Address:</label>
 										<div class="col-lg-6">
-											<input type="text" id="email1" name="email1" class="form-control"  placeholder="">
+											<input type="text" id="email1" name="email1" class="form-control"  placeholder="" value="<?php echo isset($results) ? $results['email'] : ''; ?>">
 										</div>	
 								</div><!--end email address-->
 								<div class="form-group"><!--start facebook fan page-->
@@ -200,11 +227,11 @@
 												<div class="row">
 													<label id="c-hours-day" class="col-lg-2 control-label">Sunday</label>
 													<div id="sample2" class="col-lg-2">
-														<input type="text" name="time" class="form-control" placeholder="00:00 AM">
+														<input type="text" name="in_sunday" class="form-control" placeholder="00:00 AM">
 													</div>
 													<label id="c-hours-to" class="col-lg-2 control-label">To</label>
 													<div id="sample2" class="ui-widget-content-old col-lg-2">
-														<input type="text" name="time" class="form-control" placeholder="00:00 PM">
+														<input type="text" name="out_sunday" class="form-control" placeholder="00:00 PM">
 													</div>
 												</div>
 											<!--</div>-->
@@ -218,11 +245,11 @@
 												<div class="row">
 													<label id="c-hours-day" class="col-lg-2 control-label">Monday</label>
 													<div id="sample2" class="col-lg-2">
-														<input type="text" name="time" class="form-control" placeholder="00:00 AM">
+														<input type="text" name="in_monday" class="form-control" placeholder="00:00 AM">
 													</div>
 													<label id="c-hours-to" class="col-lg-2 control-label">To</label>
 													<div id="sample2" class="ui-widget-content-old col-lg-2">
-														<input type="text" name="time" class="form-control" placeholder="00:00 PM">
+														<input type="text" name="out_monday" class="form-control" placeholder="00:00 PM">
 													</div>
 												</div>
 											<!--</div>-->
@@ -236,11 +263,11 @@
 												<div class="row">
 													<label id="c-hours-day" class="col-lg-2 control-label">Tuesday</label>
 													<div id="sample2" class="col-lg-2">
-														<input type="text" name="time" class="form-control" placeholder="00:00 AM">
+														<input type="text" name="in_tuesday" class="form-control" placeholder="00:00 AM">
 													</div>
 													<label id="c-hours-to" class="col-lg-2 control-label">To</label>
 													<div id="sample2" class="ui-widget-content-old col-lg-2">
-														<input type="text" name="time" class="form-control" placeholder="00:00 PM">
+														<input type="text" name="out_tuesday" class="form-control" placeholder="00:00 PM">
 													</div>
 												</div>
 											<!--</div>-->
@@ -254,11 +281,11 @@
 												<div class="row">
 													<label id="c-hours-day" class="col-lg-2 control-label">Wednesday</label>
 													<div id="sample2" class="col-lg-2">
-														<input type="text" name="time" class="form-control" placeholder="00:00 AM">
+														<input type="text" name="in_wednesday" class="form-control" placeholder="00:00 AM">
 													</div>
 													<label id="c-hours-to" class="col-lg-2 control-label">To</label>
 													<div id="sample2" class="ui-widget-content-old col-lg-2">
-														<input type="text" name="time" class="form-control" placeholder="00:00 PM">
+														<input type="text" name="out_wednesday" class="form-control" placeholder="00:00 PM">
 													</div>
 												</div>
 											<!--</div>-->
@@ -272,11 +299,11 @@
 												<div class="row">
 													<label id="c-hours-day" class="col-lg-2 control-label">Thursday</label>
 													<div id="sample2" class="col-lg-2">
-														<input type="text" name="time" class="form-control" placeholder="00:00 AM">
+														<input type="text" name="in_thursday" class="form-control" placeholder="00:00 AM">
 													</div>
 													<label id="c-hours-to" class="col-lg-2 control-label">To</label>
 													<div id="sample2" class="ui-widget-content-old col-lg-2">
-														<input type="text" name="time" class="form-control" placeholder="00:00 PM">
+														<input type="text" name="out_thursday" class="form-control" placeholder="00:00 PM">
 													</div>
 												</div>
 											<!--</div>-->
@@ -290,11 +317,11 @@
 												<div class="row">
 													<label id="c-hours-day" class="col-lg-2 control-label">Friday</label>
 													<div id="sample2" class="col-lg-2">
-														<input type="text" name="time" class="form-control" placeholder="00:00 AM">
+														<input type="text" name="in_friday" class="form-control" placeholder="00:00 AM">
 													</div>
 													<label id="c-hours-to" class="col-lg-2 control-label">To</label>
 													<div id="sample2" class="ui-widget-content-old col-lg-2">
-														<input type="text" name="time" class="form-control" placeholder="00:00 PM">
+														<input type="text" name="out_friday" class="form-control" placeholder="00:00 PM">
 													</div>
 												</div>
 											<!--</div>-->
@@ -308,11 +335,11 @@
 												<div class="row">
 													<label id="c-hours-day" class="col-lg-2 control-label">Saturday</label>
 													<div id="sample2" class="col-lg-2">
-														<input type="text" name="time" class="form-control" placeholder="00:00 AM">
+														<input type="text" name="in_saturday" class="form-control" placeholder="00:00 AM">
 													</div>
 													<label id="c-hours-to" class="col-lg-2 control-label">To</label>
 													<div id="sample2" class="ui-widget-content-old col-lg-2">
-														<input type="text" name="time" class="form-control" placeholder="00:00 PM">
+														<input type="text" name="out_saturday" class="form-control" placeholder="00:00 PM">
 													</div>
 												</div>
 											<!--</div>-->
@@ -333,3 +360,21 @@
 	
 </div><!--end body wrapper -->
 
+<!-- Modal -->
+  <div class="modal fade" id="mySuccessReg" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title">Registration Successfully</h4>
+        </div>
+        <div class="modal-body">
+			<p>Profile updated success...</p>
+          <!--<p>Please verify your email to activate your account.</p>-->
+        </div>
+        <div class="modal-footer">
+          <a href="<?php echo base_url('dentist_profile_view'); ?>" class="btn btn-default">OK</a>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->

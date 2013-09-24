@@ -472,13 +472,54 @@ $(function() {
 			
 		}
 	});
+	//dentist profile submit form 
+	$('#form_dentist_profile').ajaxForm({
+		
+		type: 'POST',
+		beforeSubmit: function (){
+			var fname = $('#fname').val();
+			var middle = $('#middle').val();
+			var lname = $('#lname').val();
+			var email1 = $('#email1').val();
+			
+			if(fname.trim() == '' || lname.trim() == ''){
+				$('.alert_msg').html('Enter your full name in the required field to proceed.').show();
+				return false;
+			}else if(!fname.match(/^[A-Za-z . -]+$/) || !lname.match(/^[A-Za-z . -]+$/))
+			{
+				$('.alert_msg').html('Enter valid name in the required field to proceed.').show();
+				return false;
+			}else if(email1.trim() == '')
+			{
+				$('.alert_msg').html('Enter your email address in the required field to proceed.').show();
+				return false;
+			}else if(!email1.match(/^([a-z0-9._-]+@[a-z0-9._-]+\.[a-z]{2,4}$)/i))
+			{
+				$('.alert_msg').html('Enter valid email address in the required field to proceed.').show();
+				return false;
+			}
+		},
+		
+		success: function(html)
+		{
+			$('.alert_msg').hide();
+			// $('.success_msg').html('Registration Success!').show();
+			$('#mySuccessReg').modal('show');
+			
+		}
+	});
 	
 	$(function() {
 		$( "#datepicker" ).datepicker();
 	});
+	
 	$(document).ready(function(){
-		$('input[name="time"]').ptTimeSelect();
-	});
+            // find the input fields and apply the time select to them.
+            $('#sample2 input').ptTimeSelect();
+        });
+	// $(document).ready(function(){
+		// $('input[name="time"]').ptTimeSelect();
+	// });
 	
 	// $('#timepicker').timepicker({
 		// showPeriod: true,

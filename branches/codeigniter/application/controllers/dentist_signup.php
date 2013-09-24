@@ -73,7 +73,7 @@ class Dentist_Signup extends CI_Controller {
 			$message = '
 				Thank you for signing up!<br> 
 				Please click the link below to verify and activate your account.<br>
-				<a href="'.base_url().'dentist_signup/confirm?email='.$email1.'&passkey='.$passkey.'"> Click here to activate </a>
+				<a href="'.base_url().'dentist_signup/confirm?email='.$email1.'&passkey='.$passkey.'"> Click here to activate your account.</a>
 			';
 
 			$this->load->library('email');

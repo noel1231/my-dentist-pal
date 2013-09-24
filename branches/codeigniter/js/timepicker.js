@@ -338,7 +338,7 @@
         }
 		// cntr.slideDown("slow");
         cntr.fadeIn("fast").animate({
-			top	: '1846px',
+			top	: '1987px',
 			left:	'965px'
 		});
             
