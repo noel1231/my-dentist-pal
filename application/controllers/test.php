@@ -23,6 +23,12 @@ class Test extends CI_Controller {
 
 		if($id = $this->input->get('id')) {
 
+			if($this->input->post()) {
+				print_r($this->input->post('tooth_image'));
+			}
+				
+
+
 			$data['patient_id'] = $id;
 
 			$this->db->where('id', $id);
@@ -101,15 +107,17 @@ class Test extends CI_Controller {
 	}
 
 	function patient_tooth_add() {
-		$data['dentist_id'] = $this->session->userdata('id');
-		$id = $this->input->get('id');
-		$data['patient_id'] = $id;
+		// $data['dentist_id'] = $this->session->userdata('id');
+		// $id = $this->input->post('id');
+		// $data['patient_id'] = $id;
 
-		$this->db->where('id', $id);
-		$sql = $this->db->get('patient_list');
-		$row = $sql->row_array();
+		// $this->db->where('id', $id);
+		// $sql = $this->db->get('patient_list');
+		// $row = $sql->row_array();
 
-			$data['name']=$row["patient_name"];
+		
+
+			// $data['name']=$row["patient_name"];
 
 		// if(isset($_POST['adult']))
 		// {
@@ -1049,8 +1057,10 @@ else if($what_chart==2) {
 
 // header('Location: patient_tooth_chart.php?id='.$id.'');
 } */
-		$this->load->view('charting/box_patient_tooth', $data);
+		$this->load->view('charting/tooth/table_first_tooth');
+		// $this->load->view('charting/box_patient_tooth', $data);
 	}
+
 }
 
 ?>
