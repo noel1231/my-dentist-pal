@@ -23,6 +23,13 @@ function onSave()
 		<div class="pull-right">
 			<input type="button" onclick="divPrint();" name="print" value="PRINT" class="btn btn-default submit" />
 		</div>
+		<div>
+			<input type="text" id="what_picture">
+			<input type="text" id="what_number">
+			<input type="text" id="what_legend">
+			<input type="text" id="what_hide">
+			<input type="text" id="what_tooth_number">
+		</div>
 	</div>
 
 	<div class="row">
@@ -208,13 +215,33 @@ function onSave()
 	</div>
 
 	<div class="row">
-		<form>
-
+		<form method="post">
+			<div id="tooth_dialog" title="Basic dialog">
+				<?php echo $this->load->view('charting/tooth/table_first_tooth'); ?>
+			</div>
+<?php
+	$adult_array = array(11,12,13,14,15,16,17,18,21,22,23,24,25,26,27,28,31,32,33,34,35,36,37,38,41,42,43,44,45,46,47,48);
+	foreach($adult_array as $adult) {
+?>
+		<input id="pic<?php echo $adult; ?>" type="hidden" name="pic<?php echo $adult; ?>" >
+		<input id="leg_<?php echo $adult; ?>" type="hidden" name="leg_<?php echo $adult; ?>" >
+		<input id="adult_<?php echo $adult; ?>" type="hidden" name="adult_<?php echo $adult; ?>" >
+<?php
+	}
+	$child = array(51,52,53,54,55,61,62,63,64,65,71,72,73,74,75,81,82,83,84,85);
+	foreach($child_array as $child) {
+?>
+		
+<?php
+	}
+?>
+			<button class="btn btn-primary btn-lg" type="submit" name="action" value="save"> SAVE </button>
 		</form>
 	</div>
 
-</div>
 
+
+</div>
 <script language="javascript" type="text/javascript">
 function divPrint()
 {

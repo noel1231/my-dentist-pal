@@ -8,7 +8,7 @@
 			foreach($set2 as $value) {
 ?>
 			<td valign="top">
-				<table>
+				<table class="tooth">
 				<tr><td style="font-size:10px;width:30px;text-align:center;">
 <?php
 	if(isset( ${'legend_'.$value} )) {
@@ -23,19 +23,20 @@
 	}
 				?>
 				</td></tr>
-					<tr><td style="text-align:center;"><?php echo $value; ?></td></tr>
+					<tr><td style="text-align:center;" class="tooth_num"><?php echo $value; ?></td></tr>
 					<tr><td>
 <?php
 		if(isset( ${'tooth_'.$value} )) {
 			if( ${'tooth_'.$value} == 'none' ) {
 ?> 
-						<img src="<?php echo base_url(); ?>img/Toothchart/01.png" /> <?php } else if( ${'tooth_'.$value} <= 9) { ?>
-						<img src="<?php echo base_url(); ?>img/Toothchart/0<?php echo ${'tooth_'.$value}; ?>.png"/><?php } else { ?>
-						<img src="<?php echo base_url(); ?>img/Toothchart/<?php echo ${'tooth_'.$value}; ?>.png"/><?php } ?>
+						<img id="tooth_<?php echo $value; ?>" src="<?php echo base_url(); ?>img/Toothchart/01.png" />
+<?php 		} else { ?>
+						<img id="tooth_<?php echo $value; ?>" src="<?php echo base_url(); ?>img/Toothchart/<?php echo str_pad( ${'tooth_'.$value}, 2, 0, STR_PAD_LEFT); ?>.png"/>
 <?php
+			}
 		} else {
 ?>
-						<img src="<?php echo base_url(); ?>img/Toothchart/01.png" />
+						<img id="tooth_<?php echo $value; ?>" src="<?php echo base_url(); ?>img/Toothchart/01.png" />
 <?php
 		}
 ?>
