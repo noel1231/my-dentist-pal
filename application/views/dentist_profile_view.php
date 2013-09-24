@@ -19,11 +19,13 @@
 	#bday3{ position:relative; margin-top:-31px; margin-left:480px;}
 	.alert_msg {width:450px; margin-left:300px;}
 	
-	#dentist-img { border:solid 1px lightgray; position:relative; margin-left:298px; width:130px; height:120px;}
-	#clinic-img { border:solid 1px lightgray; position:relative; margin-left:298px; width:130px; height:120px;}
+	#dentist-img { border:solid 1px lightgray; position:relative; margin-left:298px; width:160px; height:140px;}
+	#clinic-img { border:solid 1px lightgray; position:relative; margin-left:298px; width:160px; height:140px;}
 	#c-hours-day{width:80px;margin-left:0px;}
 	#c-hours-to{width:72px;margin-left:0px;text-align:center;}
 	h1 span{color:#CCC;}
+	.clinic_hr{margin-left:15px;}
+	.to_label{left:8px;}
 </style>
 
 
@@ -79,7 +81,7 @@
 								<div class="form-group"><!--start dob-->
 									<label for="" class="col-lg-2 control-label">Birth Date:</label>
 									<div class="col-lg-6">
-										<input type="text" id="datepicker" name="bod" class="form-control" placeholder="mm/dd/yyyy"/>
+										<input type="text" id="datepicker" name="bod" class="form-control datepick" placeholder="mm/dd/yyyy" />
 									</div>
 								</div><!--end dob-->
 								<div class="form-group"><!--start dob-->
@@ -96,7 +98,7 @@
 								<div class="form-group"><!--start license number-->
 									<label for="inputEmail1" class="col-lg-2 control-label">License Number:</label>
 									<div class="col-lg-6">
-										<input type="text" id="license" name="license" class="form-control" />
+										<input type="text" id="license" name="license" class="form-control" value="<?php echo isset($results) ? $results['license_number'] : '' ?>"/>
 									</div>
 								</div><!--end license number-->
 								
@@ -116,12 +118,12 @@
 								</div><!--end dentist clinic picture-->
 								<div style="margin-left:298px; margin-bottom:15px;"><!--start upload clinic details-->
 									<input type="file" id="clinic-photo" name="clinic-photo" value="" />
+									<input type="hidden" id="clinic_photo_file" name="clinic_photo_file" value="<?php if(isset($row) && $row['dentist_picture'] != ' '){ echo $row['dentist_picture']; } ?>">
 								</div><!--end dentist upload clinic details-->
 								<div class="form-group"><!--start clinic name-->
 										<label for="" class="col-lg-2 control-label">Clinic Name:</label>
 										<div class="col-lg-6">
-											<input type="text" id="clinic_name" name="clinic_name" class="form-control"  placeholder="">
-											<input type="hidden" id="clinic_photo_file" name="clinic_photo_file" value="<?php if(isset($row) && $row['patient_picture'] != ' '){ echo $row['patient_picture']; } ?>">
+											<input type="text" id="clinic_name" name="clinic_name" class="form-control" placeholder="" value="<?php echo isset($results) ? $results['clinic_name'] : ''?>">											
 
 										</div>	
 								</div><!--end clinic name-->
@@ -186,37 +188,37 @@
 								<div class="form-group"><!--start clinic address-->
 										<label for="" class="col-lg-2 control-label">Clinic Address:</label>
 										<div class="col-lg-6">
-											<input type="text" id="clinic_address" name="clinic_address" class="form-control"  placeholder="">
+											<input type="text" id="clinic_address" name="clinic_address" class="form-control" placeholder="" value="<?php echo isset($results) ? $results['clinic_address'] : ''?>">
 										</div>	
 								</div><!--end clinic address-->
 								<div class="form-group"><!--start landline number-->
 										<label for="" class="col-lg-2 control-label">Landline number:</label>
 										<div class="col-lg-6">
-											<input type="text" id="landline" name="landline" class="form-control"  placeholder="">
+											<input type="text" id="landline" name="landline" class="form-control" placeholder="" value="<?php echo isset($results) ? $results['tel_number'] : ''?>">
 										</div>	
 								</div><!--end landline number-->
 								<div class="form-group"><!--start mobile number-->
 										<label for="" class="col-lg-2 control-label">Mobile number:</label>
 										<div class="col-lg-6">
-											<input type="text" id="mobile" name="mobile" class="form-control"  placeholder="">
+											<input type="text" id="mobile" name="mobile" class="form-control" placeholder="" value="<?php echo isset($results) ? $results['cel_number'] : ''?>">
 										</div>	
 								</div><!--end mobile number-->
 								<div class="form-group"><!--start email address-->
 										<label for="" class="col-lg-2 control-label">Email Address:</label>
 										<div class="col-lg-6">
-											<input type="text" id="email1" name="email1" class="form-control"  placeholder="" value="<?php echo isset($results) ? $results['email'] : ''; ?>">
+											<input type="text" id="email1" name="email1" class="form-control" placeholder="" value="<?php echo isset($results) ? $results['email'] : ''; ?>">
 										</div>	
 								</div><!--end email address-->
 								<div class="form-group"><!--start facebook fan page-->
 										<label for="" style="margin-left:54px;" class="col-lg-3 control-label">Facebook Fan Page:</label>
 										<div class="col-lg-6">
-											<input type="text" id="fanpage" name="fanpage" class="form-control"  placeholder="www.facebook.com/FanpageName">
+											<input type="text" id="fanpage" name="fanpage" class="form-control" placeholder="www.facebook.com/FanpageName" value="<?php echo isset($results) ? $results['fb_fanpage'] : ''?>">
 										</div>	
 								</div><!--end facebook fan page-->
 								<div class="form-group"><!--start twitter-->
 										<label for="" class="col-lg-2 control-label">Twitter:</label>
 										<div class="col-lg-6">
-											<input type="text" id="tweet" name="tweet" class="form-control"  placeholder="@TwitterHandle">
+											<input type="text" id="tweet" name="tweet" class="form-control" placeholder="@TwitterHandle" value="<?php echo isset($results) ? $results['twitter'] : ''?>">
 										</div>	
 								</div><!--end twitter-->
 								<div class="form-group"><!--start clinic hours sunday-->
@@ -227,11 +229,11 @@
 												<div class="row">
 													<label id="c-hours-day" class="col-lg-2 control-label">Sunday</label>
 													<div id="sample2" class="col-lg-2">
-														<input type="text" name="in_sunday" class="form-control" placeholder="00:00 AM">
+														<input type="text" name="in_sunday" class="form-control timepick clinic_hr" placeholder="00:00 AM">
 													</div>
-													<label id="c-hours-to" class="col-lg-2 control-label">To</label>
+													<label id="c-hours-to" class="col-lg-2 control-label to_label">To</label>
 													<div id="sample2" class="ui-widget-content-old col-lg-2">
-														<input type="text" name="out_sunday" class="form-control" placeholder="00:00 PM">
+														<input type="text" name="out_sunday" class="form-control timepick" placeholder="00:00 PM">
 													</div>
 												</div>
 											<!--</div>-->
@@ -245,11 +247,11 @@
 												<div class="row">
 													<label id="c-hours-day" class="col-lg-2 control-label">Monday</label>
 													<div id="sample2" class="col-lg-2">
-														<input type="text" name="in_monday" class="form-control" placeholder="00:00 AM">
+														<input type="text" name="in_monday" class="form-control timepick clinic_hr" placeholder="00:00 AM">
 													</div>
-													<label id="c-hours-to" class="col-lg-2 control-label">To</label>
+													<label id="c-hours-to" class="col-lg-2 control-label to_label">To</label>
 													<div id="sample2" class="ui-widget-content-old col-lg-2">
-														<input type="text" name="out_monday" class="form-control" placeholder="00:00 PM">
+														<input type="text" name="out_monday" class="form-control timepick" placeholder="00:00 PM">
 													</div>
 												</div>
 											<!--</div>-->
@@ -263,11 +265,11 @@
 												<div class="row">
 													<label id="c-hours-day" class="col-lg-2 control-label">Tuesday</label>
 													<div id="sample2" class="col-lg-2">
-														<input type="text" name="in_tuesday" class="form-control" placeholder="00:00 AM">
+														<input type="text" name="in_tuesday" class="form-control timepick clinic_hr" placeholder="00:00 AM">
 													</div>
-													<label id="c-hours-to" class="col-lg-2 control-label">To</label>
+													<label id="c-hours-to" class="col-lg-2 control-label to_label">To</label>
 													<div id="sample2" class="ui-widget-content-old col-lg-2">
-														<input type="text" name="out_tuesday" class="form-control" placeholder="00:00 PM">
+														<input type="text" name="out_tuesday" class="form-control timepick" placeholder="00:00 PM">
 													</div>
 												</div>
 											<!--</div>-->
@@ -281,11 +283,11 @@
 												<div class="row">
 													<label id="c-hours-day" class="col-lg-2 control-label">Wednesday</label>
 													<div id="sample2" class="col-lg-2">
-														<input type="text" name="in_wednesday" class="form-control" placeholder="00:00 AM">
+														<input type="text" name="in_wednesday" class="form-control timepick clinic_hr" placeholder="00:00 AM">
 													</div>
-													<label id="c-hours-to" class="col-lg-2 control-label">To</label>
+													<label id="c-hours-to" class="col-lg-2 control-label to_label">To</label>
 													<div id="sample2" class="ui-widget-content-old col-lg-2">
-														<input type="text" name="out_wednesday" class="form-control" placeholder="00:00 PM">
+														<input type="text" name="out_wednesday" class="form-control timepick" placeholder="00:00 PM">
 													</div>
 												</div>
 											<!--</div>-->
@@ -299,11 +301,11 @@
 												<div class="row">
 													<label id="c-hours-day" class="col-lg-2 control-label">Thursday</label>
 													<div id="sample2" class="col-lg-2">
-														<input type="text" name="in_thursday" class="form-control" placeholder="00:00 AM">
+														<input type="text" name="in_thursday" class="form-control timepick clinic_hr" placeholder="00:00 AM">
 													</div>
-													<label id="c-hours-to" class="col-lg-2 control-label">To</label>
+													<label id="c-hours-to" class="col-lg-2 control-label to_label">To</label>
 													<div id="sample2" class="ui-widget-content-old col-lg-2">
-														<input type="text" name="out_thursday" class="form-control" placeholder="00:00 PM">
+														<input type="text" name="out_thursday" class="form-control timepick" placeholder="00:00 PM">
 													</div>
 												</div>
 											<!--</div>-->
@@ -317,11 +319,11 @@
 												<div class="row">
 													<label id="c-hours-day" class="col-lg-2 control-label">Friday</label>
 													<div id="sample2" class="col-lg-2">
-														<input type="text" name="in_friday" class="form-control" placeholder="00:00 AM">
+														<input type="text" name="in_friday" class="form-control timepick clinic_hr" placeholder="00:00 AM">
 													</div>
-													<label id="c-hours-to" class="col-lg-2 control-label">To</label>
+													<label id="c-hours-to" class="col-lg-2 control-label to_label">To</label>
 													<div id="sample2" class="ui-widget-content-old col-lg-2">
-														<input type="text" name="out_friday" class="form-control" placeholder="00:00 PM">
+														<input type="text" name="out_friday" class="form-control timepick" placeholder="00:00 PM">
 													</div>
 												</div>
 											<!--</div>-->
@@ -335,11 +337,11 @@
 												<div class="row">
 													<label id="c-hours-day" class="col-lg-2 control-label">Saturday</label>
 													<div id="sample2" class="col-lg-2">
-														<input type="text" name="in_saturday" class="form-control" placeholder="00:00 AM">
+														<input type="text" name="in_saturday" class="form-control timepick clinic_hr" placeholder="00:00 AM">
 													</div>
-													<label id="c-hours-to" class="col-lg-2 control-label">To</label>
+													<label id="c-hours-to" class="col-lg-2 control-label to_label">To</label>
 													<div id="sample2" class="ui-widget-content-old col-lg-2">
-														<input type="text" name="out_saturday" class="form-control" placeholder="00:00 PM">
+														<input type="text" name="out_saturday" class="form-control timepick" placeholder="00:00 PM">
 													</div>
 												</div>
 											<!--</div>-->
@@ -373,7 +375,7 @@
           <!--<p>Please verify your email to activate your account.</p>-->
         </div>
         <div class="modal-footer">
-          <a href="<?php echo base_url('dentist_profile_view'); ?>" class="btn btn-default">OK</a>
+          <a href="<?php echo base_url('dentist_dashboard'); ?>" class="btn btn-default">OK</a>
         </div>
       </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->

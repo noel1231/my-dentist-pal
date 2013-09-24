@@ -18,7 +18,8 @@ class Dentist_Profile extends CI_Controller {
 	{
 		$d_id = $this->session->userdata('id');
 		if($d_id) {
-			echo 'logged_in';
+			// echo 'logged_in';
+			// echo $d_id;
 			$send2dpv['id_result'] = $d_id;
 			$send2home['body'] = $this->load->view('dentist_profile_view', $send2dpv, true);
 			$send2home['header'] = $this->load->view('homepage/header', '', true);

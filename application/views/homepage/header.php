@@ -49,7 +49,7 @@
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <span class="glyphicon glyphicon-user"></span> <b class="caret"></b></a>
 		<ul class="dropdown-menu">
-			<li><a href="#"> Profile </a></li>
+			<li><a href="<?php echo base_url('dentist_profile'); ?>"> Profile </a></li>
 			<li><a href="#"> Account Settings </a></li>
 			<li><a href="logout"> Log out </a></li>
 		</ul>
