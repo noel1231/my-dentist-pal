@@ -80,8 +80,8 @@
 								<img src="<?php echo base_url('patient_picture/'.$row['patient_picture']); ?>" style="width:60px;" onerror="this.src='http://www.placehold.it/200x200/EFEFEF/AAAAAA&text=no+image'">
 							</td>
 							<td><?php echo ucwords($row['patient_name']); ?></td>
-							<td><?php echo date('Y/m/s',strtotime($row['date_of_entry'])); ?></td>
-							<td><?php echo date('Y/m/s',strtotime($row['date_of_last_visit'])); ?></td>
+							<td><?php echo date('m-t-Y',strtotime($row['date_of_entry'])); ?></td>
+							<td><?php echo date('m-t-Y',strtotime($row['date_of_last_visit'])); ?></td>
 							<td>
 								<a href="<?php echo base_url('patient_edit?id='.$row['id']); ?>" style="color: #333;">
 									<span class="edit_patient glyphicon glyphicon-edit" title="Edit"></span>

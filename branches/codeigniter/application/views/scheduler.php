@@ -1,4 +1,4 @@
-		<div id="scheduler" class="col-md-7">
+		<div id="scheduler" class="col-md-6">
 			<div id="calendar"></div>
 		</div>
 
@@ -12,7 +12,7 @@ if ($this->db->table_exists('dentist_appointments'))
 						$qdentist_appointments = $this->db->get('dentist_appointments');
 ?>
 
-		<div id="appointment" class="col-md-5">
+		<div id="appointment" class="col-md-6">
 			<div class="container">
 				<div class="row">
 					<div class="pull-left">
