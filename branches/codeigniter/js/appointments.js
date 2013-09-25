@@ -12,7 +12,7 @@ $(function(){
 				$('#tbody_appointment').append('<tr id="'+id+'"><td>'+title+'</td><td>'+description+'</td><td>'+start_time+' to '+end_time+'</td><td> Status here </td></tr>');
 			}
 		} else {
-			$('#tbody_appointment').append('<tr><td colspan="4"> No Appoinment for this day. </td></tr>');
+			$('#tbody_appointment').append('<tr class="no_sched_row"><td colspan="4"> No Appoinment for this day. </td></tr>');
 		}
 	}
 
@@ -162,6 +162,7 @@ $(function(){
 			
 				if(split[0] == 1)
 				{
+					$('.no_sched_row').remove();
 					$('#tbody_appointment').append(html);
 				}else
 				{
