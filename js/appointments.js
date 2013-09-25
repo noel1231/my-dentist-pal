@@ -102,6 +102,12 @@ $(function(){
     });
 
 	$('#show_add_sched').click(function(){
+		$('#inputTitle1').val('');
+		$('#inputDescription1').val('');
+		
+		$('#inputTime1').val('');
+		$('#inputTime2').val('');
+		
 		$('#add_sched').find('.modal-title').html('Add Schedule');
 		$('#add_sched').find('#submit_appointment').val('insert');
 		$('#add_sched').modal('toggle');
