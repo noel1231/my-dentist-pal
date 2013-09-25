@@ -468,16 +468,10 @@ $(function() {
 		
 		success: function(html)
 		{
-			if(html == 'already registered' || html == 'id already registered')
-			{
-				$('.alert_msg').html('You are already registered').show();
-				return false;
-			}else
-			{
-				$('.alert_msg').hide();
-				// $('.success_msg').html('Registration Success!').show();
-				$('#mySuccessReg').modal('show');
-			}
+			$('.alert_msg').hide();
+			// $('.success_msg').html('Registration Success!').show();
+			$('#mySuccessReg').modal('show');
+			
 		}
 	});
 	//dentist profile submit form 
