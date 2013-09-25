@@ -43,7 +43,7 @@ if ($this->db->table_exists('dentist_appointments'))
 		{
 			$time = $appointments['start_time'] . " to " . $appointments['end_time'];
 ?>
-		<tr>
+		<tr id="<?php echo $appointments['id']; ?>">
 			<td> <?php echo $appointments['title']; ?> </td>
 			<td> <?php echo $appointments['description']; ?> </td>
 			<td> <?php echo $appointments['start_time']; ?> <?php echo $appointments['end_time'] ? ' to '.$appointments['end_time'] : ''; ?></td>
