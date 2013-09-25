@@ -62,7 +62,18 @@ $(function(){
 		},
 		selectable: true,
 		select: function( startDate, endDate, allDay, jsEvent, view ) {
-			update_scheduler( startDate, endDate, allDay, jsEvent, view );
+			
+			var currDate = new Date();
+			if($.fullCalendar.formatDate(startDate, 'MM/dd/yyyy') < $.fullCalendar.formatDate(currDate, 'MM/dd/yyyy'))
+			{
+				$('#show_add_sched').prop('disabled',true);
+				update_scheduler( startDate, endDate, allDay, jsEvent, view );
+				return false;
+			}else
+			{
+				$('#show_add_sched').prop('disabled',false);
+				update_scheduler( startDate, endDate, allDay, jsEvent, view );
+			}
 		},
 		// dayClick: function(date, allDay, jsEvent, view) {
 
@@ -95,7 +106,22 @@ $(function(){
 
 			}
 		],
+		dayClick: function( date, allDay, jsEvent, view ) {
+			
+		},
 		eventClick: function(calEvent, jsEvent, view) {
+			var currDate = new Date();
+			var date = calEvent.end;
+			
+			currDate = $.fullCalendar.formatDate(currDate, 'MM/dd/yyyy');
+			date = $.fullCalendar.formatDate(date, 'MM/dd/yyyy');
+			
+			if(date < currDate)
+			{
+				$(this).css('opacity','0.5');
+				return false;
+			}
+			
 			$('#appointment_id').val(calEvent.id);
 			$('#inputTitle1').val(calEvent.title);
 			$('#inputDescription1').val(calEvent.description);
@@ -167,10 +193,8 @@ $(function(){
 				}
 			},
 			success: function(html) {
-				// event = JSON.parse(html);
-				// append_to_table(event);
 				var split = html.split('-');
-				alert(split);
+				
 				$('#calendar').fullCalendar( 'refetchEvents' );
 				$('#add_sched').modal('hide');
 			
@@ -215,12 +239,7 @@ $(function(){
 	opt.image_text = {preset : 'list', labels: ['Cars']};
 	opt.select = {preset : 'select'};
 
-	// $('.timepicker').val('').scroller('destroy').scroller(
-		// $.extend(
-			// opt['time'], 
-			// { theme: 'default', mode: 'scroller', display: 'inline' }
-		// )
-	// );
+
 	$('.timepicker').val('').scroller('destroy').scroller({
 		mode: 'scroller',
 		preset: 'time',
