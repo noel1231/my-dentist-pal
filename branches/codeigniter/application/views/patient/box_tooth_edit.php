@@ -1,22 +1,6 @@
-<script type="text/javascript">
-
-function Refresh(key,id) {
-	window.location="<?php echo base_url(); ?>test/patient_tooth_chart?id="+id+"&key="+key;
-}
-
-function onSave()
-{
-	if(confirm('Do you want to save changes ?')==true)
-	{
-		return true;
-	}
-	else
-	{
-		return false;
-	}
-}  
-</script>
-
+<?php
+	extract($patient_query->row_array());
+?>
 <div class="container">
 
 	<div class="row">
@@ -105,11 +89,11 @@ function onSave()
 
 					$this->db->where('id', $key);
 					$ress = $this->db->get('patient_tooth_chart_extra_child');
-					$x = "chart_remarks";
+					$remark = "chart_remarks";
 				} else {
 					$this->db->where('patient_id', $patient_id);
 					$ress = $this->db->get('patient_child_tooth');
-					$x="tooth_remarks";
+					$remark = "tooth_remarks";
 				}
 
 			}
@@ -169,24 +153,31 @@ function onSave()
 			<?php
 			$i=0;
 			if($what_chart==1) {
-			$sql="SELECT * FROM patient_tooth_chart_extra_adult WHERE patient_id='".$patient_id."' ORDER BY date_chart DESC LIMIT 5";
-			$res=mysql_query($sql);
-
-			//$sqls="SELECT * FROM patient_tooth_chart_extra_adult WHERE patient_id='".$pt_ids."'";
-
+				$this->db->where('patient_id', $patient_id);
+				$this->db->order_by('date_chart desc');
+				$this->db->limit(5);
+				$res = $this->db->get('patient_tooth_chart_extra_adult');
+			} else if($what_chart==2) {
+				$this->db->where('patient_id', $patient_id);
+				$this->db->order_by('date_chart desc');
+				$this->db->limit(5);
+				$res = $this->db->get('patient_tooth_chart_extra_child');
+			} else {
+				$this->db->where('patient_id', $patient_id);
+				$this->db->limit(5);
+				$res = $this->db->get('patient_tooth_chart');
 			}
-			else if($what_chart==2) {
-			$sql="SELECT * FROM patient_tooth_chart_extra_child WHERE patient_id='".$patient_id."' ORDER BY date_chart DESC LIMIT 5";	
-			$res=mysql_query($sql);
-			}
-			while($row=mysql_fetch_array($res)) {
-			$chart_remarks=$row['chart_remarks'];
-			$i++;
-			 $f=$i%2;
-				if($f==0)
-				{ $back="#FFF";} 
-				else
-				{ $back="#e0eefa";}
+
+			if($res->num_rows() > 0) {
+				$result = $res->result_array();
+				foreach($result as $row) {
+					$chart_remarks = $row['chart_remarks'];
+					$i++;
+					$f=$i%2;
+					if($f==0)
+					{ $back="#FFF";} 
+					else
+					{ $back="#e0eefa";}
 			?>
 			<tr style="background-color:<?php echo $back;?>;font-size:14px;">
 			<td style="width:110px;padding-top:6px;padding-bottom:6px;text-align:left;padding-left:10px;">
@@ -195,7 +186,10 @@ function onSave()
 			<td style="width:129px;padding-top:6px;padding-bottom:6px;text-align:center;">
 			<?php echo $row['date_chart'];?></td>
 
-			<?php } ?>
+<?php
+				}
+			}
+?>
 			</tr></table>		
 	</div>
 
@@ -204,10 +198,11 @@ function onSave()
 		<div style="float:left;width:340px;padding-top:24px;">
 		<div style="float:left;font-family:Arial, Helvetica, sans-serif;font-size:13px;font-weight:bold;color:#5f6060;">Remarks</div>
 		<div style="float:right;"><!--<input type="submit" name="save_rem" value="Save Remarks" class="submit2" style="margin-top:-5px;" onclick="return onSave();"/>--></div>
-		<div style="float:left;margin-top:5px;margin-left:3px;"><textarea name="remarks" style="font-size:15px;width:335px;height:137px;font-family:Arial, Helvetica, sans-serif;" disabled="disabled"><?php 
-
-		//var_dump($chart_remarks);die();
-		echo $chart_remarks;?></textarea></div>
+		<div style="float:left;margin-top:5px;margin-left:3px;">
+			<textarea name="remarks" style="font-size:15px;width:335px;height:137px;font-family:Arial, Helvetica, sans-serif;" disabled="disabled">
+<?php 			echo isset($chart_remarks) ? $chart_remarks: '';?>
+			</textarea>
+		</div>
 		</div>
 		<input type="hidden" value="<?php echo $patient_id;?>" name="id_for_remarks" />
 		<input type="hidden" value="<?php echo $what_chart;?>" name="what_chart" />
@@ -215,7 +210,7 @@ function onSave()
 	</div>
 
 	<div class="row">
-		<form method="post">
+		<form id="patient_tooth_add" method="post" enctype="multipart/form-data">
 			<div id="tooth_dialog" title="Basic dialog">
 				<?php echo $this->load->view('charting/tooth/table_first_tooth'); ?>
 			</div>
@@ -223,26 +218,46 @@ function onSave()
 	$adult_array = array(11,12,13,14,15,16,17,18,21,22,23,24,25,26,27,28,31,32,33,34,35,36,37,38,41,42,43,44,45,46,47,48);
 	foreach($adult_array as $adult) {
 ?>
-		<input id="pic<?php echo $adult; ?>" type="hidden" name="pic<?php echo $adult; ?>" >
-		<input id="leg_<?php echo $adult; ?>" type="hidden" name="leg_<?php echo $adult; ?>" >
-		<input id="adult_<?php echo $adult; ?>" type="hidden" name="adult_<?php echo $adult; ?>" >
+		<input id="pic<?php echo $adult; ?>" type="text" name="pic<?php echo $adult; ?>" >
+		<input id="leg_<?php echo $adult; ?>" type="text" name="leg_<?php echo $adult; ?>" >
+		<input id="adult_<?php echo $adult; ?>" type="text" name="adult_<?php echo $adult; ?>" >
 <?php
-	}
-	$child = array(51,52,53,54,55,61,62,63,64,65,71,72,73,74,75,81,82,83,84,85);
+	};
+	$child_array = array(51,52,53,54,55,61,62,63,64,65,71,72,73,74,75,81,82,83,84,85);
 	foreach($child_array as $child) {
 ?>
-		
+		<input id="pic<?php echo $adult; ?>" type="text" name="pic<?php echo $adult; ?>" >
+		<input id="leg_<?php echo $adult; ?>" type="text" name="leg_<?php echo $adult; ?>" >
+		<input id="adult_<?php echo $adult; ?>" type="text" name="adult_<?php echo $adult; ?>" >		
 <?php
-	}
+	};
 ?>
-			<button class="btn btn-primary btn-lg" type="submit" name="action" value="save"> SAVE </button>
+			<button class="btn btn-primary btn-lg pull-right" type="submit" name="action" value="save"> SAVE </button>
 		</form>
 	</div>
 
 
 
 </div>
-<script language="javascript" type="text/javascript">
+
+<script type="text/javascript">
+
+function Refresh(key,id) {
+	window.location="<?php echo base_url(); ?>test/patient_tooth_chart?id="+id+"&key="+key;
+}
+
+function onSave()
+{
+	if(confirm('Do you want to save changes ?')==true)
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}  
+
 function divPrint()
 {
 	var display_setting="toolbar=yes,location=no,directories=yes,menubar=yes,";

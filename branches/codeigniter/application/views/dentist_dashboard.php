@@ -13,21 +13,12 @@
 		<div class="col-md-12">
 			
 				<div class="row">
-					<div class="col-sm-6 col-md-2">
-						<a href="#" class="thumbnail">
-							<img alt="Profile Pic" src="<?php echo trim($profile_pic) != null ? base_url().$profile_pic : base_url('img/profile_pic.gif'); ?>">
-						</a>
-					</div>
-					<div class="col-md-10">
-						<div class="row">
-							<div class="col-md-6">
-								<h1>
-									Hi, <?php echo $first_name; ?>
-								</h1>
-							</div>
-							<div class="col-md-6 pull-right">
+					<div class="container">
+							<div class="pull-right">
 								<?php $this->load->view('menu'); ?>
 							</div>
+						<div class="page-header">
+						  <h1><?php echo $dashboard_title; ?></h1>
 						</div>
 					</div>
 				</div>
@@ -36,14 +27,26 @@
 		</div>
 	</div>
 
-	<div class="row">
+		<div class="container">
 			<div class="col-md-6">
-				<h1> <?php echo $dashboard_title; ?> </h1>
+				<div class="row">
+					<div class="col-md-4">
+						<a href="#">
+							<img class="profile_pic" alt="Profile Pic" src="<?php echo trim($profile_pic) != null ? base_url().$profile_pic : base_url('img/profile_pic.gif'); ?>">
+						</a>
+					</div>
+					<div class="col-md-8">
+						<h1>
+							Hi, Doctor <?php echo $first_name; ?>
+						</h1>
+					</div>
+				</div>
 			</div>
 			<div class="col-md-6">
 				<?php echo isset($add_patient_search) ? $add_patient_search : ''; ?>
 			</div>
-	</div>
+		</div>
+
 
 	<div class="row">
 		<?php echo $dashboard_content; ?>

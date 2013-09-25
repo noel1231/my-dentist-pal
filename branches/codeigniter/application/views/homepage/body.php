@@ -6,7 +6,7 @@
         <p>and confidential patient clinical charting,</p>
         <p>which dentist can access wherever they are.</p>
     </div>
-        <div class="head_video_container">
+        <div class="row head_video_container">
                 <div class="menu">
                     <a href="<?php echo base_url('dentist_signup'); ?>" class="button">
                         <img class="register" src="images/register.png" alt="REGISTER"/>
@@ -25,6 +25,7 @@
                 <div class="img_holder">
                     <img src="images/monitor.png" alt="monitor" />
                 </div>
+<!--
             <div class="button">
                 <img class="register"src="images/dentist_access.png" alt="DENTIST ACCESS"/>
             </div>
@@ -33,7 +34,7 @@
             </div>
             <div id="watch" class="button">
                 <img class="register" src="images/watch_video.png" alt="WATCH VIDEO"/>
-            </div>
+            </div> -->
         </div>
     <div class="content">
         <div class="leftpanel">
@@ -162,16 +163,4 @@
 
     </table>
 </div>
-    <div class="footer">
-        <div class="link">
-            <a href="https://www.facebook.com/MyDentistPal" target="_blank"><img src="images/fb_like.png" alt="facebook" /></a>
-            <a href="https://twitter.com/MyDentistPal" target="_blank"><img src="images/twitter.png" alt="twitter" /></a>
-        </div>
-        <div class="logo_footer">
-            <img src="images/logo_footer.png" alt="facebook" />
-        </div>
-        <div class="company">
-            <p>Product of <a href="http://cloudwalkdigital.com/" target="_blank">Cloudwalk Digital Inc.</a></p>
-        </div>
-    </div>
 </div>

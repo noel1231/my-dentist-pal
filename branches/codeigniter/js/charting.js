@@ -13,6 +13,9 @@ $(function() {
 		modal: true,
 		resizable: false,
 		buttons: {
+			Set: function(e) {
+				
+			},
 			Close: function() {
 				$( this ).dialog( "close" );
 			}
@@ -45,10 +48,17 @@ $(function() {
 		var pad = "00";
 		var tooth_img = pad.substring(0, pad.length - str.length) + str;
 
-			document.getElementById(val.new1).src = "../img/Toothchart/"+tooth_img+".png";
+			document.getElementById(val.new1).src = "img/Toothchart/"+tooth_img+".png";
 			document.getElementById(val.new2).value = tooth_img;
 			document.getElementById(val.new3).value = val.new4;
 			document.getElementById(val.new5).value = val.new4;
+
+		$('#patient_tooth_add').ajaxForm({
+			url: 'test/set_tooth',
+			success: function(html) {
+				console.log(html);
+			}
+		}).submit();
 
 	});
 
