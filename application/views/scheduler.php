@@ -34,6 +34,7 @@ if ($this->db->table_exists('dentist_appointments'))
 			<th> Description </th>
 			<th> Time </th>
 			<th> Status </th>
+			<th>  </th>
 		</tr>
 	</thead>
 	<tbody id="tbody_appointment">
@@ -53,6 +54,9 @@ if ($this->db->table_exists('dentist_appointments'))
 					<option> Confirmed </option>
 					<option> Cancelled </option>
 				</select>
+			</td>
+			<td>
+				<span class="glyphicon glyphicon-trash delete_appointment" title="Delete" style="cursor:pointer"></span>
 			</td>
 		</tr>
 <?php
