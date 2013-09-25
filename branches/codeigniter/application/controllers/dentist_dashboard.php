@@ -141,13 +141,29 @@ class Dentist_Dashboard extends CI_Controller {
 		{
 			if($this->input->post('action') == 'insert') {
 				$this->db->insert('dentist_appointments', $insert_data);
+				echo '1-';
 			} else {
 				$this->db->where('id', $this->input->post('appointment_id'));
 				$this->db->update('dentist_appointments', $insert_data);
+				echo '2-';
 			}
 		}
 
-		echo json_encode($insert_data);
+		// echo json_encode($insert_data);
+		echo '
+			<tr>
+				<td>'.$insert_data['title'].'</td>
+				<td>'.$insert_data['description'].'</td>
+				<td>'.$insert_data['start_time'].' '.($insert_data['end_time'] ? 'to '.$insert_data['end_time'] : '').'</td>
+				<td>
+					<select>
+						<option> Select.. </option>
+						<option> Confirmed </option>
+						<option> Cancelled </option>
+					</select>
+				</td>
+			</tr>	
+		';
 	}
 }
 
