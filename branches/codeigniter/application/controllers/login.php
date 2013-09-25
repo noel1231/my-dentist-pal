@@ -32,40 +32,7 @@ class Login extends CI_Controller {
 		$this->load->view('homepage', $data);
 		
 	}
-	// function  check_login()
-	// {
-		// $email = $this->input->post('input_email');
-		// $pass = $this->input->post('input_pass');
-		// $pass = md5($pass);
-		
-		// $this->db->where('email',$email);
-		// $this->db->where('dentist_pass',$pass);
-		// $query = $this->db->get('dentist_list');
-		// if($query->num_rows() > 0)
-		// {
-			// $row1 = $query->row_array();
-			// if($row1['status'] == 1)
-			// {
-				// $row = $query->row_array();
-				// $newdata = array(
-					   // 'email'  			=> $row['email'],
-					   // 'id'     			=> $row['id'],
-					   // 'license_number'     => $row['license_number'],
-					   // 'logged_in' 			=> TRUE
-				// );
-				// $this->session->set_userdata($newdata);  
-				   
-				// echo 'success';
-			// }else
-			// {
-				// echo 'not verify';
-			// }
-		// }
-		// else 
-		// {
-			// echo 'denied';
-		// }
-	// }
+	
 	function  check_login()
 	{
 		$email = $this->input->post('input_email');
