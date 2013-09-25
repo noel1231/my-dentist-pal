@@ -39,8 +39,13 @@ class Login extends CI_Controller {
 		$pass = $this->input->post('input_pass');
 		$pass = md5($pass);
 		
-		$this->db->where('email',$email);
-		$this->db->where('dentist_pass',$pass);
+		if($email != 'demo@mydentistpal.com') {
+			$this->db->where('status', 1);
+		}
+
+			$this->db->where('email', $email);
+			$this->db->where('dentist_pass', $pass);
+
 		$query = $this->db->get('dentist_list');
 		if($query->num_rows() > 0)
 		{
