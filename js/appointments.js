@@ -243,7 +243,7 @@ $(function(){
 	$('.timepicker').val('').scroller('destroy').scroller({
 		mode: 'scroller',
 		preset: 'time',
-		theme: 'android',
+		theme: 'android-ics light',
 		display: 'inline',
 		height: 32,
 		width: 25

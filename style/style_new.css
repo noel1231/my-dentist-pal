@@ -69,9 +69,7 @@
 
 .wrapper
 {
-    float: left;
-    width: 100%;
-    margin: 13% 0 0 0;
+    margin-top: 135px;
 }
 
 .wrapper .head_content
@@ -114,23 +112,6 @@
     text-align: center;
     font-size: 18px;
     line-height: 28px;
-}
-
-.wrapper .head_video_container
-{
-    float: left;
-    width: 100%;
-    margin: 50px 0 0 0;
-    padding: 0;
-}
-
-.wrapper .head_video_container .menu
-{
-    float: left;
-    margin: 0 0 0 8%;
-    padding: 0;
-    width: 84%;
-    text-align: center;
 }
 
 .wrapper .head_video_container .menu .button
@@ -280,7 +261,8 @@
 	width: 100%;
 }
 
-.wrapper .footer
+
+.footer
 {
     float: left;
     width: 100%;
@@ -289,36 +271,37 @@
     background-color: #ebebeb;
     padding: 10px 0;
 }
-.wrapper .footer .link {
+.footer .link {
     float: left;
     margin: 4% 6% 0 0;
     padding: 10px 0;
     text-align: center;
     width: 30%;
 }
-.wrapper .footer .logo_footer {
+.footer .logo_footer {
     float: left;
     margin: 0 10% 0 0;
     padding: 10px 0;
     text-align: center;
     width: 30%;
 }
-.wrapper .footer .company {
+.footer .company {
     float: right;
     margin: 6% 0 0;
     text-align: center;
     width: 24%;
 }
-.wrapper .footer .company p {
+.footer .company p {
     color: #00A6E5;
 }
-.wrapper .footer .company p a {
+.footer .company p a {
     color: #000000;
     text-decoration: none;
 }
-.wrapper .footer .company p a:hover {
+.footer .company p a:hover {
     text-decoration: underline;
 }
+
 
 .holder
 {

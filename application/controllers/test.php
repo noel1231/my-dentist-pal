@@ -1061,6 +1061,10 @@ else if($what_chart==2) {
 		// $this->load->view('charting/box_patient_tooth', $data);
 	}
 
+	function set_tooth() {
+		print_r($this->input->post());
+	}
+
 }
 
 ?>

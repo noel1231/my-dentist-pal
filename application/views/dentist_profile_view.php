@@ -74,7 +74,7 @@
 								<div class="form-group"><!--start dentist clinic picture-->
 									<label for="" class="col-lg-3 control-label"></label>
 									<div class="col-lg-6">
-										<img src="" alt="clinic image" id="clinic-img" name="clinic-img"  class="thumbnail img-rounded" onerror="this.src='http://www.placehold.it/200x150/EFEFEF/AAAAAA&text=no+image'">
+										<img src="" alt="clinic image" id="clinic-img" name="clinic-img" class="thumbnail img-rounded" onerror="this.src='http://www.placehold.it/200x150/EFEFEF/AAAAAA&text=no+image'">
 										<input type="file" id="clinic-photo" name="clinic-photo" value="" />
 										
 										<input type="hidden" id="clinic_photo_file" name="clinic_photo_file" value="<?php if(isset($row) && $row['dentist_picture'] != ' '){ echo $row['dentist_picture']; } ?>">

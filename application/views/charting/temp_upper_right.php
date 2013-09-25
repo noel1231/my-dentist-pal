@@ -6,7 +6,7 @@
 	foreach($set5 as $x) {
 ?>
 	<td>
-		<table cellpadding="0" cellspacing="0" border="0" width="30" class="tooth">
+		<table class="tooth">
 			<tr><td style="font-size:10px;width:30px;text-align:center;">
 <?php 
 		if( isset( ${'legend_'.$x} ) && ${'legend_'.$x} != "none") {

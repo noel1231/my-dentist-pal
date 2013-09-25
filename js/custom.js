@@ -1,5 +1,13 @@
 $(function() {
 	
+	$('#profile_affix_nav').affix({
+		offset: {
+		top: 300,
+		bottom: function () {
+			return (this.bottom = $('.bs-footer').outerHeight(true))
+		}
+		}
+	});
 	
     $(window).scroll(function()
     {

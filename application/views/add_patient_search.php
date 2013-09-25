@@ -1,5 +1,5 @@
 				<div class="row">
-					<div class="col-md-10 pull-right">
+					<div class="pull-right">
 					<?php
 						$data_params = array(
 							'name'=>'patient_search_from',
@@ -12,15 +12,15 @@
 					?>
 						<!--<form action="patient_list.php" method="post" role="form" class="form-inline">-->
 							<div class="addpatient form-group">
-								<a href="<?php echo base_url('patient_add'); ?>" class="btn btn-primary">
+								<a href="<?php echo base_url('patient_add'); ?>" class="btn btn-primary btn-lg">
 									+ ADD PATIENT
 								</a>
 							</div>
 							<div class="form-group">
-								<input type="text" name="search_field" class="form-control search" placeholder="Search patient name" value="" />
+								<input type="text" name="search_field" class="form-control input-lg search" placeholder="Search patient name" value="" />
 							</div>
 							<div class="form-group">
-								<button type="submit" class="submit btn_design form-control btn-primary" />SEARCH</button>
+								<button type="submit" class="submit btn btn_design btn-primary btn-lg" />SEARCH</button>
 							</div>
 						</form>
 					</div>

@@ -381,21 +381,6 @@ background-color:#FFF;
 
 
 
-.search
-{	
- -moz-border-radius: 5px;
- -webkit-border-radius: 5px;
- border-radius: 5px;
- 
- border:none;
- padding:4px 15px 4px 15px;
-
- font-size:12px;
- font-family:Arial, Helvetica, sans-serif;
-width:213px;
-}
-
-
 #blanket {
 background-color:#111;
 opacity: 0.9;
@@ -612,9 +597,7 @@ color:#FFF;
 .addpatient a {
 	text-decoration: none;
 }
-.search {
-	background-color: #eee;
-}
+
 
 #add_sched .modal-dialog {
 	width: 918px;
@@ -623,4 +606,30 @@ color:#FFF;
 /* for charting */
 .tooth {
 	cursor: pointer;
+}
+
+/* for profile nav */
+#profile_affix_nav {
+    text-align: right;
+    width: 160px;
+}
+#profile_affix_nav.affix {
+    position: fixed;
+    top: 80px;
+}
+
+@font-face
+{
+	font-family: "GillSansMT";
+	src: url('Gil Sans/Gill Sans MT.ttf');
+}
+
+.profile_pic {
+    border: 4px solid #CCCCCC;
+    border-radius: 72px 72px 72px 72px;
+    padding: 4px;
+}
+
+.page-header {
+	border-bottom: 1px solid transparent;
 }
