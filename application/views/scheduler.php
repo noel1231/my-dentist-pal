@@ -27,7 +27,7 @@ if ($this->db->table_exists('dentist_appointments'))
 				<div class="row">
 					<div class="panel panel-default">
 <div class="table-responsive">
-<table class="table">
+<table class="table" style="margin-bottom:0;">
 	<thead>
 		<tr>
 			<th> Title </th>
@@ -59,7 +59,7 @@ if ($this->db->table_exists('dentist_appointments'))
 		}
 	} else {
 ?>
-		<tr><td colspan="4"> No Appoinment for this day. </td></tr>
+		<tr class="no_sched_row"><td colspan="4"> No Appoinment for this day. </td></tr>
 <?php
 	}
 ?>

@@ -60,7 +60,7 @@
 	<div class="row">
 		<div class="col-md-8 col-md-offset-2" style="<?php echo isset($access) ? 'margin-top:7%;' : ''; ?>">
 			<ul class="nav nav-tabs" id="myTab">
-				<li class="active"><a href="#add_patient" data-toggle="tab">Add Patient</a></li>
+				<li class="active"><a href="#add_patient" data-toggle="tab">Patient Info</a></li>
 				<li><a href="#dentist_history" data-toggle="tab">Dental History</a></li>
 				<li><a href="#medical_history" data-toggle="tab">Medical History</a></li>
 			</ul>

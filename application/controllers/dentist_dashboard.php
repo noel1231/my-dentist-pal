@@ -146,6 +146,7 @@ class Dentist_Dashboard extends CI_Controller {
 			} else {
 				$this->db->where('id', $this->input->post('appointment_id'));
 				$this->db->update('dentist_appointments', $insert_data);
+				
 				echo $this->input->post('appointment_id').'-';
 			}
 		}
