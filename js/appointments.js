@@ -4,11 +4,12 @@ $(function(){
 		$('#tbody_appointment').html('');
 		if(appointment_obj.length > 0) {
 			for(var i=0; i<appointment_obj.length; i++) {
+				var id = appointment_obj[i].id;
 				var title = appointment_obj[i].title;
 				var description = appointment_obj[i].description;
 				var start_time = appointment_obj[i].start_time;
 				var end_time = appointment_obj[i].end_time;
-				$('#tbody_appointment').append('<tr><td>'+title+'</td><td>'+description+'</td><td>'+start_time+' to '+end_time+'</td><td> Status here </td></tr>');
+				$('#tbody_appointment').append('<tr id="'+id+'"><td>'+title+'</td><td>'+description+'</td><td>'+start_time+' to '+end_time+'</td><td> Status here </td></tr>');
 			}
 		} else {
 			$('#tbody_appointment').append('<tr><td colspan="4"> No Appoinment for this day. </td></tr>');
@@ -158,7 +159,15 @@ $(function(){
 				
 				$('#calendar').fullCalendar( 'refetchEvents' );
 				$('#add_sched').modal('hide');
-				$('#tbody_appointment').append(html);
+			
+				if(split[0] == 1)
+				{
+					$('#tbody_appointment').append(html);
+				}else
+				{
+					$('#tbody_appointment').find('#'+split[0]).remove();
+					$('#tbody_appointment').append(html);
+				}
 			}
 		}).submit();
 	});
