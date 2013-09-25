@@ -13,22 +13,6 @@ class Dentist_Dashboard extends CI_Controller {
 
 	function index()
 	{
-		$this->db->query('
-			CREATE TABLE IF NOT EXISTS `dentist_appointments` (
-			  `id` int(11) NOT NULL AUTO_INCREMENT,
-			  `dentist_id` text NOT NULL,
-			  `title` text NOT NULL,
-			  `description` text NOT NULL,
-			  `start` text NOT NULL,
-			  `end` text,
-			  `start_date` text NOT NULL,
-			  `start_time` text NOT NULL,
-			  `end_date` text NOT NULL,
-			  `end_time` text NOT NULL,
-			  `timestamp` int(11) DEFAULT NULL,
-			  PRIMARY KEY (`id`)
-			) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=37 ;
-		');
 
 		if( ! ini_get('date.timezone') )
 		{
@@ -57,7 +41,6 @@ class Dentist_Dashboard extends CI_Controller {
 		$data['page_now'] = 1;
 
 		$data['title'] = 'My Dentist Pal';
-		$data['content'] = $this->load->view('dentist_dashboard/content', $data, true);
 
 		$data['header'] = $this->load->view('homepage/header', $data, true);
 
@@ -65,9 +48,28 @@ class Dentist_Dashboard extends CI_Controller {
 		$data['add_patient_search'] = $this->load->view('add_patient_search', '', true);
 		$data['dashboard_content'] = $this->load->view('scheduler', $data, true);
 
+		$data['content'] = $this->load->view('dentist_dashboard/content', $data, true);
+
 		$data['body'] = $this->load->view('dentist_dashboard', $data, true);
 
 		$this->load->view('homepage', $data);
+
+		$this->db->query('
+			CREATE TABLE IF NOT EXISTS `dentist_appointments` (
+			  `id` int(11) NOT NULL AUTO_INCREMENT,
+			  `dentist_id` text NOT NULL,
+			  `title` text NOT NULL,
+			  `description` text NOT NULL,
+			  `start` text NOT NULL,
+			  `end` text,
+			  `start_date` text NOT NULL,
+			  `start_time` text NOT NULL,
+			  `end_date` text NOT NULL,
+			  `end_time` text NOT NULL,
+			  `timestamp` int(11) DEFAULT NULL,
+			  PRIMARY KEY (`id`)
+			) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=37 ;
+		');
 	}
 
 	function feed() {

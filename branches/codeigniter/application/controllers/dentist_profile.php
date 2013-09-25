@@ -16,18 +16,29 @@ class Dentist_Profile extends CI_Controller {
 
 	function index()
 	{
-		$d_id = $this->session->userdata('id');
-		if($d_id) {
-			// echo 'logged_in';
-			// echo $d_id;
-			$send2dpv['id_result'] = $d_id;
-			$send2home['body'] = $this->load->view('dentist_profile_view', $send2dpv, true);
-			$send2home['header'] = $this->load->view('homepage/header', '', true);
-			$this->load->view('homepage', $send2home);
+		if($this->session->userdata('id')) {
+			$data['sess_id'] = $this->session->userdata('id');
 		} else {
 			redirect(base_url());
-			// echo 'not logged';
 		}
+
+		$this->db->where('id', $data['sess_id']);
+		$qdentist_list = $this->db->get('dentist_list');
+		$rdentist_list = $qdentist_list->row_array();
+
+		$data = $rdentist_list;
+
+		$data['dashboard_title'] = 'Dentist Profile';
+
+		$data['body'] = $this->load->view('dentist_profile_view', $data, true);
+		$data['header'] = $this->load->view('homepage/header', '', true);
+
+		$data['dashboard_content'] = $this->load->view('dentist_profile_view', $data, true);
+
+		$data['body'] = $this->load->view('dentist_dashboard', $data, true);
+
+		$this->load->view('homepage', $data);
+
 	}
 	
 	function save_dentist_info()

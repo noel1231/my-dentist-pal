@@ -444,7 +444,7 @@
 								</div>
 							</div>
 							<?php
-								if(isset($row))
+								if(isset($row['medical_treatment']))
 								{
 									$dataextract = json_decode($row['medical_treatment']);
 									
