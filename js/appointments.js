@@ -154,9 +154,11 @@ $(function(){
 			success: function(html) {
 				// event = JSON.parse(html);
 				// append_to_table(event);
-
+				var split = html.split('-');
+				
 				$('#calendar').fullCalendar( 'refetchEvents' );
 				$('#add_sched').modal('hide');
+				$('#tbody_appointment').append(html);
 			}
 		}).submit();
 	});

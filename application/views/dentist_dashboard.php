@@ -83,7 +83,7 @@
 	);
 	echo form_open('', $form_attrib);
 ?>
-	<input type="hidden" id="appointment_id" name="appointment_id" />
+	<input type="text" id="appointment_id" name="appointment_id" />
 	<input type="hidden" name="dentist_id" value="<?php echo $id; ?>" />
 	<div class="form-group">
 		<label for="inputTitle1" class="col-lg-3 control-label"> Title: </label>
