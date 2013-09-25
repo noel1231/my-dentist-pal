@@ -26,7 +26,7 @@ if ($this->db->table_exists('dentist_appointments'))
 				</div>
 				<div class="row">
 					<div class="panel panel-default">
-
+<div class="table-responsive">
 <table class="table">
 	<thead>
 		<tr>
@@ -65,6 +65,7 @@ if ($this->db->table_exists('dentist_appointments'))
 ?>
 	</tbody>
 </table>
+</div>
 <?php
 }
 ?>					
