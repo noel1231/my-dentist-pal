@@ -67,7 +67,8 @@
 									</div><!--end dentist picture-->
 									<div style="margin-left:298px; margin-bottom:15px;"><!--start upload dentist img-->
 										<input type="file" id="dentist-photo" name="dentist-photo" value="" />
-										<input type="hidden" id="dentist_photo_file" name="dentist_photo_file" value="<?php if(isset($row) && $row['patient_picture'] != ' '){ echo $row['patient_picture']; } ?>">
+										<!--<input type="text" id="dentist_photo_file_existing" name="dentist_photo_file_existing" value="<?php //if(isset($row) && $row['patient_picture'] != ' '){ echo $row['patient_picture']; } ?>">-->
+										<!--<input type="text" id="dentist_photo_file" name="dentist_photo_file" value="<?php //if(isset($row) && $row['patient_picture'] != ' '){ echo $row['patient_picture']; } ?>">-->
 									</div><!--end dentist upload dentist img-->
 									<div class="form-group"><!--start full name-->
 										<label for="" id="dp-label" class="col-lg-2 control-label">Name:</label>
@@ -118,7 +119,8 @@
 								</div><!--end dentist clinic picture-->
 								<div style="margin-left:298px; margin-bottom:15px;"><!--start upload clinic details-->
 									<input type="file" id="clinic-photo" name="clinic-photo" value="" />
-									<input type="hidden" id="clinic_photo_file" name="clinic_photo_file" value="<?php if(isset($row) && $row['dentist_picture'] != ' '){ echo $row['dentist_picture']; } ?>">
+									<!--<input type="text" id="clinic_photo_file_existing" name="clinic_photo_file_existing" value="<?php //if(isset($row) && $row['clinic_picture'] != ' '){ echo $row['clinic_picture']; } ?>">-->
+									<!--<input type="text" id="clinic_photo_file" name="clinic_photo_file" value="<?php //if(isset($row) && $row['clinic_picture'] != ' '){ echo $row['clinic_picture']; } ?>">-->
 								</div><!--end dentist upload clinic details-->
 								<div class="form-group"><!--start clinic name-->
 										<label for="" class="col-lg-2 control-label">Clinic Name:</label>

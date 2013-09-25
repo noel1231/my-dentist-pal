@@ -41,22 +41,28 @@ class Login extends CI_Controller {
 		
 		$this->db->where('email',$email);
 		$this->db->where('dentist_pass',$pass);
-		$this->db->where('status', 1);
 		$query = $this->db->get('dentist_list');
 		if($query->num_rows() > 0)
 		{
-			$row = $query->row_array();
-			$newdata = array(
-                   'email'  			=> $row['email'],
-                   'id'     			=> $row['id'],
-                   'license_number'     => $row['license_number'],
-                   'logged_in' 			=> TRUE
-            );
-			$this->session->set_userdata($newdata);  
-			   
-			echo 'success';
+			$row1 = $query->row_array();
+			if($row1['status'] == 1)
+			{
+				$row = $query->row_array();
+				$newdata = array(
+					   'email'  			=> $row['email'],
+					   'id'     			=> $row['id'],
+					   'license_number'     => $row['license_number'],
+					   'logged_in' 			=> TRUE
+				);
+				$this->session->set_userdata($newdata);  
+				   
+				echo 'success';
+			}else
+			{
+				echo 'not verify';
+			}
 		}
-		else
+		else 
 		{
 			echo 'denied';
 		}
