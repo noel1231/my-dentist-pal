@@ -317,7 +317,10 @@ $(function() {
 		{
 			if(html == 'denied')
 			{
-				$('.invalid_login').show();
+				$('.invalid_login').html('Invalid email/password').show();
+			}else if(html == 'not verify')
+			{
+				$('.invalid_login').html('Account not recognized! Please check your email inbox/spam for account varification.').show();
 			}else
 			{
 				window.location.href = 'dentist_dashboard';
