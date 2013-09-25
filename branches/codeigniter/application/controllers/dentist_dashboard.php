@@ -143,11 +143,13 @@ class Dentist_Dashboard extends CI_Controller {
 		{
 			if($this->input->post('action') == 'insert') {
 				$this->db->insert('dentist_appointments', $insert_data);
+				$ap_id = $this->db->insert_id();
 				
 				echo '1-';
 			} else {
 				$this->db->where('id', $this->input->post('appointment_id'));
 				$this->db->update('dentist_appointments', $insert_data);
+				$ap_id = $this->input->post('appointment_id');
 				
 				echo $this->input->post('appointment_id').'-';
 			}
@@ -155,7 +157,7 @@ class Dentist_Dashboard extends CI_Controller {
 
 		// echo json_encode($insert_data);
 		echo '
-			<tr id="'.$this->input->post('appointment_id').'">
+			<tr id="'.$ap_id.'">
 				<td>'.$insert_data['title'].'</td>
 				<td>'.$insert_data['description'].'</td>
 				<td>'.$insert_data['start_time'].' '.($insert_data['end_time'] ? 'to '.$insert_data['end_time'] : '').'</td>
@@ -166,8 +168,17 @@ class Dentist_Dashboard extends CI_Controller {
 						<option> Cancelled </option>
 					</select>
 				</td>
+				<td>
+					<span class="glyphicon glyphicon-trash delete_appointment" title="Delete" style="cursor:pointer"></span>
+				</td>
 			</tr>	
 		';
+	}
+	
+	function delete_appointment()
+	{
+		$id = $this->input->post('app_id');
+		$this->db->where('id',$id)->delete('dentist_appointments');
 	}
 }
 

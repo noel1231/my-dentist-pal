@@ -9,7 +9,15 @@ $(function(){
 				var description = appointment_obj[i].description;
 				var start_time = appointment_obj[i].start_time;
 				var end_time = appointment_obj[i].end_time;
-				$('#tbody_appointment').append('<tr id="'+id+'"><td>'+title+'</td><td>'+description+'</td><td>'+start_time+' to '+end_time+'</td><td> Status here </td></tr>');
+				$('#tbody_appointment').append('<tr id="'+id+'">'+
+													'<td>'+title+'</td>'+
+													'<td>'+description+'</td>'+
+													'<td>'+start_time+' to '+end_time+'</td>'+
+													'<td> Status here </td>'+
+													'<td>'+
+														'<span class="glyphicon glyphicon-trash delete_appointment" title="Delete" style="cursor:pointer"></span>'+
+													'</td>'+
+												'</tr>');
 			}
 		} else {
 			$('#tbody_appointment').append('<tr class="no_sched_row"><td colspan="4"> No Appoinment for this day. </td></tr>');
@@ -162,7 +170,7 @@ $(function(){
 				// event = JSON.parse(html);
 				// append_to_table(event);
 				var split = html.split('-');
-				
+				alert(split);
 				$('#calendar').fullCalendar( 'refetchEvents' );
 				$('#add_sched').modal('hide');
 			
@@ -178,7 +186,27 @@ $(function(){
 			}
 		}).submit();
 	});
+	
+	$('#appointment').delegate('.delete_appointment','click',function(){
+		var s_id = $(this).parents('tr').attr('id');
+		$('#app_catch_id').val(s_id);
+		$('#myModalAppointmentDelete').modal('show');
+	});
 
+	$('#app_catch_id').click(function(){
+		var a_id = $(this).val();
+		$.ajax({
+			type: 'POST',
+			url: 'dentist_dashboard/delete_appointment',
+			data: { app_id : a_id },
+			success: function(html){
+				$('#myModalAppointmentDelete').modal('hide');
+				$('#calendar').fullCalendar( 'refetchEvents' );
+				$('tr#'+a_id).remove();
+			}
+		});
+	});
+	
 	var opt = {	}
 	opt.date = {preset : 'date'};
 	opt.datetime = { preset : 'datetime', minDate: new Date(2012,3,10,9,22), maxDate: new Date(2014,7,30,15,44), stepMinute: 5  };
