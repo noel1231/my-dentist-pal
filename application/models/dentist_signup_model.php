@@ -16,15 +16,17 @@ class Dentist_Signup_Model extends CI_Model{
 		$query = $this->db->get_where('dentist_list', array('id' => $data['id']));
 			
 		if ($query->num_rows() > 0) {
-			$error_code['text'] = "ERROR: You are already registered";
-			return $error_code;
+			echo "id already registered";
+			// $error_code['text'] = "ERROR: You are already registered";
+			// return $error_code;
 		}
 		
 		$query = $this->db->get_where('dentist_list', array('email' => $data['d_email']));
 
 		if ($query->num_rows() > 0) {
-			$error_code['text'] = "ERROR: email address already registered.";
-			return $error_code;
+			echo "already registered";
+			// $error_code['text'] = "ERROR: email address already registered.";
+			// return $error_code;
 		}
 		
 		$value = array (

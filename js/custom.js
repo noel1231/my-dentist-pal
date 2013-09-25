@@ -303,7 +303,7 @@ $(function() {
 				if(html != 'error')
 				{
 					$('#patient_photo_file').val(html);
-					$('.patient_photo_view').attr('src','patient_picture/'+html).css('width','200px');
+					$('.patient_photo_view').attr('src','patient_picture/'+html).css('width','210px');
 				}else
 				{
 					$('.patient_photo_view').attr('src','http://www.placehold.it/200x150/EFEFEF/AAAAAA&text=Error+Upload');
@@ -468,10 +468,16 @@ $(function() {
 		
 		success: function(html)
 		{
-			$('.alert_msg').hide();
-			// $('.success_msg').html('Registration Success!').show();
-			$('#mySuccessReg').modal('show');
-			
+			if(html == 'already registered' || html == 'id already registered')
+			{
+				$('.alert_msg').html('You are already registered').show();
+				return false;
+			}else
+			{
+				$('.alert_msg').hide();
+				// $('.success_msg').html('Registration Success!').show();
+				$('#mySuccessReg').modal('show');
+			}
 		}
 	});
 	//dentist profile submit form 
