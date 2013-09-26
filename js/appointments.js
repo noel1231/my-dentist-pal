@@ -136,11 +136,25 @@ $(function(){
     });
 
 	$('#show_add_sched').click(function(){
+		var date = new Date();
+		var hours = date.getHours();
+		var minutes = date.getMinutes();
+		var ampm = hours >= 12 ? 'PM' : 'AM';
+		var endHours = (hours + 1) % 12;
+		endHours = endHours ? endHours : 12;
+		hours = hours % 12;
+		hours = hours ? hours : 12; // the hour '0' should be '12'
+		minutes = minutes < 10 ? '0'+minutes : minutes;
+		var strTime = hours + ':' + minutes + ' ' + ampm;
+		var endTime = endHours + ':' + minutes + ' ' + ampm; 
+		
+		
+		
 		$('#inputTitle1').val('');
 		$('#inputDescription1').val('');
 		
-		$('#inputTime1').val('');
-		$('#inputTime2').val('');
+		$('#inputTime1').val(strTime);
+		$('#inputTime2').val(endTime);
 		
 		$('#add_sched').find('.modal-title').html('Add Schedule');
 		$('#add_sched').find('#submit_appointment').val('insert');
@@ -240,10 +254,19 @@ $(function(){
 	opt.select = {preset : 'select'};
 
 
-	$('.timepicker').val('').scroller('destroy').scroller({
+	$('.timepicker').scroller('destroy').scroller({
 		mode: 'scroller',
 		preset: 'time',
 		theme: 'android-ics light',
+		display: 'inline',
+		height: 32,
+		width: 25
+	});
+	
+	$('.timepicker1').scroller('destroy').scroller({
+		mode: 'scroller',
+		preset: 'time',
+		theme: 'android',
 		display: 'inline',
 		height: 32,
 		width: 25

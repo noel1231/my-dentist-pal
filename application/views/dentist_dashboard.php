@@ -119,7 +119,7 @@
 				</div>
 				<label for="inputTime2" class="col-lg-2 control-label"> Time: </label>
 				<div class="col-lg-5">
-					<input type="text" class="form-control timepicker" id="inputTime2" placeholder="00:00" name="time2" required>
+					<input type="text" class="form-control timepicker1" id="inputTime2" placeholder="00:00" name="time2" required>
 				</div>
 			</div>
 		</div>
