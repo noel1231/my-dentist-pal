@@ -875,7 +875,7 @@
 					</div>
 					<div class="tab-pane" id="charting">
 						<div class="well">
-							<?php echo $charting; ?>
+							<?php echo isset($charting) ? $charting : ''; ?>
 						</div>
 					</div>
 					<div class="tab-pane" id="treatment-record">
