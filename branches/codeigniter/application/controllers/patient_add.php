@@ -256,4 +256,36 @@ class Patient_add extends CI_Controller {
 		
 		}   
 	}
+	
+	function adding_patient_modal()
+	{
+		$patient_picture = '';
+		
+		if(isset($_FILES['modal_p_photo']))
+		{
+			$directory = 'patient_picture/';
+			$uploaded = $this->upload_model->upload('modal_p_photo',$directory);
+			if(isset($uploaded['file_name']))
+			{
+				$patient_picture = 'patient_picture/'.$uploaded['file_name'];
+			}
+		}	
+			$data_array = array(
+				'id'=>$this->input->post('modal_p_num'),
+				'dentist_id'=>$this->session->userdata('id'),
+				'date_of_entry'=> $this->input->post('modal_p_entrydate'),
+				'patient_picture'=> $patient_picture,
+				'patient_first_name'=> $this->input->post('modal_p_fname'),
+				'patient_middle_name'=> $this->input->post('modal_p_mname'),
+				'patient_surname'=> $this->input->post('modal_p_lname'),
+				'patient_name'=> $this->input->post('modal_p_lname').', '.$this->input->post('modal_p_fname').' '.$this->input->post('modal_p_mname'),
+				'patient_gender'=> $this->input->post('modal_p_sex'),
+				'patient_bday'=> $this->input->post('modal_p_bday'),
+				'patient_age'=> $this->input->post('modal_p_age'),
+				'patient_address'=> $this->input->post('modal_p_address'),
+				'patient_phone'=> $this->input->post('modal_p_mobile'),
+			);
+			$this->db->insert('patient_list',$data_array);
+		
+	}
 }

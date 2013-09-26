@@ -77,7 +77,7 @@
 								<input type="checkbox" class="check_each" value="<?php echo $row['id']; ?>">
 							</td>
 							<td>
-								<img src="<?php echo base_url('patient_picture/'.$row['patient_picture']); ?>" style="width:60px;" onerror="this.src='http://www.placehold.it/200x200/EFEFEF/AAAAAA&text=no+image'">
+								<img src="<?php echo base_url($row['patient_picture']); ?>" style="width:60px;" onerror="this.src='http://www.placehold.it/200x200/EFEFEF/AAAAAA&text=no+image'">
 							</td>
 							<td><?php echo ucwords($row['patient_name']); ?></td>
 							<td><?php echo date('m-t-Y',strtotime($row['date_of_entry'])); ?></td>
