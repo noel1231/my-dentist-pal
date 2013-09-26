@@ -34,7 +34,9 @@ class Patient_edit extends CI_Controller {
 
 			$data['dashboard_title'] = 'Add Patients';
 
-			$data['charting'] = $this->load->view('charting/box_tooth_edit', $data, true);
+			if($this->db->table_exists('patient_tooth_chart')) {
+				$data['charting'] = $this->load->view('charting/box_tooth_edit', $data, true);
+			}
 
 			$data['dashboard_content'] = $this->load->view('add_patient', $data, true);
 			$data['body'] = $this->load->view('dentist_dashboard', $data, true);

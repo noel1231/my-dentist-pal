@@ -1,24 +1,26 @@
 
-<div class="wrapper">
-    <div class="head_content">
-        <h2>Digitize your <em>dental management practice.</em></h2>
-        <p>A full-featured online tool that integrates dental practice management</p>
-        <p>and confidential patient clinical charting,</p>
-        <p>which dentist can access wherever they are.</p>
-    </div>
-        <div class="row head_video_container">
-                <div class="menu">
-                    <a href="<?php echo base_url('dentist_signup'); ?>" class="button">
+<div class="container wrapper">
+	<div class="jumbotron head_content">
+		<div class="container text-center">
+			<h1> Digitize your <span> dental management practice. </span> </h1>
+			<p>A full-featured online tool that integrates dental practice management</p>
+			<p>and confidential patient clinical charting,</p>
+			<p>which dentist can access wherever they are.</p>
+		</div>
+	</div>
+        <div class="container head_video_container">
+                <div class="row menu text-center">
+                    <a href="<?php echo base_url('dentist_signup'); ?>" class="btn">
                         <img class="register" src="images/register.png" alt="REGISTER"/>
                     </a>
              
-                    <a href="<?php echo base_url('login'); ?>" class="button">
+                    <a href="<?php echo base_url('login'); ?>" class="btn">
                         <img class="register"src="images/dentist_access.png" alt="DENTIST ACCESS"/>
                     </a>
-                    <a href="<?php echo base_url('login/patient'); ?>" class="button">
+                    <a href="<?php echo base_url('login/patient'); ?>" class="btn">
                         <img class="register" src="images/patient_access.png" alt="PATIENT ACCESS"/>
                     </a>
-                    <a id="watch" class="button">
+                    <a id="watch" class="btn">
                         <img class="register" src="images/watch_video.png" alt="WATCH VIDEO"/>
                     </a>
                 </div>
