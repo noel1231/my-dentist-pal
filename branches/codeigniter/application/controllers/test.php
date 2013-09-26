@@ -1062,7 +1062,7 @@ else if($what_chart==2) {
 	}
 
 	function set_tooth() {
-		print_r($this->input->post());
+		print_r($this->input->post('legend'));
 	}
 
 }

@@ -7,13 +7,6 @@
 		<div class="pull-right">
 			<input type="button" onclick="divPrint();" name="print" value="PRINT" class="btn btn-default submit" />
 		</div>
-		<div>
-			<input type="text" id="what_picture">
-			<input type="text" id="what_number">
-			<input type="text" id="what_legend">
-			<input type="text" id="what_hide">
-			<input type="text" id="what_tooth_number">
-		</div>
 	</div>
 
 	<div class="row">
@@ -210,10 +203,23 @@
 	</div>
 
 	<div class="row">
-		<form id="patient_tooth_add" method="post">
+		<form id="patient_tooth_add" name="patient_tooth_add" method="post">
 			<div id="tooth_dialog" title="Basic dialog">
 				<?php echo $this->load->view('charting/tooth/table_first_tooth'); ?>
 			</div>
+			<div>
+				<input type="text" id="what_picture">
+				<input type="text" id="what_number">
+				<input type="text" id="what_legend">
+				<input type="text" id="what_hide">
+				<input type="text" id="what_tooth_number">
+			</div>
+			<div>
+				<input type="text" name="tooth_num">
+				<input type="text" name="pic_num">
+				<input type="text" name="legend">
+			</div>
+			
 <?php
 	$adult_array = array(11,12,13,14,15,16,17,18,21,22,23,24,25,26,27,28,31,32,33,34,35,36,37,38,41,42,43,44,45,46,47,48);
 	foreach($adult_array as $adult) {

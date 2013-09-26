@@ -1,4 +1,4 @@
-    <div class="footer">
+    <div id="footer">
         <div class="link">
             <a href="https://www.facebook.com/MyDentistPal" target="_blank"><img src="images/fb_like.png" alt="facebook" /></a>
             <a href="https://twitter.com/MyDentistPal" target="_blank"><img src="images/twitter.png" alt="twitter" /></a>

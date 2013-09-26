@@ -1,6 +1,21 @@
 @charset "utf-8";
 /* CSS Document */
 
+/* sticky footer */
+html, body {
+	height: 100%;
+}
+
+#wrapper {
+	min-height: 100%;
+	margin-bottom: -140px;
+}
+
+#footer {
+	height: 140px;
+}
+/* sticky footer end */
+
 body {
     overflow-y: scroll;
 }
@@ -8,6 +23,7 @@ body {
 textarea {
   resize: none;
 }
+
 img{
 	border:none;
 }

@@ -1,7 +1,7 @@
 	<div>
 
 		<div class="row">
-			<select name="legend" id="legend" class="form-control">
+			<select name="legends" id="legends" class="form-control">
 				<option value="none">--Select one--</option>
 				<option value="AM">Amalgam Filling</option>
 				<option value="CO">Composite Filling</option>
