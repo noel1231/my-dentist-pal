@@ -91,13 +91,13 @@
 	<div class="form-group">
 		<label for="inputTitle1" class="col-lg-3 control-label"> Title: </label>
 		<div class="col-lg-9">
-			<input type="text" class="form-control" id="inputTitle1" placeholder="Name of Schedule" name="title" required data-content="Title is required">
+			<input type="text" class="form-control" id="inputTitle1" name="title" required data-content="Title is required">
 		</div>
 	</div>
 	<div class="form-group">
 		<label for="inputDescription1" class="col-lg-3 control-label"> Description: </label>
 		<div class="col-lg-9">
-			<input type="text" class="form-control" id="inputDescription1" placeholder="Description of Schedule" name="description">
+			<input type="text" class="form-control" id="inputDescription1" name="description">
 		</div>
 	</div>
 	<div class="form-group">

@@ -136,6 +136,7 @@ $(function(){
     });
 
 	$('#show_add_sched').click(function(){
+		
 		var date = new Date();
 		var hours = date.getHours();
 		var minutes = date.getMinutes();
@@ -149,8 +150,9 @@ $(function(){
 		var strTime = hours + ':' + minutes + ' ' + ampm;
 		var endTime = endHours + ':' + minutes + ' ' + ampm; 
 		
-		/* set end time to add schedule */
+		/* set end time to add schedule timepicker1 */
 		$('.timepicker1').scroller('setValue', endTime, true);
+		$('.timepicker').scroller('setValue', strTime, true);
 		
 		$('#inputTitle1').val('');
 		$('#inputDescription1').val('');
@@ -257,7 +259,7 @@ $(function(){
 
 
 	$('.timepicker').scroller('destroy').scroller({
-		mode: 'scroller',
+		mode: 'clickopick',
 		preset: 'time',
 		theme: 'android-ics light',
 		display: 'inline',
@@ -266,9 +268,9 @@ $(function(){
 	});
 	
 	$('.timepicker1').scroller('destroy').scroller({
-		mode: 'scroller',
+		mode: 'clickopick',
 		preset: 'time',
-		theme: 'android',
+		theme: 'android-ics light',
 		display: 'inline',
 		defaultValue: '10',
 		height: 32,
