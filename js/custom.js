@@ -1,3 +1,4 @@
+
 $(function() {
 	
 	$('#profile_affix_nav').affix({
@@ -261,9 +262,52 @@ $(function() {
 		}
 	});
 	
-	$(function() {
-		$( ".datepicker" ).datepicker();
+	$( ".datepicker" ).datepicker({
+		changeMonth: true,
+		changeYear: true
 	});
+	
+	$( ".datepickerBday" ).datepicker({
+		changeMonth: true,
+		changeYear: true,
+		yearRange: '1910:2016',
+		onClose: function(selectedDate){
+			var computedAge = getAge(selectedDate);
+			if(isNaN(computedAge))
+			{
+				computedAge = '';
+			}
+			$('input[name=modal_p_age]').val(computedAge);
+			
+		}
+	});
+	
+	function getAge(dateString) 
+	{
+		var today = new Date();
+		var birthDate = new Date(dateString);
+		var age = today.getFullYear() - birthDate.getFullYear();
+		var m = today.getMonth() - birthDate.getMonth();
+		if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) 
+		{
+			age--;
+		}
+		return age;
+	}
+	
+	$('#adding_paient_form').ajaxForm({
+		type: 'POST',
+		url: 'patient_add/adding_patient_modal',
+		beforeSubmit:function(arr, jform, option){
+			var form = jform[0];
+		},
+		success: function(html){
+			$('#myModalAddingSaying').modal('show');
+			$('#myModalAddingPatient').modal('hide');
+		}
+	});
+	
+	
 	
 	$('.submit_all_form').click(function(){
 		
@@ -557,3 +601,25 @@ $(function() {
 			// $('.dwwr').show('fast');
 		// });
 });
+
+function handleFiles(files)
+{
+	// Loop through the FileList and render image files as thumbnails.
+	for (var i = 0, f; f = files[i]; i++) {
+		 // Only process image files.
+		  if (!f.type.match('image.*')) {
+			continue;
+		  }
+	 var reader = new FileReader();
+
+	  // Closure to capture the file information.
+	  reader.onload = (function(theFile) {
+		return function(e) {
+			$('.p_photo_view').attr('src',e.target.result);
+		};
+	  })(f);
+
+	  // Read in the image file as a data URL.
+	  reader.readAsDataURL(f);
+	}
+}

@@ -150,6 +150,7 @@ $(function(){
 		var strTime = hours + ':' + minutes + ' ' + ampm;
 		var endTime = endHours + ':' + minutes + ' ' + ampm; 
 		
+		
 		/* set end time to add schedule timepicker1 */
 		$('.timepicker1').scroller('setValue', endTime, true);
 		$('.timepicker').scroller('setValue', strTime, true);
