@@ -144,11 +144,13 @@ $(function(){
 		endHours = endHours ? endHours : 12;
 		hours = hours % 12;
 		hours = hours ? hours : 12; // the hour '0' should be '12'
+		endHours = endHours < 10 ? '0'+endHours : endHours;
 		minutes = minutes < 10 ? '0'+minutes : minutes;
 		var strTime = hours + ':' + minutes + ' ' + ampm;
 		var endTime = endHours + ':' + minutes + ' ' + ampm; 
 		
-		
+		/* set end time to add schedule */
+		$('.timepicker1').scroller('setValue', endTime, true);
 		
 		$('#inputTitle1').val('');
 		$('#inputDescription1').val('');
@@ -268,6 +270,7 @@ $(function(){
 		preset: 'time',
 		theme: 'android',
 		display: 'inline',
+		defaultValue: '10',
 		height: 32,
 		width: 25
 	});
