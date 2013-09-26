@@ -15,18 +15,24 @@ $(function() {
 		modal: true,
 		resizable: false,
 		buttons: {
-			Set: function(e) {
+			Set: function(event) {
 				$('#patient_tooth_add').ajaxForm({
 					url: 'test/set_tooth',
 					success: function(html) {
-						console.log(html);
+						var tooth = JSON.parse(html);
+						$('#tooth_'+tooth.num).parents('table').removeClass('tooth').unbind('click');
 					}
-				}).submit();				
+				}).submit();
+				document.patient_tooth_add.reset();
+				$( this ).dialog( "close" );
 			},
 			Close: function() {
 				document.patient_tooth_add.reset();
 				$( this ).dialog( "close" );
 			}
+		},
+		open: function(event) {
+			$(this).attr('curr_tooth', document.patient_tooth_add.tooth_num.value);
 		}
 	});
 

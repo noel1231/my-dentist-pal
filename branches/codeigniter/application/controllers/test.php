@@ -1062,7 +1062,21 @@ else if($what_chart==2) {
 	}
 
 	function set_tooth() {
-		print_r($this->input->post('legend'));
+		extract($this->input->post());
+		
+		$set_tooth_array = array(
+			'patient_id' => $patient_id,
+			'dentist_id' => $dentist_id,
+			'tooth_num' => $tooth_num,
+			'tooth_area' => $pic_num,
+			'tooth_procedure' => $legend,
+			'date_procedure' => date('Y-m-d', time()),
+			'timestamp' => time()
+		);
+		$this->db->insert('patient_tooth_chart', $set_tooth_array);
+		$callback['num'] = $tooth_num;
+		$callback['id'] = $this->db->insert_id();
+		echo json_encode($callback);
 	}
 
 }
