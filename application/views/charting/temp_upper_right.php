@@ -7,7 +7,7 @@
 ?>
 	<td>
 		<table class="tooth">
-			<tr><td style="font-size:10px;width:30px;text-align:center;">
+			<tr><td class="<?php echo isset(${'tooth_'.$x}) ? '' : 'tooth'; ?>">
 <?php 
 		if( isset( ${'legend_'.$x} ) && ${'legend_'.$x} != "none") {
 			echo ${'legend_'.$x};

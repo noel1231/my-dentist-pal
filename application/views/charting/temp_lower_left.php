@@ -6,7 +6,7 @@
 	foreach($set7 as $x) {
 ?>
 	<td>
-		<table class="tooth">
+		<table class="<?php echo isset(${'tooth_'.$x}) ? '' : 'tooth'; ?>">
 			<tr><td>  
 <?php if( isset(${'tooth_'.$x}) == 0 ) { ?> 
 				<img id="tooth_<?php echo $x; ?>" src="<?php echo base_url(); ?>img/Toothchart/01.png" />
@@ -15,7 +15,7 @@
 <?php } ?>
 			</td></tr>
 			<tr><td style="text-align:center;" class="tooth_num"><?php echo $x; ?></td></tr>
-			<tr><td style="font-size:10px;width:30px;text-align:center;">
+			<tr><td class="tooth_legend">
 <?php 
 		if( isset( ${'legend_'.$x} ) && ${'legend_'.$x} != "none") {
 			echo ${'legend_'.$x};

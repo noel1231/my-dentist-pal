@@ -878,8 +878,10 @@
 							<?php echo isset($charting) ? $charting : ''; ?>
 						</div>
 					</div>
-					<div class="tab-pane" id="treatment-record">
-						<?php // echo $this->load->view(); ?>
+					<div class="tab-pane" id="treatment_record">
+						<div class="well">
+							<?php echo isset($treatment_records) ? $treatment_records : ''; ?>
+						</div>
 					</div>
 				</div>
 			</div>

@@ -70,6 +70,20 @@ class Dentist_Dashboard extends CI_Controller {
 			  PRIMARY KEY (`id`)
 			) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=37 ;
 		');
+
+		$this->db->query('
+			CREATE TABLE IF NOT EXISTS `patient_tooth_chart` (
+			  `id` int(11) NOT NULL AUTO_INCREMENT,
+			  `patient_id` int(11) NOT NULL,
+			  `dentist_id` int(11) NOT NULL,
+			  `tooth_num` int(11) NOT NULL,
+			  `tooth_area` text NOT NULL,
+			  `tooth_procedure` text NOT NULL,
+			  `date_procedure` text NOT NULL,
+			  `timestamp` int(11) NOT NULL,
+			  PRIMARY KEY (`id`)
+			) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+		');
 	}
 
 	function feed() {

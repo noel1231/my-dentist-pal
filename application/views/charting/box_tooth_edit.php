@@ -62,6 +62,8 @@
 
 		<div style="margin:0 auto; width:570px;">
 <?php
+		$new_chart = 0;
+		if($new_chart == '1') {
 			if($what_chart==1) {
 				if($this->input->get('key')) {
 					$key=$this->input->get('key');
@@ -88,17 +90,28 @@
 					$ress = $this->db->get('patient_child_tooth');
 					$remark = "tooth_remarks";
 				}
-
+				if($ress->num_rows() > 0) {
+					$row=$ress->row_array();
+					$chart_remarks=$row[$remark];
+					$data_tooth_chart_patient = $row;
+				}
 			}
-
-			if($ress->num_rows() > 0) {
-				$row=$ress->row_array();
-
-				$chart_remarks=$row[$remark];
-				$data_tooth_chart_patient = $row;
-
-				$this->load->view('charting/tooth_chart_patient', $data_tooth_chart_patient);
+		} else {
+			$this->db->where('dentist_id', $dentist_id);
+			$this->db->where('patient_id', $patient_id);
+			$qtc = $this->db->get('patient_tooth_chart');
+			if($qtc->num_rows() > 0) {
+				$rtc = $qtc->result_array();
+				foreach($rtc as $tc_data) {
+					$data_tooth_chart_patient['tooth_'.$tc_data['tooth_num']] = $tc_data['tooth_area'];
+					$data_tooth_chart_patient['legend_'.$tc_data['tooth_num']] = $tc_data['tooth_procedure'];
+				}
 			}
+		}
+
+		$this->load->view('charting/tooth_chart_patient', $data_tooth_chart_patient);
+
+		
 ?>
 		</div>
 	</div>
@@ -204,20 +217,22 @@
 
 	<div class="row">
 		<form id="patient_tooth_add" name="patient_tooth_add" method="post">
+			<input type="hidden" class="form-control" id="patient_id" name="patient_id" value="<?php echo $this->input->get('id'); ?>">
+			<input type="hidden" class="form-control" id="dentist_id" name="dentist_id" value="<?php echo $this->session->userdata('id'); ?>">
 			<div id="tooth_dialog" title="Basic dialog">
 				<?php echo $this->load->view('charting/tooth/table_first_tooth'); ?>
 			</div>
 			<div>
-				<input type="text" id="what_picture">
-				<input type="text" id="what_number">
-				<input type="text" id="what_legend">
-				<input type="text" id="what_hide">
-				<input type="text" id="what_tooth_number">
+				<input type="hidden" id="what_picture">
+				<input type="hidden" id="what_number">
+				<input type="hidden" id="what_legend">
+				<input type="hidden" id="what_hide">
+				<input type="hidden" id="what_tooth_number">
 			</div>
 			<div>
-				<input type="text" name="tooth_num">
-				<input type="text" name="pic_num">
-				<input type="text" name="legend">
+				<input type="hidden" name="tooth_num">
+				<input type="hidden" name="pic_num">
+				<input type="hidden" name="legend">
 			</div>
 			
 <?php

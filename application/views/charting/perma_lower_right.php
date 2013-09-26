@@ -12,14 +12,14 @@
 			
 		);
 */
-		$set4 = array(
-			48,47,46,45,44,43,42,41
-		);
-		foreach($set4 as $key=>$value) {
+	$set4 = array(
+		48,47,46,45,44,43,42,41
+	);
+	foreach($set4 as $key=>$value) {
 		
 ?>
 		<td> 
-			<table class="tooth">
+			<table class="<?php echo isset(${'tooth_'.$value}) ? '' : 'tooth'; ?>">
 				<tr><td>
 <?php
 		if(isset( ${'tooth_'.$value} )) {
@@ -38,7 +38,7 @@
 ?>
 				</td></tr>
 				<tr><td style="text-align:center;" class="tooth_num"><?php echo $value; ?></td></tr>
-				<tr><td style="font-size:10px;width:30px;text-align:center;">
+				<tr><td class="tooth_legend">
 <?php
 	if(isset( ${'legend_'.$value} )) {
 			

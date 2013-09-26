@@ -36,6 +36,7 @@ class Patient_edit extends CI_Controller {
 
 			if($this->db->table_exists('patient_tooth_chart')) {
 				$data['charting'] = $this->load->view('charting/box_tooth_edit', $data, true);
+				$data['treatment_records'] = $this->load->view('charting/treatment_records', $data, true);
 			}
 
 			$data['dashboard_content'] = $this->load->view('add_patient', $data, true);
@@ -43,7 +44,7 @@ class Patient_edit extends CI_Controller {
 
 			$this->load->view('homepage', $data);
 			
-		} else if($this->input->get('access')){
+		} else if($this->input->get('access')) {
 			
 			$patient_id = $this->input->get('id');
 			$query = $this->db->where('id',$patient_id)->get('patient_list');
@@ -53,12 +54,10 @@ class Patient_edit extends CI_Controller {
 			$data['body'] = $this->load->view('add_patient', $data, true);
 			$this->load->view('homepage', $data);
 			
-		}else{
+		} else {
 			redirect(base_url().'login');
 		}
 
-		
-		
 	}
 	
 	function delete_patient()

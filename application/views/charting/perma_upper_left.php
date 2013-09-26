@@ -8,8 +8,8 @@
 			foreach($set2 as $value) {
 ?>
 			<td valign="top">
-				<table class="tooth">
-				<tr><td style="font-size:10px;width:30px;text-align:center;">
+				<table class="<?php echo isset(${'tooth_'.$value}) ? 'hah' : 'tooth'; ?>">
+				<tr><td class="tooth_legend">
 <?php
 	if(isset( ${'legend_'.$value} )) {
 			
