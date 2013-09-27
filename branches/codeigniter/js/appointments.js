@@ -20,7 +20,7 @@ $(function(){
 												'</tr>');
 			}
 		} else {
-			$('#tbody_appointment').append('<tr class="no_sched_row"><td colspan="4"> No Appoinment for this day. </td></tr>');
+			$('#tbody_appointment').append('<tr class="no_sched_row"><td colspan="5"> No Appoinment for this day. </td></tr>');
 		}
 	}
 
@@ -110,6 +110,8 @@ $(function(){
 			
 		},
 		eventClick: function(calEvent, jsEvent, view) {
+			console.log(calEvent);
+			
 			var currDate = new Date();
 			var date = calEvent.end;
 			
@@ -122,6 +124,10 @@ $(function(){
 				return false;
 			}
 			
+			/* set time to mobilescroll plugin */
+			$('.timepicker').scroller('setValue', calEvent.start_time, true);
+			$('.timepicker1').scroller('setValue', calEvent.end_time, true);
+			
 			$('#appointment_id').val(calEvent.id);
 			$('#inputTitle1').val(calEvent.title);
 			$('#inputDescription1').val(calEvent.description);
@@ -132,6 +138,7 @@ $(function(){
 			$('#add_sched').find('.modal-title').html('Edit Schedule');
 			$('#add_sched').find('#submit_appointment').val('update');
 			$('#add_sched').modal('toggle');
+			update_scheduler( calEvent.start, calEvent.end, true, jsEvent, view );
 		}
     });
 
@@ -166,6 +173,32 @@ $(function(){
 		$('#add_sched').modal('toggle');
 	});
 
+	$('#appointment').delegate('tr[id]','click',function(){
+		var firstHtml = $(this).children('td:nth-child(1)').html();
+		var secondHtml = $(this).children('td:nth-child(2)').html();
+		var thirdHtml = $(this).children('td:nth-child(3)').html();
+		var start_time = thirdHtml.substr(0,8);
+		var end_time = thirdHtml.substr(12,20);
+		
+		if(!$('#show_add_sched').is(':disabled'))
+		{		
+			$('#appointment_id').val($(this).attr('id'));
+			$('#inputTitle1').val(firstHtml);
+			$('#inputDescription1').val(secondHtml);
+			$('#inputTime1').val(start_time);
+			$('#inputTime2').val(end_time);
+			$('#add_sched').find('.modal-title').html('Edit Schedule');
+			$('#add_sched').find('#submit_appointment').val('update');
+			
+			/* set time to mobilescroll plugin */
+			$('.timepicker').scroller('setValue', start_time, true);
+			$('.timepicker1').scroller('setValue', end_time, true);
+			
+			$('#add_sched').modal('show');
+		}
+		
+	});
+	
 	$( "#inputDate1.datepicker" ).datepicker({
 		minDate: '-0D',
 	});
@@ -230,10 +263,13 @@ $(function(){
 		}).submit();
 	});
 	
-	$('#appointment').delegate('.delete_appointment','click',function(){
+	$('#appointment').delegate('.delete_appointment','click',function(e){
+		
+		e.stopPropagation();
 		var s_id = $(this).parents('tr').attr('id');
 		$('#app_catch_id').val(s_id);
 		$('#myModalAppointmentDelete').modal('show');
+		$('#add_sched').modal('hide');
 	});
 
 	$('#app_catch_id').click(function(){
