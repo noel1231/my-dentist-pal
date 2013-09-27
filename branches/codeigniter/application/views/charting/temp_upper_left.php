@@ -6,8 +6,8 @@
 	foreach($set6 as $x) {
 ?>
 	<td>
-		<table class="tooth">
-			<tr><td class="<?php echo isset(${'tooth_'.$x}) ? '' : 'tooth'; ?>">
+		<table class="<?php echo isset(${'tooth_'.$x}) ? '' : 'tooth'; ?>">
+			<tr><td id="<?php echo 'legend_'.$x; ?>" class="tooth_legend">
 <?php 
 		if( isset( ${'legend_'.$x} ) && ${'legend_'.$x} != "none") {
 			echo ${'legend_'.$x};

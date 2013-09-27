@@ -17,9 +17,16 @@ $(function() {
 		buttons: {
 			Set: function(event) {
 				$('#patient_tooth_add').ajaxForm({
-					url: 'test/set_tooth',
+					data: {submit: 'tooth'},
+					beforeSubmit: function(formData, jqForm, options) {
+					},
 					success: function(html) {
 						var tooth = JSON.parse(html);
+						if(tooth.chart_name) {
+							document.getElementById('chart_name').innerHTML = tooth.chart_name;
+						}
+						document.getElementById('tooth_'+tooth.tooth_num).src = "../img/Toothchart/" + tooth.tooth_area + ".png";
+						document.getElementById('legend_'+tooth.tooth_num).innerHTML = tooth.tooth_procedure;
 						$('#tooth_'+tooth.num).parents('table').removeClass('tooth').unbind('click');
 					}
 				}).submit();
@@ -66,14 +73,23 @@ $(function() {
 		var tooth_pic = pad.substring(0, pad.length - str.length) + str;
 
 			document.patient_tooth_add.pic_num.value = i;	
-			document.patient_tooth_add.legend.value = legend;	
+			document.patient_tooth_add.legend.value = legend;
 
-			document.getElementById(val.new1).src = "img/Toothchart/"+tooth_pic+".png";
-			document.getElementById(val.new2).value = tooth_pic;
-			document.getElementById(val.new3).value = legend;
-			document.getElementById(val.new4).value = legend;
+	});
 
-
+	$('#form_add_chart').ajaxForm({
+		beforeSubmit: function(formData, jqForm, options) {
+			console.log(formData);
+		},
+		success: function(data) {
+			var cb = JSON.parse(data);
+			window.location="?id="+cb.patient_id+"&key="+cb.chart_id;
+			// document.getElementById('chart_name').innerHTML = cb.chart_name;
+			// document.getElementById('chart_container').innerHTML = cb.body;
+			
+			// document.form_add_chart.reset();
+			// $('#modal_add_chart').modal('hide');
+		}
 	});
 
 });

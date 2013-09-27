@@ -15,7 +15,7 @@
 <?php } ?>
 			</td></tr>
 			<tr><td style="text-align:center;" class="tooth_num"><?php echo $x; ?></td></tr>
-			<tr><td class="tooth_legend">
+			<tr><td id="<?php echo 'legend_'.$x; ?>" class="tooth_legend">
 <?php 
 		if( isset( ${'legend_'.$x} ) && ${'legend_'.$x} != "none") {
 			echo ${'legend_'.$x};

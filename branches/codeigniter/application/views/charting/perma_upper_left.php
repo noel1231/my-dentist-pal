@@ -9,7 +9,7 @@
 ?>
 			<td valign="top">
 				<table class="<?php echo isset(${'tooth_'.$value}) ? 'hah' : 'tooth'; ?>">
-				<tr><td class="tooth_legend">
+				<tr><td id="<?php echo 'legend_'.$value; ?>" class="tooth_legend">
 <?php
 	if(isset( ${'legend_'.$value} )) {
 			

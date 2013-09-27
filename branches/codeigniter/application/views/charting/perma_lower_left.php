@@ -1,20 +1,21 @@
 	<table><tr>
 	<?php
-/*
-		$set3 = array(
-			'31' => '41',
-			'32' => '42',
-			'33' => '43',
-			'34' => '44',
-			'35' => '45',
-			'36' => '46',
-			'37' => '47',
-			'38' => '48'
-		);
-*/
-		$set3 = array(
-			31,32,33,34,35,36,37,38
-		);
+		if($what_chart === '1') {
+			$set3 = array(
+				'41' => '31',
+				'42' => '32',
+				'43' => '33',
+				'44' => '34',
+				'45' => '35',
+				'46' => '36',
+				'47' => '37',
+				'48' => '38'
+			);
+		} else {
+			$set3 = array(
+				31=>31,32=>32,33=>33,34=>34,35=>35,36=>36,37=>37,38=>38
+			);
+		}
 		foreach($set3 as $key=>$value) {
 	?>
 	<td>
@@ -38,12 +39,12 @@
 ?>
 			</td></tr>
 			<tr><td style="text-align:center;" class="tooth_num"><?php echo $value; ?></td></tr>
-			<tr><td class="tooth_legend">
+			<tr><td id="<?php echo 'legend_'.$key; ?>" class="tooth_legend">
 				<?php
-	if(isset( ${'legend_'.$value} )) {
-				if(( ${'legend_'.$value} != "none" )&&( ${'legend_'.$value}!="" )) {
-					echo ${'legend_'.$value}; }
-				else if(${'legend_'.$value}=="") {
+	if(isset( ${'legend_'.$key} )) {
+				if(( ${'legend_'.$key} != "none" )&&( ${'legend_'.$key}!="" )) {
+					echo ${'legend_'.$key}; }
+				else if(${'legend_'.$key}=="") {
 					echo "&nbsp;";	
 				}
 				else {
