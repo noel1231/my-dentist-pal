@@ -219,7 +219,7 @@ $(function() {
 		
 		if(data != '')
 		{
-			$('.saying_body').html('Are you sure do you want to delete '+count+' record?');
+			$('.saying_body').html('Are you sure do you want to delete '+count+' records?');
 			$('.data_ids').val(data);
 			$('#myModalDeleteAllChecked').modal('show');
 			
@@ -271,6 +271,7 @@ $(function() {
 		changeMonth: true,
 		changeYear: true,
 		yearRange: '1910:2016',
+		maxDate: 0,
 		onClose: function(selectedDate){
 			var computedAge = getAge(selectedDate);
 			if(isNaN(computedAge))
@@ -395,6 +396,47 @@ $(function() {
 			}
 			
 		}
+	});
+	$('.account_submit_button').click(function(){
+		
+		$('#account_setting_form').ajaxForm({
+			beforeSubmit: function(arr, jform, option){
+				var form = jform[0];
+				if(form.curr_pass.value == '')
+				{
+					form.curr_pass.focus();
+					return false;
+				}else if(form.new_pass.value == '')
+				{
+					form.new_pass.focus();
+					return false;
+				}else if(form.re_pass.value == '')
+				{
+					form.re_pass.focus();
+					return false;
+				}
+			},
+			success: function(html){
+				if(html == 'current unsuccess')
+				{
+					var input = $('#account_setting_form').find('input[name=curr_pass]');
+					$('<span class="help-block">Current password did not match</span>').insertBefore(input);
+				}else if(html == 'password not match')
+				{
+					var input = $('#account_setting_form').find('input[name=new_pass]');
+					$('<span class="help-block">Password did not match</span>').insertBefore(input);
+					$('#account_setting_form').find('input[name=new_pass]').val('').focus();
+					$('#account_setting_form').find('input[name=re_pass]').val('');
+				}else
+				{
+					$('#myModalAccountSetting').modal('show');
+					$('#account_setting_form').find('input[name=curr_pass]').val('');
+					$('#account_setting_form').find('input[name=new_pass]').val('');
+					$('#account_setting_form').find('input[name=re_pass]').val('');
+					
+				}
+			}
+		}).submit();
 	});
 	
 	$('#myTab a').on('click',function (e) {

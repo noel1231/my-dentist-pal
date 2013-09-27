@@ -132,7 +132,7 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-body saying_body">
-          Are you sure do you want to delete count record?
+          Are you sure do you want to delete count record(s)?
         </div>
         <div class="modal-footer">
 		  <input type="hidden" class="data_ids" value="">

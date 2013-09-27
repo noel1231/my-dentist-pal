@@ -48,7 +48,7 @@ $(function(){
 				}
 			});
 		} else {
-			alert('Clicked on the slot: ' + new Date);
+			// alert('Clicked on the slot: ' + new Date);
 		}
 	}
 
