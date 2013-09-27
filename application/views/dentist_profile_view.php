@@ -1,5 +1,5 @@
 
-<div id="wrapper"><!--start body wrapper -->
+
 	<!--start dentist profile form-->
 			<div id="form-wrapper"><!-- start dentist profile form wrapper-->
 				<div id="dp-wrapper-form"><!--start dentist profile form-->
@@ -16,7 +16,7 @@
 									<div class="form-group"><!--start dentist picture-->
 										<label for="" class="col-lg-3 control-label"></label>
 										<div class="col-lg-6">
-											<img src="<?php if(isset($profile_pic) && trim($profile_pic)){ echo base_url($profile_pic); }else{echo '';} ?>" alt="dentist image" id="dentist-img" name="dentist-img" class="thumbnail img-rounded dentist_photo_view" onerror="this.src='http://www.placehold.it/200x150/EFEFEF/AAAAAA&text=no+image'" style="width: 200px;">
+											<img src="<?php if(isset($profile_pic) && trim($profile_pic)){ echo base_url($profile_pic); }else{echo '';} ?>" alt="dentist image" id="dentist-img" name="dentist-img" class="thumbnail img-rounded dentist_photo_view col-lg-12" onerror="this.src='http://www.placehold.it/200x150/EFEFEF/AAAAAA&text=no+image'" style="width:200px;">
 											<input type="file" id="dentist-photo" name="dentist-photo" />
 											<input type="hidden" id="dentist_photo_existing_file" name="dentist_photo_existing_file" value="<?php //if(isset($profile_pic) && $profile_pic['dentist_img'] != ''){ echo $profile_pic['dentist_img']; } ?>">
 											<input type="hidden" id="dentist_photo_file" name="dentist_photo_file" value="<?php if(isset($profile_pic) && $profile_pic != ''){ echo $profile_pic; } ?>">
@@ -316,3 +316,4 @@
       </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
   </div><!-- /.modal -->
+ 
