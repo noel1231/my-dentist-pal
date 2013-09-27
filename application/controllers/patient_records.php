@@ -39,6 +39,7 @@ class Patient_Records extends CI_Controller {
 		$data['add_patient_search'] = $this->load->view('add_patient_search', '', true);
 		$data['dashboard_content'] = $this->load->view('box_patient_list', $data, true);
 
+		$data['activeMenu'] = 'patient_records';
 		$data['body'] = $this->load->view('dentist_dashboard', $data, true);
 
 		$this->load->view('homepage', $data);

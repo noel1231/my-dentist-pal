@@ -49,7 +49,8 @@ class Dentist_Dashboard extends CI_Controller {
 		$data['dashboard_content'] = $this->load->view('scheduler', $data, true);
 
 		$data['content'] = $this->load->view('dentist_dashboard/content', $data, true);
-
+		
+		$data['activeMenu'] = 'dashboard';
 		$data['body'] = $this->load->view('dentist_dashboard', $data, true);
 
 		$this->load->view('homepage', $data);

@@ -15,7 +15,15 @@
 				<div class="row">
 					<div class="container">
 							<div class="pull-right">
-								<?php $this->load->view('menu'); ?>
+								<?php
+								if(isset($activeMenu))
+								{
+									$this->load->view('menu',$activeMenu); 
+								}else
+								{
+									$this->load->view('menu'); 
+								}
+								?>
 							</div>
 						<div class="page-header">
 						  <h1><?php echo $dashboard_title; ?></h1>
