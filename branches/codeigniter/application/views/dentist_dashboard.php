@@ -66,13 +66,16 @@
 		  <!--top-->
 	  <!--tooth-->
 		<?php // $this->load->view('top'); ?>
-		  <!--dentisit dashboard--></td>
+		  <!--dentisit dashboard-->
 				<?php echo isset($content) ? $content: ''; ?>
 	  <!--wrapper-->
 	  <!--bottom-content-->
 			<?php // $this->load->view('dentist_dashboard/bottom.php'); ?>
 		<!--bottom-content-->
 		<?php // $this->load->view('footer'); ?>
+			</div>
+		</div>
+	</div>
 </div>
 
 <?php /* modal appointment */ ?>
