@@ -86,7 +86,8 @@
 	}
 
 ?>
-	<div id="dashboard_content">
+
+	<div class="row">
 		<div class="container">
 			<div class="header">
 				<div class="landing_center_blue">
