@@ -471,7 +471,8 @@ $(function() {
 	$('#form_dentist_signup').ajaxForm({
 		
 		type: 'POST',
-		beforeSubmit: function (){
+		beforeSubmit: function ()
+                {
 			var fname = $('#fname').val();
 			var middle = $('#middle').val();
 			var lname = $('#lname').val();
