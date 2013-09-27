@@ -1,117 +1,88 @@
 <?php
 	extract($patient_query->row_array());
+
+	if($new_chart === 0) {
+		if($what_chart === '1') {
+			$name_select = 'adult';
+			$sql=$this->db->query("SELECT * FROM patient_tooth_chart_extra_adult WHERE patient_id='".$patient_id."'");
+		} else if($what_chart === '2') {
+			$name_select = 'child';
+			$sql=$this->db->query("SELECT * FROM patient_tooth_chart_extra_child WHERE patient_id='".$patient_id."'");
+		}
+	} else {
+		$name_select = 'chart_id';
+		$this->db->where('patient_id', $patient_id);
+		$sql = $this->db->get('patient_tooth_chart');
+		$result = $sql->result_array();
+	}
+
+		if($key = $this->input->get('key')) {
+			$this->db->where('id', $key);
+			$sql1 = $this->db->get('patient_tooth_chart');
+			$row1 = $sql1->row_array();
+		}
+	
 ?>
+<form id="patient_tooth_add" name="patient_tooth_add" method="post">
+
 <div class="container">
 
 	<div class="row">
+		<div class="col-lg-4">
+			<h2> Charting </h2>
+		</div>
 		<div class="pull-right">
 			<input type="button" onclick="divPrint();" name="print" value="PRINT" class="btn btn-default submit" />
 		</div>
 	</div>
+	
+	<div class="row">
+		<div class="col-lg-6">
+			<div id="chart_name" style="font-size: 16px;"> <?php echo $key ? $row1['chart_name'] : $result[0]['chart_name']; ?> </div>
+		</div>
+	</div>
 
 	<div class="row">
-		<div style="float:left;width:650px;">
-			<div style="float:left;margin-left:8px;">
-				<form action="patient_tooth_add" method="get" enctype="multipart/form-data">
-					<input type="hidden" name="id" value="<?php echo $patient_id;?>" />
-					<input type="submit" name="new" value="Add Chart" class="submit2" />
-				</form>
-			</div>
-			<div style="float:left;margin-left:20px;">
 
-			<?php 
-				if($what_chart==1) {
-			?>
-			<select name="adult" onchange="Refresh(this.options[this.selectedIndex].value,'<?php echo $patient_id;?>');">
-			<option value="none">--Select one--</option>
-			<?php
-					$sql="SELECT * FROM patient_tooth_chart_extra_adult WHERE patient_id='".$patient_id."'";
-					$res=mysql_query($sql);
-					while($row=mysql_fetch_array($res)) {
+			<div class="col-lg-2">
+				<input type="hidden" name="id" value="<?php echo $patient_id;?>" />
+				<button type="button" name="new" class="btn btn-primary" value="add_chart" data-toggle="modal" data-target="#modal_add_chart"> Add Chart </button>
+			</div>
+			<div class="col-lg-4">
+				<select name="<?php echo $name_select; ?>" onchange="Refresh(this.options[this.selectedIndex].value, '<?php echo $patient_id;?>');" class="form-control" >
+<?php
+				if($sql->num_rows() > 0) {
+					foreach($result as $row) {
 						$idx=$row['id'];
 						$name=$row['chart_name'];
-						echo "<option value=\"$idx\">$name</option>";
+						echo '<option value="'.$idx.'" '.($this->input->get('key') === $idx ? 'selected="selected' : '').'"> '.$name.' </option>';
 					}
-			?>
-			</select>
-			<?php
-				} else if ($what_chart==2) {
-			?>
-					<select name="child" onchange="Refresh(this.options[this.selectedIndex].value,'<?php echo $patient_id;?>');">
+				} else {
+?>
 					<option value="none">--Select one--</option>
-					<?php
-					$sql="SELECT * FROM patient_tooth_chart_extra_child WHERE patient_id='".$patient_id."'";
-					$res=mysql_query($sql);
-					while($row=mysql_fetch_array($res)) {
-					$idx=$row['id'];
-					$name=$row['chart_name'];
-					echo "<option value=\"$idx\">$name</option>";	
-					}
-			?>
+<?php
+				}
+?>
 				</select>
-			<?php } ?>
-
 			</div>
-			<!--<div style="float:right;font-weight:bold;color:#373838;font-size:12px;">
-			<?php //echo date('d/m/Y');?>
-			</div>-->
-		</div>
+
+
+			<div class="pull-right" style="font-weight:bold; color:#373838; font-size:12px;">
+				<?php echo date('Y-m-d');?>
+			</div>
+
 	</div>
 
 	<div>
 
-		<div style="margin:0 auto; width:570px;">
+		<div id="chart_container">
 <?php
-		$new_chart = 0;
-		if($new_chart == '1') {
-			if($what_chart==1) {
-				if($this->input->get('key')) {
-					$key=$this->input->get('key');
+		// if($this->input->get('key') && $this->input->get('key') !== 'none') {
+			$chart_id = $this->input->get('key');
+			$data_tooth_chart_patient = $this->charting->load_chart($chart_id, $dentist_id, $patient_id);
 
-					$this->db->where('id', $key);
-					$ress = $this->db->get('patient_tooth_chart_extra_adult');
-					$remark="chart_remarks";
-				} else {
-					$this->db->where('patient_id', $patient_id);
-					$ress = $this->db->get('patient_adult_tooth');
-					$remark="tooth_remarks";
-				}
-
-			} else {
-
-				if($this->input->get('key')) {
-					$key = $this->input->get('key');
-
-					$this->db->where('id', $key);
-					$ress = $this->db->get('patient_tooth_chart_extra_child');
-					$remark = "chart_remarks";
-				} else {
-					$this->db->where('patient_id', $patient_id);
-					$ress = $this->db->get('patient_child_tooth');
-					$remark = "tooth_remarks";
-				}
-				if($ress->num_rows() > 0) {
-					$row=$ress->row_array();
-					$chart_remarks=$row[$remark];
-					$data_tooth_chart_patient = $row;
-				}
-			}
-		} else {
-			$this->db->where('dentist_id', $dentist_id);
-			$this->db->where('patient_id', $patient_id);
-			$qtc = $this->db->get('patient_tooth_chart');
-			if($qtc->num_rows() > 0) {
-				$rtc = $qtc->result_array();
-				foreach($rtc as $tc_data) {
-					$data_tooth_chart_patient['tooth_'.$tc_data['tooth_num']] = $tc_data['tooth_area'];
-					$data_tooth_chart_patient['legend_'.$tc_data['tooth_num']] = $tc_data['tooth_procedure'];
-				}
-			}
-		}
-
-		$this->load->view('charting/tooth_chart_patient', $data_tooth_chart_patient);
-
-		
+			$this->load->view('charting/tooth_chart_patient', $data_tooth_chart_patient);
+		// }
 ?>
 		</div>
 	</div>
@@ -171,7 +142,7 @@
 			} else {
 				$this->db->where('patient_id', $patient_id);
 				$this->db->limit(5);
-				$res = $this->db->get('patient_tooth_chart');
+				$res = $this->db->get('patient_tooth_chart_extra');
 			}
 
 			if($res->num_rows() > 0) {
@@ -200,7 +171,7 @@
 	</div>
 
 	<div class="row">
-		<form method="post" action="" enctype="multipart/form-data">
+
 		<div style="float:left;width:340px;padding-top:24px;">
 		<div style="float:left;font-family:Arial, Helvetica, sans-serif;font-size:13px;font-weight:bold;color:#5f6060;">Remarks</div>
 		<div style="float:right;"><!--<input type="submit" name="save_rem" value="Save Remarks" class="submit2" style="margin-top:-5px;" onclick="return onSave();"/>--></div>
@@ -212,22 +183,22 @@
 		</div>
 		<input type="hidden" value="<?php echo $patient_id;?>" name="id_for_remarks" />
 		<input type="hidden" value="<?php echo $what_chart;?>" name="what_chart" />
-		</form>
+
 	</div>
 
 	<div class="row">
-		<form id="patient_tooth_add" name="patient_tooth_add" method="post">
+
 			<input type="hidden" class="form-control" id="patient_id" name="patient_id" value="<?php echo $this->input->get('id'); ?>">
 			<input type="hidden" class="form-control" id="dentist_id" name="dentist_id" value="<?php echo $this->session->userdata('id'); ?>">
 			<div id="tooth_dialog" title="Basic dialog">
 				<?php echo $this->load->view('charting/tooth/table_first_tooth'); ?>
 			</div>
 			<div>
-				<input type="hidden" id="what_picture">
-				<input type="hidden" id="what_number">
-				<input type="hidden" id="what_legend">
-				<input type="hidden" id="what_hide">
-				<input type="hidden" id="what_tooth_number">
+				<input type="text" id="what_picture">
+				<input type="text" id="what_number">
+				<input type="text" id="what_legend">
+				<input type="text" id="what_hide">
+				<input type="text" id="what_tooth_number">
 			</div>
 			<div>
 				<input type="hidden" name="tooth_num">
@@ -235,7 +206,7 @@
 				<input type="hidden" name="legend">
 			</div>
 			
-<?php
+<?php /*
 	$adult_array = array(11,12,13,14,15,16,17,18,21,22,23,24,25,26,27,28,31,32,33,34,35,36,37,38,41,42,43,44,45,46,47,48);
 	foreach($adult_array as $adult) {
 ?>
@@ -249,20 +220,57 @@
 ?>
 	
 <?php
-	};
+	}; */
 ?>
 			<button class="btn btn-primary btn-lg pull-right" type="submit" name="action" value="save"> SAVE </button>
-		</form>
+
 	</div>
 
 
 
 </div>
+</form>
+
+<!-- modals -->
+<div id="modal_add_chart" class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal-dialog">
+  <div class="modal-content">
+<?php
+	$form_attrib = array(
+		'role' => 'form',
+		'class' => 'form-horizontal',
+		'id' => 'form_add_chart',
+		'name' => 'form_add_chart'
+	);
+	echo form_open('', $form_attrib);
+?>
+	<div class="modal-header">
+	  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+	  <h4 class="modal-title"> Add New Chart </h4>
+	</div>
+	<div class="modal-body">
+	  <div class="form-group">
+		<label for="inputEmail1" class="col-lg-3 control-label"> Chart Name: </label>
+		<div class="col-lg-9">
+			<input type="hidden" name="patient_id" value="<?php echo $patient_id;?>" />
+			<input type="hidden" name="dentist_id" value="<?php echo $dentist_id;?>" />
+			<input type="text" class="form-control" name="chart_name" id="inputChartName" placeholder="Chart Name">
+		</div>
+	  </div>
+	</div>
+	<div class="modal-footer">
+	  <button type="button" class="btn btn-default" data-dismiss="modal"> Close </button>
+	  <button type="submit" class="btn btn-primary" name="submit" value="chart"> Save </button>
+	</div>
+<?php echo form_close(); ?>
+  </div><!-- /.modal-content -->
+</div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
 
 <script type="text/javascript">
 
 function Refresh(key,id) {
-	window.location="<?php echo base_url(); ?>test/patient_tooth_chart?id="+id+"&key="+key;
+	window.location="<?php echo current_url(); ?>?id="+id+"&key="+key;
 }
 
 function onSave()

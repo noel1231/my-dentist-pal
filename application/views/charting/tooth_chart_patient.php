@@ -1,4 +1,4 @@
-<table>
+<table align="center">
 	<tr>
 		<td style="float: right;">
 			<?php echo $this->load->view('charting/temp_upper_right'); ?>

@@ -40,24 +40,26 @@ class Test extends CI_Controller {
 				$age=$row['patient_age'];
 
 
-			// if($data['what_chart']==1) {
-				// $this->db->where('patient_id', $id);
-				// $sql = $this->db->get('patient_adult_tooth');
-				// $row = $sql->row_array();
+			if($data['what_chart']==1) {
+				$this->db->where('patient_id', $id);
+				$sql = $this->db->get('patient_adult_tooth');
+				$row = $sql->row_array();
 
-					// $chart_name=$row["tooth_chart_name"];
-					// $chart_date=$row["tooth_chart_date"];
-					// $data['chart_remarks']=$row["tooth_remarks"];
+					$chart_name=$row["tooth_chart_name"];
+					$chart_date=$row["tooth_chart_date"];
+					$data['chart_remarks']=$row["tooth_remarks"];
 
-			// } else {
-				// $this->db->where('patient_id', $id);
-				// $sql = $this->db->get('patient_child_tooth');
-				// $row = $sql->row_array();
+			} else {
+				$this->db->where('patient_id', $id);
+				$sql = $this->db->get('patient_child_tooth');
+				$row = $sql->row_array();
 
-					// $chart_name=$row["tooth_chart_name"];
-					// $chart_date=$row["tooth_chart_date"];
-					// $chart_remarks=$row["tooth_remarks"];
-			// }
+					$chart_name=$row["tooth_chart_name"];
+					$chart_date=$row["tooth_chart_date"];
+					$chart_remarks=$row["tooth_remarks"];
+			}
+
+			$data['patient_query'] = $sql;
 
 			// if(empty($chart_name))
 			// { $chart_name="";}
@@ -98,7 +100,7 @@ class Test extends CI_Controller {
 
 			// }
 
-			$data['body'] = $this->load->view('patient/box_tooth_edit', $data, true);
+			$data['body'] = $this->load->view('charting/box_tooth_edit', $data, true);
 			$this->load->view('homepage', $data);
 
 		} else {
@@ -107,13 +109,13 @@ class Test extends CI_Controller {
 	}
 
 	function patient_tooth_add() {
-		// $data['dentist_id'] = $this->session->userdata('id');
-		// $id = $this->input->post('id');
-		// $data['patient_id'] = $id;
+		$data['dentist_id'] = $this->session->userdata('id');
+		$id = $this->input->post('id');
+		$data['patient_id'] = $id;
 
-		// $this->db->where('id', $id);
-		// $sql = $this->db->get('patient_list');
-		// $row = $sql->row_array();
+		$this->db->where('id', $id);
+		$sql = $this->db->get('patient_list');
+		$row = $sql->row_array();
 
 		
 
@@ -1067,6 +1069,7 @@ else if($what_chart==2) {
 		$set_tooth_array = array(
 			'patient_id' => $patient_id,
 			'dentist_id' => $dentist_id,
+			'chart_id' => $chart_id,
 			'tooth_num' => $tooth_num,
 			'tooth_area' => $pic_num,
 			'tooth_procedure' => $legend,
