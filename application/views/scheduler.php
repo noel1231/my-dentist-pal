@@ -72,7 +72,7 @@ if ($this->db->table_exists('dentist_appointments'))
 </div>
 <style>
 #tbody_appointment tr:hover{
-	background: #ddd;
+	background: #5bc0de;
 	cursor: pointer;
 }
 </style>

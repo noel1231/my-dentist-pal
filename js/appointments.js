@@ -177,9 +177,9 @@ $(function(){
 		var firstHtml = $(this).children('td:nth-child(1)').html();
 		var secondHtml = $(this).children('td:nth-child(2)').html();
 		var thirdHtml = $(this).children('td:nth-child(3)').html();
-		var start_time = thirdHtml.substr(0,8);
-		var end_time = thirdHtml.substr(12,20);
-		
+		var start_time = thirdHtml.substr(0,9);
+		var end_time = thirdHtml.substr(13,20);
+		alert(end_time);
 		if(!$('#show_add_sched').is(':disabled'))
 		{		
 			$('#appointment_id').val($(this).attr('id'));
