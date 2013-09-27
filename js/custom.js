@@ -465,11 +465,13 @@ $(function() {
 				if(html == 'current unsuccess')
 				{
 					var input = $('#account_setting_form').find('input[name=curr_pass]');
-					$('<span class="help-block">Current password did not match</span>').insertBefore(input);
+					$('.current_pass_show').remove();
+					$('<span class="help-block current_pass_show">Current password did not match</span>').insertBefore(input);
 				}else if(html == 'password not match')
 				{
 					var input = $('#account_setting_form').find('input[name=new_pass]');
-					$('<span class="help-block">Password did not match</span>').insertBefore(input);
+					$('.pass_pass_show').remove();
+					$('<span class="help-block pass_pass_show">Password did not match</span>').insertBefore(input);
 					$('#account_setting_form').find('input[name=new_pass]').val('').focus();
 					$('#account_setting_form').find('input[name=re_pass]').val('');
 				}else

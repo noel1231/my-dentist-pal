@@ -63,13 +63,19 @@ if ($this->db->table_exists('dentist_appointments'))
 		}
 	} else {
 ?>
-		<tr class="no_sched_row"><td colspan="4"> No Appoinment for this day. </td></tr>
+		<tr class="no_sched_row"><td colspan="5"> No Appoinment for this day. </td></tr>
 <?php
 	}
 ?>
 	</tbody>
 </table>
 </div>
+<style>
+#tbody_appointment tr:hover{
+	background: #ddd;
+	cursor: pointer;
+}
+</style>
 <?php
 }
 ?>					

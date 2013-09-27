@@ -112,13 +112,13 @@
 		</div>
 	</div>
 	<div class="form-group">
-		<label for="inputTime1" class="col-lg-3 control-label"> Time: </label>
+		<label for="inputTime1" class="col-lg-3 control-label"> From: </label>
 		<div class="col-lg-9 form-inline">
 			<div class="form-group">
 				<div class="col-lg-5">
 					<input type="text" class="form-control timepicker" id="inputTime1" placeholder="00:00" name="time1" required>
 				</div>
-				<label for="inputTime2" class="col-lg-2 control-label"> Time: </label>
+				<label for="inputTime2" class="col-lg-2 control-label"> To: </label>
 				<div class="col-lg-5">
 					<input type="text" class="form-control timepicker1" id="inputTime2" placeholder="00:00" name="time2" required>
 				</div>
