@@ -1,13 +1,27 @@
-	<ul class="top_menu btn-group">
-		<li class="btn btn-default">
-			<a href="dentist_dashboard" id="link1">
+<style>
+	ul.top_menu {
+		list-style: none;
+	}
+	ul.top_menu li {
+		float:left;
+	}
+</style>	
+	<ul class="top_menu btn-group hidden-xs">
+		<li>
+			<div class="btn-group">			
+			<a href="dentist_dashboard" id="link1" class="btn btn-default" <?php if(isset($activeMenu) && $activeMenu == 'dashboard'){echo 'style="color:#5bc0de;"';}?>>
 				<span> Dashboard </span>
 			</a>
-		</li>
-		<li class="btn btn-default">
-			<a href="patient_records" id="link3">
+			<a href="patient_records" id="link3" class="btn btn-default" <?php if(isset($activeMenu) && $activeMenu == 'patient_records'){echo 'style="color:#5bc0de;"';}?>>
 				<span> Patient Records </span>
 			</a>
+			<a href="<?php echo base_url('dentist_dashboard'); ?>" id="link5" target="_blank" class="btn btn-default">
+				<span> Scheduler </span>
+			</a>
+			</div>
+		</li>
+		<li>
+			
 		</li>
 <!--
 		<li class="btn btn-default">
@@ -16,10 +30,8 @@
 			</a>
 		</li>
 -->
-		<li class="btn btn-default">
-			<a href="<?php echo base_url('dentist_dashboard'); ?>" id="link5" target="_blank">
-				<span> Scheduler </span>
-			</a>
+		<li>
+			
 		</li>
 <!--
 		<li class="btn btn-default">
