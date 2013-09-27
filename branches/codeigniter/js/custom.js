@@ -355,8 +355,8 @@ $(function() {
 			{
 				if(html != 'error')
 				{
-					$('#patient_photo_file').val(html);
-					$('.patient_photo_view').attr('src','patient_picture/'+html).css('width','210px');
+					$('#patient_photo_file').val('patient_picture/'+html);
+					$('.patient_photo_view').attr('src','patient_picture/'+html).css('width','200px');
 				}else
 				{
 					$('.patient_photo_view').attr('src','http://www.placehold.it/200x150/EFEFEF/AAAAAA&text=Error+Upload');
@@ -364,6 +364,51 @@ $(function() {
 			}
 		}).submit();
 	});
+	
+	$('#dentist-photo').on('change',function(){
+		var dis = $(this);
+		var formDental = $('#form_dentist_profile');
+		
+		formDental.ajaxForm({
+			type: 'POST',
+			url: 'dentist_profile/upload_dentist_picture',
+			success: function(html)
+			{
+				// alert(html)
+				if(html != 'error')
+				{
+					$('#dentist_photo_file').val('dentist_img/'+html);
+					$('.dentist_photo_view').attr('src','dentist_img/'+html).css('width','200px');
+				}else
+				{
+					$('.dentist_photo_view').attr('src','http://www.placehold.it/200x150/EFEFEF/AAAAAA&text=Error+Upload');
+				}
+			}
+		}).submit();
+	});
+	
+	$('#clinic-photo').on('change',function(){
+		var dis = $(this);
+		var formDental = $('#form_dentist_profile');
+		
+		formDental.ajaxForm({
+			type: 'POST',
+			url: 'dentist_profile/upload_clinic_picture',
+			success: function(html)
+			{
+				// alert(html)
+				if(html != 'error')
+				{
+					$('#clinic_photo_file').val('clinic_img/'+html);
+					$('.clinic_photo_view').attr('src','clinic_img/'+html).css('width','200px');
+				}else
+				{
+					$('.clinic_photo_view').attr('src','http://www.placehold.it/200x150/EFEFEF/AAAAAA&text=Error+Upload');
+				}
+			}
+		}).submit();
+	});
+	
    	$('#form_dentist_login').ajaxForm({
 		type: 'POST',
 		success: function(html)
@@ -524,38 +569,47 @@ $(function() {
 			var pass2 = $('#pass2').val(); 
 			
 			if(fname.trim() == '' || lname.trim() == ''){
+				$('#myErrorReg').modal('show');
 				$('.alert_msg').html('Enter your full name in the required field to proceed.').show();
 				return false;
 			}else if(!fname.match(/^[A-Za-z . -]+$/) || !lname.match(/^[A-Za-z . -]+$/))
 			{
+				$('#myErrorReg').modal('show');
 				$('.alert_msg').html('Enter valid name in the required field to proceed.').show();
 				return false;
 			}else if(email1.trim() == '')
 			{
+				$('#myErrorReg').modal('show');
 				$('.alert_msg').html('Enter your email address in the required field to proceed.').show();
 				return false;
 			}else if(!email1.match(/^([a-z0-9._-]+@[a-z0-9._-]+\.[a-z]{2,4}$)/i))
 			{
+				$('#myErrorReg').modal('show');
 				$('.alert_msg').html('Enter valid email address in the required field to proceed.').show();
 				return false;
 			}else if(email2.trim() == '')
 			{
+				$('#myErrorReg').modal('show');
 				$('.alert_msg').html('Re-type your email address in the required field to proceed.').show();
 				return false;
 			}else if(email2 != email1)
 			{
+				$('#myErrorReg').modal('show');
 				$('.alert_msg').html('Email address did not match!').show();
 				return false;
 			}else if(pass1.trim() == '')
 			{
+				$('#myErrorReg').modal('show');
 				$('.alert_msg').html('Enter your password in the required field to proceed.').show();
 				return false;
 			}else if(pass2.trim() == '')
 			{
+				$('#myErrorReg').modal('show');
 				$('.alert_msg').html('Re-type your password in the required field to proceed.').show();
 				return false;
 			}else if(pass2 != pass1)
 			{
+				$('#myErrorReg').modal('show');
 				$('.alert_msg').html('Password did not match!').show();
 				return false;
 			}
@@ -563,48 +617,66 @@ $(function() {
 		
 		success: function(html)
 		{
+			// if(html == 'already registered')
+			// {
+				// $('#myErrorReg').modal('show');
+				// $('.alert_msg').html('You are already registered.').show();
+				// return false;
+			// }else
+			// {
+				// $('.alert_msg').hide();
+				// $('.success_msg').html('Thank you for registering! A confirmation email has been sent to email. Please click on the Activation Link to Activate your account.').show();
+				// $('#mySuccessReg').modal('show');
+			// }
 			$('.alert_msg').hide();
 			// $('.success_msg').html('Registration Success!').show();
+			$('.success_msg').html('Thank you for registering! A confirmation email has been sent to email. Please click on the Activation Link to Activate your account.').show();
 			$('#mySuccessReg').modal('show');
-			
 		}
 	});
 	//dentist profile submit form 
-	$('#form_dentist_profile').ajaxForm({
-		
-		type: 'POST',
-		beforeSubmit: function (){
-			var fname = $('#fname').val();
-			var middle = $('#middle').val();
-			var lname = $('#lname').val();
-			var email1 = $('#email1').val();
+	$('.submit_dental_form1').click(function(){
+		$('#form_dentist_profile').ajaxForm({
 			
-			if(fname.trim() == '' || lname.trim() == ''){
-				$('.alert_msg').html('Enter your full name in the required field to proceed.').show();
-				return false;
-			}else if(!fname.match(/^[A-Za-z . -]+$/) || !lname.match(/^[A-Za-z . -]+$/))
+			type: 'POST',
+			url: 'dentist_profile/save_dentist_info',
+			beforeSubmit: function (){
+				var fname = $('#fname').val();
+				var middle = $('#middle').val();
+				var lname = $('#lname').val();
+				var email1 = $('#email1').val();
+				
+				if(fname.trim() == '' || lname.trim() == ''){
+					$('.alert_msg').html('Enter your full name in the required field to proceed.').show();
+					return false;
+				}else if(!fname.match(/^[A-Za-z . -]+$/) || !lname.match(/^[A-Za-z . -]+$/))
+				{
+					$('#myErrorReg').modal('show');
+					$('.alert_msg').html('Enter valid name in the required field to proceed.').show();
+					return false;
+				}else if(email1.trim() == '')
+				{
+					$('#myErrorReg').modal('show');
+					$('.alert_msg').html('Enter your email address in the required field to proceed.').show();
+					return false;
+				}else if(!email1.match(/^([a-z0-9._-]+@[a-z0-9._-]+\.[a-z]{2,4}$)/i))
+				{
+					$('#myErrorReg').modal('show');
+					$('.alert_msg').html('Enter valid email address in the required field to proceed.').show();
+					return false;
+				}
+			},
+			
+			success: function(html)
 			{
-				$('.alert_msg').html('Enter valid name in the required field to proceed.').show();
-				return false;
-			}else if(email1.trim() == '')
-			{
-				$('.alert_msg').html('Enter your email address in the required field to proceed.').show();
-				return false;
-			}else if(!email1.match(/^([a-z0-9._-]+@[a-z0-9._-]+\.[a-z]{2,4}$)/i))
-			{
-				$('.alert_msg').html('Enter valid email address in the required field to proceed.').show();
-				return false;
+				// alert(html)
+				$('.alert_msg').hide();
+				// $('.success_msg').html('Registration Success!').show();
+				$('.success_msg').html('Profile updated successfully...').show();
+				$('#mySuccessReg').modal('show');
 			}
-		},
-		
-		success: function(html)
-		{
-			$('.alert_msg').hide();
-			// $('.success_msg').html('Registration Success!').show();
-			$('#mySuccessReg').modal('show');
-		}
+		});
 	});
-	
 	// $(function() {
 		// $( "#datepicker" ).datepicker();
 	// });
@@ -614,7 +686,7 @@ $(function() {
 	// });
 	
 	$('.datepick').css('cursor','pointer');
-	$('.datepick').val('').scroller('destroy').scroller({
+	$('.datepick').scroller('destroy').scroller({
 		mode: 'clickpick',
 		preset: 'date',
 		theme: 'android-ics light',
@@ -624,7 +696,7 @@ $(function() {
 	});
 	
 	$('.timepick').css('cursor','pointer');
-	$('.timepick').val('').scroller('destroy').scroller({
+	$('.timepick').scroller('destroy').scroller({
 		mode: 'clickpick',
 		preset: 'time',
 		theme: 'android-ics light',
