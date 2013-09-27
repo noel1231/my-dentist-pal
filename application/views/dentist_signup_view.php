@@ -72,11 +72,11 @@
 		#form-wrapper { background-color:#fff; height:410px;border:solid 0px red;}
 		
 		label { margin-left:135px;}
-		#middle{ position:relative; margin-top:-34px; margin-left:162px;}
-		#lname{ position:relative; margin-top:-34px; margin-left:325px;}
+		/* #middle{ position:relative; margin-top:-34px; margin-left:162px;}
+		#lname{ position:relative; margin-top:-34px; margin-left:325px;} */
 		#bday2{ position:relative; margin-top:-31px; margin-left:240px;}
 		#bday3{ position:relative; margin-top:-31px; margin-left:480px;}
-		.alert_msg {width:450px; margin-left:300px;}
+		.alert_msg {width:380px; margin-left:320px;}
         </style>
 
 </head>
@@ -105,48 +105,57 @@
 					<div style="clear:both;">&nbsp;</div>
 						<form class="form-horizontal" id="form_dentist_signup" role="form" method="post" action="<?php echo base_url('dentist_signup/verification')?>" enctype="multipart/form-data" name="ContactForm"><!--Registration form for Dentist-->
 							<div><!--start form content wrapper-->
-								<div class="alert alert-danger alert_msg" style="text-align:center;display:none;"><?php //echo validation_errors(); ?><?php //echo form_error('fname'); //echo form_error('lname');?><?php  ?></div>
+								<!--<div class="alert alert-danger alert_msg" style="text-align:center;display:none;">--><?php //echo validation_errors(); ?><?php //echo form_error('fname'); //echo form_error('lname');?><?php  ?></div>
 								<!--<div class="alert alert-success success_msg" style="text-align:center;display:none;"></div>-->
 								<div class="form-group"><!--start full name-->
-									<label for="inputEmail1" class="col-lg-2 control-label">Name:</label>
-									<div class="col-lg-2">
+									<label for="" class="col-lg-3 control-label col-lg-offset-1">First Name:</label>
+									<div class="col-lg-5">
 										<input type="text" id="fname" name="fname" class="form-control" value="<?php echo set_value('fname') ?>" placeholder="First name">
+									</div>	
+								</div>
+								<div class="form-group">
+									<label for="" class="col-lg-3 control-label col-lg-offset-1">Middle Name:</label>
+									<div class="col-lg-5">
 										<input type="text" id="middle" name="middle" class="form-control" value="<?php echo set_value('middle') ?>" placeholder="Middle name">
+									</div>	
+								</div>
+								<div class="form-group">
+									<label for="" class="col-lg-3 control-label col-lg-offset-1">Last Name:</label>
+									<div class="col-lg-5">
 										<input type="text" id="lname" name="lname" class="form-control" value="<?php echo set_value('lname') ?>" placeholder="Last name">
-										
 									</div>	
 								</div><!--end full name-->
 								
 								<div class="form-group"><!--start email-->
-									<label for="inputEmail1" class="col-lg-2 control-label">Email:</label>
-									<div class="col-lg-6">
+									<label for="" class="col-lg-3 control-label col-lg-offset-1">Email Address:</label>
+									<div class="col-lg-5">
 										<input type="text" id="email1" name="email1" id="validate" class="form-control"/><span id="validEmail"></span>
 									</div>
 								</div><!--end email-->
 								
 								<div class="form-group"><!--start confirm email-->
-									<label for="inputEmail1" class="col-lg-2 control-label">Confirm Email:</label>
-									<div class="col-lg-6">
+									<label for="" class="col-lg-3 control-label col-lg-offset-1">Confirm Email Address:</label>
+									<div class="col-lg-5">
 										<input type="text" id="email2" name="email2" id="email2" class="form-control"/>
 									</div>
 								</div><!--end confirm email-->
 								
 								<div class="form-group"><!--start create password-->
-									<label for="inputEmail1" class="col-lg-2 control-label">Create Password:</label>
-									<div class="col-lg-6">
+									<label for="" class="col-lg-3 control-label col-lg-offset-1">Create Password:</label>
+									<div class="col-lg-5">
 										<input type="password" id="pass1" name="pass1" id="pass1" class="form-control"/>
 									</div>
 								</div><!--end create password-->
 								
 								<div class="form-group"><!--start confirm password-->
-									<label for="inputEmail1" class="col-lg-2 control-label">Confirm Password:</label>
-									<div class="col-lg-6">
+									<label for="" class="col-lg-3 control-label col-lg-offset-1">Confirm Password:</label>
+									<div class="col-lg-5">
 										<input type="password" id="pass2" name="pass2" id="pass2" class="form-control"/>
 									</div>	
 								</div><!--end confirm password-->
 								
-								<div style="margin-left:298px; margin-top:14px;"><!--start submit and back button-->
-									<input type="submit" name="submit" value="Submit" class="btn btn-primary" />
+								<div style="margin-left:627px; margin-top:14px;"><!--start submit and back button-->
+									<input type="submit" name="submit" value="Submit" class="btn btn-large btn-primary" />
 									<!--<input type="button" name="cancel" value="Back" class="btn btn-primary"/>
 								</div><!--end submit and back button-->
 								<div style="clear:both;">&nbsp;</div>
@@ -160,21 +169,41 @@
 		</div>
 	</div>
 	 
+	
+	<!-- Modal -->
+  <div class="modal fade" id="myErrorReg" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title">Error:</h4>
+        </div>
+        <div class="modal-body">
+			<div class="alert alert-danger alert_msg" style="text-align:center;display:none;width:505px;margin-left:15px;"></div>
+          <!--<p>Please verify your email to activate your account.</p>-->
+        </div>
+        <!--<div class="modal-footer">
+          <a href="<?php //echo base_url('dentist_profile'); ?>" class="btn btn-default">OK</a>
+        </div>-->
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
 
-  <!-- Modal -->
+<!-- Modal -->
   <div class="modal fade" id="mySuccessReg" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-          <h4 class="modal-title">Registration Successfully</h4>
+          <h4 class="modal-title"></h4>
         </div>
         <div class="modal-body">
-			<p>Thank you for registering! A confirmation email has been sent to <?php echo "your email" ?>. Please click on the Activation Link to Activate your account.</p>
+			<!--<p>Profile updated success...</p>-->
+			<div class="alert alert-success success_msg" style="text-align:center;display:none;width:505px;margin-left:15px;margin-top:10px;">
           <!--<p>Please verify your email to activate your account.</p>-->
         </div>
         <div class="modal-footer">
-          <a href="<?php echo base_url(); ?>" class="btn btn-default">OK</a>
+          <a href="<?php echo base_url('dentist_profile'); ?>" class="btn btn-default">OK</a>
         </div>
       </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
