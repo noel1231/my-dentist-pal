@@ -24,7 +24,18 @@ class Patient_Edit extends CI_Controller {
 				$this->set_tooth(); return false;
 			}
 			if($this->input->post('submit') === 'chart') {
-				$this->insert_chart(); return false;
+				$chart_name = $this->input->post('chart_name');
+				$dentist_id = $this->input->post('dentist_id');
+				$patient_id = $this->input->post('patient_id');
+				$this->insert_chart($chart_name, $dentist_id, $patient_id); return false;
+			}
+			if($this->input->post('submit') === 'select_chart') {
+				$chart_id = $this->input->post('chart');
+				$dentist_id = $this->input->post('dentist_id');
+				$patient_id = $this->input->post('patient_id');
+				$new_chart = $this->input->post('new_chart');
+
+				$this->select_chart($chart_id, $dentist_id, $patient_id, $new_chart); return false;
 			}
 			
 			$this->db->where('id', $this->input->get('id'));
@@ -46,7 +57,7 @@ class Patient_Edit extends CI_Controller {
 
 			if($this->db->table_exists('patient_tooth_chart_extra')) {
 				$data['charting'] = $this->load->view('charting/box_tooth_edit', $data, true);
-				$data['treatment_records'] = $this->load->view('charting/treatment_records', $data, true);
+				$data['treatment_records'] = $this->load->view('treatment_records/patient_visit_logs', $data, true);
 			}
 
 			$data['dashboard_content'] = $this->load->view('add_patient', $data, true);
@@ -78,35 +89,31 @@ class Patient_Edit extends CI_Controller {
 		echo $delete;
 	}
 
-	private function insert_chart()
+	private function insert_chart($chart_name, $dentist_id, $patient_id)
 	{
-		$chart_name = $this->input->post('chart_name');
-		$dentist_id = $this->input->post('dentist_id');
-		$patient_id = $this->input->post('patient_id');
-
+		$new_chart = $this->input->post('new_chart');
 		$chart_id = $this->charting->insert_chart($chart_name, $dentist_id, $patient_id);
-
-		$data_tooth_chart_patient = $this->charting->load_chart($chart_id, $dentist_id, $patient_id);
-		
-		$callback['chart_name'] = $chart_name;
-		$callback['patient_id'] = $patient_id;
-		$callback['chart_id'] = $chart_id;
-		$callback['body'] = $this->load->view('charting/tooth_chart_patient', $data_tooth_chart_patient, true);
-
-		echo json_encode($callback);
-		
+		$this->select_chart($chart_id, $dentist_id, $patient_id, $new_chart);
 	}
 
-	function set_tooth() {
+	private function set_tooth() {
 		extract($this->input->post());
 
 		$callback = array();
 
-		if(isset($chart_id)) {
-		} else {
+		$chart_id = $this->input->post('chart');
+		if($chart_id === '0') {
+			$new_chart = 'yes';
 			$chart_name = 'Chart '. date('Y-m-d', time());
 			$chart_id = $this->charting->insert_chart($chart_name, $dentist_id, $patient_id);
-			$callback['chart_name'] = $chart_name;
+		} else {
+			$new_chart = 'no';
+			$this->db->where('id', $chart_id);
+			$qptc = $this->db->get('patient_tooth_chart');
+			if($qptc->num_rows() > 0) {
+				$rptc = $qptc->row_array();
+				$chart_name = $rptc['chart_name'];
+			}
 		}
 		
 		$set_tooth_array = array(
@@ -114,7 +121,7 @@ class Patient_Edit extends CI_Controller {
 			'dentist_id' => $dentist_id,
 			'chart_id' => $chart_id,
 			'tooth_num' => $tooth_num,
-			'tooth_area' => $pic_num,
+			'tooth_area' => str_pad($pic_num, 2, '0', STR_PAD_LEFT),
 			'tooth_procedure' => $legend,
 			'date_procedure' => date('Y-m-d', time()),
 			'timestamp' => time()
@@ -123,9 +130,34 @@ class Patient_Edit extends CI_Controller {
 
 		$callback = $set_tooth_array;
 
+		$callback['new_chart'] = $new_chart;
+		$callback['chart_name'] = $chart_name;
 		$callback['id'] = $this->db->insert_id();
 		echo json_encode($callback);
 	}
+
+	private function select_chart($chart_id, $dentist_id, $patient_id, $new_chart) {
+		$this->db->where('id', $chart_id);
+		$qptc = $this->db->get('patient_tooth_chart');
+		
+		if($qptc->num_rows > 0) {
+			$rptc = $qptc->row_array();
+			$callback['chart_name'] = $rptc['chart_name'];
+			$callback['chart_remarks'] = $rptc['chart_remarks'];
+		}
+
+		$data_tooth_chart_patient = $this->charting->load_chart($chart_id, $dentist_id, $patient_id, $new_chart);
+
+		$data_tooth_chart_patient['new_chart'] = $new_chart;
+
+		$callback['patient_id'] = $patient_id;
+		$callback['chart_id'] = $chart_id;
+		$callback['body'] = $this->load->view('charting/tooth_chart_patient', $data_tooth_chart_patient, true);
+
+		echo json_encode($callback);
+
+	}
+
 }
 
 ?>

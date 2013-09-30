@@ -17,24 +17,28 @@ $(function() {
 		buttons: {
 			Set: function(event) {
 				$('#patient_tooth_add').ajaxForm({
-					data: {submit: 'tooth'},
+					data: { 'submit': 'tooth' },
 					beforeSubmit: function(formData, jqForm, options) {
 					},
 					success: function(html) {
 						var tooth = JSON.parse(html);
-						if(tooth.chart_name) {
+						if(tooth.new_chart == 'yes') {
 							document.getElementById('chart_name').innerHTML = tooth.chart_name;
+							// $('.charts_option').removeAttr('selected');
+							var add_option = '<option value="'+tooth.chart_id+'" selected> '+tooth.chart_name+' </option>';
+							$('#select_chart').prepend(add_option);
 						}
-						document.getElementById('tooth_'+tooth.tooth_num).src = "../img/Toothchart/" + tooth.tooth_area + ".png";
+						$('[name=chart] option').filter(function() {
+							return ($(this).val() == tooth.chart_id);
+						}).prop('selected', true); 
+						document.getElementById('tooth_'+tooth.tooth_num).src = "img/Toothchart/" + tooth.tooth_area + ".png";
 						document.getElementById('legend_'+tooth.tooth_num).innerHTML = tooth.tooth_procedure;
 						$('#tooth_'+tooth.num).parents('table').removeClass('tooth').unbind('click');
 					}
 				}).submit();
-				document.patient_tooth_add.reset();
 				$( this ).dialog( "close" );
 			},
 			Close: function() {
-				document.patient_tooth_add.reset();
 				$( this ).dialog( "close" );
 			}
 		},
@@ -43,7 +47,7 @@ $(function() {
 		}
 	});
 
-	$('.tooth').on('click', function () {
+	$('#chart_container').delegate('.tooth', 'click',  function() {
 		var x = $(this).find('.tooth_num').text();
 		
 		document.patient_tooth_add.tooth_num.value = x;	
@@ -58,7 +62,7 @@ $(function() {
 	$('.edit_tooth').on('click', function() {
 	});
 
-	$('.changeMySrc').on('click', function() {
+	$('body').delegate('.changeMySrc', 'click',  function(a,b,c) {
 		var i = this.value,	val = new Object();
 
 		val.new1 = document.getElementById('what_picture').value;
@@ -72,24 +76,35 @@ $(function() {
 		var pad = "00";
 		var tooth_pic = pad.substring(0, pad.length - str.length) + str;
 
-			document.patient_tooth_add.pic_num.value = i;	
-			document.patient_tooth_add.legend.value = legend;
-
+		document.patient_tooth_add.pic_num.value = i;	
+		document.patient_tooth_add.legend.value = legend;
 	});
 
 	$('#form_add_chart').ajaxForm({
 		beforeSubmit: function(formData, jqForm, options) {
-			console.log(formData);
 		},
-		success: function(data) {
-			var cb = JSON.parse(data);
-			window.location="?id="+cb.patient_id+"&key="+cb.chart_id;
-			// document.getElementById('chart_name').innerHTML = cb.chart_name;
-			// document.getElementById('chart_container').innerHTML = cb.body;
-			
-			// document.form_add_chart.reset();
-			// $('#modal_add_chart').modal('hide');
+		success: function(html) {
+			var data = JSON.parse(html);
+			$('#chart_name').html(data.chart_name);
+			$('#chart_container').html(data.body);
+			$('.charts_option').removeAttr('selected');
+			var add_option = '<option value="'+data.chart_id+'" selected> '+data.chart_name+' </option>';
+			$('#select_chart').prepend(add_option);
+			document.form_add_chart.chart_name.value = "";
+			$('#modal_add_chart').modal('hide');
 		}
+	});
+
+	$('#select_chart').on('change', function() {
+		$('#patient_tooth_add').ajaxForm({
+			data: {'submit': 'select_chart'},
+			success: function(html) {
+				var data = JSON.parse(html);
+				$('#chart_name').html(data.chart_name);
+				$('#chart_container').html(data.body);
+				$('#chart_remarks').html(data.chart_remarks);
+			}
+		}).submit();
 	});
 
 });
