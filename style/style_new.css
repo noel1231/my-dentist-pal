@@ -238,9 +238,9 @@
 {
     float: left;
     width: 100%;
-    border-top: 1px solid #bfbfbf;
-    border-bottom: 1px solid #bfbfbf;
-    background-color: #ebebeb;
+    border-top: 1px solid #e1e1e1;
+    border-bottom: 1px solid #e1e1e1;
+    background-color: #fafafa;
     padding: 10px 0;
 }
 #footer .link {
