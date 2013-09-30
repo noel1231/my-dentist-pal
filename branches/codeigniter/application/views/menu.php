@@ -6,7 +6,7 @@
 		float:left;
 	}
 </style>	
-	<ul class="top_menu btn-group hidden-xs">
+	<ul class="top_menu btn-group">
 		<li>
 			<div class="btn-group">			
 			<a href="dentist_dashboard" id="link1" class="btn btn-default" <?php if(isset($activeMenu) && $activeMenu == 'dashboard'){echo 'style="color:#5bc0de;"';}?>>
