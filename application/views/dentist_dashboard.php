@@ -39,9 +39,11 @@
 			<div class="col-md-6">
 				<div class="row">
 					<div class="col-md-4">
-						<a href="#">
-							<img class="profile_pic col-lg-12" alt="Profile Pic" src="<?php echo trim($profile_pic) != null ? base_url().$profile_pic : base_url('img/profile_pic.gif'); ?>" />
-						</a>
+						<div class="profile_pic_container">
+							<a href="#">
+								<img class="profile_pic" alt="Profile Pic" src="<?php echo trim($profile_pic) != null ? base_url().$profile_pic : base_url('img/profile_pic.gif'); ?>" />
+							</a>
+						</div>
 					</div>
 					<div class="col-md-8">
 						<h1>
