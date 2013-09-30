@@ -59,7 +59,7 @@
 
 	<div><p>&nbsp</p></div>
 	
-	<div class="row">
+	<div class="container" style="border: 1px solid #ddd;padding-top:15px;padding-bottom: 15px;border-radius: 8px;">
 		<?php echo $dashboard_content; ?>
 	</div>
 

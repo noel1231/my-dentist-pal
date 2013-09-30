@@ -9,11 +9,18 @@ $(function(){
 				var description = appointment_obj[i].description;
 				var start_time = appointment_obj[i].start_time;
 				var end_time = appointment_obj[i].end_time;
+				var status = appointment_obj[i].status;
 				$('#tbody_appointment').append('<tr id="'+id+'">'+
 													'<td>'+title+'</td>'+
 													'<td>'+description+'</td>'+
 													'<td>'+start_time+' to '+end_time+'</td>'+
-													'<td> Status here </td>'+
+													'<td>'+
+														'<select class="select_status">'+
+															'<option value="">Select Status...</option>'+
+															'<option value="confirmed" '+(status == 'confirmed' ? 'selected' : '')+'>Confirmed</option>'+
+															'<option value="cancelled" '+(status == 'cancelled' ? 'selected' : '')+'>Cancelled</option>'+
+														'</select>'+
+													'</td>'+
 													'<td>'+
 														'<span class="glyphicon glyphicon-trash delete_appointment" title="Delete" style="cursor:pointer"></span>'+
 													'</td>'+
@@ -34,7 +41,7 @@ $(function(){
 
 		$('#inputDate1').val(click_date);
 		
-		if (allDay) {
+		// if (allDay) {
 			var dataString = { start_date: click_date };
 			$.ajax({
 				type: 'post',
@@ -45,11 +52,12 @@ $(function(){
 					var html = JSON.parse(data);
 					$('#num_of_appoint').text(html.length);
 					append_to_table(html);
+					console.log(html);
 				}
 			});
-		} else {
+		// } else {
 			// alert('Clicked on the slot: ' + new Date);
-		}
+		// }
 	}
 
 	var calendar = $('#calendar');
@@ -75,14 +83,26 @@ $(function(){
 				update_scheduler( startDate, endDate, allDay, jsEvent, view );
 			}
 		},
-		// dayClick: function(date, allDay, jsEvent, view) {
-
-		// },
 		eventRender: function(event, element) {
-			element.tooltip({
-				title: event.description,
-				placement: 'bottom'
-			});
+			
+			// var date = event.start;
+			// var day = date.getDate();
+			// var month = date.getMonth();
+			// var realMonth = 1 + month;
+			// var year = date.getFullYear();
+			// var dayFormat = day < 10 ? '0'+day : day;
+			// var monthFormat = realMonth < 10 ? '0'+realMonth : realMonth;
+			// var dateFormat = year+'-'+monthFormat+'-'+dayFormat;
+			// console.log(event)
+			// if(event.status == 'confirmed')
+			// {
+				// $('.fc-day[data-date="' + dateFormat + '"]').css('background', '#5cb85c');
+			// }else if(event.status == 'cancelled')
+			// {
+				// $('.fc-day[data-date="' + dateFormat + '"]').css('background', '#f0ad4e');
+			// }
+			
+			
 		},
 		// eventAfterRender: function( event, element, view ) {
 			// if($.fullCalendar.formatDate(new Date(), 'MMMM d') != $.fullCalendar.formatDate(event.start, 'MMMM d'));
@@ -90,7 +110,7 @@ $(function(){
 		// },
 		eventSources: [
 			{
-				url: 'dentist_dashboard/feed',
+				url: 'dentist_dashboard/feed_first',
 				type: 'POST',
 				data: {
 					custom_param1: 'something',
@@ -103,7 +123,30 @@ $(function(){
 				textColor: '#FFFFFF' // a non-ajax option
 			},
 			{
-
+				url: 'dentist_dashboard/feed_confirmed',
+				type: 'POST',
+				data: {
+					custom_param1: 'something',
+					custom_param2: 'somethingelse'
+				},
+				error: function() {
+					alert('there was an error while fetching events!');
+				},
+				color: '#5cb85c',   // a non-ajax option
+				textColor: '#FFFFFF' // a non-ajax option				
+			},
+			{
+				url: 'dentist_dashboard/feed_cancelled',
+				type: 'POST',
+				data: {
+					custom_param1: 'something',
+					custom_param2: 'somethingelse'
+				},
+				error: function() {
+					alert('there was an error while fetching events!');
+				},
+				color: '#f0ad4e',   // a non-ajax option
+				textColor: '#FFFFFF' // a non-ajax option				
 			}
 		],
 		dayClick: function( date, allDay, jsEvent, view ) {
@@ -141,7 +184,8 @@ $(function(){
 			update_scheduler( calEvent.start, calEvent.end, true, jsEvent, view );
 		}
     });
-
+	
+	
 	$('#show_add_sched').click(function(){
 		
 		var date = new Date();
@@ -271,6 +315,28 @@ $(function(){
 		$('#myModalAppointmentDelete').modal('show');
 		$('#add_sched').modal('hide');
 	});
+	
+	$('#appointment').delegate('.select_status','click',function(e){
+		e.stopPropagation();
+	});
+	
+	$('#appointment').delegate('.select_status','change',function(e){
+		var status = $(this).val();
+		var app_id = $(this).parents('tr').attr('id');
+		
+		var dataString = 'status='+status+'&app_id='+app_id;
+		$.ajax({
+			type:'POST',
+			url:'dentist_dashboard/appointment_status',
+			data: dataString,
+			success: function(html){
+				if(html == 1)
+				{
+					$('#calendar').fullCalendar( 'refetchEvents' );
+				}
+			}
+		});
+	});
 
 	$('#app_catch_id').click(function(){
 		var a_id = $(this).val();
@@ -296,7 +362,7 @@ $(function(){
 
 
 	$('.timepicker').scroller('destroy').scroller({
-		mode: 'clickopick',
+		mode: 'clickpick',
 		preset: 'time',
 		theme: 'android-ics light',
 		display: 'inline',
@@ -305,7 +371,7 @@ $(function(){
 	});
 	
 	$('.timepicker1').scroller('destroy').scroller({
-		mode: 'clickopick',
+		mode: 'clickpick',
 		preset: 'time',
 		theme: 'android-ics light',
 		display: 'inline',
