@@ -12,6 +12,11 @@
 	src: url('../fonts/HelveticaNeue-Light.otf');
 }
 
+*
+{
+    color: #4C4C4C;
+}
+
 .navbar-header
 {
     margin: 0 0 0 5%;
@@ -71,7 +76,7 @@
 
 .wrapper
 {
-    padding-top: 135px;
+    padding-top: 140px;
 }
 
 .head_content {
@@ -80,9 +85,23 @@
 .head_content h1 {
 	font-size: 50px;
 	font-family: helvi;
+        margin-bottom: 12px;
 }
+
+.head_content p
+{
+    font-size: 18px;
+    line-height: 28px;
+    margin-bottom: 30px;
+}
+
 .head_content h1 span {
     color: #00AEEF;
+}
+
+.btn_margin
+{
+    margin: 0 0 10px 0;
 }
 
 .wrapper .head_video_container .menu .btn {
@@ -119,6 +138,7 @@
 {
     margin: 0;
     padding: 0;
+    width: 100%;
     max-width: 900px;
 }
 
@@ -254,12 +274,14 @@
     text-decoration: underline;
 }
 
-
 .holder
 {
     float: left;
     width: 100%;
+    padding-bottom: 50px;
 }
+
+
 
 /* contact */
 
@@ -327,25 +349,16 @@
 
 /* Contact */
 
-.contact_container
+.shadow
 {
-    float: left;
-    width: 80%;
-    margin: 0 0 30px 10%;
     font-family: helvi;
     -webkit-box-shadow : 0 2px 10px rgba(0, 0, 0, 0.1);
     -moz-box-shadow    : 0 2px 10px rgba(0, 0, 0, 0.1);
     box-shadow         : 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
-.contact_container .leftpanel
-{
-    float: left;
-    margin: 0;
-    padding: 0;
-    width: 40%;
-}
-.contact_container .leftpanel .info
+
+.container .col-md-6 .info
 {
     float: left;
     margin: 2% 0 0 4%;
@@ -353,21 +366,21 @@
     font-family: helvi;
 }
 
-.contact_container .leftpanel .info h2
+.container .col-md-6 .info h2
 {
     float: left;
     width: 100%;
     font-family: helvi;
 }
 
-.contact_container .leftpanel .info p
+.container .col-md-6 .info p
 {
     float: left;
     width: 100%;
     font-family: arial;
 }
 
-.contact_container .leftpanel .form
+.container .col-md-6 .form
 {
     float: left;
     margin: 2% 0 0 4%;
@@ -376,7 +389,7 @@
     width: 95%;
 }
 
-.contact_container .leftpanel .form .form_row
+.container .col-md-6 .form .form_row
 {
     float: left;
     margin: 0 0 10px;
@@ -384,7 +397,7 @@
     width: 100%
 }
 
-.contact_container .leftpanel .form .form_row input
+.container .col-md-6 .form .form_row input
 {
     float: left;
     margin: 0;
@@ -394,7 +407,7 @@
     padding: 6px 4px;
 }
 
-.contact_container .leftpanel .form .form_row textarea
+.container .col-md-6 .form .form_row textarea
 {
     float: left;
     margin: 0;
@@ -404,7 +417,7 @@
     padding: 6px 4px;
 }
 
-.contact_container .leftpanel .form .form_row .register
+.container .col-md-6 .form .form_row .register
 {
    float: left;
    background-color: #00aeef;
@@ -417,12 +430,12 @@
    margin: 0 0 0 65%;
 }
 
-.contact_container .leftpanel .form .form_row .register:hover
+.container .col-md-6 .form .form_row .register:hover
 {
     background-color: #0093ca;
 }
 
-.contact_container .leftpanel .form .form_row .register p
+.container .col-md-6 .form .form_row .register p
 {
    color: #fff;
    margin: 0;
@@ -430,7 +443,7 @@
    width: auto;
 }
 
-.contact_container .leftpanel .form .form_row label
+.container .col-md-6 .form .form_row label
 {
     color: #F00;
     text-align: center;
@@ -441,16 +454,7 @@
     display: none;
 }
 
-.contact_container .rightpanel
-{
-    float: right;
-    width: 60%;
-    margin: 0;
-    padding: 0;
-    text-align: center;
-}
-
-.contact_container .rightpanel iframe
+.container .col-md-6 iframe
 {
     margin: 20px 0 0;
     padding: 0;
