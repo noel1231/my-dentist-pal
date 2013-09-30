@@ -9,12 +9,10 @@ class Contact_Us extends CI_Controller
 
     public function index()
     {
-		$data['title'] = 'My Dentist Pal - Digitize your dental management practice. A full-featured online tool that integrates dental practice management and confidential patient clinical charting, which dentist can access wherever they are.';
-		
+        $data['title'] = 'My Dentist Pal - Digitize your dental management practice. A full-featured online tool that integrates dental practice management and confidential patient clinical charting, which dentist can access wherever they are.';
         $data['body'] = $this->load->view('contact_us', $data, true);
-
-		$data['header'] = $this->load->view('homepage/header', '', true);
-		$this->load->view('homepage', $data);
+        $data['header'] = $this->load->view('homepage/header', '', true);
+        $this->load->view('homepage', $data);
     }
     
     public function send()
