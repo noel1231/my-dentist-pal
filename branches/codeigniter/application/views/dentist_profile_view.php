@@ -41,6 +41,7 @@
 										7 => 'July',8 => 'August',9 => 'September',10 => 'October',11 => 'November',12 => 'December'
 									); 	
 									$bod_month = $birth_month;
+									$monthint = '';
 									
 									foreach($monthnames as $key => $val)
 									{
@@ -57,7 +58,14 @@
 									}
 									$bod_day = $birth_day;
 									$bod_year = $birth_year;
-									$bod = $monthint . '/' . $bod_day . '/' . $bod_year;
+									
+									if($bod_month == '' && $bod_day == '' && $bod_year == '')
+									{
+										$bod = '01' . '/' . '01' . '/' .'1970';									
+									}else
+									{
+										$bod = $monthint . '/' . $bod_day . '/' . $bod_year;
+									}
 								?>
 								<div class="form-group"><!--start dob-->
 									<label for="" class="col-lg-3 control-label">Birth Date:</label>
