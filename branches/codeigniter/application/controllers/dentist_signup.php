@@ -60,8 +60,6 @@ class Dentist_Signup extends CI_Controller {
 		$this->process_registration();
 		$email1 = $this->input->post('email1');
 		$passkey = md5($email1);
-		// $email1 = 'sample email';
-		// $passkey = 'sample passkey';
 		$this->db->where('email', $email1);
 		
 		$query = $this->db->get('dentist_list');
@@ -87,9 +85,6 @@ class Dentist_Signup extends CI_Controller {
 			
 			$this->email->from('info@mydentistpal.com', 'MyDentistPal');
 			$this->email->to($email1); 
-			// $this->email->to($email1); 
-			// $this->email->cc('another@another-example.com'); 
-			// $this->email->bcc('them@their-example.com'); 
 			$this->email->subject("Confirmation from MyDentistPal to $email1");
 			$this->email->message($message);	
 
@@ -105,7 +100,7 @@ class Dentist_Signup extends CI_Controller {
 			} else {
 				$message_status = "No";
 			}
-			// echo $this->email->print_debugger();
+			
 		}
 	}
 	
@@ -113,11 +108,6 @@ class Dentist_Signup extends CI_Controller {
 	{
 		$email1 = $this->input->get('email');
 		$passkey = $this->input->get('passkey'); 
-		
-		// if($query_dentist_list->num_rows() > 0) {
-			// $result_dentist_list = $query_dentist_list->row_array();
-			// $dentist_id = $result_dentist_list['id'];
-			
 			$update_array = array(
 				'status' => 1,
 			);
@@ -126,18 +116,8 @@ class Dentist_Signup extends CI_Controller {
 
 			$this->db->update('dentist_list', $update_array);
 			
-			redirect(base_url('dentist_login'));
-		// }  
-		// $query = $this->db->update('dentist_list');
-		
-		// if($query)
-		// {
-			// $this->load->view('homepage', $data);
-			// echo "Your account is now activate!";
-		// }else
-		// {
-			// echo "Error: Please contact mydentistpal";
-		// }		
+			redirect(base_url('login'));
+				
 	}
 	
 }
