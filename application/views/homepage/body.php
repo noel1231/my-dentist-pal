@@ -3,24 +3,26 @@
 	<div class="jumbotron head_content">
 		<div class="container text-center">
 			<h1> Digitize your <span> dental management practice. </span> </h1>
-			<p>A full-featured online tool that integrates dental practice management</p>
-			<p>and confidential patient clinical charting,</p>
-			<p>which dentist can access wherever they are.</p>
+                        <p class="col-md-6 col-md-offset-3">
+                            A full-featured online tool that integrates dental practice management
+                            and confidential patient clinical charting,
+                            which dentist can access wherever they are.
+                        </p>
 		</div>
 	</div>
         <div class="container head_video_container">
                 <div class="row menu text-center">
-                    <a href="<?php echo base_url('dentist_signup'); ?>" class="btn">
+                    <a href="<?php echo base_url('dentist_signup'); ?>" class="btn btn_margin">
                         <img class="register" src="images/register.png" alt="REGISTER"/>
                     </a>
              
-                    <a href="<?php echo base_url('login'); ?>" class="btn">
+                    <a href="<?php echo base_url('login'); ?>" class="btn btn_margin">
                         <img class="register"src="images/dentist_access.png" alt="DENTIST ACCESS"/>
                     </a>
-                    <a href="<?php echo base_url('login/patient'); ?>" class="btn">
+                    <a href="<?php echo base_url('login/patient'); ?>" class="btn btn_margin">
                         <img class="register" src="images/patient_access.png" alt="PATIENT ACCESS"/>
                     </a>
-                    <a id="watch" class="btn">
+                    <a id="watch" class="btn btn_margin">
                         <img class="register" src="images/watch_video.png" alt="WATCH VIDEO"/>
                     </a>
                 </div>
