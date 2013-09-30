@@ -99,7 +99,128 @@ class Dentist_Dashboard extends CI_Controller {
 					'start_date' => $appointment['start_date'],
 					'start_time' => $appointment['start_time'],
 					'end_date' => $appointment['end_date'],
-					'end_time' => $appointment['end_time']
+					'end_time' => $appointment['end_time'],
+					'status' => $appointment['status']
+				);
+				if($appointment['end'])
+					$feed['allDay'] = false;
+
+				array_push($feeds, $feed);
+			}
+		}
+		
+		echo json_encode($feeds);
+	}
+	
+	function feed_first() {
+		$feeds = array();
+
+		$start_date = $this->input->post('start_date');
+		$dentist_id = $this->session->userdata('id');
+
+		if ($this->db->table_exists('dentist_appointments'))
+		{
+			if($start_date)
+				$this->db->where('start_date', $start_date);
+
+			$this->db->where('dentist_id', $dentist_id);
+			$this->db->where('status', null);
+
+			$qappointments = $this->db->get('dentist_appointments');
+			$rappointments = $qappointments->result_array();
+
+			foreach($rappointments as $appointment) {
+				$feed = array(
+					'id' => $appointment['id'],
+					'title' => $appointment['title'],
+					'description' => $appointment['description'],
+					'start' => $appointment['start'],
+					'end' => $appointment['end'],
+					'start_date' => $appointment['start_date'],
+					'start_time' => $appointment['start_time'],
+					'end_date' => $appointment['end_date'],
+					'end_time' => $appointment['end_time'],
+					'status' => $appointment['status']
+				);
+				if($appointment['end'])
+					$feed['allDay'] = false;
+
+				array_push($feeds, $feed);
+			}
+		}
+		
+		echo json_encode($feeds);
+	}
+	
+	function feed_confirmed() {
+		$feeds = array();
+
+		$start_date = $this->input->post('start_date');
+		$dentist_id = $this->session->userdata('id');
+
+		if ($this->db->table_exists('dentist_appointments'))
+		{
+			if($start_date)
+				$this->db->where('start_date', $start_date);
+
+			$this->db->where('dentist_id', $dentist_id);
+			$this->db->where('status', 'confirmed');
+
+			$qappointments = $this->db->get('dentist_appointments');
+			$rappointments = $qappointments->result_array();
+
+			foreach($rappointments as $appointment) {
+				$feed = array(
+					'id' => $appointment['id'],
+					'title' => $appointment['title'],
+					'description' => $appointment['description'],
+					'start' => $appointment['start'],
+					'end' => $appointment['end'],
+					'start_date' => $appointment['start_date'],
+					'start_time' => $appointment['start_time'],
+					'end_date' => $appointment['end_date'],
+					'end_time' => $appointment['end_time'],
+					'status' => $appointment['status']
+				);
+				if($appointment['end'])
+					$feed['allDay'] = false;
+
+				array_push($feeds, $feed);
+			}
+		}
+		
+		echo json_encode($feeds);
+	}
+	
+	function feed_cancelled() {
+		$feeds = array();
+
+		$start_date = $this->input->post('start_date');
+		$dentist_id = $this->session->userdata('id');
+
+		if ($this->db->table_exists('dentist_appointments'))
+		{
+			if($start_date)
+				$this->db->where('start_date', $start_date);
+
+			$this->db->where('dentist_id', $dentist_id);
+			$this->db->where('status', 'cancelled');
+
+			$qappointments = $this->db->get('dentist_appointments');
+			$rappointments = $qappointments->result_array();
+
+			foreach($rappointments as $appointment) {
+				$feed = array(
+					'id' => $appointment['id'],
+					'title' => $appointment['title'],
+					'description' => $appointment['description'],
+					'start' => $appointment['start'],
+					'end' => $appointment['end'],
+					'start_date' => $appointment['start_date'],
+					'start_time' => $appointment['start_time'],
+					'end_date' => $appointment['end_date'],
+					'end_time' => $appointment['end_time'],
+					'status' => $appointment['status']
 				);
 				if($appointment['end'])
 					$feed['allDay'] = false;
@@ -180,6 +301,25 @@ class Dentist_Dashboard extends CI_Controller {
 	{
 		$id = $this->input->post('app_id');
 		$this->db->where('id',$id)->delete('dentist_appointments');
+	}
+	
+	function appointment_status()
+	{
+		$status = $this->input->post('status');
+		$id = $this->input->post('app_id');
+		
+		if($status)
+		{
+			$query =  $this->db->where('id',$id)->get('dentist_appointments');
+			if($query->num_rows() > 0)
+			{
+				$data_array = array(
+					'status'=>$status
+				);
+				$this->db->where('id',$id)->update('dentist_appointments',$data_array);
+			}
+			echo 1;
+		}
 	}
 }
 
