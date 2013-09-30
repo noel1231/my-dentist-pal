@@ -91,9 +91,10 @@
 								<!--END PERSONAL INFO-->
 								<!--START CLINIC DETAILS-->
 								<div class="form-group" <!--style="margin-left:62px;border:solid 0px red;width:27%;"--><!--start clinic details-->
-									<div class="col-lg-offset-1">
-										<h2><span>Clinic Details</span></h2>
-									</div>
+									
+										<label for="" class="col-lg-3 control-label"><h2><span>Clinic Details</span></h2></label>
+										<!--<h2><span>Clinic Details</span></h2>-->
+									
 								</div><!--end clinic details-->
 								<div class="form-group"><!--start dentist clinic picture-->
 									<label for="" class="col-lg-3 control-label"></label>
@@ -200,8 +201,8 @@
 								</div><!--end dentist service-->
 								<div class="form-group"><!--start dentist service-->
 									<label for="" class="col-lg-3 control-label">Other Service:</label>
-									<div class="col-lg-7">
-										<textarea rows="6" cols="80"id="other_service" name="other_service"><?php echo isset($services_offered) ?  $services_offered : ''; ?></textarea>
+									<div class="col-lg-6">
+										<textarea rows="5" cols="" id="other_service" name="other_service" class="form-control"><?php echo isset($services_offered) ?  $services_offered : ''; ?></textarea>
 									</div>
 								</div><!--end dentist other service-->
 								<div class="form-group"><!--start clinic address-->
