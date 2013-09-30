@@ -2,7 +2,7 @@
 	
 ?>
 <div class="wrapper">
-	<div class="container" style="width:60%;">
+	<div class="col-md-6 col-md-offset-3">
 	<div class="well well-lg">
 		<div class="alert alert-danger invalid_login" style="display:none;text-align:center">Invalid email/password</div>
 		<form class="form-horizontal" role="form" method="post" id="form_patient_login" action="<?php echo base_url('login/patient_login'); ?>">
