@@ -619,20 +619,8 @@ $(function() {
 		
 		success: function(html)
 		{
-			// if(html == 'already registered')
-			// {
-				// $('#myErrorReg').modal('show');
-				// $('.alert_msg').html('You are already registered.').show();
-				// return false;
-			// }else
-			// {
-				// $('.alert_msg').hide();
-				// $('.success_msg').html('Thank you for registering! A confirmation email has been sent to email. Please click on the Activation Link to Activate your account.').show();
-				// $('#mySuccessReg').modal('show');
-			// }
 			$('.alert_msg').hide();
-			// $('.success_msg').html('Registration Success!').show();
-			$('.success_msg').html('Thank you for registering! A confirmation email has been sent to email. Please click on the Activation Link to Activate your account.').show();
+			$('.success_msg').html('Thank you for registering! A confirmation email has been sent. Please click on the Activation Link to Activate your account.').show();
 			$('#mySuccessReg').modal('show');
 		}
 	});
@@ -671,21 +659,13 @@ $(function() {
 			
 			success: function(html)
 			{
-				// alert(html)
 				$('.alert_msg').hide();
-				// $('.success_msg').html('Registration Success!').show();
 				$('.success_msg').html('Profile updated successfully...').show();
 				$('#mySuccessReg').modal('show');
 			}
 		});
 	});
-	// $(function() {
-		// $( "#datepicker" ).datepicker();
-	// });
-	// $(document).ready(function(){
-            // find the input fields and apply the time select to them.
-		// $('#sample2 input').ptTimeSelect();
-	// });
+
 	
 	$('.datepick').css('cursor','pointer');
 	$('.datepick').scroller('destroy').scroller({
@@ -706,17 +686,7 @@ $(function() {
 		height: 35,
 		width: 100
 	});
-	
-	// $(document).ready(function(){
-		// $('input[name="time"]').ptTimeSelect();
-	// });
-	// $('#timepicker').timepicker({
-		// showPeriod: true,
-		// showLeadingZero: true
-	// });
-		// $('#sample2').click(function(){
-			// $('.dwwr').show('fast');
-		// });
+
 });
 
 function handleFiles(files)
