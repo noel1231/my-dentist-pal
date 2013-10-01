@@ -13,12 +13,15 @@ class Dentist_Signup_Model extends CI_Model{
 		
 		$error_code['status'] = 1;
 		
+		// $status = error_code;
 		$query = $this->db->get_where('dentist_list', array('id' => $data['id']));
 			
 		if ($query->num_rows() > 0) {
 			// echo "id already registered";
+			// $status = "id registered";
 			$error_code['text'] = "ERROR: You are already registered";
 			return $error_code;
+			// return $status;
 		}
 		
 		$query = $this->db->get_where('dentist_list', array('email' => $data['d_email']));
@@ -26,7 +29,10 @@ class Dentist_Signup_Model extends CI_Model{
 		if ($query->num_rows() > 0) {
 			// echo "already registered";
 			$error_code['text'] = "ERROR: email address already registered.";
+			// $status = "email registered";
+			// return $status;
 			return $error_code;
+			
 		}
 		
 		$value = array (
@@ -45,10 +51,14 @@ class Dentist_Signup_Model extends CI_Model{
 			// echo "error in db";
 			$error_code['text'] = "ERROR: Data could not be inserted on network database.";
 			return $error_code;
+			 // $status = "ERROR: Data could not be inserted on network database";
+			// return $status;
 		} else {
 			// echo "successfully registered";
 			$error_code['text'] = "Successfully registered!";
 			return $error_code;
+			 // $status = "Successfully registered!";
+			// return $status;
 		}
 			
 	}

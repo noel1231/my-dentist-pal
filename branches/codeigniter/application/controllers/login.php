@@ -17,6 +17,22 @@ class Login extends CI_Controller {
 	
 	function index()
 	{
+		if(isset($_GET['accessNumber']))
+		{
+			if($_GET['accessNumber'])
+			{
+				$id = $_GET['accessNumber'];
+				$query1 = $this->db->where('id',$id)->where('status',1)->get('dentist_list');
+				if($query1->num_rows() <= 0)
+				{
+					$data_array = array(
+						'status' => 1
+					);
+					$this->db->where('id',$id)->update('dentist_list',$data_array);
+				}
+			}
+		}
+	
 		$data['title'] = 'My Dentist Pal - Digitize your dental management practice. A full-featured online tool that integrates dental practice management and confidential patient clinical charting, which dentist can access wherever they are.';
 		$data['header'] = $this->load->view('homepage/header', '', true);
 		$data['body'] = $this->load->view('login/dentist_login','',true);
@@ -90,4 +106,5 @@ class Login extends CI_Controller {
 			echo 'denied';
 		}
 	}
+
 }

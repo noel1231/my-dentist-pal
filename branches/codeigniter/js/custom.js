@@ -1,6 +1,29 @@
 
 $(function() {
-	
+
+	/* for email verification success */
+	if($('.sample_login').val() != '' && $('.sample_login').val() != undefined)
+	{
+		$('.sample_login').val('');
+		$('#myModalValidationEmail').modal('show');
+		
+		countDown();
+	}
+		
+	function countDown()
+	{
+		var count = 7;
+		setInterval(function(){
+			if(count <= 0)
+			{
+				window.location.href = 'login';
+			}else
+			{
+				count--;
+				$('.perseconds').html(count);
+			}
+		},1000)
+	}
 	$('#profile_affix_nav').affix({
 		offset: {
 		top: 300,
@@ -418,7 +441,7 @@ $(function() {
 				$('.invalid_login').html('Invalid email/password').show();
 			}else if(html == 'not verify')
 			{
-				$('.invalid_login').html('Account not recognized! Please check your email inbox/spam for account varification.').show();
+				$('.invalid_login').html('Invalid Account. Please make sure that your account is verified. Kindly check your mail for your account verification.').show();
 			}else
 			{
 				window.location.href = 'dentist_dashboard';
@@ -561,8 +584,8 @@ $(function() {
 			var fname = $('#fname').val();
 			var middle = $('#middle').val();
 			var lname = $('#lname').val();
-			var email1 = $('#email1').val();
-			var email2 = $('#email2').val();
+			var email1 = $('#email_sign').val();
+			var email2 = $('#email_sign1').val();
 			var pass1 = $('#pass1').val();
 			var pass2 = $('#pass2').val(); 
 			
@@ -615,10 +638,31 @@ $(function() {
 		
 		success: function(html)
 		{
-			$('.alert_msg').hide();
-			$('.success_msg').html('Thank you for registering! A confirmation email has been sent. Please click on the Activation Link to Activate your account.').show();
-			$('#mySuccessReg').modal('show');
+			
+			if(html == 'email registered')
+			{
+				$('#myErrorReg').modal('show');
+				$('.alert_msg').html('Email are already registered.').show();
+				$('#email_sign').val('');
+				$('#email_sign1').val('');
+				$('#email_sign').focus();
+				return false;
+			}else
+			{
+				$('.alert_msg').hide();
+				$('.success_msg').html('Thank you for signing up! Please confirm this account. An account verification has been sent to your email.').show();
+				$('#mySuccessReg').modal('show');
+			}
+			// $('.alert_msg').hide();
+			// $('.success_msg').html('Registration Success!').show();
+			// $('.success_msg').html('Thank you for registering! A confirmation email has been sent. Please click on the Activation Link to Activate your account.').show();
+			// $('#mySuccessReg').modal('show');
 		}
+	});
+	$('#myErrorReg').on('hidden.bs.modal', function () {
+		// $('#fname').focus();
+		// $('#lname').focus();
+		$('#email_sign').focus();
 	});
 	//dentist profile submit form 
 	$('.submit_dental_form1').click(function(){
@@ -655,23 +699,31 @@ $(function() {
 			
 			success: function(html)
 			{
+				// alert(html)
 				$('.alert_msg').hide();
-				$('.success_msg').html('Profile updated successfully...').show();
+				// $('.success_msg').html('Registration Success!').show();
+				$('.success_msg').html('Saved Successfully!').show();
 				$('#mySuccessReg').modal('show');
 			}
 		});
 	});
-
-	
-	$('.datepick').css('cursor','pointer');
-	$('.datepick').scroller('destroy').scroller({
-		mode: 'clickpick',
-		preset: 'date',
-		theme: 'android-ics light',
-		display: 'bubble',
-		height: 35,
-		width: 100
+	$(function() {
+		$( "#datepicker" ).datepicker();
 	});
+	// $(document).ready(function(){
+            // find the input fields and apply the time select to them.
+		// $('#sample2 input').ptTimeSelect();
+	// });
+	
+	// $('.datepick').css('cursor','pointer');
+	// $('.datepick').scroller('destroy').scroller({
+		// mode: 'clickpick',
+		// preset: 'date',
+		// theme: 'android-ics light',
+		// display: 'bubble',
+		// height: 35,
+		// width: 100
+	// });
 	
 	$('.timepick').css('cursor','pointer');
 	$('.timepick').scroller('destroy').scroller({
@@ -682,7 +734,17 @@ $(function() {
 		height: 35,
 		width: 100
 	});
-
+	
+	// $(document).ready(function(){
+		// $('input[name="time"]').ptTimeSelect();
+	// });
+	// $('#timepicker').timepicker({
+		// showPeriod: true,
+		// showLeadingZero: true
+	// });
+		// $('#sample2').click(function(){
+			// $('.dwwr').show('fast');
+		// });
 	$('a[data-toggle="tab"]').on('show.bs.tab', function (e) {
 		e.target // activated tab
 		e.relatedTarget // previous tab
