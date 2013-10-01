@@ -73,8 +73,8 @@
 	
 	/* Patients Added in the last 7 days */
 	$patient_count 	= 0;
-	$date_today 	= date("Y-m-d") . " " . date('G:i:s');
-	$date_less_than	= date("Y-m-d",strtotime($date_today. '-7 days')) . " " . date('G:i:s');
+	$date_today 	= date("Y-m-d G:i:s");
+	$date_less_than	= date("Y-m-d G:i:s",strtotime($date_today. '-7 days'));
 	$query_patient	= "SELECT COUNT(*) as patient_count FROM patient_list WHERE date_of_entry >= '$date_less_than' and date_of_entry <= '$date_today' AND `dentist_id` = ".$id."";
 	$res_patient	= mysql_query($query_patient);
 	if ($res_patient)
@@ -87,58 +87,60 @@
 
 ?>
 
-	<div class="row">
+<div class="row">
+	<div class="col-md-12">
+		<div class="well well-sm" style="background-color:#3798EC;border-radius: 34px;">
+			<h3 style="margin: 0;color:#fff;padding-left: 15px;">Clinic Overview</h3>
+		</div>
 		<div class="container">
-			<div class="header">
-				<div class="landing_center_blue">
-					<span> Clinic Overview </span>
-				</div>
+			<div class="col-md-6">
+				<ul class="list-group">
+					<li class="list-group-item" style="border:none;">
+						<span class="badge" style="background-color: #3798EC;"><?php echo isset($patient_num) ? $patient_num : ''; ?></span>
+						Total Patient Records
+					</li>
+					<li class="list-group-item" style="border:none;border-top:1px solid #ddd;">
+						<span class="badge" style="background-color: #3798EC;"><?php echo isset($patient_count) ? $patient_count : ''; ?></span>
+						Patient added in the last 7 days
+					</li>
+				</ul>
 			</div>
-			<div class="inner_content" style="background-color: #FDFDFD;">
-				<div style="padding: 10px 20px 40px; display: inline-block; width: 100%;">
-
-<!-- Notification Alert -->
-					<div id="notification_alert" class="notification_alert">
-						<table cellspacing="1" cellpadding="8">
-							<tr>
-								<td><span style="font-size:15px;color:#333;font-family:Arial, Helvetica, sans-serif;"> Today&rsquo;s Appointment: </span></td>
-								<td><a href="scheduler/wdCalendar/index.php" style="text-decoration:none;" target="_blank"><span style="font-size:14px;color:#F00;"><?php echo $ctr;?></span></a></td>
-							</tr>
-							<tr>
-								<td><span style="font-size:15px;color:#333;font-family:Arial, Helvetica, sans-serif;"> Messages: </span></td>
-								<td><a href="message_received.php" style="text-decoration:none;" target="_blank"><span style="font-size:14px;color:#F00;"><?php echo $rows;?></span></a></td>
-							</tr>
-							<tr>
-								<td><span style="font-size:15px;color:#333;font-family: Arial, Helvetica, sans-serif;"> Total Patient Records: </span></td>
-								<td><span style="font-size:14px;color:#F00;"><?php echo $patient_num;?></span></td>
-							</tr>
-							<tr>
-								<td><span style="font-size:15px;color:#333;font-family: Arial, Helvetica, sans-serif;"> Patients added in the last 7 days: </span></td>
-								<td><span style="font-size:14px;color:#F00;"><?php echo $patient_count;?></span></td>
-							</tr>
-						</table>
-					</div>
-					<div class="notification_alert">
-						<table cellspacing="1" cellpadding="8">
-							<tr>
-								<td><span style="font-size:15px;color:#333;font-family:Arial, Helvetica, sans-serif;"> Total Male Patients: </span></td>
-								<td><a href="scheduler/wdCalendar/index.php" style="text-decoration:none;" target="_blank"><span style="font-size:14px;color:#F00;"><?php echo $patient_male_num;?></span></a></td>
-							</tr>
-							<tr>
-								<td><span style="font-size:15px;color:#333;font-family:Arial, Helvetica, sans-serif;"> Total Female Patients: </span></td>
-								<td><a href="message_received.php" style="text-decoration:none;" target="_blank"><span style="font-size:14px;color:#F00;"><?php echo $patient_female_num;?></span></a></td>
-							</tr>
-							<tr>
-								<td><span style="font-size:15px;color:#333;font-family: Arial, Helvetica, sans-serif;"> Average Patient Age: </span></td>
-								<td><span style="font-size:14px;color:#F00;"><?php echo round($patient_average_age);?></span></td>
-							</tr>
-						</table>
-					</div>
-<!-- end Notification Alert -->
-
-
-
-				</div>
+			<div class="col-md-6">
+				<ul class="list-group">
+					<li class="list-group-item" style="border:none;">
+						<span class="badge" style="background-color: #3798EC;"><?php echo isset($patient_male_num) ? $patient_male_num : ''; ?></span>
+						Total Male Patient
+					</li>
+					<li class="list-group-item" style="border:none;border-top:1px solid #ddd;">
+						<span class="badge" style="background-color: #3798EC;"><?php echo isset($patient_female_num) ? $patient_female_num : '';?></span>
+						Total Female Patient
+					</li>
+					<li class="list-group-item" style="border:none;border-top:1px solid #ddd;">
+						<span class="badge" style="background-color: #3798EC;"><?php echo isset($patient_average_age) ? round($patient_average_age) : ''; ?></span>
+						Average Patient Age
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="container">
+			<h3>Procedure Summary</h3>
+			<div class="col-md-6">
+				<ul class="list-group">
+					<li class="list-group-item" style="border:none;">
+						<span class="badge" style="background-color: #3798EC;">14</span>
+						Jacket Crown
+					</li>
+					<li class="list-group-item" style="border:none;border-top:1px solid #ddd;">
+						<span class="badge" style="background-color: #3798EC;">14</span>
+						Amalgam Filling
+					</li>
+					<li class="list-group-item" style="border:none;border-top:1px solid #ddd;">
+						<span class="badge" style="background-color: #3798EC;">14</span>
+						Abutment
+					</li>
+				</ul>
 			</div>
 		</div>
 	</div>
+	
+</div>

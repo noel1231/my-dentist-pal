@@ -85,7 +85,7 @@ $(function(){
 		},
 		eventRender: function(event, element) {
 		
-			/* backgroun color of events */
+			/* background color of events */
 			// element.css('background','#3A87AD');
 		},
 		dayRender: function( date, cell ) {
@@ -183,11 +183,11 @@ $(function(){
 		endHours = endHours ? endHours : 12;
 		hours = hours % 12;
 		hours = hours ? hours : 12; // the hour '0' should be '12'
+		hours = hours < 10 ? '0'+hours : hours;
 		endHours = endHours < 10 ? '0'+endHours : endHours;
 		minutes = minutes < 10 ? '0'+minutes : minutes;
 		var strTime = hours + ':' + minutes + ' ' + ampm;
 		var endTime = endHours + ':' + minutes + ' ' + ampm; 
-		
 		
 		/* set end time to add schedule timepicker1 */
 		$('.timepicker1').scroller('setValue', endTime, true);
@@ -274,6 +274,7 @@ $(function(){
 					// alert('Please enter a value for ending time'); 
 					return false; 
 				}
+				alert(form.time1.value);return false;
 			},
 			success: function(html) {
 				var split = html.split('-');
