@@ -1,4 +1,4 @@
-<div id="footer">
+<div id="footer" class="col-md-12">
     <div class="container">
         <div class="row">
             <div class="col-md-4 link text-center">

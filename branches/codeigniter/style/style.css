@@ -12,7 +12,7 @@ html, body {
 }
 
 #footer {
-	height: 140px;
+	min-height: 140px;
 }
 /* sticky footer end */
 
