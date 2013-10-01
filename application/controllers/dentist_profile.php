@@ -33,7 +33,6 @@ class Dentist_Profile extends CI_Controller {
 		$data['header'] = $this->load->view('homepage/header', '', true);
 		// $data['footer'] = $this->load->view('homepage/footer', '', true);
 		$data['dashboard_content'] = $this->load->view('dentist_profile_view', $data, true);
-
 		$data['body'] = $this->load->view('dentist_dashboard', $data, true);
 
 		$this->load->view('homepage', $data);
