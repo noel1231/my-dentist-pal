@@ -1,23 +1,15 @@
 <?php
 	extract($patient_query->row_array());
 
-	if($new_chart === 1) {
-		$name_select = 'chart_id';
-		$this->db->where('patient_id', $patient_id);
-		$this->db->order_by('date_chart DESC, timestamp DESC');
-		$sql = $this->db->get('patient_tooth_chart');
-	} else {
-		if($what_chart === '1') {
-			$name_select = 'adult';
-			$sql=$this->db->query("SELECT * FROM patient_tooth_chart_extra_adult WHERE patient_id='".$patient_id."' ORDER BY `date_chart` DESC");
-		} else if($what_chart === '2') {
-			$name_select = 'child';
-			$sql=$this->db->query("SELECT * FROM patient_tooth_chart_extra_child WHERE patient_id='".$patient_id."' ORDER BY `date_chart` DESC");
-		}
-	}
+	$this->db->select('*, patient_tooth_chart.chart_name as chart_name');
+	$this->db->where('patient_tooth_chart.patient_id', $patient_id);
+	$this->db->from('patient_tooth_chart');
+	$this->db->order_by('patient_tooth_chart.date_chart desc, patient_tooth_chart.id desc');
+
+	$sql = $this->db->get();
 
 	if(!$chart_id = $this->input->post('chart_id')) {
-		if($sql->num_rows() > 0) {
+		if($sql->num_rows() > 0 ) {
 			$rchart = $sql->row_array(0);
 			$chart_id = $rchart['id'];
 		}
@@ -51,6 +43,7 @@
 			</div>
 			<div class="col-lg-4">
 				<select id="select_chart" name="chart" class="form-control" >
+					<option value="0">--Select one--</option>
 <?php
 				if($sql->num_rows() > 0) {
 					foreach($sql->result_array() as $key=>$row) {
@@ -58,10 +51,6 @@
 						$name=$row['chart_name'];
 						echo '<option id="chart_'.$idx.'" class="charts_option" value="'.$idx.'" '.($key==0 ? 'selected': '').'> '.$name.' </option>';
 					}
-				} else {
-?>
-					<option value="0">--Select one--</option>
-<?php
 				}
 ?>
 				</select>
@@ -79,7 +68,7 @@
 		<div id="chart_container">
 <?php
 		// if($this->input->get('key') && $this->input->get('key') !== 'none') {
-			$data_tooth_chart_patient = $this->charting->load_chart($chart_id, $dentist_id, $patient_id, $new_chart);
+			$data_tooth_chart_patient = $this->charting->load_chart($chart_id, $patient_id);
 
 			$this->load->view('charting/tooth_chart_patient', $data_tooth_chart_patient);
 		// }

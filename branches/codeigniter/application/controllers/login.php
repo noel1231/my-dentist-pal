@@ -21,7 +21,6 @@ class Login extends CI_Controller {
 		$data['header'] = $this->load->view('homepage/header', '', true);
 		$data['body'] = $this->load->view('login/dentist_login','',true);
 		$this->load->view('homepage', $data);
-		
 	}
 	
 	function patient()
@@ -60,7 +59,7 @@ class Login extends CI_Controller {
 				);
 				$this->session->set_userdata($newdata);  
 				   
-				echo 'success';
+				redirect('dentist_dashboard');
 			}else
 			{
 				echo 'not verify';
