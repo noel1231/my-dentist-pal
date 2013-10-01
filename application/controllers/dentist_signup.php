@@ -22,8 +22,8 @@ class Dentist_Signup extends CI_Controller {
 		$this->form_validation->set_rules('fname', 'First name', 'required');
 		$this->form_validation->set_rules('lname', 'Last name', 'required');
 		$this->form_validation->set_rules('middle', 'Middle name', 'required');
-		$this->form_validation->set_rules('email1', 'Email Address', 'trim|required|valid_email');
-		$this->form_validation->set_rules('email2', 'Confirm Email Address', 'trim|required|valid_email');		
+		$this->form_validation->set_rules('email_sign', 'Email Address', 'trim|required|valid_email');
+		$this->form_validation->set_rules('email_sign1', 'Confirm Email Address', 'trim|required|valid_email');		
 		$this->form_validation->set_rules('pass1', 'Password', 'trim|required|min_length[6]|xss');
 		$this->form_validation->set_rules('pass2', 'Confirm Password', 'trim|required|matches[pass1]|xss');
 		
@@ -42,36 +42,53 @@ class Dentist_Signup extends CI_Controller {
 	
 	public function process_registration()
 	{
-		$this->load->model('dentist_signup_model');
-		
-		$data['id'] = rtrim($this->input->post('id'));
-		$data['d_fname'] = rtrim($this->input->post('fname'));
-		$data['d_sname'] = rtrim($this->input->post('lname'));
-		$data['d_mname'] = rtrim($this->input->post('middle'));
-		$data['d_email'] = rtrim($this->input->post('email1'));
-		$data['d_password'] = rtrim($this->input->post('pass1'));
-		
-		$this->dentist_signup_model->register_dentist($data);
-		
+		if($this->input->post('email_sign'))
+		{
+			$query = $this->db->get_where('dentist_list', array('email' => $this->input->post('email_sign')));
+			
+			if ($query->num_rows() > 0) {
+				// echo "already registered";
+				$error_code = "email registered";
+			}else
+			{
+				$dentist_data = array(
+					// 'id' => $this->input->post('id'),
+					'first_name' => $this->input->post('fname'),
+					'sur_name' => $this->input->post('lname'),
+					'middle_name' => $this->input->post('middle'),
+					'email' => $this->input->post('email_sign'),
+					'dentist_pass' => md5($this->input->post('pass1')),
+					'register_date' => date('Y-m-d')
+				);
+				
+				$this->db->insert('dentist_list', $dentist_data);
+				$error_code = 'success';
+			}
+		}
+		return $error_code;
 	}
 	
 	function verification()
 	{
-		$this->process_registration();
-		$email1 = $this->input->post('email1');
+		$email1 = $this->input->post('email_sign');
+		$valid = $this->process_registration();
+		
 		$passkey = md5($email1);
+		
 		$this->db->where('email', $email1);
 		
 		$query = $this->db->get('dentist_list');
+		$row = $query->row_array();
 		
-		if($query)
+		if($valid == 'success')
 		{
 			$message = '
 				Thank you for signing up!<br> 
-				Please click the link below to verify and activate your account.<br>
-				<a href="'.base_url().'dentist_signup/confirm?email='.$email1.'&passkey='.$passkey.'"> Click here to activate.</a>
+				Before we can give you access to all of Medix&#39;s features, please confirm your account by clicking the button/link below.<br>
+				<a href="'.base_url('login?valid=success&accessNumber='.$row['id']).'"> Click here to activate.</a>
+				
 			';
-
+			/* <a href="'.base_url().'login/confirm?email='.$email1.'&passkey='.$passkey.'&valid=success"> Click here to activate.</a> */
 			$this->load->library('email');
 			
 			$config['protocol'] = 'smtp';
@@ -83,9 +100,9 @@ class Dentist_Signup extends CI_Controller {
 			
 			$this->email->initialize($config);
 			
-			$this->email->from('info@mydentistpal.com', 'MyDentistPal');
+			$this->email->from('info@mydentistpal.com', 'Medix');
 			$this->email->to($email1); 
-			$this->email->subject("Confirmation from MyDentistPal to $email1");
+			$this->email->subject("Medix Account Confirmation to $email1");
 			$this->email->message($message);	
 
 			$sentmail = $this->email->send();
@@ -101,13 +118,18 @@ class Dentist_Signup extends CI_Controller {
 				$message_status = "No";
 			}
 			
+			echo 'success';
+		}else
+		{
+			echo 'email registered';
 		}
 	}
 	
 	function confirm()
 	{
-		$email1 = $this->input->get('email');
+		$email1 = $this->input->get('email_sign');
 		$passkey = $this->input->get('passkey'); 
+			
 			$update_array = array(
 				'status' => 1,
 			);
@@ -117,7 +139,7 @@ class Dentist_Signup extends CI_Controller {
 			$this->db->update('dentist_list', $update_array);
 			
 			redirect(base_url('login'));
-				
+			
 	}
 	
 }
