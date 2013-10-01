@@ -44,14 +44,14 @@
 								<div class="form-group"><!--start email-->
 									<label for="" class="col-lg-4 control-label">Email Address:</label>
 									<div class="col-lg-5">
-										<input type="text" id="email1" name="email1" id="validate" class="form-control"/><span id="validEmail"></span>
+										<input type="text" id="email_sign" name="email_sign" class="form-control"/><span id="validEmail"></span>
 									</div>
 								</div><!--end email-->
 								
 								<div class="form-group"><!--start confirm email-->
 									<label for="" class="col-lg-4 control-label">Confirm Email Address:</label>
 									<div class="col-lg-5">
-										<input type="text" id="email2" name="email2" id="email2" class="form-control"/>
+										<input type="text" id="email_sign1" name="email_sign1" class="form-control"/>
 									</div>
 								</div><!--end confirm email-->
 								
@@ -117,7 +117,7 @@
 					<!--<p>Please verify your email to activate your account.</p>-->
 				</div>
 				<div class="modal-footer">
-				  <a href="<?php echo base_url('dentist_profile'); ?>" class="btn btn-default">OK</a>
+				  <a href="<?php echo base_url(); ?>" class="btn btn-default">OK</a>
 				</div>
 			</div><!-- /.modal-content -->
 		</div><!-- /.modal-dialog -->
