@@ -1,6 +1,6 @@
 <table><tr>
 	<?php
-	if($new_chart === '0') {
+	if($new_chart == 0) {
 		$set4 = array(
 			'31' => '48',
 			'32' => '47',

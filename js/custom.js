@@ -683,6 +683,22 @@ $(function() {
 		width: 100
 	});
 
+	$('a[data-toggle="tab"]').on('show.bs.tab', function (e) {
+		e.target // activated tab
+		e.relatedTarget // previous tab
+
+		if($(e.target).attr('href') == '#treatment_record') {
+			$.ajax({
+				type: 'post',
+				data: { 'view': 'treatment_record' },
+				success: function(html) {
+					$('#treatment_record').find('.well').html(html);
+				}
+			});
+		}
+	})
+
+
 });
 
 function handleFiles(files)

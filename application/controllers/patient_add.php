@@ -181,7 +181,7 @@ class Patient_add extends CI_Controller {
 			'medical_treatment'=>$data_gh ? json_encode($data_gh) : null,
 			'illness_operation'=>$data_illness ? json_encode($data_illness) : ' ',
 			'hospitalized'=>$data_hospitalized ? json_encode($data_hospitalized) : ' ',
-			'precription_medication'=>$data_prescription ? json_encode($data_prescription) : ' ',
+			'prescription_medication'=>$data_prescription ? json_encode($data_prescription) : ' ',
 			'tabacco_products'=>$this->input->post('tabacco_patient'),
 			'alcohol_drugs'=>$this->input->post('drugs_patient'),
 			'local_anesthetic'=>$anesthetic !== false ? 'yes' : 'no',

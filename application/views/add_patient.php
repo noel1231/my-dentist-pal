@@ -529,24 +529,24 @@
 								<?php
 									if(isset($row))
 									{
-										$precription_medication = json_decode($row['precription_medication']);
+										$prescription_medication = json_decode($row['prescription_medication']);
 									}
 								?>
 								<div class="row" style="margin-bottom:5px">
 									<div class="col-md-6">5. Are you taking any presciption or non prescription medication?</div>
 									<div class="col-md-6">
 										<label class="checkbox-inline" style="padding-top:0;">
-											<input type="radio" name="presciption_patient" value="yes" <?php if(isset($row)){ if(isset($precription_medication) && $precription_medication->answer == 'yes'){ echo 'checked'; } } ?> <?php echo $disabled; ?>> Yes
+											<input type="radio" name="presciption_patient" value="yes" <?php if(isset($row)){ if(isset($prescription_medication) && $prescription_medication->answer == 'yes'){ echo 'checked'; } } ?> <?php echo $disabled; ?>> Yes
 										</label>
 										<label class="checkbox-inline" style="padding-top:0;">
-											<input type="radio" name="presciption_patient" value="no" <?php if(isset($row)){ if(isset($precription_medication) && $precription_medication->answer == 'no'){ echo 'checked'; } } ?> <?php echo $disabled; ?>> No
+											<input type="radio" name="presciption_patient" value="no" <?php if(isset($row)){ if(isset($prescription_medication) && $prescription_medication->answer == 'no'){ echo 'checked'; } } ?> <?php echo $disabled; ?>> No
 										</label>
 									</div>
 								</div>
-								<div class="row show_question4" style="<?php if(isset($row)){ if(isset($precription_medication) && $precription_medication->because != ' '){ echo 'display:block;'; }else{ echo 'display:none;'; } } ?>" <?php echo $disabled; ?>>
+								<div class="row show_question4" style="<?php if(isset($row)){ if(isset($prescription_medication) && $prescription_medication->because != ' '){ echo 'display:block;'; }else{ echo 'display:none;'; } } ?>" <?php echo $disabled; ?>>
 									<div class="col-md-6" style="padding-right: 0;text-align: right;">If so, please specify?&nbsp;</div>
 									<div class="col-md-6" style="padding-left:0;text-align: right;">
-										<input type="text" class="col-md-12" name="patient_specify_prescription" value="<?php if(isset($row) && isset($precription_medication)){ echo $precription_medication->because; } ?>" <?php echo $disabled; ?>>
+										<input type="text" class="col-md-12" name="patient_specify_prescription" value="<?php if(isset($row) && isset($prescription_medication)){ echo $prescription_medication->because; } ?>" <?php echo $disabled; ?>>
 									</div>
 								</div>
 								<div class="row" style="margin-bottom:5px">
@@ -880,7 +880,7 @@
 					</div>
 					<div class="tab-pane" id="treatment_record">
 						<div class="well">
-							<?php echo isset($treatment_records) ? $treatment_records : ''; ?>
+							
 						</div>
 					</div>
 				</div>
