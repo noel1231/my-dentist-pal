@@ -63,12 +63,12 @@
                     Track patient's medical information as basis on further
                     dental diagnosis.
                 </p>
-                <p class="skyblue" id="prices">Treatment Record</p>
+                <p class="skyblue">Treatment Record</p>
                 <p>
                     Update and track procedures done to a patient on every visit.
                 </p>
                 
-                <p class="skyblue">Clinical Analytics</p>
+                <p class="skyblue" id="prices">Clinical Analytics</p>
                 <p>
                     Monitor your dental office activities online - appointments, 
                     patient records and dental procedures done in a
