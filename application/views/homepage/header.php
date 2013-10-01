@@ -17,7 +17,11 @@
                   <li class="<?php echo uri_string() == null || uri_string() == 'welcome' ? "active" : " "; ?>">
                       <a href="<?php echo base_url();?>welcome" class="home">HOME</a>
                   </li>
-                  <li class="">
+                  <li class="<?php
+                                    $url_real = base_url() . "#prices";
+                                    $to_compare_url = base_url() . uri_string();
+                                    
+                                ?>">
                       <a href="<?php echo base_url();?>#prices" class="prices">PRICE</a>
                   </li>
                   <li class="<?php echo uri_string() == 'contact_us' ? "active" : " "; ?>">
@@ -57,6 +61,7 @@
     </ul>
   </div><!-- /.navbar-collapse -->
 </nav>
+
 <?php /*
 		<ul class="nav navbar-nav navbar-right">
 			<div class="col-sm-6" class="dropdown-toggle" data-toggle="dropdown">
@@ -73,5 +78,14 @@
 		</ul>
 <?php
 	*/
-	}
+	} 
 ?>
+
+<script>
+    if(window.location.hash == '#prices')
+    {
+        $('a.home').removeClass('active');
+        $('a.contact_us').removeClass('active');
+        $('a.prices').addClass('active');
+    }
+</script>
