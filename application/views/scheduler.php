@@ -31,7 +31,7 @@ if ($this->db->table_exists('dentist_appointments'))
 					</div>
 					<div class="pull-right">
 						<div class="btn-group">
-							<button id="show_add_sched" type="button" class="btn btn-primary"> + Add Schedule </button>
+							<button id="show_add_sched" type="button" class="btn" style="background-color: transparent;border: 1px solid#ddd;"> + Add Schedule </button>
 						</div>
 					</div>
 				</div>
@@ -60,7 +60,7 @@ if ($this->db->table_exists('dentist_appointments'))
 			<td> <?php echo $appointments['description']; ?> </td>
 			<td> <?php echo $appointments['start_time']; ?> <?php echo $appointments['end_time'] ? ' to '.$appointments['end_time'] : ''; ?></td>
 			<td>
-				<select class="select_status">
+				<select class="select_status" style="background-color: #E7F4FF;">
 					<option value="">Select Status...</option>
 					<option value="confirmed" <?php echo $appointments['status'] == 'confirmed' ? 'selected' : ''; ?>>Confirmed</option>
 					<option value="cancelled" <?php echo $appointments['status'] == 'cancelled' ? 'selected' : ''; ?>>Cancelled</option>
