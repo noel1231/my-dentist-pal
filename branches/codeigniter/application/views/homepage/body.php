@@ -2,7 +2,7 @@
 <div class="wrapper">
     <div class="head_content">
             <div class="container text-center">
-                    <h1> Digitize your <span> dental management practice. </span> </h1>
+                    <h1> Digitize your <span> dental management practice</span>.</h1>
                     <p class="col-md-6 col-md-offset-3">
                         A full-featured online tool that integrates dental practice management
                         and confidential patient clinical charting,
@@ -114,12 +114,32 @@
                 <td><img src="images/check_tbl.png" alt="check"/></td>
             </tr>
             <tr>
-                <td>patient records</td>
+                    <td>Multi-platform Accessibility</td>
+                    <td><img src="images/check_tbl.png" alt="check"/></td>
+                    <td><img src="images/check_tbl.png" alt="check"/></td>
+            </tr>
+            <tr>
+                <td>patient records management</td>
                 <td>Limited to 50 patients</td>
                 <td>Unlimited</td>
             </tr>
             <tr>
                 <td>Patient Profile</td>
+                <td><img src="images/check_tbl.png" alt="check"/></td>
+                <td><img src="images/check_tbl.png" alt="check"/></td>
+            </tr>
+            <tr>
+                <td>dental history</td>
+                <td><img src="images/check_tbl.png" alt="check"/></td>
+                <td><img src="images/check_tbl.png" alt="check"/></td>
+            </tr>
+            <tr>
+                <td>medical history</td>
+                <td><img src="images/check_tbl.png" alt="check"/></td>
+                <td><img src="images/check_tbl.png" alt="check"/></td>
+            </tr>
+            <tr>
+                <td>treatment record</td>
                 <td><img src="images/check_tbl.png" alt="check"/></td>
                 <td><img src="images/check_tbl.png" alt="check"/></td>
             </tr>
@@ -134,30 +154,15 @@
                 <td><img src="images/check_tbl.png" alt="check"/></td>
             </tr>
             <tr>
-                <td>accounting</td>
+                <td>clinic analytics</td>
                 <td><img src="images/check_tbl.png" alt="check"/></td>
                 <td><img src="images/check_tbl.png" alt="check"/></td>
             </tr>
             <tr>
-                <td>address book</td>
+                <td>patient access</td>
+                <td></td>
                 <td><img src="images/check_tbl.png" alt="check"/></td>
-                <td><img src="images/check_tbl.png" alt="check"/></td>
-            </tr>
-            <tr>
-                    <td>Blog</td>
-                    <td><img src="images/check_tbl.png" alt="check"/></td>
-                    <td><img src="images/check_tbl.png" alt="check"/></td>
-            </tr>
-            <tr>
-                    <td>Messaging</td>
-                    <td><img src="images/check_tbl.png" alt="check"/></td>
-                    <td><img src="images/check_tbl.png" alt="check"/></td>
-            </tr>
-            <tr>
-                    <td>Multi-platform Accessibility</td>
-                    <td><img src="images/check_tbl.png" alt="check"/></td>
-                    <td><img src="images/check_tbl.png" alt="check"/></td>
-            </tr>
+            </tr>  
             <tr>
                     <td>Monthly Cost</td>
                     <td>Free</td>

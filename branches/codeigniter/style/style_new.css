@@ -90,7 +90,7 @@
 }
 .head_content h1 {
 	font-size: 50px;
-	font-family: helvi;
+	font-family: gill_Sans_MT;
         margin-bottom: 12px;
 }
 
@@ -172,7 +172,7 @@
 
 .wrapper .content .leftpanel .feature h2
 {
-    font-family: helvi;
+    font-family: gill_Sans_Light;
     font-size: 36px;
 }
 
@@ -191,7 +191,7 @@
     color: #00aeef;
     padding: 20px 0;
     text-transform:uppercase;
-    font-family: helvi;
+    font-family: gill_Sans_Light;
 }
 
 .wrapper .content .leftpanel .feature img
@@ -232,7 +232,7 @@
     color: #00aeef;
     padding: 20px 0 20px 5%;
     text-transform:uppercase;
-    font-family: helvi;
+    font-family: gill_Sans_Light;
 }
 
 .wrapper .content .feature img
@@ -249,26 +249,14 @@
     background-color: #fafafa;
     padding: 10px 0;
 }
-#footer .link {
-    float: left;
-    margin: 4% 6% 0 0;
-    padding: 10px 0;
-    text-align: center;
-    width: 30%;
+
+#footer .link,
+#footer .logo_footer,
+#footer .company
+{
+    margin-top: 30px;
 }
-#footer .logo_footer {
-    float: left;
-    margin: 0 10% 0 0;
-    padding: 10px 0;
-    text-align: center;
-    width: 30%;
-}
-#footer .company {
-    float: right;
-    margin: 6% 0 0;
-    text-align: center;
-    width: 24%;
-}
+
 #footer .company p {
     color: #00A6E5;
 }
@@ -296,7 +284,7 @@
     float: left;
     width: 80%;
     margin: 0 0 30px 10%;
-    font-family: helvi;
+    font-family: gill_Sans_Light;
     -webkit-box-shadow : 0 2px 10px rgba(0, 0, 0, 0.1);
     -moz-box-shadow    : 0 2px 10px rgba(0, 0, 0, 0.1);
     box-shadow         : 0 2px 10px rgba(0, 0, 0, 0.1);
@@ -350,7 +338,7 @@
 
 .shadow
 {
-    font-family: helvi;
+    font-family: gill_Sans_Light;
     -webkit-box-shadow : 0 2px 10px rgba(0, 0, 0, 0.1);
     -moz-box-shadow    : 0 2px 10px rgba(0, 0, 0, 0.1);
     box-shadow         : 0 2px 10px rgba(0, 0, 0, 0.1);
@@ -362,14 +350,14 @@
     float: left;
     margin: 2% 0 0 4%;
     padding: 0;
-    font-family: helvi;
+    font-family: gill_Sans_Light;
 }
 
 .container .col-md-6 .info h2
 {
     float: left;
     width: 100%;
-    font-family: helvi;
+    font-family: gill_Sans_Light;
 }
 
 .container .col-md-6 .info p
@@ -384,7 +372,7 @@
     float: left;
     margin: 2% 0 0 4%;
     padding: 0;
-    font-family: helvi;
+    font-family: gill_Sans_Light;
     width: 95%;
 }
 
@@ -449,7 +437,7 @@
     clear: both;
     width: 80%;
     font-size: 20px;
-    font-family: helvi;
+    font-family: gill_Sans_Light;
     display: none;
 }
 
