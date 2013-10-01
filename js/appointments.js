@@ -274,7 +274,7 @@ $(function(){
 					// alert('Please enter a value for ending time'); 
 					return false; 
 				}
-				alert(form.time1.value);return false;
+				
 			},
 			success: function(html) {
 				var split = html.split('-');
@@ -306,6 +306,22 @@ $(function(){
 	
 	$('#appointment').delegate('.select_status','click',function(e){
 		e.stopPropagation();
+	});
+	
+	$('#search_appointment_form').ajaxForm({
+		url: 'dentist_dashboard/appointment_search',
+		beforeSubmit: function(formData, jqForm, options) {
+			var form = jqForm[0];
+			if(form.appoinment_name.value.trim() == '')
+			{
+				form.appoinment_name.value = '';
+				form.appoinment_name.focus();
+				return false;
+			}
+		},
+		success: function(html){
+			alert(html);
+		}
 	});
 	
 	$('#appointment').delegate('.select_status','change',function(e){

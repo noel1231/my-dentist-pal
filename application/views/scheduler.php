@@ -13,18 +13,25 @@ if ($this->db->table_exists('dentist_appointments'))
 ?>
 
 <div id="appointment" class="col-md-6" style="margin-top:40px;">
-	<div class="row">
-		<div class="col-md-2">
-			<label class="label" style="color: #000;font-size: 12px;">Status:&nbsp;</label>
-		</div>
-		<div class="col-md-10">
-		
-			<span class="label label-success">Confirmed</span>
-			<span class="label label-warning">Cancelled</span>
-		
-		</div>
-	</div>
 	<div class="container">
+		<div class="row">
+		<?php
+			if(isset($_GET['scheduler']))
+			{
+				if($_GET['scheduler'] == 'true')
+				{
+		?>
+			<form class="form-inline" id="search_appointment_form" role="form" method="POST" action="" accept-charset="utf-8" >
+				<div class="form-group">
+					<input type="text" class="form-control" id="appoinment_name" placeholder="Search appointment" name="appoinment_name" >
+				</div>
+				<button type="submit" class="btn btn-primary">Search</button>
+			</form>
+		<?php
+				}
+			}
+		?>
+		</div>
 		<div class="row">
 			<div class="pull-left">
 				<h4> <span id="date_appoint"> Today's </span> Appointment(s): <strong id="num_of_appoint"> <?php echo $qdentist_appointments->num_rows(); ?> </strong> </h4>
@@ -44,7 +51,12 @@ if ($this->db->table_exists('dentist_appointments'))
 								<th> Title </th>
 								<th> Description </th>
 								<th> Time </th>
-								<th> Status </th>
+								<th> 
+									Status 
+									<span class="label label-success" title="Confirmed" style="cursor:help;">&nbsp;</span>
+									
+									<span class="label label-warning" title="Cancelled" style="cursor:help;">&nbsp;</span>
+								</th>
 								<th>  </th>
 							</tr>
 						</thead>

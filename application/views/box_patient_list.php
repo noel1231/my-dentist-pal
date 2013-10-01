@@ -62,7 +62,7 @@
 						<th>Picture</th>
 						<th class="sort_table" data-sorter="<?php echo $type ? $type : 'asc'; ?>" alt="<?php echo isset($word) ? $word : ''; ?>" id="name">Name</th>
 						<th class="sort_table" data-sorter="<?php echo $type ? $type : 'asc'; ?>" alt="<?php echo isset($word) ? $word : ''; ?>" id="e_date">Entry Date</th>
-						<th class="sort_table" data-sorter="<?php echo $type ? $type : 'asc'; ?>" alt="<?php echo isset($word) ? $word : ''; ?>" id="l_visit">Last Login</th>
+						<th class="sort_table" data-sorter="<?php echo $type ? $type : 'asc'; ?>" alt="<?php echo isset($word) ? $word : ''; ?>" id="l_visit">Last Visit</th>
 						<th>Action</th>
 					</thead>
 					<tbody class="patient_table_body">
@@ -81,7 +81,7 @@
 							</td>
 							<td><?php echo ucwords($row['patient_name']); ?></td>
 							<td><?php echo date('M-t-Y',strtotime($row['date_of_entry'])); ?></td>
-							<td><?php echo trim($row['last_login']) != '' ? date('M-t-Y',strtotime($row['last_login'])) : 'Not visit'; ?></td>
+							<td><?php echo trim($row['date_of_last_visit']) != '' ? date('M-t-Y',strtotime($row['date_of_last_visit'])) : 'Not visit'; ?></td>
 							<td>
 								<a href="<?php echo base_url('patient_edit?id='.$row['id']); ?>" style="color: #333;">
 									<span class="edit_patient glyphicon glyphicon-edit" title="Edit"></span>

@@ -288,10 +288,10 @@ CREATE TABLE IF NOT EXISTS `dentist_appointments` (
 				<td>'.$insert_data['description'].'</td>
 				<td>'.$insert_data['start_time'].' '.($insert_data['end_time'] ? 'to '.$insert_data['end_time'] : '').'</td>
 				<td>
-					<select>
-						<option> Select.. </option>
-						<option> Confirmed </option>
-						<option> Cancelled </option>
+					<select class="select_status" style="background-color: #E7F4FF;">
+						<option value="">Select Status</option>
+						<option value="confirmed"> Confirmed </option>
+						<option value="cancelled"> Cancelled </option>
 					</select>
 				</td>
 				<td>
@@ -324,6 +324,17 @@ CREATE TABLE IF NOT EXISTS `dentist_appointments` (
 			}
 			echo 1;
 		}
+	}
+	
+	function appointment_search()
+	{
+		$result = $this->input->post('appoinment_name');
+		$this->db->like('title',$result);
+		$this->db->or_like('description',$result);
+		$this->db->where('dentist_id',$this->session->userdata('id'));
+		$query = $this->db->get('dentist_appointments');
+		print_r($query->result_array());
+		
 	}
 }
 
