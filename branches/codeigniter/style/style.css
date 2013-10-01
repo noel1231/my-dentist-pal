@@ -18,6 +18,8 @@ html, body {
 
 body {
     overflow-y: scroll;
+    transition: all 2s;
+    -webkit-transition: all 2s;
 }
 
 textarea {

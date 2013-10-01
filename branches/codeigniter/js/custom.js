@@ -496,6 +496,8 @@ $(function() {
 		$('#myTab a[href="#'+tab+'"]').tab('show');
 	});
         
+//        $('body').scrollspy({ target: '#menu' })
+      
 	$('a.prices').click(function(){
 		$('html, body').animate({
 				scrollTop: $('#prices').offset().top
@@ -509,13 +511,7 @@ $(function() {
 	   
 		return false;
 	});
-
-    if(window.location.hash == '#prices')
-    {
-        $('a.home').removeClass('active');
-        $('a.contact_us').removeClass('active');
-        $('a.prices').addClass('active');
-    }
+        
 	$('input[name=medical_treatment_patient]').on('click',function(){
 		if($(this).val() == 'yes')
 		{

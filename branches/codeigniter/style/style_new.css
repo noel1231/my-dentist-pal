@@ -67,7 +67,7 @@
 }
 
 #menu.navbar .nav > li > a:hover,
-#menu.navbar .nav > li.active
+#menu.navbar .nav > li.active a
 {
     color: #00aeef;
     background-image: none;
