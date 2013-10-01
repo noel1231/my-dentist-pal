@@ -8,8 +8,14 @@
 
 @font-face
 {
-	font-family: helvi;
-	src: url('../fonts/HelveticaNeue-Light.otf');
+	font-family: gill_Sans_Light;
+	src: url('../fonts/Gill Sans MT Light_1.ttf');
+}
+
+@font-face
+{
+	font-family: gill_Sans_MT;
+	src: url('../fonts/Gill Sans MT_1.ttf');
 }
 
 *
@@ -297,39 +303,31 @@
 }
 
 /* added */
-.tbl_pricing td {
-    text-transform: uppercase;
-}
-.wrapper .upper_footer
+
+.wrapper .content .row
 {
-    float: left;
-    width: 84%;
-    border-top: 2px solid #bfbfbf;
-    margin:  3% 0 30px 9%;
+    margin: 0;
 }
 
-.wrapper .upper_footer h2
+.wrapper .content .row h2
 {
     float: left;
     width: 100%;
     margin: 0;
-    padding: 20px 0;
+    padding: 0 0 20px 0;
     text-align: center;
 }
 
-.wrapper .upper_footer .tbl_pricing
+.wrapper .content .row .tbl_pricing
 {
-    float: left;
-    width: 80%;
-    margin: 0 0 40px 10%;
-    padding: 0;
     text-align: center;
     text-transform: uppercase;
     font:normal 14px arial;
     border: 2px solid #8c8c8c;
+    margin-bottom: 30px;
 }
 
-.wrapper .upper_footer .tbl_pricing th
+.wrapper .content .row .tbl_pricing th
 {
     font:bold 20px arial;
     padding: 10px 0;
@@ -338,13 +336,14 @@
     color: #464646;
     text-align: center;
 }
-.wrapper .upper_footer .tbl_pricing td
+.wrapper .content .row .tbl_pricing td
 {
     font:normal 14px arial;
     color: #464646;
     padding: 10px 0;
     width: 30%;
     border: 2px solid #8c8c8c;
+    text-transform: uppercase;
 }
 
 /* Contact */
