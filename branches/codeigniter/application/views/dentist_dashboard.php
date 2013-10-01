@@ -6,78 +6,69 @@
 	<div class="container">
 		<div class="panel panel-default">
 			<div class="panel-body">
-
-
-
-	<div class="row">
-		<div class="col-md-12">
-			
 				<div class="row">
-					<div class="container">
-							<div class="pull-right">
-								<?php
-								if(isset($activeMenu))
-								{
-									$this->load->view('menu',$activeMenu); 
-								}else
-								{
-									$this->load->view('menu'); 
-								}
-								?>
+					<div class="col-md-12">
+						<div class="row">
+							<div class="container">
+									<div class="pull-right">
+										<?php
+										if(isset($activeMenu))
+										{
+											$this->load->view('menu',$activeMenu); 
+										}else
+										{
+											$this->load->view('menu'); 
+										}
+										?>
+									</div>
+								<div class="page-header">
+								  <h1><?php echo $dashboard_title; ?></h1>
+								</div>
 							</div>
-						<div class="page-header">
-						  <h1><?php echo $dashboard_title; ?></h1>
 						</div>
 					</div>
 				</div>
-
-			
-		</div>
-	</div>
-
-		<div class="container">
-			<div class="col-md-6">
-				<div class="row">
-					<div class="col-md-4">
-						<div class="profile_pic_container">
-							<a href="#">
-								<img class="profile_pic" alt="Profile Pic" src="<?php echo trim($profile_pic) != null ? base_url().$profile_pic : base_url('img/profile_pic.gif'); ?>" />
-							</a>
+				<div class="container">
+					<div class="col-md-6">
+						<div class="row">
+							<div class="col-md-4">
+								<div class="profile_pic_container">
+									<a href="#">
+										<img class="profile_pic" alt="Profile Pic" src="<?php echo trim($profile_pic) != null ? base_url().$profile_pic : base_url('img/profile_pic.gif'); ?>" />
+									</a>
+								</div>
+							</div>
+							<div class="col-md-8">
+								<h1>
+									Hi, Doctor <?php echo $first_name; ?>
+								</h1>
+							</div>
 						</div>
 					</div>
-					<div class="col-md-8">
-						<h1>
-							Hi, Doctor <?php echo $first_name; ?>
-						</h1>
+					<div class="col-md-6">
+						<?php echo isset($add_patient_search) ? $add_patient_search : ''; ?>
 					</div>
 				</div>
-			</div>
-			<div class="col-md-6">
-				<?php echo isset($add_patient_search) ? $add_patient_search : ''; ?>
-			</div>
-		</div>
-
-	<div><p>&nbsp</p></div>
-	
-	<div class="container" style="border: 1px solid #ddd;padding-top:15px;padding-bottom: 15px;border-radius: 8px;">
-		<?php echo $dashboard_content; ?>
-	</div>
-
-	  <!--top-->
-		<?php // $this->load->view('top_patient'); ?>
-		  <!--top-->
-	  <!--tooth-->
-		<?php // $this->load->view('top'); ?>
-		  <!--dentisit dashboard-->
-				<?php echo isset($content) ? $content: ''; ?>
-	  <!--wrapper-->
-	  <!--bottom-content-->
-			<?php // $this->load->view('dentist_dashboard/bottom.php'); ?>
-		<!--bottom-content-->
-		<?php // $this->load->view('footer'); ?>
+				<div class="container" style="border: 1px solid #ddd;padding-top:15px;padding-bottom: 15px;border-radius: 8px;margin-top:15px;">
+					<?php echo $dashboard_content; ?>
+				</div>
 			</div>
 		</div>
 	</div>
+	<?php
+		if(isset($content))
+		{
+	?>
+	<div class="container">
+		<div class="panel panel-default">
+			<div class="panel-body">
+				<?php echo $content; ?>
+			</div>
+		</div>
+	</div>
+	<?php
+		}
+	?>
 </div>
 
 <?php /* modal appointment */ ?>
