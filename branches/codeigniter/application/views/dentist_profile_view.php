@@ -16,7 +16,7 @@
 									<div class="form-group"><!--start dentist picture-->
 										<label for="" class="col-lg-3 control-label"></label>
 										<div class="col-lg-6">
-											<img src="<?php if(isset($profile_pic) && trim($profile_pic)){ echo base_url($profile_pic); }else{echo '';} ?>" alt="dentist image" id="dentist-img" name="dentist-img" class="thumbnail img-rounded dentist_photo_view col-lg-12" onerror="this.src='http://www.placehold.it/200x150/EFEFEF/AAAAAA&text=no+image'" style="width:200px;">
+											<img src="<?php if(isset($profile_pic) && trim($profile_pic)){ echo base_url($profile_pic); }else{echo '';} ?>" alt="dentist image" id="dentist-img" name="dentist-img" class="img-circle dentist_photo_view" onerror="this.src='http://www.placehold.it/200x200/EFEFEF/AAAAAA&text=no+image'" style="width:200px;margin-bottom:10px;">
 											<input type="file" id="dentist-photo" name="dentist-photo" />
 											<input type="hidden" id="dentist_photo_existing_file" name="dentist_photo_existing_file" value="<?php //if(isset($profile_pic) && $profile_pic['dentist_img'] != ''){ echo $profile_pic['dentist_img']; } ?>">
 											<input type="hidden" id="dentist_photo_file" name="dentist_photo_file" value="<?php if(isset($profile_pic) && $profile_pic != ''){ echo $profile_pic; } ?>">
@@ -195,11 +195,11 @@
 										<div class="checkbox"><input type="checkbox" name="service[]" value="Oral Surgery" <?php if(isset($dental_services22) && $dental_services22 != ''){echo 'checked'; } ?>>Oral Surgery</div>
 										<div class="checkbox"><input type="checkbox" name="service[]" value="Orthodontics" <?php if(isset($dental_services23) && $dental_services23 != ''){echo 'checked'; } ?>>Orthodontics</div>
 										<div class="checkbox"><input type="checkbox" name="service[]" value="Partials and Dentures" <?php if(isset($dental_services24) && $dental_services24 != ''){echo 'checked'; } ?>>Partials and Dentures</div>
-										<div class="checkbox"><input type="checkbox" name="service[]" value="Preventive Dentistr" <?php if(isset($dental_services25) && $dental_services25 != ''){echo 'checked'; } ?>>Preventive Dentistry</div>
+										<div class="checkbox"><input type="checkbox" name="service[]" value="Preventive Dentistry" <?php if(isset($dental_services25) && $dental_services25 != ''){echo 'checked'; } ?>>Preventive Dentistry</div>
 										<div class="checkbox"><input type="checkbox" name="service[]" value="Root Canals" <?php if(isset($dental_services26) && $dental_services26 != ''){echo 'checked'; } ?>>Root Canals</div>
 										<div class="checkbox"><input type="checkbox" name="service[]" value="Sealants" <?php if(isset($dental_services27) && $dental_services27 != ''){echo 'checked'; } ?>>Sealants</div>
 										<div class="checkbox"><input type="checkbox" name="service[]" value="Smile Makeovers" <?php if(isset($dental_services28) && $dental_services28 != ''){echo 'checked'; } ?>>Smile Makeovers</div>
-										<div class="checkbox"><input type="checkbox" name="service[]" value="Snoring and Sleep Apne" <?php if(isset($dental_services29) && $dental_services29 != ''){echo 'checked'; } ?>>Snoring and Sleep Apnea</div>
+										<div class="checkbox"><input type="checkbox" name="service[]" value="Snoring and Sleep Apnea" <?php if(isset($dental_services29) && $dental_services29 != ''){echo 'checked'; } ?>>Snoring and Sleep Apnea</div>
 										<div class="checkbox"><input type="checkbox" name="service[]" value="Sports Dentistry - Mouthguiards" <?php if(isset($dental_services30) && $dental_services30 != ''){echo 'checked'; } ?>>Sports Dentistry - Mouthguiards</div>
 										<div class="checkbox"><input type="checkbox" name="service[]" value="TMJ and Facial Pain" <?php if(isset($dental_services31) && $dental_services31 != ''){echo 'checked'; } ?>>TMJ and Facial Pain</div>
 										<div class="checkbox"><input type="checkbox" name="service[]" value="Whitening your teeth with Laser" <?php if(isset($dental_services32) && $dental_services32 != ''){echo 'checked'; } ?>>Whitening your teeth with Laser</div>
