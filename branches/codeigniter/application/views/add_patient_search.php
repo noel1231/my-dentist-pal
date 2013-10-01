@@ -17,7 +17,7 @@
 								</a>
 							</div>
 							<div class="form-group">
-								<input type="text" name="search_field" class="form-control input-lg search" placeholder="Search patient name" value="" />
+								<input type="text" name="search_field" class="form-control input-lg search" placeholder="Search..." value="" />
 							</div>
 							<div class="form-group">
 								<button type="submit" class="submit btn btn_design btn-primary btn-lg" />SEARCH</button>

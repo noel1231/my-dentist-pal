@@ -15,7 +15,7 @@ $(function(){
 													'<td>'+description+'</td>'+
 													'<td>'+start_time+' to '+end_time+'</td>'+
 													'<td>'+
-														'<select class="select_status">'+
+														'<select class="select_status" style="background-color: #E7F4FF;">'+
 															'<option value="">Select Status...</option>'+
 															'<option value="confirmed" '+(status == 'confirmed' ? 'selected' : '')+'>Confirmed</option>'+
 															'<option value="cancelled" '+(status == 'cancelled' ? 'selected' : '')+'>Cancelled</option>'+
@@ -84,25 +84,12 @@ $(function(){
 			}
 		},
 		eventRender: function(event, element) {
-			
-			// var date = event.start;
-			// var day = date.getDate();
-			// var month = date.getMonth();
-			// var realMonth = 1 + month;
-			// var year = date.getFullYear();
-			// var dayFormat = day < 10 ? '0'+day : day;
-			// var monthFormat = realMonth < 10 ? '0'+realMonth : realMonth;
-			// var dateFormat = year+'-'+monthFormat+'-'+dayFormat;
-			// console.log(event)
-			// if(event.status == 'confirmed')
-			// {
-				// $('.fc-day[data-date="' + dateFormat + '"]').css('background', '#5cb85c');
-			// }else if(event.status == 'cancelled')
-			// {
-				// $('.fc-day[data-date="' + dateFormat + '"]').css('background', '#f0ad4e');
-			// }
-			
-			
+		
+			/* backgroun color of events */
+			// element.css('background','#3A87AD');
+		},
+		dayRender: function( date, cell ) {
+			console.log(cell)
 		},
 		// eventAfterRender: function( event, element, view ) {
 			// if($.fullCalendar.formatDate(new Date(), 'MMMM d') != $.fullCalendar.formatDate(event.start, 'MMMM d'));
