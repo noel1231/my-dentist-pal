@@ -46,7 +46,15 @@
 						</div>
 					</div>
 					<div class="col-md-6">
-						<?php echo isset($add_patient_search) ? $add_patient_search : ''; ?>
+						<?php 
+						if(isset($_GET['scheduler']))
+						{
+							/* remove add patient when scheduler state */
+						}else{
+							echo isset($add_patient_search) ? $add_patient_search : ''; 
+						}
+						
+						?>
 					</div>
 				</div>
 				<div class="container" style="border: 1px solid #ddd;padding-top:15px;padding-bottom: 15px;border-radius: 8px;margin-top:15px;">
@@ -56,6 +64,11 @@
 		</div>
 	</div>
 	<?php
+		if(isset($_GET['scheduler']))
+		{
+			/* remove overview when scheduler state */
+		}else
+		{
 		if(isset($content))
 		{
 	?>
@@ -67,6 +80,7 @@
 		</div>
 	</div>
 	<?php
+		}
 		}
 	?>
 </div>
