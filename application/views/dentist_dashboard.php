@@ -29,6 +29,10 @@
 					</div>
 				</div>
 				<div class="container">
+				<?php
+					if($dashboard_title != 'Dentist Profile')
+					{
+				?>
 					<div class="col-md-6">
 						<div class="row">
 							<div class="col-md-4">
@@ -45,6 +49,9 @@
 							</div>
 						</div>
 					</div>
+				<?php
+					}
+				?>
 					<div class="col-md-6">
 						<?php 
 						if(isset($_GET['scheduler']))
