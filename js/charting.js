@@ -19,6 +19,10 @@ $(function() {
 				$('#patient_tooth_add').ajaxForm({
 					data: { 'submit': 'tooth' },
 					beforeSubmit: function(formData, jqForm, options) {
+						if($('#legends').val() == 'none') {
+							console.log('nothing to pick');
+							return false;
+						}
 					},
 					success: function(html) {
 						var tooth = JSON.parse(html);
@@ -43,8 +47,13 @@ $(function() {
 			}
 		},
 		open: function(event) {
+			$('#legends').val('none');
 			$(this).attr('curr_tooth', document.patient_tooth_add.tooth_num.value);
 		}
+	});
+
+	$('#legends').on('change', function() {
+		$('#select_tooth').removeClass('hide');
 	});
 
 	$('#chart_container').delegate('.tooth', 'click',  function() {

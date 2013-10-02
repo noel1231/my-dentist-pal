@@ -6,7 +6,7 @@
 	foreach($set8 as $x) {
 ?>
 	<td>
-		<table class="<?php echo isset(${'tooth_'.$x}) ? '' : 'tooth'; ?>">
+		<table class="<?php echo isset(${'tooth_'.$x}) || $new_chart == 0 ? '' : 'tooth'; ?>">
 			<tr><td>  
 <?php if( isset(${'tooth_'.$x}) == 0 ) { ?> 
 				<img id="tooth_<?php echo $x; ?>" src="<?php echo base_url(); ?>img/Toothchart/01.png" />

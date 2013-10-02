@@ -21,7 +21,7 @@
 		
 ?>
 		<td> 
-			<table class="<?php echo isset(${'tooth_'.$value}) ? '' : 'tooth'; ?>">
+			<table class="<?php echo isset(${'tooth_'.$value}) || $new_chart == 0 ? '' : 'tooth'; ?>">
 				<tr><td>
 <?php
 		if(isset( ${'tooth_'.$value} )) {

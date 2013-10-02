@@ -105,7 +105,7 @@
 				<ul class="list-unstyled"> Surgery
 					<li> X - Extraction due to Caries </li>
 					<li> XO - Extraction due to Other Causes </li>
-					<li> check - Present Teeth </li>
+					<li> &#10003; - Present Teeth </li>
 					<li> Cm - Congenitally Missing </li>
 					<li> Sp - Supernumerary </li>
 				</ul>
@@ -179,7 +179,7 @@
 
 			<input type="hidden" class="form-control" id="patient_id" name="patient_id" value="<?php echo $this->input->get('id'); ?>">
 			<input type="hidden" class="form-control" id="dentist_id" name="dentist_id" value="<?php echo $this->session->userdata('id'); ?>">
-			<div id="tooth_dialog" title="Basic dialog">
+			<div id="tooth_dialog" title="Graph Tooth Chart">
 				<?php echo $this->load->view('charting/tooth/table_first_tooth'); ?>
 			</div>
 			<div>
