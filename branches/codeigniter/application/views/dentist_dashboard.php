@@ -46,7 +46,7 @@
 							</div>
 							<div class="col-md-8">
 								<h1>
-									Hi, Doctor <?php echo $first_name; ?>
+									Hi, Doctor <?php echo $first_name; ?>!
 								</h1>
 							</div>
 						</div>
@@ -170,7 +170,7 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-body">
-          Are you sure do you want to delete appointment schedule?
+          Are you sure do you want to delete?
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

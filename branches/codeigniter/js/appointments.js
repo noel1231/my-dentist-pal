@@ -30,7 +30,7 @@ $(function(){
 												'</tr>');
 			}
 		} else {
-			$('#tbody_appointment').append('<tr class="no_sched_row"><td colspan="5"> No Appoinment for this day. </td></tr>');
+			$('#tbody_appointment').append('<tr class="no_sched_row"><td colspan="5"> No Appoinment for today. </td></tr>');
 		}
 	}
 
@@ -328,7 +328,9 @@ $(function(){
 			}
 		},
 		success: function(html){
-			alert(html);
+			$('#tbody_appointment').empty().html(html);
+			$('#date_appoint').empty().text('Result');
+			$('#num_of_appoint').empty();
 		}
 	});
 	

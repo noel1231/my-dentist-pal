@@ -320,7 +320,7 @@ $(function() {
 		return age;
 	}
 	
-	$('#adding_paient_form').ajaxForm({
+	$('#adding_patient_form').ajaxForm({
 		type: 'POST',
 		url: 'patient_add/adding_patient_modal',
 		beforeSubmit:function(arr, jform, option){
@@ -329,6 +329,7 @@ $(function() {
 		success: function(html){
 			$('#myModalAddingSaying').modal('show');
 			$('#myModalAddingPatient').modal('hide');
+			$('#myModalAddingSaying').find('.link_to_edit').attr('href','patient_edit?id='+html);
 		}
 	});
 	
@@ -375,6 +376,9 @@ $(function() {
 		formDental.ajaxForm({
 			type: 'POST',
 			url: 'patient_add/upload_patient_picture',
+			beforeSend: function(){
+				$('.patient_photo_view').attr('src','img/ajax-loader.gif').css('width','90px');
+			},
 			success: function(html)
 			{
 				if(html != 'error')
@@ -770,7 +774,7 @@ $(function() {
 				type: 'post',
 				data: { 'view': 'treatment_record' },
 				success: function(html) {
-					$('#treatment_record').find('.well').html(html);
+					$('#treatment_record').find('.container').html(html);
 				}
 			});
 		}

@@ -343,8 +343,20 @@ CREATE TABLE IF NOT EXISTS `dentist_appointments` (
 				$dataDate = $row['start'];
 				
 				echo '
-					<tr>
-						
+					<tr id="'.$row['id'].'">
+						<td>'.$row['title'].'</td>
+						<td>'.$row['description'].'</td>
+						<td>'.$row['start_time'].' '.($row['end_time'] ? 'to '.$row['end_time'] : '').'</td>
+						<td>
+							<select class="select_status" style="background-color: #E7F4FF;">
+								<option value="">Select Status</option>
+								<option value="confirmed" '.($row['status'] == 'confirmed' ? 'selected' : '').'> Confirmed </option>
+								<option value="cancelled" '.($row['status'] == 'cancelled' ? 'selected' : '').'> Cancelled </option>
+							</select>
+						</td>
+						<td>
+							<span class="glyphicon glyphicon-trash delete_appointment" title="Delete" style="cursor:pointer"></span>
+						</td>
 					</tr>
 				';
 			}

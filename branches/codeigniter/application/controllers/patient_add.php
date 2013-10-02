@@ -282,10 +282,11 @@ class Patient_add extends CI_Controller {
 				'patient_gender'=> $this->input->post('modal_p_sex'),
 				'patient_bday'=> $this->input->post('modal_p_bday'),
 				'patient_age'=> $this->input->post('modal_p_age'),
-				'patient_address'=> $this->input->post('modal_p_address'),
-				'patient_phone'=> $this->input->post('modal_p_mobile'),
+				'patient_address'=> $this->input->post('modal_p_address')
 			);
 			$this->db->insert('patient_list',$data_array);
+			
+			echo $this->db->insert_id();
 		
 	}
 }
