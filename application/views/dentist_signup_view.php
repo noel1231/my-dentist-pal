@@ -4,20 +4,28 @@
 	<!--start dentist profile form-->
 	<div id="wrapper" class="wrapper">
 		<div id="dp-wrapper-form" class="">			
-			<div id="" class="well">
+			<!--<div id="" class="well">
 				<div class="row">
 					<div class="col-md-10 col-md-offset-2"><!-- start center-->
-						<div style=""><!--Dentist's Dashboard--><!--<img src="images/dentist_dashboard.png" />-->
-							<label class="control-label"><h1><span>Dentist Registration</span></h1></label>
+			<!--			<div style=""><!--Dentist's Dashboard--><!--<img src="images/dentist_dashboard.png" />-->
+			<!--				<label class="control-label"><h1><span>Dentist Registration</span></h1></label>
 						</div>
 					</div><!--end center-->
-				</div>	
-			</div>
+			<!--	</div>	
+			</div>-->
 			<!--start dentist registration form-->
 			<div id="form-wrapper" class=""><!-- start dentist registration form wrapper-->
 			<!--<div class="">-->
 				<div id="" class="well-sm">
-					<div class="well col-md-8 col-md-offset-2">&nbsp;
+					
+					<div class="well col-md-8 col-md-offset-2" style="border-top:solid 10px #55c4e2;">
+						<div class="row">
+							<div class="col-md-10"><!-- start center-->
+								<div style=""><!--Dentist's Dashboard--><!--<img src="images/dentist_dashboard.png" />-->
+									<label class="control-label"><h1><span style="font-size:40px;">Dentist Registration</span></h1></label>
+								</div>
+							</div><!--end center-->
+						</div>&nbsp;
 						<form class="form-horizontal" id="form_dentist_signup" role="form" method="post" action="<?php echo base_url('dentist_signup/verification')?>" enctype="multipart/form-data" name="ContactForm"><!--Registration form for Dentist-->
 							<div><!--start form content wrapper-->
 								<!--<div class="alert alert-danger alert_msg" style="text-align:center;display:none;">--><?php //echo validation_errors(); ?><?php //echo form_error('fname'); //echo form_error('lname');?><?php  ?></div>
@@ -70,9 +78,11 @@
 								</div><!--end confirm password-->
 									
 								<div class="form-group"><!--start submit and back button-->
-									<div class="col-lg-offset-4 col-lg-10">
-										<input type="submit" name="submit" value="Submit" class="btn btn-large btn-primary" />
-									</div>
+									<!--<div class="container">-->
+										<div class="col-lg-offset-4 col-lg-10">
+											<input type="submit" name="submit" value="Submit" class="btn btn-large btn-info" />
+										</div>
+									<!--</div>-->
 								</div><!--end submit and back button-->
 								<!--<div style="clear:both;">&nbsp;</div>-->
 							</div><!--end form content wrapper-->
