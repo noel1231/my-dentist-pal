@@ -9,11 +9,11 @@
 	<ul class="top_menu btn-group">
 		<li>
 			<div class="btn-group">			
-			<a href="dentist_dashboard" id="link1" class="btn btn-default" <?php if(isset($activeMenu) && $activeMenu == 'dashboard'){echo 'style="background-color: #ebebeb;"';}?>>
-				<span> Dashboard </span>
+			<a href="dentist_dashboard" id="link1" class="btn btn-default">
+				<span <?php if(isset($activeMenu) && $activeMenu == 'dashboard'){echo 'style="color: #52AFFF;"';}?>> Dashboard </span>
 			</a>
-			<a href="patient_records" id="link3" class="btn btn-default" <?php if(isset($activeMenu) && $activeMenu == 'patient_records'){echo 'style="background-color: #ebebeb;"';}?>>
-				<span> Patient Records </span>
+			<a href="patient_records" id="link3" class="btn btn-default">
+				<span <?php if(isset($activeMenu) && $activeMenu == 'patient_records'){echo 'style="color: #52AFFF;"';}?>> Patient Records </span>
 			</a>
 			<a href="<?php echo base_url('dentist_dashboard?scheduler=true'); ?>" id="link5" target="_blank" class="btn btn-default">
 				<span> Scheduler </span>

@@ -1,5 +1,5 @@
 				<div class="row">
-					<div class="pull-right">
+					<div class="pull-right" style="padding-top: 90px;">
 					<?php
 						$data_params = array(
 							'name'=>'patient_search_from',

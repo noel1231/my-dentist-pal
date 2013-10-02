@@ -516,7 +516,7 @@ $(function() {
 	$('.button_next').on('click',function(e){
 		e.preventDefault();
 		var tab = $(this).attr('alt');
-		$('#myTab a[href="#'+tab+'"]').tab('show');
+		$('.nav-stacked a[href="#'+tab+'"]').tab('show');
 	});
         
 //        $('body').scrollspy({ target: '#menu' })

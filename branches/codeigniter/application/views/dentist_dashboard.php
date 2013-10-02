@@ -10,8 +10,12 @@
 					<div class="col-md-12">
 						<div class="row">
 							<div class="container">
-									<div class="pull-right">
-										<?php
+								<div class="row" style="margin-bottom:30px;">
+									<div class="col-md-6">
+									  <h1 style="margin-top: 0;"><?php echo $dashboard_title; ?></h1>
+									</div>
+									<div class="col-md-6" style="text-align: right;">
+									  <?php
 										if(isset($activeMenu))
 										{
 											$this->load->view('menu',$activeMenu); 
@@ -21,8 +25,6 @@
 										}
 										?>
 									</div>
-								<div class="page-header">
-								  <h1><?php echo $dashboard_title; ?></h1>
 								</div>
 							</div>
 						</div>
@@ -52,7 +54,7 @@
 				<?php
 					}
 				?>
-					<div class="col-md-6">
+					<div class="col-md-6" style="padding-right: 0;">
 						<?php 
 						if(isset($_GET['scheduler']))
 						{
