@@ -43,7 +43,7 @@
 			</div>
 			<div class="col-lg-4">
 				<select id="select_chart" name="chart" class="form-control" >
-					<option value="0">--Select one--</option>
+					<option value="0"> Select Chart... </option>
 <?php
 				if($sql->num_rows() > 0) {
 					foreach($sql->result_array() as $key=>$row) {
@@ -118,27 +118,17 @@
 	</div>
 
 	<div class="row">
-			<table border="0" cellpadding="0" cellspacing="0" style="font-family:Arial, Helvetica, sans-serif;font-size:13px;font-weight:bold;color:#97999b;border:1px solid #CCC;">
+		<div class="col-md-5">
+			<table class="table table-bordered" style="font-family:Arial, Helvetica, sans-serif; font-size:13px; font-weight:bold; color:#97999b;">
+				<thead>
+					<tr>
+						<td colspan="2"> Chart List </td>
+					</tr>
+				</thead>
 <?php
 			$i=0;
-			if($what_chart==1) {
-				$this->db->where('patient_id', $patient_id);
-				$this->db->order_by('date_chart desc');
-				$this->db->limit(5);
-				$res = $this->db->get('patient_tooth_chart_extra_adult');
-			} else if($what_chart==2) {
-				$this->db->where('patient_id', $patient_id);
-				$this->db->order_by('date_chart desc');
-				$this->db->limit(5);
-				$res = $this->db->get('patient_tooth_chart_extra_child');
-			} else {
-				$this->db->where('patient_id', $patient_id);
-				$this->db->limit(5);
-				$res = $this->db->get('patient_tooth_chart_extra');
-			}
-
-			if($res->num_rows() > 0) {
-				$result = $res->result_array();
+			if($sql->num_rows() > 0) {
+				$result = $sql->result_array();
 				foreach($result as $row) {
 					$chart_remarks = $row['chart_remarks'];
 					$i++;
@@ -148,26 +138,24 @@
 					else
 					{ $back="#e0eefa";}
 ?>
-			<tr style="background-color:<?php echo $back;?>;font-size:14px;">
-			<td style="width:110px;padding-top:6px;padding-bottom:6px;text-align:left;padding-left:10px;">
+			<tr style="background-color: <?php echo $back;?>; font-size:14px;">
+			<td style="padding-top: 6px; padding-bottom: 6px; text-align: left; padding-left: 10px;">
 			<!--BOS005--><?php echo $row['chart_name'];?>
 			</td>
-			<td style="width:129px;padding-top:6px;padding-bottom:6px;text-align:center;">
+			<td style="padding-top: 6px; padding-bottom: 6px; text-align:center;">
 			<?php echo $row['date_chart'];?></td>
 
 <?php
 				}
 			}
 ?>
-			</tr></table>		
-	</div>
+			</tr></table>
+		</div>
 
-	<div class="row">
-
-		<div class="col-md-6" style="float:left;width:340px;padding-top:24px;">
-			<div style="float:left;font-family:Arial, Helvetica, sans-serif;font-size:13px;font-weight:bold;color:#5f6060;">Remarks</div>
-			<div style="float:right;"><!--<input type="submit" name="save_rem" value="Save Remarks" class="submit2" style="margin-top:-5px;" onclick="return onSave();"/>--></div>
-			<div style="float:left;margin-top:5px;margin-left:3px;">
+		<div class="col-md-6">
+			<div style="font-family:Arial, Helvetica, sans-serif;font-size:13px;font-weight:bold;color:#5f6060;">Remarks</div>
+			<div style=""><!--<input type="submit" name="save_rem" value="Save Remarks" class="submit2" style="margin-top:-5px;" onclick="return onSave();"/>--></div>
+			<div>
 				<textarea id="chart_remarks" name="remarks" style="font-size:15px;width:335px;height:137px;font-family:Arial, Helvetica, sans-serif;" disabled="disabled">
 <?php 				echo isset($rchart['chart_remarks']) ? $rchart['chart_remarks']: '';?>
 				</textarea>
