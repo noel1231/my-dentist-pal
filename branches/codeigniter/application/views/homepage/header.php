@@ -1,5 +1,5 @@
 <?php
-	$menu_array = array(null, 'welcome', 'contact_us', 'logout', 'login', 'dentist_signup');
+	$menu_array = array(null, 'welcome', 'contact_us', 'logout', 'login', 'dentist_signup', 'login/patient');
 	if(in_array(uri_string(), $menu_array)) {
 ?>
 <nav id='menu' class="navbar navbar-default navbar-fixed-top" role="navigation">
