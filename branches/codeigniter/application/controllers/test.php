@@ -16,7 +16,46 @@ class Test extends CI_Controller {
 	
 	function index()
 	{
-	
+		$timeStart = time();
+		 
+		// select where item is new
+		if($this->input->post('timestamp')){
+			$timestamp = $this->input->post('timestamp');
+		} else {
+			// get current database time
+			$sql = $this->db->query('SELECT now() as now');
+			$row = $sql->row_array();
+			$timestamp = strtotime($row['now']);
+		}
+		$this->db->where('timestamp >', $timestamp);
+		$sql = $this->db->get('patient_tooth_chart_extra');
+
+		print_r($timestamp); echo ' >> '.time(); return false;
+		 
+		$newData = false;
+		$notifications = array();
+		 
+		// loop while there is no new data and is running for less than 20 seconds
+		while(!$newData && (time()-$timeStart)<20000){
+		 
+			// check for new data
+			$result = $sql->result_array();
+			foreach($result as $row) {
+				$notifications[] = $row;
+				$newData = true;
+			}
+			// let the server rest for a while
+			usleep ( 500000 );
+		}
+		 
+		// get current database time
+		$sql = $this->db->query('SELECT now() as now');
+		$row = $sql->row_array();
+		$timestamp = $row['now'];
+		 
+		// output
+		$data = array('notifications'=>$notifications,'timestamp'=>$timestamp);
+		echo json_encode($data);
 	}
 
 	function patient_tooth_chart() {

@@ -24,7 +24,7 @@
 		<div class="col-lg-4">
 			<h2> Charting </h2>
 		</div>
-		<div class="pull-right">
+		<div class="col-md-2 pull-right text-right">
 			<input type="button" onclick="divPrint();" name="print" value="PRINT" class="btn btn-default submit" />
 		</div>
 	</div>
@@ -57,7 +57,7 @@
 			</div>
 
 
-			<div class="pull-right" style="font-weight:bold; color:#373838; font-size:12px;">
+			<div class="col-lg-2 pull-right text-right" style="font-weight:bold; color:#373838; font-size:12px;">
 				<?php echo date('Y-m-d');?>
 			</div>
 
@@ -164,14 +164,14 @@
 
 	<div class="row">
 
-		<div style="float:left;width:340px;padding-top:24px;">
-		<div style="float:left;font-family:Arial, Helvetica, sans-serif;font-size:13px;font-weight:bold;color:#5f6060;">Remarks</div>
-		<div style="float:right;"><!--<input type="submit" name="save_rem" value="Save Remarks" class="submit2" style="margin-top:-5px;" onclick="return onSave();"/>--></div>
-		<div style="float:left;margin-top:5px;margin-left:3px;">
-			<textarea id="chart_remarks" name="remarks" style="font-size:15px;width:335px;height:137px;font-family:Arial, Helvetica, sans-serif;" disabled="disabled">
-<?php 			echo isset($rchart['chart_remarks']) ? $rchart['chart_remarks']: '';?>
-			</textarea>
-		</div>
+		<div class="col-md-6" style="float:left;width:340px;padding-top:24px;">
+			<div style="float:left;font-family:Arial, Helvetica, sans-serif;font-size:13px;font-weight:bold;color:#5f6060;">Remarks</div>
+			<div style="float:right;"><!--<input type="submit" name="save_rem" value="Save Remarks" class="submit2" style="margin-top:-5px;" onclick="return onSave();"/>--></div>
+			<div style="float:left;margin-top:5px;margin-left:3px;">
+				<textarea id="chart_remarks" name="remarks" style="font-size:15px;width:335px;height:137px;font-family:Arial, Helvetica, sans-serif;" disabled="disabled">
+<?php 				echo isset($rchart['chart_remarks']) ? $rchart['chart_remarks']: '';?>
+				</textarea>
+			</div>
 		</div>
 		<input type="hidden" value="<?php echo $patient_id;?>" name="id_for_remarks" />
 		<input type="hidden" value="<?php echo $what_chart;?>" name="what_chart" />
@@ -214,8 +214,9 @@
 <?php
 	}; */
 ?>
+		<div class="col-md-3 pull-right text-right">
 			<button class="btn btn-primary btn-lg pull-right" type="submit" name="action" value="save"> SAVE </button>
-
+		</div>
 	</div>
 
 
