@@ -1,6 +1,6 @@
 
 <h3 style="margin-top: 10px;margin-bottom: 20px;">Scheduler</h3>
-<div id="scheduler" class="col-md-6">
+<div id="scheduler" class="col-md-6" style="cursor: pointer;">
 	<div id="calendar"></div>
 </div>
 
@@ -46,7 +46,7 @@ if ($this->db->table_exists('dentist_appointments'))
 		</div>
 		<div class="row">
 			<div class="panel panel-default">
-				<div class="table-responsive">
+				<div class="table-responsive" style="overflow-x: auto;">
 					<table class="table" style="margin-bottom:0;">
 						<thead>
 							<tr>
@@ -88,7 +88,7 @@ if ($this->db->table_exists('dentist_appointments'))
 							}
 						} else {
 					?>
-							<tr class="no_sched_row"><td colspan="5"> No Appoinment for this day. </td></tr>
+							<tr class="no_sched_row"><td colspan="5"> No Appoinment for today. </td></tr>
 					<?php
 						}
 					?>

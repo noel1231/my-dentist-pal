@@ -19,62 +19,43 @@
 	}
 ?>
 <style>
-/*
-#myTab {
-	position: absolute;
-	left: -110px;
-	top: 30px;
-}
-#myTab li {
-	float:none;
-	
-}
-#myTab li a {
-	border: 1px solid #ddd;
-	border-radius:0;
-	
-}
-#myTab li.active a {
-	border-right: none;
-	
-}
-@media(max-width: 1008px)
-{
-	#myTab {
-		position: initial;
-	}
-	#myTab li {
-		float:left;
+	.extra_css li {
+		margin-top:0 !important;
+		border-bottom: 1px solid #ddd;
+		border-left: 1px solid #ddd;
 		
 	}
-	#myTab li a {
-		cursor: default;
-		background-color: #fff;
+	.extra_css li:nth-child(1) {
+		border-top: 1px solid #ddd;
+	}
+	.extra_css li a {
+		border-radius:0;
+	}
+	.extra_css_padding {
+		padding:0;
+	}
+	.extra_css_border_content {
 		border: 1px solid #ddd;
-		border-bottom-color: transparent;
-		border-radius: 4px 4px 0 0;
-		
 	}
-} */
 </style>
 <div class="container">
-	<div class="row">
+	<div class="container">
 		<div class="tabbable tabs-left" style="<?php echo isset($access) ? '' : ''; ?>">
-			<div class="col-md-2">
-				<div id="profile_affix_nav" role="complementary">
-					<ul id="myTab" class="nav nav-pills nav-stacked">
+			<div class="col-md-2 extra_css_padding">
+				
+					<ul class="nav nav-pills nav-stacked extra_css">
 						<li class="active"><a href="#add_patient" data-toggle="tab"> Patient Info </a></li>
 						<li><a href="#dentist_history" data-toggle="tab"> Dental History </a></li>
 						<li><a href="#medical_history" data-toggle="tab"> Medical History </a></li>
 						<li><a href="#charting" data-toggle="tab"> Charting </a></li>
 						<li><a href="#treatment_record" data-toggle="tab"> Treatment Records </a></li>
 					</ul>
-				</div>
+				
 			</div>
-			<div class="col-md-10">
-				<div class="tab-content">
+			<div class="col-md-10 extra_css_padding">
+				<div class="tab-content extra_css_border_content">
 					<div class="tab-pane active" id="add_patient">
-						<div class="well well-lg">
+						<div class="container">
 						<?php
 							$multipart = array(
 								'id'=>'patient_info_form',
@@ -259,16 +240,23 @@
 									</div>
 								</div>
 								<div class="form-group">
-									<label for="inputEmail1" class="col-lg-4 control-label"></label>
-									<div class="col-lg-8 pull-right">
-										<button type="button" alt="dentist_history" class="button_next btn btn-primary col-lg-3 pull-right">Next</button>
+									<div class="col-lg-5 col-md-offset-4">
+										<button type="button" alt="dentist_history" class="button_next btn btn-primary col-lg-5">Next</button>
+							<?php
+								if(!$disabled)
+								{
+							?>
+										<button type="button" class="submit_all_form btn btn-primary col-lg-5">Save</button>
+							<?php
+								}
+							?>
 									</div>
 								</div>
 							</form>
 						</div>
 					</div>
 					<div class="tab-pane" id="dentist_history">
-						<div class="well well-lg">
+						<div class="container">
 							<form class="form-horizontal" role="form" id="dental_history_form" method="post">
 								<h3 style="font-weight:bold">Dental History</h3>
 								<div class="form-group">
@@ -409,16 +397,23 @@
 									</div>
 								</div>
 								<div class="form-group">
-									<div class="col-lg-5 col-md-offset-7">
+									<div class="col-lg-5 col-md-offset-4">
 										<button type="button" alt="add_patient" class="button_next btn btn-primary col-lg-5">Back</button>
-										<button type="button" alt="medical_history" class="button_next btn btn-primary col-lg-5">Next</button>
+							<?php
+								if(!$disabled)
+								{
+							?>
+										<button type="button" class="submit_all_form btn btn-primary col-lg-5">Save</button>
+							<?php
+								}
+							?>
 									</div>
 								</div>
 							</form>
 						</div>
 					</div>
 					<div class="tab-pane" id="medical_history">
-						<div class="well well-lg">
+						<div class="container">
 							<form class="form-horizontal" role="form" id="medical_history_form" method="post">
 								<h3 style="font-weight:bold">Medical History</h3>
 								<div class="form-group">
@@ -436,12 +431,12 @@
 								<div class="form-group">
 									<label for="inputEmail1" class="col-lg-4 control-label">Office Address</label>
 									<div class="col-lg-5">
-										<textarea class="form-control" id="patient_physician_office_address" rows="3" name="patient_physician_office_address" <?php echo $disabled; ?>><?php echo isset($row) ? $row['physician_address'] : null; ?></textarea>
+										<textarea class="form-control" id="patient_physician_office_address" rows="5" name="patient_physician_office_address" <?php echo $disabled; ?>><?php echo isset($row) ? $row['physician_address'] : null; ?></textarea>
 									</div>
 								</div>
 								<div class="row" style="margin-bottom:5px">
-									<div class="col-md-6">1. Are you in good health?</div>
-									<div class="col-md-6">
+									<div class="col-md-6 col-md-offset-1">1. Are you in good health?</div>
+									<div class="col-md-5">
 										<label class="checkbox-inline" style="padding-top:0;">
 											<input type="radio" id="health_yes" name="health_patient" value="yes" <?php if(isset($row)){ if($row['good_health'] == 'yes'){ echo 'checked'; } }?> <?php echo $disabled; ?>> 
 											Yes
@@ -460,8 +455,8 @@
 									}	
 								?>
 								<div class="row" style="margin-bottom:5px">
-									<div class="col-md-6">2. Are you under medical treatment now?</div>
-									<div class="col-md-6">
+									<div class="col-md-6 col-md-offset-1">2. Are you under medical treatment now?</div>
+									<div class="col-md-5">
 										<label class="checkbox-inline" style="padding-top:0;">
 											<input type="radio" id="treatment_yes" name="medical_treatment_patient" value="yes" <?php if(isset($row)){ if(isset($dataextract) && $dataextract->answer == 'yes'){ echo 'checked'; } } ?> <?php echo $disabled; ?>> Yes
 										</label>
@@ -484,8 +479,8 @@
 									}
 								?>
 								<div class="row" style="margin-bottom:5px">
-									<div class="col-md-6">3. Have you ever had serious illness or surgical operation?</div>
-									<div class="col-md-6">
+									<div class="col-md-6 col-md-offset-1">3. Have you ever had serious illness or surgical operation?</div>
+									<div class="col-md-5">
 										<label class="checkbox-inline" style="padding-top:0;">
 											<input type="radio" name="illness_patient" value="yes" <?php if(isset($row)){ if(isset($illness) && $illness->answer == 'yes'){ echo 'checked'; } } ?> <?php echo $disabled; ?>> 
 											Yes
@@ -509,8 +504,8 @@
 									}
 								?>
 								<div class="row" style="margin-bottom:5px">
-									<div class="col-md-6">4. Have you ever been hospitalized?</div>
-									<div class="col-md-6">
+									<div class="col-md-6 col-md-offset-1">4. Have you ever been hospitalized?</div>
+									<div class="col-md-5">
 										<label class="checkbox-inline" style="padding-top:0;">
 											<input type="radio" name="hospitalized_patient" value="yes" <?php if(isset($row)){ if(isset($hospitalized) && $hospitalized->answer == 'yes'){ echo 'checked'; } } ?> <?php echo $disabled; ?>> Yes
 										</label>
@@ -533,8 +528,8 @@
 									}
 								?>
 								<div class="row" style="margin-bottom:5px">
-									<div class="col-md-6">5. Are you taking any presciption or non prescription medication?</div>
-									<div class="col-md-6">
+									<div class="col-md-6 col-md-offset-1">5. Are you taking any presciption or non prescription medication?</div>
+									<div class="col-md-5">
 										<label class="checkbox-inline" style="padding-top:0;">
 											<input type="radio" name="presciption_patient" value="yes" <?php if(isset($row)){ if(isset($prescription_medication) && $prescription_medication->answer == 'yes'){ echo 'checked'; } } ?> <?php echo $disabled; ?>> Yes
 										</label>
@@ -550,8 +545,8 @@
 									</div>
 								</div>
 								<div class="row" style="margin-bottom:5px">
-									<div class="col-md-6">6. Do you use tabacco products?</div>
-									<div class="col-md-6">
+									<div class="col-md-6 col-md-offset-1">6. Do you use tabacco products?</div>
+									<div class="col-md-5">
 										<label class="checkbox-inline" style="padding-top:0;">
 											<input type="radio" name="tabacco_patient" value="yes" <?php if(isset($row)){ if($row['tabacco_products'] == 'yes'){ echo 'checked'; } } ?> <?php echo $disabled; ?>> Yes
 										</label>
@@ -561,8 +556,8 @@
 									</div>
 								</div>
 								<div class="row" style="margin-bottom:5px">
-									<div class="col-md-6">7. Do you use alcohol coccaine or other dangerous drugs?</div>
-									<div class="col-md-6">
+									<div class="col-md-6 col-md-offset-1">7. Do you use alcohol coccaine or other dangerous drugs?</div>
+									<div class="col-md-5">
 										<label class="checkbox-inline" style="padding-top:0;">
 											<input type="radio" name="drugs_patient" value="yes" <?php if(isset($row)){ if($row['alcohol_drugs'] == 'yes'){ echo 'checked'; } } ?> <?php echo $disabled; ?>> Yes
 										</label>
@@ -572,8 +567,8 @@
 									</div>
 								</div>
 								<div class="row" style="margin-bottom:5px">
-									<div class="col-md-6">8. Are you allergic to any of the following?</div>
-									<div class="col-md-6">
+									<div class="col-md-6 col-md-offset-1">8. Are you allergic to any of the following?</div>
+									<div class="col-md-5">
 										<div class="checkbox">
 											<input type="checkbox" name="allergic[]" value="anesthetic" <?php if(isset($row)){ if($row['local_anesthetic'] == 'yes'){ echo 'checked'; } } ?> <?php echo $disabled; ?>>
 											Local Anesthetic (ex.Lidocaine)
@@ -597,18 +592,18 @@
 									</div>
 								</div>
 								<div class="row" style="margin-bottom:5px">
-									<div class="col-md-6">9. Bleeding time?</div>
-									<div class="col-md-6">
+									<div class="col-md-6 col-md-offset-1">9. Bleeding time?</div>
+									<div class="col-md-5">
 										<input type="text" class="col-md-12" name="patient_bleeding_time" value="<?php echo isset($row) ? $row['menstruation'] : null; ?>" <?php echo $disabled; ?>>
 									</div>
 								</div>
 								<div class="row" style="margin-bottom:5px">
-									<div class="col-md-6">10. For women only:</div>
+									<div class="col-md-6 col-md-offset-1">10. For women only:</div>
 								</div>
 								<div class="row" style="margin-bottom:5px">
 									<div class="container">
-										<div class="col-md-6">A. Are you pregnant?</div>
-										<div class="col-md-6">
+										<div class="col-md-5 col-md-offset-2">A. Are you pregnant?</div>
+										<div class="col-md-5">
 											<label class="checkbox-inline" style="padding-top:0;">
 												<input type="radio" name="pregnant_patient" value="yes" <?php if(isset($row)){ if($row['pregnant'] == 'yes'){ echo 'checked'; } } ?> <?php echo $disabled; ?>> Yes
 											</label>
@@ -618,8 +613,8 @@
 										</div>
 									</div>
 									<div class="container">
-										<div class="col-md-6">B. Are you nursing?</div>
-										<div class="col-md-6">
+										<div class="col-md-5 col-md-offset-2">B. Are you nursing?</div>
+										<div class="col-md-5">
 											<label class="checkbox-inline" style="padding-top:0;">
 												<input type="radio" name="nursing_patient" value="yes" <?php if(isset($row)){ if($row['nursing'] == 'yes'){ echo 'checked'; } } ?> <?php echo $disabled; ?>> Yes
 											</label>
@@ -629,8 +624,8 @@
 										</div>
 									</div>
 									<div class="container">
-										<div class="col-md-6">C. Are you taking birth control pills?</div>
-										<div class="col-md-6">
+										<div class="col-md-5 col-md-offset-2">C. Are you taking birth control pills?</div>
+										<div class="col-md-5">
 											<label class="checkbox-inline" style="padding-top:0;">
 												<input type="radio" name="pills_patient" value="yes" <?php if(isset($row)){ if($row['control_pills'] == 'yes'){ echo 'checked'; } } ?> <?php echo $disabled; ?>> Yes
 											</label>
@@ -650,8 +645,8 @@
 									}
 								?>
 								<div class="row" style="margin-bottom:5px">
-									<div class="col-md-6">11. Blood type?</div>
-									<div class="col-md-6">
+									<div class="col-md-5 col-md-offset-1">11. Blood type?</div>
+									<div class="col-md-5 col-md-offset-1">
 										<select name="patient_blood_type" <?php echo $disabled; ?>>
 											<option value="">Select...</option>
 											<option value="a" <?php echo $selected_blood == 'a' ? 'checked' : ''; ?>>Type A</option>
@@ -661,15 +656,15 @@
 									</div>
 								</div>
 								<div class="row" style="margin-bottom:5px">
-									<div class="col-md-6">12. Blood presure?</div>
-									<div class="col-md-6">
+									<div class="col-md-6 col-md-offset-1">12. Blood presure?</div>
+									<div class="col-md-5">
 										<input type="text" class="col-md-12" name="patient_blood_presure" value="<?php echo isset($row) ? $row['blood_presure'] : ''; ?>" <?php echo $disabled; ?>>
 									</div>
 								</div>
 								<div class="row" style="margin-bottom:5px">
-									<div class="col-md-12">13. Do you have or have you any of the following? Check which apply:</div>
+									<div class="col-md-6 col-md-offset-1">13. Do you have or have you any of the following? Check which apply:</div>
 								</div>
-								<div class="row">
+								<div class="container">
 									<?php 
 										if(isset($row))
 										{
@@ -864,7 +859,7 @@
 								if(!$disabled)
 								{
 							?>
-										<button type="button" class="submit_all_form btn btn-primary col-lg-5">Submit</button>
+										<button type="button" class="submit_all_form btn btn-primary col-lg-5">Save</button>
 							<?php
 								}
 							?>
@@ -874,12 +869,12 @@
 						</div>
 					</div>
 					<div class="tab-pane" id="charting">
-						<div class="panel panel-default">
+						<div class="contianer">
 							<?php echo isset($charting) ? $charting : ''; ?>
 						</div>
 					</div>
 					<div class="tab-pane" id="treatment_record">
-						<div class="well">
+						<div class="container">
 							
 						</div>
 					</div>
@@ -896,7 +891,7 @@
           Saved Successfully!
         </div>
         <div class="modal-footer">
-          <a href="<?php echo base_url('patient_records'); ?>" class="btn btn-default">Close</a>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</a>
         </div>
       </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->

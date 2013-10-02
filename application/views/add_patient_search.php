@@ -34,7 +34,7 @@
           <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
           <h4 class="modal-title">Patient Info</h4>
         </div>
-		<form class="form-horizontal" role="form" method="POST" accept-charset="utf-8" enctype="multipart/form-data" name="adding_patient_form" id="adding_paient_form">
+		<form class="form-horizontal" role="form" method="POST" accept-charset="utf-8" enctype="multipart/form-data" name="adding_patient_form" id="adding_patient_form">
 			<div class="modal-body">
 			  <div class="form-group">
 				<label class="col-lg-4 control-label">Patien ID number</label>
@@ -66,7 +66,7 @@
 			  <div class="form-group">
 				<label class="col-lg-4 control-label">Middle Name</label>
 				<div class="col-lg-6">
-				  <input type="text" name="modal_p_mname" class="form-control" value="" required>
+				  <input type="text" name="modal_p_mname" class="form-control" value="">
 				</div>
 			  </div>
 			  <div class="form-group">
@@ -94,7 +94,7 @@
 			  <div class="form-group">
 				<label class="col-lg-4 control-label">Age</label>
 				<div class="col-lg-6">
-				  <input type="text" class="form-control" name="modal_p_age" value="">
+				  <input type="text" class="form-control" name="modal_p_age" value="" readonly>
 				</div>
 			  </div>
 			  <div class="form-group">
@@ -103,12 +103,12 @@
 				  <textarea rows="3" class="form-control" name="modal_p_address" required></textarea>
 				</div>
 			  </div>
-			  <div class="form-group">
+			  <!--<div class="form-group">
 				<label class="col-lg-4 control-label">Mobile Number</label>
 				<div class="col-lg-6">
 				  <input type="text" class="form-control" name="modal_p_mobile" value="" required>
 				</div>
-			  </div>
+			  </div>-->
 			</div>
 			<div class="modal-footer">
 			  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -127,7 +127,7 @@
           Saved Successfully!
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <a href="" class="btn btn-default link_to_edit">Close</a>
         </div>
       </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->

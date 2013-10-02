@@ -11,19 +11,20 @@
 
 	<div class="row">
 		<div class="col-md-12">
-			
-				<div class="row">
-					<div class="container">
-							<div class="pull-right">
-								<?php $this->load->view('menu'); ?>
-							</div>
-						<div class="page-header">
-						  <h1><?php echo $dashboard_title; ?></h1>
+			<div class="row">
+				<div class="container">
+					<div class="row" style="margin-bottom:30px;">
+						<div class="col-md-6">
+						  <h1 style="margin-top: 0;"><?php echo $dashboard_title == 'Dashboard' ? 'What\'s Happening?' : $dashboard_title; ?></h1>
+						</div>
+						<div class="col-md-6" style="text-align: right;">
+						  <?php
+								$this->load->view('menu'); 
+							?>
 						</div>
 					</div>
 				</div>
-
-			
+			</div>
 		</div>
 	</div>
 
@@ -50,7 +51,7 @@
 		</div>
 
 
-	<div class="row">
+	<div class="row" style="margin-top:15px;">
 		<?php echo $dashboard_content; ?>
 	</div>
 

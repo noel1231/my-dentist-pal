@@ -20,6 +20,7 @@
 		$this->db->like('patient_name',$word);
 		$this->db->or_like('patient_surname',$word);
 		$this->db->or_like('patient_middle_name',$word);
+		$this->db->or_like('id',$word);
 		$this->db->order_by('id',$type);
 		$query = $this->db->get('patient_list');
 		
@@ -79,17 +80,17 @@
 							<td>
 								<img src="<?php echo base_url($row['patient_picture']); ?>" style="width:60px;" onerror="this.src='http://www.placehold.it/200x200/EFEFEF/AAAAAA&text=no+image'">
 							</td>
-							<td><?php echo ucwords($row['patient_name']); ?></td>
+							<td><a href="<?php echo base_url('patient_edit?id='.$row['id']); ?>"><?php echo ucwords($row['patient_name']); ?></a></td>
 							<td><?php echo date('M-t-Y',strtotime($row['date_of_entry'])); ?></td>
 							<td><?php echo trim($row['date_of_last_visit']) != '' ? date('M-t-Y',strtotime($row['date_of_last_visit'])) : 'Not visit'; ?></td>
 							<td>
 								<a href="<?php echo base_url('patient_edit?id='.$row['id']); ?>" style="color: #333;">
-									<span class="edit_patient glyphicon glyphicon-edit" title="Edit"></span>
+									<span class="edit_patient glyphicon glyphicon-edit" title="Edit patient info"></span>
 								</a>
 								<a href="<?php echo base_url('patient_access?id='.$row['id']); ?>" style="color: #333;">
-									<span class="glyphicon glyphicon-globe" title="Manage Account"></span>
+									<span class="glyphicon glyphicon-globe" title="Manage patient account access"></span>
 								</a>
-								<span class="glyphicon glyphicon-trash delete_patient" title="Delete" style="cursor:pointer" id="<?php echo $row['id']; ?>"></span>
+								<span class="glyphicon glyphicon-trash delete_patient" title="Delete patient" style="cursor:pointer" id="<?php echo $row['id']; ?>"></span>
 							</td>
 						</tr>
 <?php
@@ -132,7 +133,7 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-body saying_body">
-          Are you sure do you want to delete count record(s)?
+          Are you sure you want to delete count record(s)?
         </div>
         <div class="modal-footer">
 		  <input type="hidden" class="data_ids" value="">

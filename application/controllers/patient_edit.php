@@ -62,7 +62,7 @@ class Patient_Edit extends CI_Controller {
 			$data['title'] = 'My Dentist Pal - Digitize your dental management practice. A full-featured online tool that integrates dental practice management and confidential patient clinical charting, which dentist can access wherever they are.';
 			$data['header'] = $this->load->view('homepage/header', '', true);
 
-			$data['dashboard_title'] = 'Add Patients';
+			$data['dashboard_title'] = 'Edit Patients';
 
 			if($this->db->table_exists('patient_tooth_chart') && $this->db->table_exists('patient_tooth_chart_extra')) {
 				$data['charting'] = $this->load->view('charting/box_tooth_edit', $data, true);
