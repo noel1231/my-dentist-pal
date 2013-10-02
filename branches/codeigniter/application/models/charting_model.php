@@ -75,7 +75,9 @@ CREATE TABLE IF NOT EXISTS `patient_tooth_chart_extra` (
 			$this->db->query('ALTER TABLE `patient_tooth_chart_extra_child` ADD `chart_id` TEXT NOT NULL');
 		}
 
-		$select = $this->db->select('id, patient_id, chart_name, date_chart, chart_remarks')->where('chart_id', '')->get('patient_tooth_chart_extra_child');
+		$null_chart_id = array('', 0, '0');
+
+		$select = $this->db->select('id, patient_id, chart_name, date_chart, chart_remarks')->where_in('chart_id', $null_chart_id)->get('patient_tooth_chart_extra_child');
 		if($select->num_rows())
 		{
 			foreach($select->result_array() as $chart) {

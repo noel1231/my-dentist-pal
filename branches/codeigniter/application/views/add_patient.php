@@ -62,7 +62,7 @@
 		<div class="tabbable tabs-left" style="<?php echo isset($access) ? '' : ''; ?>">
 			<div class="col-md-2">
 				<div id="profile_affix_nav" role="complementary">
-					<ul class="nav nav-pills nav-stacked">
+					<ul id="myTab" class="nav nav-pills nav-stacked">
 						<li class="active"><a href="#add_patient" data-toggle="tab"> Patient Info </a></li>
 						<li><a href="#dentist_history" data-toggle="tab"> Dental History </a></li>
 						<li><a href="#medical_history" data-toggle="tab"> Medical History </a></li>
@@ -874,7 +874,7 @@
 						</div>
 					</div>
 					<div class="tab-pane" id="charting">
-						<div class="well">
+						<div class="panel panel-default">
 							<?php echo isset($charting) ? $charting : ''; ?>
 						</div>
 					</div>

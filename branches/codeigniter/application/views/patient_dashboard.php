@@ -2,7 +2,7 @@
 	
 ?>
 <!--wrapper-->
-<div style="background-color: #f6f5f5; padding-top: 70px">
+<div style="background-color: #f6f5f5; padding-top: 70px; padding-bottom: 140px;">
 	<div class="container">
 		<div class="panel panel-default">
 			<div class="panel-body">
@@ -66,6 +66,9 @@
 			<?php // $this->load->view('dentist_dashboard/bottom.php'); ?>
 		<!--bottom-content-->
 		<?php // $this->load->view('footer'); ?>
+			</div>
+		</div>
+	</div>
 </div>
 
 <?php /* modal appointment */ ?>

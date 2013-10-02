@@ -24,7 +24,7 @@ class Forgot_Password extends CI_Controller {
 	        $data['body'] = $this->load->view('forgot_password', $data, true);
 		}
 
-		$data['title'] = 'My Dentist Pal - Digitize your dental management practice. A full-featured online tool that integrates dental practice management and confidential patient clinical charting, which dentist can access wherever they are.';
+		$data['title'] = 'Medix Dental - Forgot Password';
 		
 
 

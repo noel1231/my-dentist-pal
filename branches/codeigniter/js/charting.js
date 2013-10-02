@@ -34,15 +34,21 @@ $(function() {
 						}
 						$('[name=chart] option').filter(function() {
 							return ($(this).val() == tooth.chart_id);
-						}).prop('selected', true); 
+						}).prop('selected', true);
+
 						document.getElementById('tooth_'+tooth.tooth_num).src = "img/Toothchart/" + tooth.tooth_area + ".png";
 						document.getElementById('legend_'+tooth.tooth_num).innerHTML = tooth.tooth_procedure;
 						$('#tooth_'+tooth.num).parents('table').removeClass('tooth').unbind('click');
+
+						/* hide select tooth */
+						$('#select_tooth').addClass('hide');
 					}
 				}).submit();
 				$( this ).dialog( "close" );
 			},
 			Close: function() {
+				/* hide select tooth */
+				$('#select_tooth').addClass('hide');
 				$( this ).dialog( "close" );
 			}
 		},
@@ -72,7 +78,10 @@ $(function() {
 	});
 
 	$('body').delegate('.changeMySrc', 'click',  function(a,b,c) {
-		var i = this.value,	val = new Object();
+		var i = $(this).find('input[type=radio]').val(),	val = new Object();
+
+		$('.changeMySrc').find('img').css('border', '1px solid transparent');
+		$(this).find('img').css('border', '1px dashed #888888');
 
 		val.new1 = document.getElementById('what_picture').value;
 		val.new2 = document.getElementById('what_number').value;
@@ -87,6 +96,7 @@ $(function() {
 
 		document.patient_tooth_add.pic_num.value = i;	
 		document.patient_tooth_add.legend.value = legend;
+
 	});
 
 	$('#form_add_chart').ajaxForm({

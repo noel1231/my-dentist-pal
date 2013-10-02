@@ -56,7 +56,7 @@ class Dashboard extends CI_Controller {
 
 		$data['page_now'] = 1;
 
-		$data['title'] = 'My Dentist Pal';
+		$data['title'] = 'Medix - Dashboard';
 		$data['content'] = $this->load->view('dentist_dashboard/content', $data, true);
 
 		$data['header'] = $this->load->view('homepage/header', $data, true);
