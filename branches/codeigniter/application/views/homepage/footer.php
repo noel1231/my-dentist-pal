@@ -13,11 +13,3 @@
 		</div>
 	</div>
 </div>
-<style>
-.footer {
-	border-top: 1px solid #e1e1e1;
-	border-bottom: 1px solid #e1e1e1;
-	background-color: #fafafa;
-	padding: 10px 0;
-}
-</style>

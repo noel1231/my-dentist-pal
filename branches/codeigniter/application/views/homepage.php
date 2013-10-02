@@ -54,8 +54,11 @@
 	<div id="wrapper">
 		<?php echo isset($header) ? $header : ''; ?>
 		<?php echo $body; ?>
+	</div>
+	<div id="footer">
 		<?php echo $this->load->view('homepage/footer'); ?>
 	</div>
+
 	
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
