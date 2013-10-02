@@ -98,10 +98,6 @@
 	<div class="modal fade" id="myErrorReg" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 		<div class="modal-dialog">
 			  <div class="modal-content">
-					<div class="modal-header">
-					  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-					  <h4 class="modal-title">Error:</h4>
-					</div>
 					<div class="modal-body">
 						<div class="container">
 							<div class="alert alert-danger alert_msg" style="text-align:center"></div>
@@ -115,10 +111,6 @@
 	<div class="modal fade" id="mySuccessReg" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 		<div class="modal-dialog">
 			<div class="modal-content">
-				<div class="modal-header">
-				  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-				  <h4 class="modal-title"></h4>
-				</div>
 				<div class="modal-body">
 					<!--<p>Profile updated success...</p>-->
 					<div class="container">
