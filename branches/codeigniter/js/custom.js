@@ -396,11 +396,19 @@ $(function() {
 		formDental.ajaxForm({
 			type: 'POST',
 			url: 'dentist_profile/upload_dentist_picture',
+			
+			beforeSend: function(xhr, status) 
+			{
+				// TODO: show loading progress 
+				$('#loading_prog').show();
+			},
+		
 			success: function(html)
 			{
 				// alert(html)
 				if(html != 'error')
 				{
+					$('#loading_prog').hide();
 					$('#dentist_photo_file').val('dentist_img/'+html);
 					$('.dentist_photo_view').attr('src','dentist_img/'+html).css('width','200px');
 				}else
@@ -418,11 +426,18 @@ $(function() {
 		formDental.ajaxForm({
 			type: 'POST',
 			url: 'dentist_profile/upload_clinic_picture',
+			
+			beforeSend: function(xhr, status) 
+			{
+				// TODO: show loading progress 
+				$('#loading_prog_map').show();
+			},
 			success: function(html)
 			{
 				// alert(html)
 				if(html != 'error')
 				{
+					$('#loading_prog_map').hide();
 					$('#clinic_photo_file').val('clinic_img/'+html);
 					$('.clinic_photo_view').attr('src','clinic_img/'+html).css('width','200px');
 				}else

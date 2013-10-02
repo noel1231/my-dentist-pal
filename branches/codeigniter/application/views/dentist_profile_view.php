@@ -16,10 +16,20 @@
 									<div class="form-group"><!--start dentist picture-->
 										<label for="" class="col-lg-3 control-label"></label>
 										<div class="col-lg-6">
-											<img src="<?php if(isset($profile_pic) && trim($profile_pic)){ echo base_url($profile_pic); }else{echo '';} ?>" alt="dentist image" id="dentist-img" name="dentist-img" class="img-circle dentist_photo_view" onerror="this.src='http://www.placehold.it/200x200/EFEFEF/AAAAAA&text=no+image'" style="width:200px;margin-bottom:10px;">
-											<input type="file" id="dentist-photo" name="dentist-photo" />
-											<input type="hidden" id="dentist_photo_existing_file" name="dentist_photo_existing_file" value="<?php //if(isset($profile_pic) && $profile_pic['dentist_img'] != ''){ echo $profile_pic['dentist_img']; } ?>">
-											<input type="hidden" id="dentist_photo_file" name="dentist_photo_file" value="<?php if(isset($profile_pic) && $profile_pic != ''){ echo $profile_pic; } ?>">
+											<div>
+												<div>
+													<img src="<?php if(isset($profile_pic) && trim($profile_pic)){ echo base_url($profile_pic); }else{echo '';} ?>" alt="dentist image" id="dentist-img" name="dentist-img" class="img-circle dentist_photo_view" onerror="this.src='http://www.placehold.it/200x200/EFEFEF/AAAAAA&text=no+image'" style="width:200px;margin-bottom:10px;">
+												</div>
+												<div id="loading_prog" style="position:absolute;left:98px;top:90px;display:none;">
+													<img src="images/loading.gif" id="load_process" name="load_process" class="img-circle" alt="loading process"><br>
+													<span style="margin-left:-8px;color:#234660;">loading</span>
+												</div>
+											</div>
+											<div style="margin-top:10px;">
+												<input type="file" id="dentist-photo" name="dentist-photo" />
+												<input type="hidden" id="dentist_photo_existing_file" name="dentist_photo_existing_file" value="<?php //if(isset($profile_pic) && $profile_pic['dentist_img'] != ''){ echo $profile_pic['dentist_img']; } ?>">
+												<input type="hidden" id="dentist_photo_file" name="dentist_photo_file" value="<?php if(isset($profile_pic) && $profile_pic != ''){ echo $profile_pic; } ?>">
+											</div>
 										</div>
 									</div><!--end dentist picture-->
 									<div class="form-group"><!--start full name-->
@@ -107,10 +117,20 @@
 								<div class="form-group"><!--start dentist clinic picture-->
 									<label for="" class="col-lg-3 control-label"></label>
 									<div class="col-lg-6">
-										<img src="<?php if(isset($clinic_pic) && trim($clinic_pic)){ echo base_url($clinic_pic);}else { echo '';}  ?>" alt="clinic image" id="clinic-img" name="clinic-img"  class="thumbnail img-rounded clinic_photo_view" onerror="this.src='http://www.placehold.it/200x150/EFEFEF/AAAAAA&text=no+image'" style="width:200px;">
-										<input type="file" id="clinic-photo" name="clinic-photo" />
-										<input type="hidden" id="clinic_photo_existing_file" name="clinic_photo_existing_file" value="<?php //if(isset($row) && $row['dentist_picture'] != ' '){ echo $row['dentist_picture']; } ?>">
-										<input type="hidden" id="clinic_photo_file" name="clinic_photo_file" value="<?php if(isset($clinic_pic) && $clinic_pic != ' '){ echo $clinic_pic; } ?>">
+										<div>
+											<div>
+												<img src="<?php if(isset($clinic_pic) && trim($clinic_pic)){ echo base_url($clinic_pic);}else { echo '';}  ?>" alt="clinic image" id="clinic-img" name="clinic-img"  class="thumbnail img-rounded clinic_photo_view" onerror="this.src='http://www.placehold.it/200x150/EFEFEF/AAAAAA&text=no+image'" style="width:200px;">
+											</div>
+											<div id="loading_prog_map" style="position:absolute;left:98px;top:65px;display:none;">
+													<img src="images/loading.gif" id="load_process" name="load_process" class="img-circle" alt="loading process"><br>
+													<span style="margin-left:-8px;color:#234660;">loading</span>
+											</div>
+										</div>
+										<div style="margin-top:10px;">										
+											<input type="file" id="clinic-photo" name="clinic-photo" />
+											<input type="hidden" id="clinic_photo_existing_file" name="clinic_photo_existing_file" value="<?php //if(isset($row) && $row['dentist_picture'] != ' '){ echo $row['dentist_picture']; } ?>">
+											<input type="hidden" id="clinic_photo_file" name="clinic_photo_file" value="<?php if(isset($clinic_pic) && $clinic_pic != ' '){ echo $clinic_pic; } ?>">
+										</div>
 									</div>
 								</div><!--end dentist clinic picture-->
 								<div class="form-group"><!--start clinic name-->
