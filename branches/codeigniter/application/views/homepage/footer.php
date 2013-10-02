@@ -1,5 +1,5 @@
 
-<div class="row footer">
+<div class="footer">
 	<div class="container">
 		<div class="col-md-4">
 			<a href="https://www.facebook.com/MyDentistPal" target="_blank"><img src="<?php echo base_url('images/fb_like.png'); ?>" alt="facebook" /></a>
