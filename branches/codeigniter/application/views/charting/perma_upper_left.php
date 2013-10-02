@@ -8,7 +8,7 @@
 			foreach($set2 as $value) {
 ?>
 			<td valign="top">
-				<table class="<?php echo isset(${'tooth_'.$value}) ? 'hah' : 'tooth'; ?>">
+				<table class="<?php echo isset(${'tooth_'.$value}) || $new_chart == 0 ? '' : 'tooth'; ?>">
 				<tr><td id="<?php echo 'legend_'.$value; ?>" class="tooth_legend">
 <?php
 	if(isset( ${'legend_'.$value} )) {

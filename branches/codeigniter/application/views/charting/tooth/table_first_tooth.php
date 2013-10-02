@@ -1,9 +1,9 @@
-	<div>
+	<div class="container">
 
 		<div class="row">
 			<select name="legends" id="legends" class="form-control">
-				<option value="none">--Select one--</option>
-				<option value="AM">Amalgam Filling</option>
+				<option value="none"> Select... </option>
+				<option value="AM"> Amalgam Filling </option>
 				<option value="CO">Composite Filling</option>
 				<option value="ON">Onlay</option>
 				<option value="IN">Inlay</option>
@@ -15,8 +15,8 @@
 			</select>
 		</div>
 
-		<div class="row">
-			<ul class="list-inline">
+		<div id="select_tooth" class="row hide">
+			<ul class="list-unstyled list-inline">
 <?php
 			for($x = 1; $x <= 32; $x++) {
 ?>
