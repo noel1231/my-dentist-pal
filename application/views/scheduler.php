@@ -12,7 +12,7 @@ if ($this->db->table_exists('dentist_appointments'))
 						$qdentist_appointments = $this->db->get('dentist_appointments');
 ?>
 
-<div id="appointment" class="col-md-6" style="margin-top:40px;">
+<div id="appointment" class="col-md-6" style="margin-top:30px;">
 	<div class="container">
 		<div class="row">
 		<?php

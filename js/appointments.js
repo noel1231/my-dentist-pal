@@ -10,6 +10,9 @@ $(function(){
 				var start_time = appointment_obj[i].start_time;
 				var end_time = appointment_obj[i].end_time;
 				var status = appointment_obj[i].status;
+				var start = appointment_obj[i].start;
+				var newDate = new Date();
+				
 				$('#tbody_appointment').append('<tr id="'+id+'">'+
 													'<td>'+title+'</td>'+
 													'<td>'+description+'</td>'+
@@ -145,14 +148,17 @@ $(function(){
 			var currDate = new Date();
 			var date = calEvent.end;
 			
-			currDate = $.fullCalendar.formatDate(currDate, 'MM/dd/yyyy');
-			date = $.fullCalendar.formatDate(date, 'MM/dd/yyyy');
 			
-			if(date < currDate)
-			{
-				$(this).css('opacity','0.5');
-				return false;
-			}
+			currDate = $.fullCalendar.formatDate(currDate, 'dd');
+			date = $.fullCalendar.formatDate(date, 'dd');
+			
+			// if(date < currDate)
+			// {
+				// $('#add_sched').find('#submit_appointment').prop('disabled',true);
+			// }else
+			// {
+				// $('#add_sched').find('#submit_appointment').prop('disabled',false);
+			// }
 			
 			/* set time to mobilescroll plugin */
 			$('.timepicker').scroller('setValue', calEvent.start_time, true);
@@ -174,6 +180,8 @@ $(function(){
 	
 	
 	$('#show_add_sched').click(function(){
+		
+		$('#add_sched').find('#submit_appointment').prop('disabled',false);
 		
 		var date = new Date();
 		var hours = date.getHours();
@@ -211,8 +219,8 @@ $(function(){
 		var start_time = thirdHtml.substr(1,8);
 		var end_time = thirdHtml.substr(14,20);
 		
-		if(!$('#show_add_sched').is(':disabled'))
-		{		
+		// if(!$('#show_add_sched').is(':disabled'))
+		// {		
 			$('#appointment_id').val($(this).attr('id'));
 			$('#inputTitle1').val(firstHtml);
 			$('#inputDescription1').val(secondHtml);
@@ -226,7 +234,7 @@ $(function(){
 			$('.timepicker1').scroller('setValue', end_time, true);
 			
 			$('#add_sched').modal('show');
-		}
+		// }
 		
 	});
 	

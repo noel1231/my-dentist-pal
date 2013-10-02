@@ -333,7 +333,22 @@ CREATE TABLE IF NOT EXISTS `dentist_appointments` (
 		$this->db->or_like('description',$result);
 		$this->db->where('dentist_id',$this->session->userdata('id'));
 		$query = $this->db->get('dentist_appointments');
-		print_r($query->result_array());
+		$currdate = date("j/n/Y h:i:s");
+	
+		
+		if($query->num_rows() > 0)
+		{
+			foreach($query->result_array() as $row)
+			{
+				$dataDate = $row['start'];
+				
+				echo '
+					<tr>
+						
+					</tr>
+				';
+			}
+		}
 		
 	}
 }
