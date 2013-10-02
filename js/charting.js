@@ -1,5 +1,25 @@
 $(function() {
 
+	pullNotification();
+ 
+	function pullNotification(timestamp){
+		var data = {};
+
+		if(typeof timestamp!='undefined')
+			data.timestamp = timestamp;
+	 
+		$.post('test', data, function(msg){
+			console.log(msg); return false;
+			var newData = '';
+			for(i in msg.notifications){
+				newData+=msg.notifications[i].message+'\n';
+			}
+			if(newData!='')
+				console.log(newData);
+			// pullNotification(msg.timestamp);
+		},'json');
+	}
+
 	var tooth_num = 0;
 
 	$( "#tooth_dialog" ).dialog({
