@@ -76,10 +76,13 @@
 		</div>
 	</div>
 
-	<div class="row">
+	<div class="container">
 		<!--legend box-->
-		<ul class="list-inline">
-			<li>
+		<div class="row">
+			<div class="lead" style="text-transform: uppercase;"> Legend </div>
+		</div>
+		<div class="row">
+			<div class="col-md-4">
 				<ul class="list-unstyled"> Condition
 					<li> D - Decayed (Caries Indicated for Filling) </li>
 					<li> M - Missing due to Caries </li>
@@ -89,8 +92,8 @@
 					<li> MO - Missing due to Other Causes </li>
 					<li> Im - Impacted Tooth </li>
 				</ul>
-			</li>
-			<li>
+			</div>
+			<div class="col-md-4">
 				<ul class="list-unstyled"> Restoration &amp; Prosthetics
 					<li> J - Jacket Crown </li>
 					<li> AM - Amalgam Filling </li>
@@ -100,8 +103,8 @@
 					<li> FX - Fixed Cure Composite </li>
 					<li> Rm - Removable Denture </li>
 				</ul>
-			</li>
-			<li>
+			</div>
+			<div class="col-md-4">
 				<ul class="list-unstyled"> Surgery
 					<li> X - Extraction due to Caries </li>
 					<li> XO - Extraction due to Other Causes </li>
@@ -109,8 +112,8 @@
 					<li> Cm - Congenitally Missing </li>
 					<li> Sp - Supernumerary </li>
 				</ul>
-			</li>
-		</ul>
+			</div>
+		</div>
 		<!--legend box-->
 	</div>
 
@@ -179,7 +182,7 @@
 
 			<input type="hidden" class="form-control" id="patient_id" name="patient_id" value="<?php echo $this->input->get('id'); ?>">
 			<input type="hidden" class="form-control" id="dentist_id" name="dentist_id" value="<?php echo $this->session->userdata('id'); ?>">
-			<div id="tooth_dialog" title="Graph Tooth Chart">
+			<div id="tooth_dialog" title="Chart Shade">
 				<?php echo $this->load->view('charting/tooth/table_first_tooth'); ?>
 			</div>
 			<div>

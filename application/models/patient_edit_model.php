@@ -10,6 +10,45 @@ class Patient_Edit_Model extends CI_Model {
 	
 	public function check_missing_db() {
 
+		if(!$this->db->field_exists('patient_first_name', 'patient_list')) {
+			$this->db->query('ALTER TABLE `patient_list` ADD `patient_first_name` TEXT NOT NULL');
+		}
+		if(!$this->db->field_exists('patient_middle_name', 'patient_list')) {
+			$this->db->query('ALTER TABLE `patient_list` ADD `patient_middle_name` TEXT NOT NULL');
+		}
+		if(!$this->db->field_exists('patient_surname', 'patient_list')) {
+			$this->db->query('ALTER TABLE `patient_list` ADD `patient_surname` TEXT NOT NULL');
+		}
+		if(!$this->db->field_exists('patient_nickname', 'patient_list')) {
+			$this->db->query('ALTER TABLE `patient_list` ADD `patient_nickname` TEXT NOT NULL');
+		}
+		if(!$this->db->field_exists('patient_fax_number', 'patient_list')) {
+			$this->db->query('ALTER TABLE `patient_list` ADD `patient_fax_number` TEXT NOT NULL');
+		}
+		if(!$this->db->field_exists('patient_mobile_number', 'patient_list')) {
+			$this->db->query('ALTER TABLE `patient_list` ADD `patient_mobile_number` TEXT NOT NULL');
+		}
+		if(!$this->db->field_exists('patient_nationality', 'patient_list')) {
+			$this->db->query('ALTER TABLE `patient_list` ADD `patient_nationality` TEXT NOT NULL');
+		}
+		if(!$this->db->field_exists('patient_religion', 'patient_list')) {
+			$this->db->query('ALTER TABLE `patient_list` ADD `patient_religion` TEXT NOT NULL');
+		}
+		if(!$this->db->field_exists('patient_dental_insurance', 'patient_list')) {
+			$this->db->query('ALTER TABLE `patient_list` ADD `patient_dental_insurance` TEXT NOT NULL');
+		}
+		if(!$this->db->field_exists('effective_date', 'patient_list')) {
+			$this->db->query('ALTER TABLE `patient_list` ADD `effective_date` DATE NOT NULL');
+		}
+		if(!$this->db->field_exists('guardian_occupation', 'patient_list')) {
+			$this->db->query('ALTER TABLE `patient_list` ADD `guardian_occupation` DATE NOT NULL');
+		}
+		if(!$this->db->field_exists('dental_reason', 'patient_list')) {
+			$this->db->query('ALTER TABLE `patient_list` ADD `dental_reason` DATE NOT NULL');
+		}
+
+
+
 		if(!$this->db->field_exists('hospitalized', 'patient_list')) {
 			$this->db->query('ALTER TABLE `patient_list` ADD `hospitalized` TEXT NOT NULL');
 		}

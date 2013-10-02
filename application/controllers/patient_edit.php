@@ -128,14 +128,14 @@ class Patient_Edit extends CI_Controller {
 				$chart_name = $rptc['chart_name'];
 			}
 		}
-		
+
 		$set_tooth_array = array(
 			'patient_id' => $patient_id,
 			'dentist_id' => $dentist_id,
 			'chart_id' => $chart_id,
 			'tooth_num' => $tooth_num,
 			'tooth_area' => str_pad($pic_num, 2, '0', STR_PAD_LEFT),
-			'tooth_procedure' => $legend,
+			'tooth_procedure' => htmlentities($legend, ENT_HTML5),
 			'date_procedure' => date('Y-m-d', time()),
 			'timestamp' => time()
 		);

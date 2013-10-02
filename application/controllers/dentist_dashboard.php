@@ -61,7 +61,7 @@ CREATE TABLE IF NOT EXISTS `dentist_appointments` (
 
 		$data['page_now'] = 1;
 
-		$data['title'] = 'My Dentist Pal';
+		$data['title'] = 'Medix Dental - Dashboard';
 
 		$data['header'] = $this->load->view('homepage/header', $data, true);
 

@@ -40,7 +40,7 @@ class Patient_Info extends CI_Controller {
 		$data['content'] = $this->load->view('box_patient_info', $data, true);
 		$data['body'] = $this->load->view('dentist_dashboard', $data, true);
 
-		$data['title'] = 'My Dentist Pal';
+		$data['title'] = 'Medix Dental';
 		$this->load->view('homepage', $data);
 	}
 }

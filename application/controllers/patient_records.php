@@ -32,7 +32,7 @@ class Patient_Records extends CI_Controller {
 
 		$data['dentist_id'] = $rdentist_list['id'];
 
-		$data['title'] = 'My Dentist Pal';
+		$data['title'] = 'Medix Dental - Patient Records';
 		$data['header'] = $this->load->view('homepage/header', '', true);
 
 		$data['dashboard_title'] = 'Patient Records';

@@ -8,7 +8,7 @@
 <?php
 	}
 ?>
-    <title><?php echo isset($title) ? $title : 'My Dentist Pal'; ?></title>
+    <title><?php echo isset($title) ? $title : 'Medix Dental'; ?></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Bootstrap -->
