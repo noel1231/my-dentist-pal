@@ -16,10 +16,13 @@ html, body {
 }
 /* sticky footer end */
 
+* {
+	transition: all 0.5s ease-out 0s;
+	-webkit-transition: all 0.5s ease-out 0s;
+}
+
 body {
     overflow-y: scroll;
-    transition: all 2s;
-    -webkit-transition: all 2s;
 }
 
 textarea {
