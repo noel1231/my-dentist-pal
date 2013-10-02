@@ -12,7 +12,7 @@
 							<div class="container">
 								<div class="row" style="margin-bottom:30px;">
 									<div class="col-md-6">
-									  <h1 style="margin-top: 0;"><?php echo $dashboard_title; ?></h1>
+									  <h1 style="margin-top: 0;"><?php echo $dashboard_title == 'Dashboard' ? 'What\'s Happening?' : $dashboard_title; ?></h1>
 									</div>
 									<div class="col-md-6" style="text-align: right;">
 									  <?php
