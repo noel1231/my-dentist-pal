@@ -87,7 +87,7 @@ $(function(){
 			}
 		},
 		eventRender: function(event, element) {
-		
+			// console.log(element);
 			/* background color of events */
 			// element.css('background','#3A87AD');
 		},
