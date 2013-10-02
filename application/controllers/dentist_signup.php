@@ -100,7 +100,7 @@ class Dentist_Signup extends CI_Controller {
 			
 			$this->email->initialize($config);
 			
-			$this->email->from('info@mydentistpal.com', 'Medix');
+			$this->email->from('info@medix.ph', 'Medix');
 			$this->email->to($email1); 
 			$this->email->subject("Medix Account Confirmation to $email1");
 			$this->email->message($message);	
@@ -130,15 +130,15 @@ class Dentist_Signup extends CI_Controller {
 		$email1 = $this->input->get('email_sign');
 		$passkey = $this->input->get('passkey'); 
 			
-			$update_array = array(
-				'status' => 1,
-			);
-			$this->db->where('email', $email1);
-			$this->db->where('forgot_key', $passkey);
+		$update_array = array(
+			'status' => 1,
+		);
+		$this->db->where('email', $email1);
+		$this->db->where('forgot_key', $passkey);
 
-			$this->db->update('dentist_list', $update_array);
-			
-			redirect(base_url('login'));
+		$this->db->update('dentist_list', $update_array);
+		
+		redirect(base_url('login'));
 			
 	}
 	
