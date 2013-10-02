@@ -16,6 +16,7 @@ class Test extends CI_Controller {
 	
 	function index()
 	{
+		date_default_timezone_set('Asia/Manila');
 		$timeStart = time();
 		 
 		// select where item is new
@@ -23,25 +24,29 @@ class Test extends CI_Controller {
 			$timestamp = $this->input->post('timestamp');
 		} else {
 			// get current database time
-			$sql = $this->db->query('SELECT now() as now');
-			$row = $sql->row_array();
-			$timestamp = strtotime($row['now']);
+			$this->db->order_by('timestamp desc');
+			$sql = $this->db->get('patient_tooth_chart_extra');
+			if($sql->num_rows() > 0) {
+				$row = $sql->row_array();
+				$timestamp = $row['timestamp'];
+			} else {
+				$timestamp = time();
+			}
 		}
-		$this->db->where('timestamp >', $timestamp);
-		$sql = $this->db->get('patient_tooth_chart_extra');
 
-		print_r($timestamp); echo ' >> '.time(); return false;
-		 
 		$newData = false;
 		$notifications = array();
 		 
 		// loop while there is no new data and is running for less than 20 seconds
-		while(!$newData && (time()-$timeStart)<20000){
+		while(!$newData && ( time()-$timeStart ) < 20 ){
 		 
 			// check for new data
+			$this->db->where('timestamp >', $timestamp);
+			$sql = $this->db->get('patient_tooth_chart_extra');
+			 
 			$result = $sql->result_array();
 			foreach($result as $row) {
-				$notifications[] = $row;
+				$data['tooth'] = $row;
 				$newData = true;
 			}
 			// let the server rest for a while
@@ -49,12 +54,13 @@ class Test extends CI_Controller {
 		}
 		 
 		// get current database time
-		$sql = $this->db->query('SELECT now() as now');
+		$this->db->order_by('timestamp desc');
+		$sql = $this->db->get('patient_tooth_chart_extra');
 		$row = $sql->row_array();
-		$timestamp = $row['now'];
+		$timestamp = $row['timestamp'];
 		 
 		// output
-		$data = array('notifications'=>$notifications,'timestamp'=>$timestamp);
+		$data['timestamp'] = $timestamp;
 		echo json_encode($data);
 	}
 

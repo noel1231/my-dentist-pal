@@ -1,10 +1,12 @@
 <?php
 	$this->db->where('patient_id', $this->input->get('id'));
-	$qtooth_chart = $this->db->get('patient_tooth_chart_extra');
-	$rtooth_chart = $qtooth_chart->result_array();
+	$this->db->order_by('date_chart desc');
+	$qchart = $this->db->get('patient_tooth_chart');
+	$rchart = $qchart->result_array();
 
-	
-
+	$this->db->where('patient_id', $this->input->get('id'));
+	$qtooth = $this->db->get('patient_tooth_chart_extra');
+	$rtooth = $qtooth->result_array();
 ?>
 	<div class="container">
 		<h1> Treatment Records </h1>
@@ -23,8 +25,8 @@
 				</thead>
 				<tbody>
 <?php
-	if($qtooth_chart->num_rows() > 0) {
-		foreach($rtooth_chart as $key=>$value) {
+	if($qtooth->num_rows() > 0) {
+		foreach($rtooth as $key=>$value) {
 ?>
 					<tr>
 						<td>
@@ -41,7 +43,6 @@
 <?php
 							echo $value['tooth_procedure'];
 ?>
-
 						</td>
 						<td>
 <?php

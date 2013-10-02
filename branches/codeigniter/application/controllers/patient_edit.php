@@ -110,6 +110,9 @@ class Patient_Edit extends CI_Controller {
 	}
 
 	private function set_tooth() {
+
+		date_default_timezone_set('Asia/Manila');
+
 		extract($this->input->post());
 
 		$callback = array();

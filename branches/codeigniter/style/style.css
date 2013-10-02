@@ -1,6 +1,15 @@
 @charset "utf-8";
 /* CSS Document */
 
+* {
+	/* transition: all 0.5s ease-out 0s;
+	-webkit-transition: all 0.5s ease-out 0s; */
+}
+
+body {
+    overflow-y: scroll;
+}
+
 /* sticky footer */
 html, body {
 	height: 100%;
@@ -15,15 +24,6 @@ html, body {
 	min-height: 140px;
 }
 /* sticky footer end */
-
-* {
-	/* transition: all 0.5s ease-out 0s;
-	-webkit-transition: all 0.5s ease-out 0s; */
-}
-
-body {
-    overflow-y: scroll;
-}
 
 textarea {
   resize: none;

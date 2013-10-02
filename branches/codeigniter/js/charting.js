@@ -9,14 +9,16 @@ $(function() {
 			data.timestamp = timestamp;
 	 
 		$.post('test', data, function(msg){
-			console.log(msg); return false;
+			// console.log(msg); return false;
 			var newData = '';
-			for(i in msg.notifications){
-				newData+=msg.notifications[i].message+'\n';
+			if(msg.tooth){
+				newData=msg.tooth;
 			}
-			if(newData!='')
-				console.log(newData);
-			// pullNotification(msg.timestamp);
+			if(newData!='') {
+				document.getElementById('tooth_'+newData.tooth_num).src = "img/Toothchart/" + newData.tooth_area + ".png";
+				document.getElementById('legend_'+newData.tooth_num).innerHTML = newData.tooth_procedure;
+			}
+			pullNotification(msg.timestamp);
 		},'json');
 	}
 
@@ -56,8 +58,6 @@ $(function() {
 							return ($(this).val() == tooth.chart_id);
 						}).prop('selected', true);
 
-						document.getElementById('tooth_'+tooth.tooth_num).src = "img/Toothchart/" + tooth.tooth_area + ".png";
-						document.getElementById('legend_'+tooth.tooth_num).innerHTML = tooth.tooth_procedure;
 						$('#tooth_'+tooth.num).parents('table').removeClass('tooth').unbind('click');
 
 						/* hide select tooth */
