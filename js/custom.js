@@ -302,6 +302,7 @@ $(function() {
 				computedAge = '';
 			}
 			$('input[name=modal_p_age]').val(computedAge);
+			$('input[name=patient_age]').val(computedAge);
 			
 		}
 	});

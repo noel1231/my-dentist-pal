@@ -156,7 +156,7 @@
 								<div class="form-group">
 									<label for="inputEmail1" class="col-lg-4 control-label">Birth Date</label>
 									<div class="col-lg-5">
-										<input type="text" class="form-control datepicker" name="patient_bday" value="<?php echo isset($row) ? $row['patient_bday'] : null; ?>" <?php echo $disabled; ?>>
+										<input type="text" class="form-control datepickerBday" name="patient_bday" value="<?php echo isset($row) ? $row['patient_bday'] : null; ?>" <?php echo $disabled; ?>>
 									</div>
 								</div>
 								<div class="form-group">

@@ -1,3 +1,5 @@
+
+<h3 style="margin-top: 10px;margin-bottom: 20px;">Scheduler</h3>
 <div id="scheduler" class="col-md-6">
 	<div id="calendar"></div>
 </div>
