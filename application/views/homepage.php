@@ -56,7 +56,16 @@
 		<?php echo $body; ?>
 	</div>
 	<div id="footer">
-		<?php echo $this->load->view('homepage/footer'); ?>
+		<?php 
+                    if(isset($identifier))
+                    {
+                        echo $this->load->view('homepage/footer');
+                    }
+                    else
+                    {
+                        echo $this->load->view('dentist_dashboard/footer');
+                    }
+                     ?>
 	</div>
 
 	

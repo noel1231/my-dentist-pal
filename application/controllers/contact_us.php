@@ -12,12 +12,13 @@ class Contact_Us extends CI_Controller
         $data['title'] = 'Medix - Contact Us';
         $data['body'] = $this->load->view('contact_us', $data, true);
         $data['header'] = $this->load->view('homepage/header', '', true);
+        $data['identifier'] = true;
         $this->load->view('homepage', $data);
     }
     
     public function send()
     {
-        $myemail = 'info@mydentistpal.com';//<-----Put Your email address here.
+        $myemail = 'info@medix.ph';//<-----Put Your email address here.
     
         $full_name = $_POST['full_name'];
         $QuestionComment = $_POST['message'];

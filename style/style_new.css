@@ -107,7 +107,7 @@
 
 .btn_margin
 {
-    margin: 0 0 10px 0;
+    margin: 0 10px 10px 0;
 }
 
 .wrapper .head_video_container .menu .btn {
@@ -115,8 +115,13 @@
     border-radius: 10px 10px 10px 10px;
     padding: 12px;
     text-align: center;
+    
 }
 
+.wrapper .head_video_container .menu .btn img
+{
+    width: 150px;
+}
 .wrapper .head_video_container .menu #watch
 {
     background-color: #fa6c1a;
@@ -248,13 +253,12 @@
     border-bottom: 1px solid #e1e1e1;
     background-color: #fafafa;
     padding: 10px 0;
+    font-family: gill_Sans_Light;
 }
 
-#footer .link,
-#footer .logo_footer,
-#footer .company
+#footer .copyright
 {
-    margin-top: 30px;
+    padding-top: 30px;
 }
 
 #footer .company p {
@@ -462,12 +466,33 @@ frameset {
     direction: ltr;
 }
 
-
 /* add border top */
 .modal_btop {
 	border-top: solid 10px #42a9f6;
 }
 
+@media (max-width: 991px)
+{
+    .link, .logo_footer, .company
+    {
+        margin-top: 10px;
+    }
+}
 
+@media (min-width: 992px)
+{
+    #footer .logo_footer
+    {
+        margin-top: 30px;
+    }
 
+    #footer .company
+    {
+        margin-top: 60px;
+    }
 
+    #footer .link
+    {
+        margin-top: 50px;
+    }
+}

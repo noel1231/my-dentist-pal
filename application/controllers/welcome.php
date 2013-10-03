@@ -21,6 +21,7 @@ class Welcome extends CI_Controller {
 	    
                 $data['body'] = $this->load->view('homepage/body', '', true);
 		$data['header'] = $this->load->view('homepage/header', '', true);
+                $data['identifier'] = true;
 		$this->load->view('homepage', $data);
 	}
 }
