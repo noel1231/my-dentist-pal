@@ -87,7 +87,13 @@ $(function(){
 			}
 		},
 		eventRender: function(event, element) {
-			// console.log(element);
+			if(event.status == null)
+			{
+				event.status = 'Unset';
+			}
+			element.find('.fc-event-title').empty();
+			element.find('.fc-event-time').html(event.status);
+			console.log(event)
 			/* background color of events */
 			// element.css('background','#3A87AD');
 		},
@@ -110,7 +116,7 @@ $(function(){
 					alert('there was an error while fetching events!');
 				},
 				color: '#3A87AD',   // a non-ajax option
-				textColor: '#FFFFFF' // a non-ajax option
+				textColor: '#FFFFFF', // a non-ajax option
 			},
 			{
 				url: 'dentist_dashboard/feed_confirmed',
