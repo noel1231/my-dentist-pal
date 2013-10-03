@@ -38,9 +38,7 @@
 				$query = $this->db->where('dentist_id',$session_dentist_id)->order_by('date_of_entry',$type)->get('patient_list');
 			}else if($by == 'l_visit')
 			{
-				$query = $this->db->where('dentist_id',$session_dentist_id)->order_by('date_of_last_visit',$type)->get('patient_list');
-				
-				
+				$query = $this->db->where('dentist_id',$session_dentist_id)->order_by('last_login',$type)->get('patient_list');
 			}
 		}else
 		{
@@ -84,7 +82,7 @@
 							</td>
 							<td><a href="<?php echo base_url('patient_edit?id='.$row['id']); ?>"><?php echo ucwords($row['patient_name']); ?></a></td>
 							<td><?php echo date('M-t-Y',strtotime($row['date_of_entry'])); ?></td>
-							<td><?php echo trim($row['date_of_last_visit']) != '' ? date('M-t-Y',strtotime($row['date_of_last_visit'])) : 'Not visit'; ?></td>
+							<td><?php echo trim($row['last_login']) != '0000-00-00' ? date('M-t-Y',strtotime($row['last_login'])) : 'Not visit'; ?></td>
 							<td>
 								<a href="<?php echo base_url('patient_edit?id='.$row['id']); ?>" style="color: #333;">
 									<span class="edit_patient glyphicon glyphicon-edit" title="Edit patient info"></span>
