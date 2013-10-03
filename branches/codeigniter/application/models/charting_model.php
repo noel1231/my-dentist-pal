@@ -36,6 +36,7 @@ CREATE TABLE IF NOT EXISTS `patient_tooth_chart_extra` (
   `tooth_area` text NOT NULL,
   `tooth_procedure` text NOT NULL,
   `date_procedure` date NOT NULL,
+  `date_modified` int(11) NOT NULL,
   `timestamp` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
@@ -99,6 +100,11 @@ CREATE TABLE IF NOT EXISTS `patient_tooth_chart_extra` (
 				$this->db->update('patient_tooth_chart_extra_child', $update_array);
 			}
 		}
+
+		if(!$this->db->field_exists('status', 'patient_tooth_chart_extra')) {
+			$this->db->query('ALTER TABLE `patient_tooth_chart_extra` ADD `date_modified` INT NOT NULL');
+		}
+
 	}
 
 
