@@ -64,6 +64,15 @@ class Patient_access extends CI_Controller {
 			echo 'save';
 		}else
 		{
+			if($query->num_rows() > 0)
+			{
+				$data_access  = array(
+					'email' => trim($email),
+					'keyword' => $pass
+				);
+				$this->db->where('id',$p_id)->update('patient_list',$data_access);
+			}
+			
 			$config['protocol'] = 'smtp';
 			$config['smtp_host'] = 'mail.mydentistpal.com';
 			$config['smtp_user'] = 'info@mydentistpal.com';
@@ -84,13 +93,16 @@ class Patient_access extends CI_Controller {
 				$naming = ucwords($row['patient_name']);
 			
 				$message = '
-					<p><h3>Dr. '.ucwords($query_den['first_name']).' '.ucwords($query_den['middle_name']).' '.ucwords($query_den['sur_name']).'</h3></p>
-					<p><span>Patient Name:&nbsp;</span><span>'.$naming.'</span></p>
-					<p><span>Patient access email:&nbsp;</span><span>'.$email.'</span></p>
-					<p><span>Patient Password:&nbsp;</span><span>'.$password.'</span></p>
-					<p><a href="'.base_url('login/patient').'" target="_BLANK">Log in</a></p>
+					<h3>Hi! '.ucwords($row['patient_first_name']).' '.ucwords($row['patient_last_name']).'</h3>
+					<p>To check your dental records, you can <a href="'.base_url('login/patient').'" target="_BLANK">log-in</a> here using the details below:</p>
+					<p style="margin-bottom:0;"><span>Email:&nbsp;</span><span>'.$email.'</span></p>
+					<p style="margin-top:0;"><span>Password:&nbsp;</span><span>'.$password.'</span></p>
+					<p>Thank you so much!</p>
+					<p>From,</p>
+					<p style="margin-bottom:0;margin-top:0;">'.$query_den['first_name'].' '.$query_den['middle_name'].' '.$query_den['sur_name'].'</p>
+					<p style="margin-top:0;"></p>
 				';
-				$subject = 'Patient Access: '.$naming.' From: '.ucwords($query_den['first_name']).' '.ucwords($query_den['middle_name']).' '.ucwords($query_den['sur_name']);
+				$subject = 'Dental Records from '.ucwords($query_den['first_name']).' '.ucwords($query_den['middle_name']).' '.ucwords($query_den['sur_name']);
 				
 				
 				$this->email->from('info@medix.ph', 'Medix Dental');

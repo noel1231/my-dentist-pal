@@ -177,6 +177,7 @@ $(function() {
 			}
 		},
 		success:  function(html){
+			
 			if(html == 'save')
 			{
 				$('#myModalAccess').find('p').html('Saved Successfully!');

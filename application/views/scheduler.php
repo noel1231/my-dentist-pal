@@ -1,6 +1,6 @@
 
 <h3 style="margin-top: 10px;margin-bottom: 20px;">Scheduler</h3>
-<div id="scheduler" class="col-md-6" style="cursor: pointer;">
+<div id="scheduler" class="col-md-5" style="cursor: pointer;">
 	<div id="calendar"></div>
 </div>
 
@@ -14,7 +14,7 @@ if ($this->db->table_exists('dentist_appointments'))
 						$qdentist_appointments = $this->db->get('dentist_appointments');
 ?>
 
-<div id="appointment" class="col-md-6" style="margin-top:30px;">
+<div id="appointment" class="col-md-7" style="margin-top:30px;">
 	<div class="container">
 		<div class="row">
 		<?php

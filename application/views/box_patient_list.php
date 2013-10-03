@@ -39,6 +39,8 @@
 			}else if($by == 'l_visit')
 			{
 				$query = $this->db->where('dentist_id',$session_dentist_id)->order_by('date_of_last_visit',$type)->get('patient_list');
+				
+				
 			}
 		}else
 		{
@@ -72,7 +74,7 @@
 	{
 		foreach($query->result_array() as $row)
 		{
-?>
+?>	
 						<tr>
 							<td>
 								<input type="checkbox" class="check_each" value="<?php echo $row['id']; ?>">
@@ -95,6 +97,7 @@
 						</tr>
 <?php
 		}
+		
 	}else
 	{
 ?>
