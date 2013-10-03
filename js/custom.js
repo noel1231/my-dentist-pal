@@ -795,7 +795,7 @@ $(function() {
 				type: 'post',
 				data: { 'view': 'treatment_record' },
 				success: function(html) {
-					$('#treatment_record').find('.container').html(html);
+					$('#treatment_record').html(html);
 				}
 			});
 		}

@@ -55,7 +55,7 @@ $(function(){
 					var html = JSON.parse(data);
 					$('#num_of_appoint').text(html.length);
 					append_to_table(html);
-					console.log(html);
+					// console.log(html);
 				}
 			});
 		// } else {
@@ -105,7 +105,7 @@ $(function(){
 			// element.css('background','#3A87AD');
 		},
 		dayRender: function( date, cell ) {
-			console.log(cell)
+			// console.log(cell)
 		},
 		// eventAfterRender: function( event, element, view ) {
 			// if($.fullCalendar.formatDate(new Date(), 'MMMM d') != $.fullCalendar.formatDate(event.start, 'MMMM d'));
@@ -156,7 +156,7 @@ $(function(){
 			
 		},
 		eventClick: function(calEvent, jsEvent, view) {
-			console.log(calEvent);
+			// console.log(calEvent);
 			
 			var currDate = new Date();
 			var date = calEvent.end;

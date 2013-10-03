@@ -635,7 +635,9 @@ color:#FFF;
 	cursor: pointer;
 }
 .tooth_legend {
+    box-shadow: 0 0 1px 1px;
     font-size: 10px;
+    font-weight: bold;
     height: 22px;
     text-align: center;
 }
@@ -673,4 +675,15 @@ color:#FFF;
 
 .page-header {
 	border-bottom: 1px solid transparent;
+}
+
+/* treatment record */
+.edit_box {
+	display: none;
+}
+.editable .form-control-static {
+	display: none;
+}
+.editable .form-control {
+	display: block;
 }

@@ -43,7 +43,8 @@ class Patient_Edit extends CI_Controller {
 
 			switch ($this->input->post('view')) {
 				case 'treatment_record':
-					$this->treatment_record(); return false;
+					$dentist_id = $this->input->post('dentist_id');
+					$this->treatment_record($dentist_id); return false;
 					break;
 			}
 			
@@ -105,7 +106,8 @@ class Patient_Edit extends CI_Controller {
 	}
 
 	function treatment_record() {
-		echo $this->load->view('treatment_records/patient_visit_logs');
+		$data['patient_id'] = $this->input->get('id');
+		echo $this->load->view('treatment_records/patient_visit_logs', $data);
 	}
 
 	function delete_patient()
@@ -146,6 +148,12 @@ class Patient_Edit extends CI_Controller {
 			}
 		}
 
+		$this->db->where('chart_id', $chart_id);
+		$this->db->where('tooth_num', $tooth_num);
+		$this->db->where();
+
+
+
 		$set_tooth_array = array(
 			'patient_id' => $patient_id,
 			'dentist_id' => $dentist_id,
@@ -157,12 +165,13 @@ class Patient_Edit extends CI_Controller {
 			'timestamp' => time()
 		);
 		$this->db->insert('patient_tooth_chart_extra', $set_tooth_array);
+		$callback['id'] = $this->db->insert_id();
 
 		$callback = $set_tooth_array;
 
 		$callback['new_chart'] = $new_chart;
 		$callback['chart_name'] = $chart_name;
-		$callback['id'] = $this->db->insert_id();
+
 		echo json_encode($callback);
 	}
 

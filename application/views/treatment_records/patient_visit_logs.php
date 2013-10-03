@@ -1,13 +1,17 @@
 <?php
-	$this->db->where('patient_id', $this->input->get('id'));
+	$this->db->where('patient_id', $patient_id);
 	$this->db->order_by('date_chart desc');
 	$qchart = $this->db->get('patient_tooth_chart');
-	$rchart = $qchart->result_array();
-
-	$this->db->where('patient_id', $this->input->get('id'));
-	$qtooth = $this->db->get('patient_tooth_chart_extra');
-	$rtooth = $qtooth->result_array();
 ?>
+
+<?php
+	$form_attrib = array(
+		'id' => 'form_treatment_record',
+		'name' => 'form_treatment_record'
+	);
+	echo form_open(null, $form_attrib);
+?>
+
 	<div class="container">
 		<h1> Treatment Records </h1>
 			
@@ -15,54 +19,91 @@
 			<table class="table table-striped table-bordered">
 				<thead>
 					<tr>
-						<th>Date</th>
-						<th>Tooth No./s</th>
-						<th>Dx/Procedure</th>
-						<th>Amount Charged</th>
-						<th>Amount Paid</th>
-						<th>Balance</th>
+						<th> Chart Name </th>
+						<th> Tooth No./s </th>
+						<th> Dx/Procedure </th>
+						<th> Amount Charged </th>
+						<th> Amount Paid </th>
+						<th> Balance </th>
 					</tr>
 				</thead>
 				<tbody>
 <?php
-	if($qtooth->num_rows() > 0) {
-		foreach($rtooth as $key=>$value) {
+	if($qchart->num_rows() > 0) {
+		$rchart = $qchart->result_array();
+
+		foreach($rchart as $chart) {
+
+			$this->db->where('chart_id', $chart['id']);
+			$qtooth = $this->db->get('patient_tooth_chart_extra');
+
+			if($qtooth->num_rows() > 0) {
+				$rtooth = $qtooth->result_array();
+
+				foreach($rtooth as $tooth_key=>$tooth) {
 ?>
 					<tr>
-						<td>
 <?php
-							echo $value['date_procedure'];
+					if($tooth_key==0) {
 ?>
+						<td rowspan="<?php echo $qtooth->num_rows(); ?>">
+							<div class="form-control-static">
+<?php
+							echo $chart['chart_name'];
+?>
+							</div>
+						</td>
+<?php
+					}
+?>
+						<td>
+							<div class="form-control-static">
+<?php
+								echo $tooth['tooth_num'];
+?>
+							</div>
 						</td>
 						<td>
+							<div class="form-control-static">
 <?php
-							echo $value['tooth_num'];
+								echo $tooth['tooth_procedure'];
 ?>
-						</td>
-						<td>
-<?php
-							echo $value['tooth_procedure'];
-?>
+							</div>
 						</td>
 						<td>
 <?php
 							
 ?>
-							<button class="btn btn-default">Add Amount</button>
+							<div class="editable">
+								<input type="text" id="amtchg_<?php echo $tooth['id']; ?>" class="amtchg edit_box form-control text-right input-sm" />
+								<div class="form-control-static">
+									P 100
+								</div>
+							</div>
+
+							
+							<!-- <button type="button" class="btn btn-default btn-sm"> Add Amount </button> -->
 						</td>
 						<td>
+							<div class="form-control-static">
 <?php
 
 ?>
-							<button class="btn btn-default">Add Amount</button>
+123
+								<!-- <input type="text" id="amtpd_<?php echo $tooth['id']; ?>" class="amtpd form-control text-right" /> -->
+							</div>
 						</td>
 						<td>
+							<div class="form-control-static">
 <?php
 ?>
 							&#8369; 0.00
+							</div>
 						</td>
 					</tr>
 <?php
+				}
+			}
 		}
 	} else {
 ?>
@@ -78,4 +119,5 @@
 		</div>
 
 	</div>
-	
+
+</form>

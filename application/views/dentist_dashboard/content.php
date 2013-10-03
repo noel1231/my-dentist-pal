@@ -122,25 +122,57 @@
 				</ul>
 			</div>
 		</div>
+<?php
+		$this->db
+			->select('tooth_procedure, count(tooth_procedure) as procedure_count')
+			->where('dentist_id', $id)
+			->from('patient_tooth_chart_extra')
+			->group_by('tooth_procedure');
+		$qprocedure_count = $this->db->get();
+		if($qprocedure_count->num_rows() > 0) {
+?>
 		<div class="container">
 			<h3>Procedure Summary</h3>
 			<div class="col-md-6">
 				<ul class="list-group">
+<?php
+			$procedure_array = array(
+	'D' => 'Decayed (Caries Indicated for Filling)',
+	'M' => 'Missing due to Caries',
+	'F' => 'Filled',
+	'I' => 'Caries Indicated for Extraction',
+	'RF' => 'Root Fragment',
+	'MO' => 'Missing due to Other Causes',
+	'Im' => 'Impacted Tooth',
+	'J' => 'Jacket Crown',
+	'AM' => 'Amalgam Filling',
+	'AB' => 'Abutment',
+	'P' => 'Pontic',
+	'In' => 'Inlay',
+	'FX' => 'Fixed Cure Composite',
+	'Rm' => 'Removable Denture',
+	'X' => 'Extraction due to Caries',
+	'XO' => 'Extraction due to Other Causes',
+	'&check;' => 'Present Teeth',
+	'Cm' => 'Congenitally Missing',
+	'Sp' => 'Supernumerary'
+			);
+			$rprocedure_count = $qprocedure_count->result_array();
+			foreach($rprocedure_count as $procedure) {
+?>
 					<li class="list-group-item" style="border:none;">
-						<span class="badge" style="background-color: #3798EC;">14</span>
-						Jacket Crown
+						<span class="badge" style="background-color: #3798EC;"> <?php echo $procedure['procedure_count']; ?></span>
+						<?php echo $procedure_array[$procedure['tooth_procedure']]; ?>
 					</li>
-					<li class="list-group-item" style="border:none;border-top:1px solid #ddd;">
-						<span class="badge" style="background-color: #3798EC;">14</span>
-						Amalgam Filling
-					</li>
-					<li class="list-group-item" style="border:none;border-top:1px solid #ddd;">
-						<span class="badge" style="background-color: #3798EC;">14</span>
-						Abutment
-					</li>
+<?php
+			}
+?>
 				</ul>
 			</div>
 		</div>
+<?php
+		}
+?>
 	</div>
 	
 </div>
