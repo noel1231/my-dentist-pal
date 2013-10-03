@@ -69,7 +69,7 @@
 								<div class="form-group">
 									<label for="inputEmail1" class="col-lg-4 control-label">Patient ID number</label>
 									<div class="col-lg-5">
-										<span style="line-height: 27px;"><?php echo time(); ?></span>
+										<span style="line-height: 27px;"><?php echo isset($row) ? $row['id'] : time(); ?></span>
 										<input type="hidden" class="form-control" id="patient_id" name="patient_id" value="<?php echo isset($row) ? $row['id'] : time(); ?>">
 										<input type="hidden" class="form-control" id="dentist_id" name="dentist_id" value="<?php echo $this->session->userdata('id'); ?>">
 									</div>
@@ -87,7 +87,7 @@
 										<input type="hidden" id="patient_photo_existing_file" name="patient_photo_existing_file" value="<?php if(isset($row) && $row['patient_picture'] != ' '){ echo $row['patient_picture']; } ?>">
 										<input type="hidden" id="patient_photo_file" name="patient_photo_file" value="<?php if(isset($row) && $row['patient_picture'] != ' '){ echo $row['patient_picture']; } ?>">
 										<div class="col-sm-12" style="margin-top: 10px;">
-											<img class="patient_photo_view" <?php if(isset($row) && trim($row['patient_picture']) != null) { echo 'src="'.base_url('patient_picture/'. str_replace('patient_picture/', '', $row['patient_picture'])) .'"'; } else{ echo 'src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&text=no+image"'; } ?> style="width:200px;" >
+											<img class="patient_photo_view" <?php if(isset($row) && trim($row['patient_picture']) != null) { echo 'src="'.base_url('patient_picture/'. str_replace('patient_picture/', '', $row['patient_picture'])) .'"'; } ?> onerror="this.src='http://www.placehold.it/200x150/EFEFEF/AAAAAA&text=no+image'" style="width:200px;" >
 										</div>
 									</div>
 								</div>
