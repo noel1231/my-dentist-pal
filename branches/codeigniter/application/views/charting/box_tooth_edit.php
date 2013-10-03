@@ -37,11 +37,11 @@
 
 	<div class="row">
 
-			<div class="col-lg-2">
+			<div class="col-md-2 col-sm-2">
 				<input type="hidden" name="id" value="<?php echo $patient_id;?>" />
 				<button type="button" name="new" class="btn btn-primary" value="add_chart" data-toggle="modal" data-target="#modal_add_chart"> Add Chart </button>
 			</div>
-			<div class="col-lg-4">
+			<div class="col-md-4 col-sm-4">
 				<select id="select_chart" name="chart" class="form-control" >
 					<option value="0"> Select Chart... </option>
 <?php
@@ -115,6 +115,117 @@
 			</div>
 		</div>
 		<!--legend box-->
+	</div>
+
+	<div class="row">
+		<div class="col-md-3">
+			Periodical Screening:
+			<div class="checkbox">
+			  <label>
+				<input type="checkbox" value="">
+				Gingivitis
+			  </label>
+			</div>
+			<div class="checkbox">
+			  <label>
+				<input type="checkbox" value="">
+				Early Periodontics
+			  </label>
+			</div>
+			<div class="checkbox">
+			  <label>
+				<input type="checkbox" value="">
+				Moderate Periodontics
+			  </label>
+			</div>
+			<div class="checkbox">
+			  <label>
+				<input type="checkbox" value="">
+				Advanced Periodontics
+			  </label>
+			</div>
+		</div>
+		<div class="col-md-3">
+			Occlusion:
+			<div class="checkbox">
+			  <label>
+				<input type="checkbox" value="">
+				Class (Molar)
+			  </label>
+			</div>
+			<div class="checkbox">
+			  <label>
+				<input type="checkbox" value="">
+				Overjet
+			  </label>
+			</div>
+			<div class="checkbox">
+			  <label>
+				<input type="checkbox" value="">
+				Overbite
+			  </label>
+			</div>
+			<div class="checkbox">
+			  <label>
+				<input type="checkbox" value="">
+				Midline Deviation
+			  </label>
+			</div>
+			<div class="checkbox">
+			  <label>
+				<input type="checkbox" value="">
+				Crossbite
+			  </label>
+			</div>
+		</div>
+		<div class="col-md-3">
+			Appliances:
+			<div class="checkbox">
+			  <label>
+				<input type="checkbox" value="">
+				Orthodontic
+			  </label>
+			</div>
+			<div class="checkbox">
+			  <label>
+				<input type="checkbox" value="">
+				Stayplate
+			  </label>
+			</div>
+			<div class="checkbox">
+			  <label>
+				<input type="checkbox" value="">
+				Others: 
+			  </label>
+			</div>
+		</div>
+		<div class="col-md-3">
+			TMD:
+			<div class="checkbox">
+			  <label>
+				<input type="checkbox" value="">
+				Clenching
+			  </label>
+			</div>
+			<div class="checkbox">
+			  <label>
+				<input type="checkbox" value="">
+				Clicking
+			  </label>
+			</div>
+			<div class="checkbox">
+			  <label>
+				<input type="checkbox" value="">
+				Trismus
+			  </label>
+			</div>
+			<div class="checkbox">
+			  <label>
+				<input type="checkbox" value="">
+				Muscle Spasm
+			  </label>
+			</div>
+		</div>
 	</div>
 
 	<div class="row">

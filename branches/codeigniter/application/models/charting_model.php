@@ -148,6 +148,8 @@ CREATE TABLE IF NOT EXISTS `patient_tooth_chart_extra` (
 			}
 		}
 
+		$data_tooth_chart_patient['chart_id'] = $chart_id;
+
 		return $data_tooth_chart_patient;
 			
 	}

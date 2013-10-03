@@ -40,7 +40,7 @@
 					</div>
 					<div class="col-md-8">
 						<div> Patient ID Number : <?php echo $id; ?> </div>
-						<div> Hi, <?php echo $patient_name; ?> </div>
+						<div> Patient Name: <?php echo $patient_name; ?> </div>
 						
 					</div>
 				</div>

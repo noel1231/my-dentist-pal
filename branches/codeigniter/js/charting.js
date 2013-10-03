@@ -9,12 +9,13 @@ $(function() {
 			data.timestamp = timestamp;
 	 
 		$.post('test', data, function(msg){
-			// console.log(msg); return false;
 			var newData = '';
 			if(msg.tooth){
 				newData=msg.tooth;
 			}
 			if(newData!='') {
+				
+				document.getElementById('ptc_'+newData.tooth_num).src = newData.id;
 				document.getElementById('tooth_'+newData.tooth_num).src = "img/Toothchart/" + newData.tooth_area + ".png";
 				document.getElementById('legend_'+newData.tooth_num).innerHTML = newData.tooth_procedure;
 			}
@@ -42,7 +43,6 @@ $(function() {
 					data: { 'submit': 'tooth' },
 					beforeSubmit: function(formData, jqForm, options) {
 						if($('#legends').val() == 'none') {
-							console.log('nothing to pick');
 							return false;
 						}
 					},
@@ -126,9 +126,11 @@ $(function() {
 			var data = JSON.parse(html);
 			$('#chart_name').html(data.chart_name);
 			$('#chart_container').html(data.body);
+
 			$('.charts_option').removeAttr('selected');
-			var add_option = '<option value="'+data.chart_id+'" selected> '+data.chart_name+' </option>';
+			var add_option = '<option value="'+data.chart_id+'" selected="selected">'+data.chart_name+'</option>';
 			$('#select_chart').prepend(add_option);
+
 			document.form_add_chart.chart_name.value = "";
 			$('#modal_add_chart').modal('hide');
 		}
@@ -146,4 +148,11 @@ $(function() {
 		}).submit();
 	});
 
+
+	$('#treatment_record').delegate('.amtchg', 'keypress', function(e) {
+		var inputValue = this.value;
+		if( e.keyCode == 13 ) {
+			$(this).parents('td').html(inputValue);
+		}
+	})
 });

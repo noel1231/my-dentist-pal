@@ -6,9 +6,18 @@
 				21,22,23,24,25,26,27,28
 			);
 			foreach($set2 as $value) {
+				if(isset(${'tooth_'.$value})) {
+					$this->db->where('chart_id', $chart_id);
+					$this->db->where('tooth_num', $value);
+					$qptce = $this->db->get('patient_tooth_chart_extra');
+					if($qptce->num_rows() > 0) {
+						$rptce = $qptce->row_array();
+						$ptce_id = $rptce['id'];
+					}
+				}
 ?>
 			<td valign="top">
-				<table class="<?php echo isset(${'tooth_'.$value}) || $new_chart == 0 ? '' : 'tooth'; ?>">
+				<table class="<?php echo $new_chart == 0 ? '' : 'tooth'; ?>" id="<?php echo 'ptc_'.$value; ?>" data-id="<?php echo isset($ptce_id) ? $ptce_id : 0; ?>">
 				<tr><td id="<?php echo 'legend_'.$value; ?>" class="tooth_legend">
 <?php
 	if(isset( ${'legend_'.$value} )) {

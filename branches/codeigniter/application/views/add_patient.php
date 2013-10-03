@@ -38,7 +38,7 @@
 		border: 1px solid #ddd;
 	}
 </style>
-<div class="container">
+
 	<div class="container">
 		<div class="tabbable tabs-left" style="<?php echo isset($access) ? '' : ''; ?>">
 			<div class="col-md-2 extra_css_padding">
@@ -874,15 +874,12 @@
 						</div>
 					</div>
 					<div class="tab-pane" id="treatment_record">
-						<div class="container">
-							
-						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-</div>
+
   <!-- Modal -->
   <div class="modal fade" id="myModalSaveSuccessfully" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
