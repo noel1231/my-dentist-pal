@@ -76,12 +76,26 @@ class Patient_Edit extends CI_Controller {
 			
 		} else if($this->input->get('access')) {
 			
+			$this->db->where('id', $this->input->get('id'));
+			$qdentist_list = $this->db->get('patient_list');
+			$rdentist_list = $qdentist_list->row_array();
+			$data = $rdentist_list;
+			
+			$data['patient_id'] = $this->input->get('id');
 			$patient_id = $this->input->get('id');
 			$query = $this->db->where('id',$patient_id)->get('patient_list');
 			$data['patient_query'] = $query;
 			
+			$data['dashboard_title'] = 'Edit Patients';
 			$data['header'] = $this->load->view('homepage/header', '', true);
-			$data['body'] = $this->load->view('add_patient', $data, true);
+			
+			if($this->db->table_exists('patient_tooth_chart') && $this->db->table_exists('patient_tooth_chart_extra')) {
+				$data['charting'] = $this->load->view('charting/box_tooth_edit', $data, true);
+				// $data['treatment_records'] = $this->load->view('treatment_records/patient_visit_logs', $data, true);
+			}
+			
+			$data['dashboard_content'] = $this->load->view('add_patient', $data, true);
+			$data['body'] = $this->load->view('patient_dashboard', $data, true);
 			$this->load->view('homepage', $data);
 			
 		} else {

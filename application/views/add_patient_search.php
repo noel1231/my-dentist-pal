@@ -88,7 +88,7 @@
 			  <div class="form-group">
 				<label class="col-lg-4 control-label">Birth Date</label>
 				<div class="col-lg-6">
-				  <input type="text" class="form-control datepickerBday" name="modal_p_bday" value="" required>
+				  <input type="text" class="form-control datepickerBday" name="modal_p_bday" value="" placeholder="mm/dd/yyyy" required>
 				</div>
 			  </div>
 			  <div class="form-group">

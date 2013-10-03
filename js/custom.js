@@ -24,7 +24,6 @@ $(function() {
 			}
 		},1000)
 	}
-	
 	$('#profile_affix_nav').affix({
 		offset: {
 		top: 300,
@@ -135,7 +134,6 @@ $(function() {
 			return false;
 		}
 	});
-	
 	$('.sort_table').click(function(){
 		var search_by = $(this).attr('id');
 		var sortType = $(this).attr('data-sorter');
@@ -200,7 +198,6 @@ $(function() {
 		$('#myModalDeletePatient').modal('show');
 		
 	});
-	
 	$('.delete_patient_success').click(function(){
 		var id = $('.p_id').val();
 		
@@ -328,6 +325,25 @@ $(function() {
 		url: 'patient_add/adding_patient_modal',
 		beforeSubmit:function(arr, jform, option){
 			var form = jform[0];
+			if(form.modal_p_fname.value.trim() == '')
+			{
+				form.modal_p_fname.focus();return false;
+			}else if(form.modal_p_lname.value.trim() == '')
+			{
+				form.modal_p_lname.focus();return false;
+			}else if(form.modal_p_sex.value.trim() == '')
+			{
+				form.modal_p_sex.focus();return false;
+			}else if(form.modal_p_bday.value.trim() == '')
+			{
+				form.modal_p_bday.focus();return false;
+			}else if(form.modal_p_age.value.trim() == '')
+			{
+				form.modal_p_age.focus();return false;
+			}else if(form.modal_p_address.value.trim() == '')
+			{
+				form.modal_p_address.focus();return false;
+			}
 		},
 		success: function(html){
 			$('#myModalAddingSaying').modal('show');
@@ -339,7 +355,6 @@ $(function() {
 	
 	
 	$('.submit_all_form').click(function(){
-		
 		/* for trimming the inputs */
 		var trimming1 = $('#dental_history_form').serializeArray();
 		for(var i=0,len=trimming1.length;i<len;i++)
@@ -361,6 +376,7 @@ $(function() {
 		var formMedical = $('#medical_history_form').serialize();
 		var formInfo = $('#patient_info_form').serialize();
 		
+		
 		var dataString = formInfo+'&'+formDental+'&'+formMedical;
 		$.ajax({
 			type: 'POST',
@@ -372,7 +388,7 @@ $(function() {
 		});
 		
 	});
-	
+
 	$('#patient_photo').on('change',function(){
 		var dis = $(this);
 		var formDental = $('#patient_info_form');
@@ -387,7 +403,7 @@ $(function() {
 			{
 				if(html != 'error')
 				{
-					$('#patient_photo_file').val('patient_picture/'+html);
+					$('#patient_photo_file').val(html);
 					$('.patient_photo_view').attr('src','patient_picture/'+html).css('width','200px');
 				}else
 				{
@@ -462,7 +478,6 @@ $(function() {
 		{
 			if(html == 'denied')
 			{
-				$('#myModalErrorDentistLogin').modal('show');
 				$('.invalid_login').html('Invalid email/password').show();
 			}else if(html == 'not verify')
 			{
@@ -481,7 +496,6 @@ $(function() {
 		{
 			if(html == 'denied')
 			{
-				$('#myModalErrorPatientLogin').modal('show');
 				$('.invalid_login').show();
 				return false;
 			}else
@@ -491,7 +505,6 @@ $(function() {
 			
 		}
 	});
-	
 	$('.account_submit_button').click(function(){
 		
 		$('#account_setting_form').ajaxForm({
@@ -540,7 +553,6 @@ $(function() {
 		e.preventDefault();
 		$(this).tab('show');
 	});
-	
 	$('.button_next').on('click',function(e){
 		e.preventDefault();
 		var tab = $(this).attr('alt');
@@ -573,7 +585,6 @@ $(function() {
 			$('.show_question').find('input').val('');
 		}
 	});
-	
 	$('input[name=illness_patient]').on('click',function(){
 		if($(this).val() == 'yes')
 		{
@@ -584,7 +595,6 @@ $(function() {
 			$('.show_question2').find('input').val('');
 		}
 	});
-	
 	$('input[name=hospitalized_patient]').on('click',function(){
 		if($(this).val() == 'yes')
 		{
@@ -595,7 +605,6 @@ $(function() {
 			$('.show_question3').find('input').val('');
 		}
 	});
-	
 	$('input[name=presciption_patient]').on('click',function(){
 		if($(this).val() == 'yes')
 		{
@@ -669,6 +678,7 @@ $(function() {
 		
 		success: function(html)
 		{
+			
 			if(html == 'email registered')
 			{
 				$('#myErrorReg').modal('show');
@@ -689,13 +699,11 @@ $(function() {
 			// $('#mySuccessReg').modal('show');
 		}
 	});
-	
 	$('#myErrorReg').on('hidden.bs.modal', function () {
 		// $('#fname').focus();
 		// $('#lname').focus();
 		$('#email_sign').focus();
 	});
-	
 	//dentist profile submit form 
 	$('.submit_dental_form1').click(function(){
 		$('#form_dentist_profile').ajaxForm({
@@ -739,14 +747,8 @@ $(function() {
 			}
 		});
 	});
-	
 	$(function() {
-		$( "#datepicker" ).datepicker({
-			changeMonth: true,
-			changeYear: true,
-			yearRange: '1910:2016',
-		});
-		
+		$( "#datepicker" ).datepicker();
 	});
 	// $(document).ready(function(){
             // find the input fields and apply the time select to them.
@@ -797,6 +799,7 @@ $(function() {
 			});
 		}
 	})
+
 
 });
 

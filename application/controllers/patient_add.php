@@ -131,7 +131,7 @@ class Patient_add extends CI_Controller {
 		$data_medical_history = array(
 			'id'=> $this->input->post('patient_id'),
 			'dentist_id'=> $this->input->post('dentist_id'),
-			'patient_picture'=> 'patient_picture/'.$this->input->post('patient_photo_file'),
+			'patient_picture'=> $this->input->post('patient_photo_file'),
 			'date_of_entry'=> $this->input->post('patient_date'),
 			'patient_name'=> $this->input->post('patient_lname').', '.$this->input->post('patient_fname').' '.$this->input->post('patient_mname'),
 			'patient_first_name'=> $this->input->post('patient_fname'),
