@@ -434,7 +434,7 @@
 										<textarea class="form-control" id="patient_physician_office_address" rows="5" name="patient_physician_office_address" <?php echo $disabled; ?>><?php echo isset($row) ? $row['physician_address'] : null; ?></textarea>
 									</div>
 								</div>
-								<div class="row" style="margin-bottom:5px">
+								<div class="row" style="margin-bottom:15px">
 									<div class="col-md-6 col-md-offset-1">1. Are you in good health?</div>
 									<div class="col-md-5">
 										<label class="checkbox-inline" style="padding-top:0;">
@@ -454,7 +454,7 @@
 										
 									}	
 								?>
-								<div class="row" style="margin-bottom:5px">
+								<div class="row" style="margin-bottom:15px">
 									<div class="col-md-6 col-md-offset-1">2. Are you under medical treatment now?</div>
 									<div class="col-md-5">
 										<label class="checkbox-inline" style="padding-top:0;">
@@ -478,7 +478,7 @@
 										$illness = json_decode($row['illness_operation']);
 									}
 								?>
-								<div class="row" style="margin-bottom:5px">
+								<div class="row" style="margin-bottom:15px">
 									<div class="col-md-6 col-md-offset-1">3. Have you ever had serious illness or surgical operation?</div>
 									<div class="col-md-5">
 										<label class="checkbox-inline" style="padding-top:0;">
@@ -503,7 +503,7 @@
 										$hospitalized = json_decode($row['hospitalized']);
 									}
 								?>
-								<div class="row" style="margin-bottom:5px">
+								<div class="row" style="margin-bottom:15px">
 									<div class="col-md-6 col-md-offset-1">4. Have you ever been hospitalized?</div>
 									<div class="col-md-5">
 										<label class="checkbox-inline" style="padding-top:0;">
@@ -527,7 +527,7 @@
 										$prescription_medication = json_decode($row['prescription_medication']);
 									}
 								?>
-								<div class="row" style="margin-bottom:5px">
+								<div class="row" style="margin-bottom:15px">
 									<div class="col-md-6 col-md-offset-1">5. Are you taking any presciption or non prescription medication?</div>
 									<div class="col-md-5">
 										<label class="checkbox-inline" style="padding-top:0;">
@@ -544,7 +544,7 @@
 										<input type="text" class="col-md-12" name="patient_specify_prescription" value="<?php if(isset($row) && isset($prescription_medication)){ echo $prescription_medication->because; } ?>" <?php echo $disabled; ?>>
 									</div>
 								</div>
-								<div class="row" style="margin-bottom:5px">
+								<div class="row" style="margin-bottom:15px">
 									<div class="col-md-6 col-md-offset-1">6. Do you use tabacco products?</div>
 									<div class="col-md-5">
 										<label class="checkbox-inline" style="padding-top:0;">
@@ -555,7 +555,7 @@
 										</label>
 									</div>
 								</div>
-								<div class="row" style="margin-bottom:5px">
+								<div class="row" style="margin-bottom:15px">
 									<div class="col-md-6 col-md-offset-1">7. Do you use alcohol coccaine or other dangerous drugs?</div>
 									<div class="col-md-5">
 										<label class="checkbox-inline" style="padding-top:0;">
@@ -566,7 +566,7 @@
 										</label>
 									</div>
 								</div>
-								<div class="row" style="margin-bottom:5px">
+								<div class="row" style="margin-bottom:15px">
 									<div class="col-md-6 col-md-offset-1">8. Are you allergic to any of the following?</div>
 									<div class="col-md-5">
 										<div class="checkbox">
@@ -591,16 +591,16 @@
 										</div>
 									</div>
 								</div>
-								<div class="row" style="margin-bottom:5px">
+								<div class="row" style="margin-bottom:15px">
 									<div class="col-md-6 col-md-offset-1">9. Bleeding time?</div>
 									<div class="col-md-5">
 										<input type="text" class="col-md-12" name="patient_bleeding_time" value="<?php echo isset($row) ? $row['menstruation'] : null; ?>" <?php echo $disabled; ?>>
 									</div>
 								</div>
-								<div class="row" style="margin-bottom:5px">
+								<div class="row" style="margin-bottom:15px">
 									<div class="col-md-6 col-md-offset-1">10. For women only:</div>
 								</div>
-								<div class="row" style="margin-bottom:5px">
+								<div class="row" style="margin-bottom:15px">
 									<div class="container">
 										<div class="col-md-5 col-md-offset-2">A. Are you pregnant?</div>
 										<div class="col-md-5">
@@ -644,7 +644,7 @@
 										$selected_blood = null;
 									}
 								?>
-								<div class="row" style="margin-bottom:5px">
+								<div class="row" style="margin-bottom:15px">
 									<div class="col-md-5 col-md-offset-1">11. Blood type?</div>
 									<div class="col-md-5 col-md-offset-1">
 										<select name="patient_blood_type" <?php echo $disabled; ?>>
@@ -655,13 +655,13 @@
 										</select>
 									</div>
 								</div>
-								<div class="row" style="margin-bottom:5px">
+								<div class="row" style="margin-bottom:15px">
 									<div class="col-md-6 col-md-offset-1">12. Blood presure?</div>
 									<div class="col-md-5">
 										<input type="text" class="col-md-12" name="patient_blood_presure" value="<?php echo isset($row) ? $row['blood_presure'] : ''; ?>" <?php echo $disabled; ?>>
 									</div>
 								</div>
-								<div class="row" style="margin-bottom:5px">
+								<div class="row" style="margin-bottom:15px">
 									<div class="col-md-6 col-md-offset-1">13. Do you have or have you any of the following? Check which apply:</div>
 								</div>
 								<div class="container">

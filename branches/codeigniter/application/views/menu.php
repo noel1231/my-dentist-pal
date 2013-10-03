@@ -15,7 +15,7 @@
 			<a href="patient_records" id="link3" class="btn btn-default">
 				<span <?php if(isset($activeMenu) && $activeMenu == 'patient_records'){echo 'style="color: #52AFFF;"';}?>> Patient Records </span>
 			</a>
-			<a href="<?php echo base_url('dentist_dashboard?scheduler=true'); ?>" id="link5" target="_blank" class="btn btn-default">
+			<a href="<?php echo base_url('dentist_dashboard?scheduler=true'); ?>" id="link5" class="btn btn-default">
 				<span> Scheduler </span>
 			</a>
 			</div>

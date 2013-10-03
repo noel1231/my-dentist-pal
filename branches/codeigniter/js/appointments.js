@@ -71,6 +71,16 @@ $(function(){
 			center: 'title',
 			right:  'month,agendaWeek,agendaDay '
 		},
+		titleFormat:{
+			month: 'MMM yyyy',                      // September 2009
+			week: "MMM d{'-'MMM d}", 				// Sep 29-Oct 5
+			day: 'ddd, MMM dd'                      // Tue, Sep 08
+		},
+		buttonText: {
+			month: 'month',
+			week: 'week',
+			day: 'day'
+		},
 		selectable: true,
 		select: function( startDate, endDate, allDay, jsEvent, view ) {
 			
@@ -87,12 +97,9 @@ $(function(){
 			}
 		},
 		eventRender: function(event, element) {
-			if(event.status == null)
-			{
-				event.status = 'Unset';
-			}
-			element.find('.fc-event-title').empty();
-			element.find('.fc-event-time').html(event.status);
+			
+			element.find('.fc-event-title').html(event.title);
+			element.find('.fc-event-time').html('');
 			console.log(event)
 			/* background color of events */
 			// element.css('background','#3A87AD');
