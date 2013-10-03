@@ -111,4 +111,8 @@ if ($this->db->table_exists('dentist_appointments'))
 #tbody_appointment tr:nth-child(even) {
 	background-color: #B5EEFF;
 }
+.fc-event.fc-event-hori.fc-event-start.fc-event-end {
+	width: 8px !important;
+	height: 8px;
+}
 </style>
