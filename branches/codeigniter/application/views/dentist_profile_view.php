@@ -20,7 +20,7 @@
 												<div>
 													<img src="<?php if(isset($profile_pic) && trim($profile_pic)){ echo base_url($profile_pic); }else{echo '';} ?>" alt="dentist image" id="dentist-img" name="dentist-img" class="img-circle dentist_photo_view" onerror="this.src='http://www.placehold.it/200x200/EFEFEF/AAAAAA&text=no+image'" style="width:200px;margin-bottom:10px;">
 												</div>
-												<div id="loading_prog" style="position:absolute;left:98px;top:88px;">
+												<div id="loading_prog" style="position:absolute;left:98px;top:88px;display:none;">
 													<img src="images/loading.gif" id="load_process" name="load_process" class="img-circle" alt="loading process"><br>
 													<span style="margin-left:-8px;color:#234660;">Loading...</span>
 												</div>
@@ -121,7 +121,7 @@
 											<div>
 												<img src="<?php if(isset($clinic_pic) && trim($clinic_pic)){ echo base_url($clinic_pic);}else { echo '';}  ?>" alt="clinic image" id="clinic-img" name="clinic-img"  class="thumbnail img-rounded clinic_photo_view" onerror="this.src='http://www.placehold.it/200x150/EFEFEF/AAAAAA&text=no+image'" style="width:200px;">
 											</div>
-											<div id="loading_prog_map" style="position:absolute;left:98px;top:65px;">
+											<div id="loading_prog_map" style="position:absolute;left:98px;top:65px;display:none;">
 												<img src="images/loading.gif" id="load_process" name="load_process" class="img-circle" alt="loading process"><br>
 												<span style="margin-left:-8px;color:#234660;">Loading...</span>
 											</div>
