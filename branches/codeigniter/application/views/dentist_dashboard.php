@@ -11,9 +11,31 @@
 						<div class="row">
 							<div class="container">
 								<div class="row" style="margin-bottom:30px;">
-									<div class="col-md-6">
-									  <h1 style="margin-top: 0;"><?php echo $dashboard_title == 'Dashboard' ? 'What\'s Happening?' : $dashboard_title; ?></h1>
-									</div>
+									<?php
+                                                                            if($dashboard_title != 'Dentist Profile')
+                                                                            {
+                                                                    ?>
+                                                                            <div class="col-md-6">
+                                                                                    <div class="row">
+                                                                                            <div class="col-md-4">
+                                                                                                    <div class="profile_pic_container">
+                                                                                                            <a href="#">
+                                                                                                                    <img class="profile_pic" alt="Profile Pic" src="<?php echo trim($profile_pic) != null ? base_url().$profile_pic : base_url('img/profile_pic.gif'); ?>" />
+                                                                                                            </a>
+                                                                                                    </div>
+                                                                                            </div>
+                                                                                            <div class="col-md-8">
+                                                                                                    <h1>
+                                                                                                            Hi, Doctor <?php echo $first_name; ?>!
+                                                                                                    </h1>
+                                                                                            </div>
+                                                                                    </div>
+                                                                            </div>
+                                                                    <?php
+                                                                            }
+                                                                    ?>
+                                                                    
+                                                                        
 									<div class="col-md-6" style="text-align: right;">
 									  <?php
 										if(isset($activeMenu))
@@ -31,29 +53,10 @@
 					</div>
 				</div>
 				<div class="container">
-				<?php
-					if($dashboard_title != 'Dentist Profile')
-					{
-				?>
-					<div class="col-md-6">
-						<div class="row">
-							<div class="col-md-4">
-								<div class="profile_pic_container">
-									<a href="#">
-										<img class="profile_pic" alt="Profile Pic" src="<?php echo trim($profile_pic) != null ? base_url().$profile_pic : base_url('img/profile_pic.gif'); ?>" />
-									</a>
-								</div>
-							</div>
-							<div class="col-md-8">
-								<h1>
-									Hi, Doctor <?php echo $first_name; ?>!
-								</h1>
-							</div>
-						</div>
-					</div>
-				<?php
-					}
-				?>
+                                        <div class="col-md-6">
+                                            <h1 style="margin-top: 0;"><?php echo $dashboard_title == 'Dashboard' ? 'What\'s Happening?' : $dashboard_title; ?></h1>
+                                          </div>
+                                    
 					<div class="col-md-6" style="padding-right: 0;">
 						<?php 
 						if(isset($_GET['scheduler']))

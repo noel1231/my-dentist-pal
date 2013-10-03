@@ -68,7 +68,7 @@
                     Update and track procedures done to a patient on every visit.
                 </p>
                 
-                <p class="skyblue" id="prices">Clinical Analytics</p>
+                <p class="skyblue" id="prices">Clinic Analytics</p>
                 <p>
                     Monitor your dental office activities online - appointments, 
                     patient records and dental procedures done in a
