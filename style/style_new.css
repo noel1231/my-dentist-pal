@@ -463,6 +463,11 @@ frameset {
 }
 
 
+/* add border top */
+.modal_btop {
+	border-top: solid 10px #42a9f6;
+}
+
 
 
 
