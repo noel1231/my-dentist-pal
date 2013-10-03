@@ -20,9 +20,9 @@
 												<div>
 													<img src="<?php if(isset($profile_pic) && trim($profile_pic)){ echo base_url($profile_pic); }else{echo '';} ?>" alt="dentist image" id="dentist-img" name="dentist-img" class="img-circle dentist_photo_view" onerror="this.src='http://www.placehold.it/200x200/EFEFEF/AAAAAA&text=no+image'" style="width:200px;margin-bottom:10px;">
 												</div>
-												<div id="loading_prog" style="position:absolute;left:98px;top:90px;display:none;">
+												<div id="loading_prog" style="position:absolute;left:98px;top:88px;">
 													<img src="images/loading.gif" id="load_process" name="load_process" class="img-circle" alt="loading process"><br>
-													<span style="margin-left:-8px;color:#234660;">loading</span>
+													<span style="margin-left:-8px;color:#234660;">Loading...</span>
 												</div>
 											</div>
 											<div style="margin-top:10px;">
@@ -121,9 +121,9 @@
 											<div>
 												<img src="<?php if(isset($clinic_pic) && trim($clinic_pic)){ echo base_url($clinic_pic);}else { echo '';}  ?>" alt="clinic image" id="clinic-img" name="clinic-img"  class="thumbnail img-rounded clinic_photo_view" onerror="this.src='http://www.placehold.it/200x150/EFEFEF/AAAAAA&text=no+image'" style="width:200px;">
 											</div>
-											<div id="loading_prog_map" style="position:absolute;left:98px;top:65px;display:none;">
-													<img src="images/loading.gif" id="load_process" name="load_process" class="img-circle" alt="loading process"><br>
-													<span style="margin-left:-8px;color:#234660;">loading</span>
+											<div id="loading_prog_map" style="position:absolute;left:98px;top:65px;">
+												<img src="images/loading.gif" id="load_process" name="load_process" class="img-circle" alt="loading process"><br>
+												<span style="margin-left:-8px;color:#234660;">Loading...</span>
 											</div>
 										</div>
 										<div style="margin-top:10px;">										
@@ -310,7 +310,7 @@
 <!-- Modal -->
   <div class="modal fade" id="myErrorReg" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
-      <div class="modal-content">
+      <div class="modal-content modal_btop">
         <div class="modal-body">
 			<div class="alert alert-danger alert_msg" style="text-align:center;display:none;width:505px;margin-left:15px;"></div>
           <!--<p>Please verify your email to activate your account.</p>-->
@@ -323,17 +323,18 @@
   </div><!-- /.modal -->
 
 <!-- Modal -->
-  <div class="modal fade" id="mySuccessReg" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal fade" id="mySuccessReg" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static">
     <div class="modal-dialog">
-      <div class="modal-content">
+      <div class="modal-content modal_btop">
         <div class="modal-body">
 			<!--<p>Profile updated success...</p>-->
 			<div class="alert alert-success success_msg" style="text-align:center;display:none;width:505px;margin-left:15px;margin-top:10px;"></div>
           <!--<p>Please verify your email to activate your account.</p>-->
-        </div>
-        <div class="modal-footer">
-          <a href="<?php echo base_url('dentist_profile'); ?>" class="btn btn-default">OK</a>
-        </div>
+			<div class="modal-footer">
+				<a href="<?php echo base_url('dentist_profile'); ?>" class="btn btn-default">OK</a>
+			</div>
+		</div>
+        
       </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
   </div><!-- /.modal -->

@@ -24,6 +24,7 @@ $(function() {
 			}
 		},1000)
 	}
+	
 	$('#profile_affix_nav').affix({
 		offset: {
 		top: 300,
@@ -134,6 +135,7 @@ $(function() {
 			return false;
 		}
 	});
+	
 	$('.sort_table').click(function(){
 		var search_by = $(this).attr('id');
 		var sortType = $(this).attr('data-sorter');
@@ -198,6 +200,7 @@ $(function() {
 		$('#myModalDeletePatient').modal('show');
 		
 	});
+	
 	$('.delete_patient_success').click(function(){
 		var id = $('.p_id').val();
 		
@@ -369,6 +372,7 @@ $(function() {
 		});
 		
 	});
+	
 	$('#patient_photo').on('change',function(){
 		var dis = $(this);
 		var formDental = $('#patient_info_form');
@@ -458,6 +462,7 @@ $(function() {
 		{
 			if(html == 'denied')
 			{
+				$('#myModalErrorDentistLogin').modal('show');
 				$('.invalid_login').html('Invalid email/password').show();
 			}else if(html == 'not verify')
 			{
@@ -476,6 +481,7 @@ $(function() {
 		{
 			if(html == 'denied')
 			{
+				$('#myModalErrorPatientLogin').modal('show');
 				$('.invalid_login').show();
 				return false;
 			}else
@@ -485,6 +491,7 @@ $(function() {
 			
 		}
 	});
+	
 	$('.account_submit_button').click(function(){
 		
 		$('#account_setting_form').ajaxForm({
@@ -533,6 +540,7 @@ $(function() {
 		e.preventDefault();
 		$(this).tab('show');
 	});
+	
 	$('.button_next').on('click',function(e){
 		e.preventDefault();
 		var tab = $(this).attr('alt');
@@ -565,6 +573,7 @@ $(function() {
 			$('.show_question').find('input').val('');
 		}
 	});
+	
 	$('input[name=illness_patient]').on('click',function(){
 		if($(this).val() == 'yes')
 		{
@@ -575,6 +584,7 @@ $(function() {
 			$('.show_question2').find('input').val('');
 		}
 	});
+	
 	$('input[name=hospitalized_patient]').on('click',function(){
 		if($(this).val() == 'yes')
 		{
@@ -585,6 +595,7 @@ $(function() {
 			$('.show_question3').find('input').val('');
 		}
 	});
+	
 	$('input[name=presciption_patient]').on('click',function(){
 		if($(this).val() == 'yes')
 		{
@@ -658,7 +669,6 @@ $(function() {
 		
 		success: function(html)
 		{
-			
 			if(html == 'email registered')
 			{
 				$('#myErrorReg').modal('show');
@@ -679,11 +689,13 @@ $(function() {
 			// $('#mySuccessReg').modal('show');
 		}
 	});
+	
 	$('#myErrorReg').on('hidden.bs.modal', function () {
 		// $('#fname').focus();
 		// $('#lname').focus();
 		$('#email_sign').focus();
 	});
+	
 	//dentist profile submit form 
 	$('.submit_dental_form1').click(function(){
 		$('#form_dentist_profile').ajaxForm({
@@ -727,8 +739,14 @@ $(function() {
 			}
 		});
 	});
+	
 	$(function() {
-		$( "#datepicker" ).datepicker();
+		$( "#datepicker" ).datepicker({
+			changeMonth: true,
+			changeYear: true,
+			yearRange: '1910:2016',
+		});
+		
 	});
 	// $(document).ready(function(){
             // find the input fields and apply the time select to them.
@@ -779,7 +797,6 @@ $(function() {
 			});
 		}
 	})
-
 
 });
 

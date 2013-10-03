@@ -18,7 +18,7 @@
 			<!--<div class="">-->
 				<div id="" class="well-sm">
 					
-					<div class="well col-md-8 col-md-offset-2" style="border-top:solid 10px #55c4e2;">
+					<div class="well col-md-8 col-md-offset-2" style="border-top:solid 10px #42a9f6;">
 						<div class="row">
 							<div class="col-md-10"><!-- start center-->
 								<div style=""><!--Dentist's Dashboard--><!--<img src="images/dentist_dashboard.png" />-->
@@ -80,7 +80,7 @@
 								<div class="form-group"><!--start submit and back button-->
 									<!--<div class="container">-->
 										<div class="col-lg-offset-4 col-lg-10">
-											<input type="submit" name="submit" value="Submit" class="btn btn-large btn-info" />
+											<input type="submit" name="submit" value="Submit" class="btn btn-large btn-default" />
 										</div>
 									<!--</div>-->
 								</div><!--end submit and back button-->
@@ -97,7 +97,7 @@
 	<!-- Modal -->
 	<div class="modal fade" id="myErrorReg" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 		<div class="modal-dialog">
-			  <div class="modal-content">
+			  <div class="modal-content modal_btop">
 					<div class="modal-body">
 						<div class="container">
 							<div class="alert alert-danger alert_msg" style="text-align:center"></div>
@@ -108,19 +108,20 @@
 	</div><!-- /.modal -->
 
 	<!-- Modal -->
-	<div class="modal fade" id="mySuccessReg" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal fade" id="mySuccessReg" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static">
 		<div class="modal-dialog">
 			<div class="modal-content">
-				<div class="modal-body">
+				<div class="modal-body modal_btop">
 					<!--<p>Profile updated success...</p>-->
 					<div class="container">
 						<div class="alert alert-success success_msg" style="text-align:center"></div>
 					</div>
 					<!--<p>Please verify your email to activate your account.</p>-->
+					<div class="modal-footer">
+						<a href="<?php echo base_url(); ?>" class="btn btn-default">OK</a>
+					</div>
 				</div>
-				<div class="modal-footer">
-				  <a href="<?php echo base_url(); ?>" class="btn btn-default">OK</a>
-				</div>
+				
 			</div><!-- /.modal-content -->
 		</div><!-- /.modal-dialog -->
 	</div><!-- /.modal -->
