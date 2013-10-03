@@ -12,15 +12,11 @@ class Patient_Edit extends CI_Controller {
 		$this->load->library('image_lib');
 		$this->load->library('cart');
 		$this->load->library('encrypt');
-		$this->load->model('Patient_Edit_Model', 'patient_edit');
 		$this->load->model('Charting_Model', 'charting');
 	}
 	
 	function index()
 	{
-		$this->patient_edit->check_missing_db();
-		$this->charting->check_missing_db();
-
 		if($this->session->userdata('id')) {
 			$data['sess_id'] = $this->session->userdata('id');
 
@@ -150,9 +146,16 @@ class Patient_Edit extends CI_Controller {
 
 		$this->db->where('chart_id', $chart_id);
 		$this->db->where('tooth_num', $tooth_num);
-		$this->db->where();
+		$qtc_exists = $this->db->get('patient_tooth_chart_extra');
 
-
+		if($qtc_exists->num_rows() > 0) {
+			$rtc_exists = $qtc_exists->row_array();
+			$tooth_updated = array(
+				'date_modified' => time()
+			);
+			$this->db->where('id', $rtc_exists['id']);
+			$this->db->update('patient_tooth_chart_extra', $tooth_updated);
+		}
 
 		$set_tooth_array = array(
 			'patient_id' => $patient_id,
@@ -164,6 +167,7 @@ class Patient_Edit extends CI_Controller {
 			'date_procedure' => date('Y-m-d', time()),
 			'timestamp' => time()
 		);
+
 		$this->db->insert('patient_tooth_chart_extra', $set_tooth_array);
 		$callback['id'] = $this->db->insert_id();
 

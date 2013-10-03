@@ -30,7 +30,7 @@
 		
 ?>
 		<td> 
-			<table class="<?php echo $new_chart == 0 ? '' : 'tooth'; ?>" id="<?php echo 'ptc_'.$value; ?>" data-id="<?php echo isset($ptce_id) ? $ptce_id : 0; ?>">
+			<table class="<?php echo $new_chart == 0 ? '' : 'tooth'; ?>" id="<?php echo 'ptc_'.$value; ?>" >
 				<tr><td>
 <?php
 		if(isset( ${'tooth_'.$value} )) {

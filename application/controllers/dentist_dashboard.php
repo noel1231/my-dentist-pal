@@ -9,10 +9,15 @@ class Dentist_Dashboard extends CI_Controller {
 		$this->load->helper('form');
 		$this->load->library('session');
 		$this->load->database();
+		$this->load->model('Patient_Edit_Model', 'patient_edit');
+		$this->load->model('Charting_Model', 'charting');
+
 	}
 
 	function index()
 	{
+		$this->patient_edit->check_missing_db();
+		$this->charting->check_missing_db();
 
 		$this->db->query('
 CREATE TABLE IF NOT EXISTS `dentist_appointments` (

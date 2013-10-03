@@ -16,8 +16,8 @@
 			18 => 18, 17 => 17, 16 => 16, 15 => 15, 14 => 14, 13 => 13, 12 => 12, 11 => 11
 		);
 	}
-			foreach($set1 as $key=>$value)
-			{
+			foreach($set1 as $key=>$value) {
+
 				if(isset(${'tooth_'.$value})) {
 					$this->db->where('chart_id', $chart_id);
 					$this->db->where('tooth_num', $value);
@@ -29,7 +29,7 @@
 				}
 ?>
 		<td valign="top">
-			<table class="<?php echo $new_chart == 0 ? '' : 'tooth'; ?>" id="<?php echo 'ptc_'.$value; ?>" data-id="<?php echo isset($ptce_id) ? $ptce_id : 0; ?>">
+			<table class="<?php echo $new_chart == 0 ? '' : 'tooth'; ?>" id="<?php echo 'ptc_'.$value; ?>" >
 				<tr><td id="<?php echo 'legend_'.$key; ?>" class="tooth_legend">
 <?php
 	if(isset( ${'legend_'.$key} )) {

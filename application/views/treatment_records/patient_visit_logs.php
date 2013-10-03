@@ -1,6 +1,6 @@
 <?php
 	$this->db->where('patient_id', $patient_id);
-	$this->db->order_by('date_chart desc');
+	$this->db->order_by('timestamp desc');
 	$qchart = $this->db->get('patient_tooth_chart');
 ?>
 
@@ -35,6 +35,7 @@
 		foreach($rchart as $chart) {
 
 			$this->db->where('chart_id', $chart['id']);
+			$this->db->where('status', 0);
 			$qtooth = $this->db->get('patient_tooth_chart_extra');
 
 			if($qtooth->num_rows() > 0) {
@@ -84,25 +85,37 @@
 							
 							<!-- <button type="button" class="btn btn-default btn-sm"> Add Amount </button> -->
 						</td>
-						<td>
 							<div class="form-control-static">
+<?php
+					if($tooth_key==0) {
+?>
+						<td rowspan="<?php echo $qtooth->num_rows(); ?>">
 <?php
 
 ?>
-123
-								<!-- <input type="text" id="amtpd_<?php echo $tooth['id']; ?>" class="amtpd form-control text-right" /> -->
+
+								<input type="text" id="amtpd_<?php echo $tooth['id']; ?>" class="amtpd form-control text-right" />
 							</div>
 						</td>
-						<td>
+						<td rowspan="<?php echo $qtooth->num_rows(); ?>">
 							<div class="form-control-static">
 <?php
 ?>
 							&#8369; 0.00
 							</div>
 						</td>
+<?php
+					}
+?>
 					</tr>
 <?php
 				}
+			} else {
+?>
+			<tr>
+				<td colspan="6" align="center"> No Treatment Record to display </td>
+			</tr>
+<?php
 			}
 		}
 	} else {
