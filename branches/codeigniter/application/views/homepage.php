@@ -33,7 +33,7 @@
 	<link rel='stylesheet' type='text/css' href='<?php echo base_url();?>mobiscroll/css/mobiscroll.custom-2.6.2.min.css' />
 
 <?php
-	if($_SERVER['HTTP_HOST'] == 'mydentistpal.com') {
+	if($_SERVER['HTTP_HOST'] == 'medix.ph') {
 ?>        
         <script type="text/javascript">
             var _gaq = _gaq || [];
