@@ -63,7 +63,7 @@ class Forgot_Password extends CI_Controller {
 
 		if($form_data != null) {
 
-			$username = $form_data['username'];
+			$username = $form_data['forgot_email'];
 
 			$this->db->where('email', $username);
 			$sql = $this->db->get('dentist_list');

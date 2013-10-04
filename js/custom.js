@@ -9,7 +9,7 @@ $(function() {
 		
 		countDown();
 	}
-		
+	
 	function countDown()
 	{
 		var count = 7;
@@ -24,6 +24,13 @@ $(function() {
 			}
 		},1000)
 	}
+	// Modalfor Dentist New Password
+	if($('.sample_login1').val() != '')
+	{
+		$('.sample_login1').val('');
+		$('#myModalNewPassword').modal('show');
+	}
+	
 	$('#profile_affix_nav').affix({
 		offset: {
 		top: 300,
@@ -475,20 +482,137 @@ $(function() {
 	
    	$('#form_dentist_login').ajaxForm({
 		type: 'POST',
+
 		success: function(html)
 		{
 			if(html == 'denied')
 			{
 				$('.invalid_login').html('Invalid email/password').show();
+				$('#myModalErrorDentistLogin').modal('show');
+				$('#resendemail').hide();				
 			}else if(html == 'not verify')
 			{
 				$('.invalid_login').html('Invalid Account. Please make sure that your account is verified. Kindly check your mail for your account verification.').show();
+				$('#myModalErrorDentistLogin').modal('show');
+				$('#resendemail').show();
 			}else
 			{
 				window.location.href = 'dentist_dashboard';
 			}
-			
 		}
+	});
+	//Modal Popup forgot password 
+	$('#forgotpassword').click(function(){
+	
+		$('#myModalForgotPassword').modal('show');
+	});
+	//Modal Popup resend confirmation email 
+	$('#resendemail').click(function(){
+	
+		$('#myModalResendEmail').modal('show');
+	});
+	
+	$('.submit_forgotpass').click(function(){
+		// $('.submit_forgotpass').button('loading');
+		var dis = $(this);
+		dis.prop('disabled',true);
+		// return false;
+		$('#form_forgot_password').ajaxForm({
+			type: 'POST',
+			beforeSubmit: function (arr, jqform,option)
+			{
+				var form = jqform[0];
+				if(form.forgot_email.value.trim() == '')
+				{
+					$('.error_msg').html('Enter your email address in the required field to proceed.').show();
+					$('#forgot_email').val('');
+					$('#forgot_email').focus();
+					return false;
+				}else if(!form.forgot_email.value.match(/^([a-z0-9._-]+@[a-z0-9._-]+\.[a-z]{2,4}$)/i))
+				{
+					$('.error_msg').html('Enter valid email address in the required field to proceed.').show();
+					$('#forgot_email').focus();
+					// $('#forgot_email').val('');
+					return false;
+				}else
+				{
+					$('.send_msg').hide();
+				}
+			}, 
+			
+			success: function(html)
+			{
+				// alert(html);
+				if(html == 'email not found')
+				{
+					$('.error_msg').html('Email not found.').show();
+					dis.prop('disabled',false);
+					return false;
+				}else
+				{
+					$('.error_msg').hide();
+					$('.send_msg').html('Email Confirmation Resend to your email!').show();
+					$('#myModalForgotPassword').modal('hide');
+					$('#mySuccessReset').modal('show');
+					$('#forgot_email').val('');
+				}
+				
+			}
+		}).submit();
+	});
+	
+	/* Submit new password */
+	$('.submit_newpass').click(function(){
+		$('#form_new_password').ajaxForm({
+		type: 'POST',
+		
+			beforeSubmit: function(arr, jqform,option)
+			{
+				var form = jqform[0];
+				if(form.new_password.value.trim() == '')
+				{
+					$('.np_error_msg').html('Enter new password in the required field to proceed.').show();
+					$('#new_password').focus();
+					return false;
+				}else if(form.new_password1.value == '')
+				{
+					$('.np_error_msg').html('Re-type new password in the required field to proceed.').show();
+					$('#new_password1').focus();
+					return false;
+				}else if(form.new_password1.value != form.new_password.value)
+				{
+					$('.np_error_msg').html('Password did not match!').show();
+					$('#new_password1').focus();
+					$('#new_password1').val('');
+					return false;
+				}
+			},
+			
+			success: function(html)
+			{
+				// alert(html)
+				if(html == 'true')
+				{
+					$('.np_error_msg').hide();
+					$('.np_success_msg').html('Password changed success...').show();
+					$('#myModalNewPassword').modal('hide');
+					$('#mySuccessReset').modal('show'); //test
+					$('#new_password').val('');
+					$('#new_password1').val('');
+				}else
+				{
+					// $('.np_error_msg').show();
+					$('.np_error_msg').html('Password changed failed').show();
+					$('#myModalNewPassword').modal('hide');
+					// $('#mySuccessReset').modal('show'); //test
+				}
+				
+				
+				
+			}
+		
+		
+		});
 	});
 	
 	$('#form_patient_login').ajaxForm({
@@ -498,14 +622,15 @@ $(function() {
 			if(html == 'denied')
 			{
 				$('.invalid_login').show();
+				$('#myModalErrorPatientLogin').modal('show');
 				return false;
-			}else
+			}else 
 			{
 				window.location = '../patient_edit?id='+html+'&access=granted';
 			}
-			
 		}
 	});
+	
 	$('.account_submit_button').click(function(){
 		
 		$('#account_setting_form').ajaxForm({
@@ -620,8 +745,9 @@ $(function() {
 	$('#form_dentist_signup').ajaxForm({
 		
 		type: 'POST',
+		url: 'dentist_signup/verification',
 		beforeSubmit: function ()
-                {
+        {
 			var fname = $('#fname').val();
 			var middle = $('#middle').val();
 			var lname = $('#lname').val();
@@ -679,14 +805,12 @@ $(function() {
 		
 		success: function(html)
 		{
-			
 			if(html == 'email registered')
 			{
 				$('#myErrorReg').modal('show');
 				$('.alert_msg').html('Email are already registered.').show();
 				$('#email_sign').val('');
 				$('#email_sign1').val('');
-				$('#email_sign').focus();
 				return false;
 			}else
 			{
@@ -694,16 +818,47 @@ $(function() {
 				$('.success_msg').html('Thank you for signing up! Please confirm this account. An account verification has been sent to your email.').show();
 				$('#mySuccessReg').modal('show');
 			}
-			// $('.alert_msg').hide();
-			// $('.success_msg').html('Registration Success!').show();
-			// $('.success_msg').html('Thank you for registering! A confirmation email has been sent. Please click on the Activation Link to Activate your account.').show();
-			// $('#mySuccessReg').modal('show');
 		}
 	});
 	$('#myErrorReg').on('hidden.bs.modal', function () {
-		// $('#fname').focus();
-		// $('#lname').focus();
-		$('#email_sign').focus();
+		var fname = $('#fname').val();
+		var middle = $('#middle').val();
+		var lname = $('#lname').val();
+		var email1 = $('#email_sign').val();
+		var email2 = $('#email_sign1').val();
+		var pass1 = $('#pass1').val();
+		var pass2 = $('#pass2').val();
+		
+		if(fname.trim() == '' || !fname.match(/^[A-Za-z . -]+$/))
+		{
+			$('#fname').focus();
+		}else if(lname.trim() == '' || !lname.match(/^[A-Za-z . -]+$/))
+		{
+			$('#lname').focus();
+		}else if(email1.trim() == '')
+		{
+			$('#email_sign').focus();
+		}else if(!email1.match(/^([a-z0-9._-]+@[a-z0-9._-]+\.[a-z]{2,4}$)/i))
+		{
+			$('#email_sign').focus();
+		}else if(email2.trim() == '')
+		{
+			$('#email_sign1').focus();
+		}else if(email2 != email1)
+		{
+			$('#email_sign1').focus();
+			$('#email_sign1').val('');
+		}else if(pass1.trim() == '')
+		{
+			$('#pass1').focus();
+		}else if(pass2.trim() == '')
+		{
+			$('#pass2').focus();
+		}else if(pass2 != pass1)
+		{
+			$('#pass2').focus();
+			$('#pass2').val('');
+		}
 	});
 	//dentist profile submit form 
 	$('.submit_dental_form1').click(function(){

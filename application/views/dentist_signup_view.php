@@ -26,7 +26,7 @@
 								</div>
 							</div><!--end center-->
 						</div>&nbsp;
-						<form class="form-horizontal" id="form_dentist_signup" role="form" method="post" action="<?php echo base_url('dentist_signup/verification')?>" enctype="multipart/form-data" name="ContactForm"><!--Registration form for Dentist-->
+						<form class="form-horizontal" id="form_dentist_signup" role="form" method="post" action="" enctype="multipart/form-data" name="ContactForm"><!--Registration form for Dentist-->
 							<div><!--start form content wrapper-->
 								<!--<div class="alert alert-danger alert_msg" style="text-align:center;display:none;">--><?php //echo validation_errors(); ?><?php //echo form_error('fname'); //echo form_error('lname');?><?php  ?></div>
 								<!--<div class="alert alert-success success_msg" style="text-align:center;display:none;"></div>-->
