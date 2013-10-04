@@ -81,7 +81,7 @@
 							</td>
 							<td><a href="<?php echo base_url('patient_edit?id='.$row['id']); ?>"><?php echo ucwords($row['patient_name']); ?></a></td>
 							<td><?php echo date('M-t-Y',strtotime($row['date_of_entry'])); ?></td>
-							<td><?php echo trim($row['last_procedure']) != '' ? date('M-t-Y',strtotime($row['last_procedure'])) : 'Not visit'; ?></td>
+							<td><?php echo trim(isset($row['last_procedure'])) != '' ? date('M-t-Y',strtotime($row['last_procedure'])) : 'Not visit'; ?></td>
 							<td>
 								<a href="<?php echo base_url('patient_edit?id='.$row['id']); ?>" style="color: #333;display: inline-block;margin-right: 8px;">
 									<span class="edit_patient glyphicon glyphicon-edit" title="Edit patient info" style="font-size:23px;"></span>

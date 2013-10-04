@@ -20,8 +20,7 @@
       <script src="../../assets/js/respond.min.js"></script>
     <![endif]-->
 
-	<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
-	<link rel="stylesheet" href="<?php echo base_url();?>style/jquery-ui.css" />
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
 	
 	<link href="<?php echo base_url();?>style/style.css" rel="stylesheet">
 	<link href="<?php echo base_url();?>style/style_new.css" rel="stylesheet">

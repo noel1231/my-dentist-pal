@@ -1,6 +1,6 @@
 $(function() {
 
-	//pullNotification();
+	pullNotification();
  
 	function pullNotification(timestamp){
 		var data = {};
@@ -155,4 +155,16 @@ $(function() {
 			$(this).parents('td').html(inputValue);
 		}
 	})
+
+	$('#charting').delegate('.checkbox', 'change', function(e) {
+		$('#patient_tooth_add').ajaxForm({
+			data: {'submit':'chart_info'}
+		}).submit();
+	});
+
+	$('#charting').delegate('#other_appliances', 'blur', function(e) {
+		$('#patient_tooth_add').ajaxForm({
+			data: {'submit':'chart_info'}
+		}).submit();
+	});
 });
