@@ -21,46 +21,57 @@ CREATE TABLE IF NOT EXISTS `dentist_appointments` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `dentist_id` text NOT NULL,
   `title` text NOT NULL,
-  `description` text NOT NULL,
+  `description` text NULL,
   `start` text NOT NULL,
   `end` text,
   `start_date` text NOT NULL,
-  `start_time` text NOT NULL,
   `end_date` text NOT NULL,
+  `start_time` text NOT NULL,
   `end_time` text NOT NULL,
   `status` text NOT NULL,
   `timestamp` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=37 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 		');
 
+		if(!$this->db->field_exists('location', 'dentist_appointments')) {
+			$this->db->query('ALTER TABLE `dentist_appointments` ADD `location` TEXT');
+		}
 		if(!$this->db->field_exists('status', 'dentist_appointments')) {
 			$this->db->query('ALTER TABLE `dentist_appointments` ADD `status` TEXT NOT NULL');
 		}
+		if(!$this->db->field_exists('appointment_id', 'jqcalendar')) {
+			$this->db->query('ALTER TABLE `jqcalendar` ADD `appointment_id` INT NOT NULL');
+		}				
 
 		/* import jqcalendar to dentist_appointments */
 
-		$select = $this->db->select('Subject, Location, Description, StartTime, EndTime, IsAllDayEvent, Color, RecurringRule, dentist_id')->get('jqcalendar');
+		$select = $this->db->select('id, Subject, Location, Description, StartTime, EndTime, IsAllDayEvent, Color, RecurringRule, dentist_id')->where('appointment_id', 0)->get('jqcalendar');
 		if($select->num_rows())
 		{
-			// foreach($select->result_array() as $chart) {
-				// $insert_array = array(
-					// 'patient_id' => $chart['patient_id'],
-					// 'chart_name' => $chart['chart_name'],
-					// 'chart_remarks' => $chart['chart_remarks'],
-					// 'date_chart' => $chart['date_chart'],
-					// 'timestamp' => strtotime($chart['date_chart'])
-				// );
-				// $insert = $this->db->insert('patient_tooth_chart', $insert_array);
 
-				// $chart_id = $this->db->insert_id();
+			foreach($select->result_array() as $jqcalendar) {
+				$insert_array = array(
+					'dentist_id' => $jqcalendar['dentist_id'],
+					'title' => $jqcalendar['Subject'],
+					'description' => $jqcalendar['Description'],
+					'start' => $jqcalendar['StartTime'],
+					'end' => $jqcalendar['EndTime'],
+					'start_date' => date('m/d/Y', strtotime($jqcalendar['StartTime'])),
+					'end_date' => date('m/d/Y', strtotime($jqcalendar['StartTime'])),
+					'start_time' => date('H:i:s', strtotime($jqcalendar['StartTime'])),
+					'end_time' => date('H:i:s', strtotime($jqcalendar['StartTime'])),
+					'location' => $jqcalendar['Location']
+				);
+				$insert = $this->db->insert('dentist_appointments', $insert_array);
+				$appointment_id = $this->db->insert_id();
 
-				// $this->db->where('id', $chart['id']);
-				// $update_array = array(
-					// 'chart_id' => $chart_id
-				// );
-				// $this->db->update('patient_tooth_chart_extra_adult', $update_array);
-			// }
+				$this->db->where('id', $jqcalendar['id']);
+				$update_array = array(
+					'appointment_id' => $appointment_id
+				);
+				$this->db->update('jqcalendar', $update_array);
+			}
 		}
 	}
 	
