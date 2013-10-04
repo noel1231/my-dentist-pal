@@ -20,6 +20,10 @@ class Patient_Edit extends CI_Controller {
 		if($this->session->userdata('id')) {
 			$data['sess_id'] = $this->session->userdata('id');
 
+			if(!$this->input->get('id')) {
+				redirect(base_url().'dentist_dashboard');
+			}
+
 			switch ($this->input->post('submit')) {
 				case 'tooth':
 					$this->set_tooth(); return false;
@@ -34,6 +38,12 @@ class Patient_Edit extends CI_Controller {
 					$chart_id = $this->input->post('chart');
 					$patient_id = $this->input->post('patient_id');
 					$this->select_chart($chart_id, $patient_id); return false;
+					break;
+				case 'chart_info':
+					// $chart_id = $this->input->post('chart');
+					// $patient_id = $this->input->post('patient_id');
+					// $this->select_chart($chart_id, $patient_id); return false;
+					$this->chart_info(); return false;
 					break;
 			}
 
@@ -123,7 +133,10 @@ class Patient_Edit extends CI_Controller {
 
 	private function set_tooth() {
 
-		date_default_timezone_set('Asia/Manila');
+		if( ! ini_get('date.timezone') )
+		{
+		   date_default_timezone_set('Asia/Manila');
+		}
 
 		extract($this->input->post());
 
@@ -156,6 +169,7 @@ class Patient_Edit extends CI_Controller {
 			$this->db->where('id', $rtc_exists['id']);
 			$this->db->update('patient_tooth_chart_extra', $tooth_updated);
 		}
+		// $legend = htmlentities($legend, ENT_XHTML);
 
 		$set_tooth_array = array(
 			'patient_id' => $patient_id,
@@ -163,7 +177,7 @@ class Patient_Edit extends CI_Controller {
 			'chart_id' => $chart_id,
 			'tooth_num' => $tooth_num,
 			'tooth_area' => str_pad($pic_num, 2, '0', STR_PAD_LEFT),
-			'tooth_procedure' => htmlentities($legend, ENT_SUBSTITUTE, 'ISO-8859-1'),
+			'tooth_procedure' => $legend,
 			'date_procedure' => date('Y-m-d', time()),
 			'timestamp' => time()
 		);
@@ -195,6 +209,24 @@ class Patient_Edit extends CI_Controller {
 
 		echo json_encode($callback);
 
+	}
+
+	private function chart_info() {
+		$chart_id = $this->input->post('chart');
+		$chart_info_array = array();
+
+		$chart_info_array['periodical_screening'] = $this->input->post('periodical_screening');
+		$chart_info_array['occlusion'] = $this->input->post('occlusion');
+		$chart_info_array['appliances'] = $this->input->post('appliances');
+		$chart_info_array['tmd'] = $this->input->post('tmd');
+
+		$update_array = array(
+			'chart_info' => json_encode($chart_info_array)
+		);
+		$this->db->where('id', $chart_id);
+		$this->db->update('patient_tooth_chart', $update_array);
+
+		echo $update_array['chart_info'];
 	}
 
 }

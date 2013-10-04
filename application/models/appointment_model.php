@@ -21,7 +21,7 @@ CREATE TABLE IF NOT EXISTS `dentist_appointments` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `dentist_id` text NOT NULL,
   `title` text NOT NULL,
-  `description` text NULL,
+  `description` text,
   `start` text NOT NULL,
   `end` text,
   `start_date` text NOT NULL,

@@ -18,15 +18,6 @@
 	}
 			foreach($set1 as $key=>$value) {
 
-				if(isset(${'tooth_'.$value})) {
-					$this->db->where('chart_id', $chart_id);
-					$this->db->where('tooth_num', $value);
-					$qptce = $this->db->get('patient_tooth_chart_extra');
-					if($qptce->num_rows() > 0) {
-						$rptce = $qptce->row_array();
-						$ptce_id = $rptce['id'];
-					}
-				}
 ?>
 		<td valign="top">
 			<table class="<?php echo $new_chart == 0 ? '' : 'tooth'; ?>" id="<?php echo 'ptc_'.$value; ?>" >

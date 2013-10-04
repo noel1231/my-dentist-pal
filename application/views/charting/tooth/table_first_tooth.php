@@ -23,7 +23,7 @@
 
 				<option value="X"> Extraction due to Caries </option>
 				<option value="XO"> Extraction due to Other Causes </option>
-				<option value="&#10003;"> Present Teeth </option>
+				<option value="check"> Present Teeth </option>
 				<option value="Cm"> Congenitally Missing </option>
 				<option value="Sp"> Supernumerary </option>
 

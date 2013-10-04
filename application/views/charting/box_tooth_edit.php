@@ -16,7 +16,7 @@
 	}
 	
 ?>
-<form id="patient_tooth_add" name="patient_tooth_add" method="post">
+<form id="patient_tooth_add" name="patient_tooth_add" method="post" onsubmit="return false">
 
 <div class="container">
 
@@ -117,114 +117,77 @@
 		<!--legend box-->
 	</div>
 
+<?php
+	if(isset($rchart['chart_info'])) {
+		$chart_info = json_decode($rchart['chart_info'], true);
+	}
+?>
+
 	<div class="row">
 		<div class="col-md-3">
 			Periodical Screening:
+<?php
+		$periodical_screening_array = array('gingivitis', 'early_periodontics', 'moderate_periodontics', 'advanced_periodontics');
+		foreach($periodical_screening_array as $value) {
+?>
 			<div class="checkbox">
 			  <label>
-				<input type="checkbox" value="">
-				Gingivitis
+				<input type="checkbox" name="periodical_screening[<?php echo $value; ?>]" value="true" <?php echo isset($chart_info['periodical_screening'][$value]) ? 'checked="checked"' : ''; ?>>
+				<?php echo ucfirst(str_replace('_', ' ',  $value)); ?>
 			  </label>
 			</div>
-			<div class="checkbox">
-			  <label>
-				<input type="checkbox" value="">
-				Early Periodontics
-			  </label>
-			</div>
-			<div class="checkbox">
-			  <label>
-				<input type="checkbox" value="">
-				Moderate Periodontics
-			  </label>
-			</div>
-			<div class="checkbox">
-			  <label>
-				<input type="checkbox" value="">
-				Advanced Periodontics
-			  </label>
-			</div>
+<?php
+		}
+?>
 		</div>
 		<div class="col-md-3">
 			Occlusion:
+<?php
+		$occlusion_array = array('class_molar', 'overjet', 'overbite', 'midline_deviation', 'crossbite');
+		foreach($occlusion_array as $value) {
+?>
 			<div class="checkbox">
 			  <label>
-				<input type="checkbox" value="">
-				Class (Molar)
+				<input type="checkbox" name="periodical_screening[<?php echo $value; ?>]" value="true" <?php echo isset($chart_info['periodical_screening'][$value]) ? 'checked="checked"' : ''; ?>>
+				<?php echo ucfirst(str_replace('_', ' ',  $value)); ?>
 			  </label>
 			</div>
-			<div class="checkbox">
-			  <label>
-				<input type="checkbox" value="">
-				Overjet
-			  </label>
-			</div>
-			<div class="checkbox">
-			  <label>
-				<input type="checkbox" value="">
-				Overbite
-			  </label>
-			</div>
-			<div class="checkbox">
-			  <label>
-				<input type="checkbox" value="">
-				Midline Deviation
-			  </label>
-			</div>
-			<div class="checkbox">
-			  <label>
-				<input type="checkbox" value="">
-				Crossbite
-			  </label>
-			</div>
+<?php
+		}
+?>
 		</div>
 		<div class="col-md-3">
 			Appliances:
+<?php
+		$appliances_array = array('orthodontic', 'stayplate');
+		foreach($appliances_array as $value) {
+?>
 			<div class="checkbox">
 			  <label>
-				<input type="checkbox" value="">
-				Orthodontic
+				<input type="checkbox" name="periodical_screening[<?php echo $value; ?>]" value="true" <?php echo isset($chart_info['periodical_screening'][$value]) ? 'checked="checked"' : ''; ?>>
+				<?php echo ucfirst(str_replace('_', ' ',  $value)); ?>
 			  </label>
 			</div>
-			<div class="checkbox">
-			  <label>
-				<input type="checkbox" value="">
-				Stayplate
-			  </label>
-			</div>
-			<div class="checkbox">
-			  <label>
-				<input type="checkbox" value="">
-				Others: 
-			  </label>
-			</div>
+<?php
+		}
+?>
+			<input type="text" class="form-control" id="other_appliances" placeholder="Other" name="appliances[others]" value="<?php echo $chart_info['appliances']['others'] ? $chart_info['appliances']['others'] : ''; ?>">
 		</div>
 		<div class="col-md-3">
 			TMD:
+<?php
+		$tmd_array = array('clenching', 'clicking', 'trismus', 'muscle_spasm');
+		foreach($tmd_array as $value) {
+?>
 			<div class="checkbox">
 			  <label>
-				<input type="checkbox" value="">
-				Clenching
+				<input type="checkbox" name="periodical_screening[<?php echo $value; ?>]" value="true" <?php echo isset($chart_info['periodical_screening'][$value]) ? 'checked="checked"' : ''; ?>>
+				<?php echo ucfirst(str_replace('_', ' ',  $value)); ?>
 			  </label>
 			</div>
-			<div class="checkbox">
-			  <label>
-				<input type="checkbox" value="">
-				Clicking
-			  </label>
-			</div>
-			<div class="checkbox">
-			  <label>
-				<input type="checkbox" value="">
-				Trismus
-			  </label>
-			</div>
-			<div class="checkbox">
-			  <label>
-				<input type="checkbox" value="">
-				Muscle Spasm
-			  </label>
-			</div>
+<?php
+		}
+?>
 		</div>
 	</div>
 
@@ -272,8 +235,6 @@
 				</textarea>
 			</div>
 		</div>
-		<input type="hidden" value="<?php echo $patient_id;?>" name="id_for_remarks" />
-		<input type="hidden" value="<?php echo $what_chart;?>" name="what_chart" />
 
 	</div>
 

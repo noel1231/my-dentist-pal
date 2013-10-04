@@ -16,34 +16,43 @@ class Charting_Model extends CI_Model {
 		   date_default_timezone_set('Asia/Manila');
 		}
 
+		if(!$this->db->table_exists('patient_tooth_chart')) {
+			$this->db->update('patient_tooth_chart_extra_adult', array('chart_id' => 0));
+			$this->db->update('patient_tooth_chart_extra_child', array('chart_id' => 0));
+		}
+
 		$this->db->query('
 CREATE TABLE IF NOT EXISTS `patient_tooth_chart` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int NOT NULL AUTO_INCREMENT,
   `patient_id` text NOT NULL,
   `dentist_id` text NOT NULL,
   `chart_name` text NOT NULL,
   `chart_remarks` text NOT NULL,
   `date_chart` date NOT NULL,
-  `timestamp` int(11) NOT NULL,
+  `timestamp` int NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 		');
 
 		$this->db->query('
 CREATE TABLE IF NOT EXISTS `patient_tooth_chart_extra` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `chart_id` int(11) NOT NULL,
+  `id` int NOT NULL AUTO_INCREMENT,
+  `chart_id` int NOT NULL,
   `patient_id` text NOT NULL,
   `dentist_id` text NOT NULL,
   `tooth_num` text NOT NULL,
   `tooth_area` text NOT NULL,
-  `tooth_procedure` text NOT NULL,
+  `tooth_procedure` text,
   `date_procedure` date NOT NULL,
-  `date_modified` int(11) NOT NULL,
-  `timestamp` int(11) NOT NULL,
+  `timestamp` int NOT NULL,
+  `date_modified` int NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 		');
+
+		if(!$this->db->field_exists('periodical_screening', 'patient_tooth_chart')) {
+			$this->db->query('ALTER TABLE `patient_tooth_chart` ADD `periodical_screening` TEXT NOT NULL');
+		}
 
 		/* insert adult tooth_chart from old to new patient_tooth_chart */
 
@@ -51,7 +60,7 @@ CREATE TABLE IF NOT EXISTS `patient_tooth_chart_extra` (
 			$this->db->query('ALTER TABLE `patient_tooth_chart_extra_adult` ADD `chart_id` TEXT NOT NULL');
 		}
 
-		$select = $this->db->select('id, patient_id, chart_name, date_chart, chart_remarks')->where('chart_id', '')->get('patient_tooth_chart_extra_adult');
+		$select = $this->db->select('id, patient_id, chart_name, date_chart, chart_remarks')->where_in('chart_id', array('', 0, '0'))->get('patient_tooth_chart_extra_adult');
 		if($select->num_rows())
 		{
 			foreach($select->result_array() as $chart) {
@@ -79,9 +88,7 @@ CREATE TABLE IF NOT EXISTS `patient_tooth_chart_extra` (
 			$this->db->query('ALTER TABLE `patient_tooth_chart_extra_child` ADD `chart_id` TEXT NOT NULL');
 		}
 
-		$null_chart_id = array('', 0, '0');
-
-		$select = $this->db->select('id, patient_id, chart_name, date_chart, chart_remarks')->where_in('chart_id', $null_chart_id)->get('patient_tooth_chart_extra_child');
+		$select = $this->db->select('id, patient_id, chart_name, date_chart, chart_remarks')->where_in('chart_id', array('', 0, '0'))->get('patient_tooth_chart_extra_child');
 		if($select->num_rows())
 		{
 			foreach($select->result_array() as $chart) {
@@ -108,6 +115,10 @@ CREATE TABLE IF NOT EXISTS `patient_tooth_chart_extra` (
 			$this->db->query('ALTER TABLE `patient_tooth_chart_extra` ADD `date_modified` INT NOT NULL');
 		}
 
+		if(!$this->db->field_exists('chart_info', 'patient_tooth_chart')) {
+			$this->db->query('ALTER TABLE `patient_tooth_chart` ADD `chart_info` TEXT');
+		}
+
 	}
 
 
@@ -118,40 +129,40 @@ CREATE TABLE IF NOT EXISTS `patient_tooth_chart_extra` (
 		/* default */
 		$data_tooth_chart_patient['new_chart'] = 1;
 
-		/* select from patient_tooth_chart_extra_child */
-		$this->db->where('chart_id', $chart_id);
-		$sql_adult = $this->db->get('patient_tooth_chart_extra_adult');
+		/* select from patient_tooth_chart */
+		$this->db->where('id', $chart_id);
+		$this->db->where('patient_id', $patient_id);
+		$qptc = $this->db->get('patient_tooth_chart');
+		if($qptc->num_rows() > 0) {
+			$rptc = $qptc->row_array(0);
+			$data_tooth_chart_patient['chart_name'] = $rptc['chart_name'];
+			$data_tooth_chart_patient['chart_remarks'] = $rptc['chart_remarks'];
 
-		if($sql_adult->num_rows() > 0) {
-			$data_tooth_chart_patient = $sql_adult->row_array();
-			$data_tooth_chart_patient['new_chart'] = 0;
-		} else {
-			/* select from patient_tooth_chart_extra_child */
 			$this->db->where('chart_id', $chart_id);
-			$sql_adult = $this->db->get('patient_tooth_chart_extra_child');
+			$qtce = $this->db->get('patient_tooth_chart_extra');
 
-			if($sql_adult->num_rows() > 0) {
-				$data_tooth_chart_patient = $sql_adult->row_array();
-				$data_tooth_chart_patient['new_chart'] = 0;
-			} else {
-				/* select from patient_tooth_chart */
-				$this->db->where('id', $chart_id);
-				$qptc = $this->db->get('patient_tooth_chart');
-				if($qptc->num_rows() > 0) {
-					$rptc = $qptc->row_array(0);
-					$data_tooth_chart_patient['chart_name'] = $rptc['chart_name'];
-					$data_tooth_chart_patient['chart_remarks'] = $rptc['chart_remarks'];
+			if($qtce->num_rows() > 0) {
+				$rtce = $qtce->result_array();
+				foreach($rtce as $tc_data) {
+					$data_tooth_chart_patient['tooth_'.$tc_data['tooth_num']] = $tc_data['tooth_area'];
+					$data_tooth_chart_patient['legend_'.$tc_data['tooth_num']] = $tc_data['tooth_procedure'];
 				}
-
+			} else {
+				/* select from patient_tooth_chart_extra_child */
 				$this->db->where('chart_id', $chart_id);
-				$this->db->where('patient_id', $patient_id);
-				$qtce = $this->db->get('patient_tooth_chart_extra');
+				$sql_adult = $this->db->get('patient_tooth_chart_extra_adult');
 
-				if($qtce->num_rows() > 0) {
-					$rtce = $qtce->result_array();
-					foreach($rtce as $tc_data) {
-						$data_tooth_chart_patient['tooth_'.$tc_data['tooth_num']] = $tc_data['tooth_area'];
-						$data_tooth_chart_patient['legend_'.$tc_data['tooth_num']] = $tc_data['tooth_procedure'];
+				if($sql_adult->num_rows() > 0) {
+					$data_tooth_chart_patient = $sql_adult->row_array();
+					$data_tooth_chart_patient['new_chart'] = 0;
+				} else {
+					/* select from patient_tooth_chart_extra_child */
+					$this->db->where('chart_id', $chart_id);
+					$sql_adult = $this->db->get('patient_tooth_chart_extra_child');
+
+					if($sql_adult->num_rows() > 0) {
+						$data_tooth_chart_patient = $sql_adult->row_array();
+						$data_tooth_chart_patient['new_chart'] = 0;
 					}
 				}
 			}
