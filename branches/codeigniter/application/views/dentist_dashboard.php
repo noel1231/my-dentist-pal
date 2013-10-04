@@ -25,7 +25,7 @@
                                                                                                     </div>
                                                                                             </div>
                                                                                             <div class="col-md-8">
-                                                                                                    <h1>
+                                                                                                    <h1 style="margin-top: 0;">
                                                                                                             Hi, Doctor <?php echo $first_name; ?>!
                                                                                                     </h1>
                                                                                             </div>
@@ -53,11 +53,11 @@
 					</div>
 				</div>
 				<div class="container">
-                                        <div class="col-md-6">
+                                        <div class="col-md-5" style="padding-left: 0; margin-left: -15px;">
                                             <h1 style="margin-top: 0;"><?php echo $dashboard_title == 'Dashboard' ? 'What\'s Happening?' : $dashboard_title; ?></h1>
                                           </div>
                                     
-					<div class="col-md-6" style="padding-right: 0;">
+					<div class="col-md-7" style="padding-right: 0;">
 						<?php 
 						if(isset($_GET['scheduler']))
 						{

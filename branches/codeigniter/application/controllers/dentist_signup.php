@@ -31,12 +31,14 @@ class Dentist_Signup extends CI_Controller {
 			//return false;
 			$data['body'] = $this->load->view('dentist_signup_view', '', true);
 			$data['header'] = $this->load->view('homepage/header', '', true);
-			$this->load->view('homepage', $data);
+			$data['identifier'] = true;
+                        $this->load->view('homepage', $data);
 		} else {
 			//return true;
 			$data['body'] = $this->load->view('dentist_signup_view', '', true);
 			$data['header'] = $this->load->view('homepage/header', '', true);
-			$this->load->view('homepage', $data);
+			$data['identifier'] = true;
+                        $this->load->view('homepage', $data);
 		}			
 	}
 	

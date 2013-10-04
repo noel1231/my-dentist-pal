@@ -29,6 +29,7 @@ class Forgot_Password extends CI_Controller {
 
 
 		$data['header'] = $this->load->view('homepage/header', '', true);
+                $data['identifier'] = true;
 		$this->load->view('homepage', $data);
 	}
 

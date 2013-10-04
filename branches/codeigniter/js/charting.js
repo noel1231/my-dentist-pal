@@ -1,6 +1,6 @@
 $(function() {
 
-	pullNotification();
+	//pullNotification();
  
 	function pullNotification(timestamp){
 		var data = {};

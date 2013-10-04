@@ -382,35 +382,13 @@
 
 .container .col-md-6 .form .form_row
 {
-    float: left;
     margin: 0 0 10px;
     padding: 0;
-    width: 100%
-}
-
-.container .col-md-6 .form .form_row input
-{
-    float: left;
-    margin: 0;
-    width: 90%;
-    border-radius: 4px;
-    border: 1px solid #CCC;
-    padding: 6px 4px;
-}
-
-.container .col-md-6 .form .form_row textarea
-{
-    float: left;
-    margin: 0;
-    width: 90%;
-    border-radius: 4px;
-    border: 1px solid #CCC;
-    padding: 6px 4px;
 }
 
 .container .col-md-6 .form .form_row .register
 {
-   float: left;
+   float: right;
    background-color: #00aeef;
    padding: 10px 15px;
    border-radius: 10px;
@@ -418,7 +396,7 @@
    width: 25%;
    min-width: 80px;
    text-align: center;
-   margin: 0 0 0 65%;
+   margin: 0;
 }
 
 .container .col-md-6 .form .form_row .register:hover

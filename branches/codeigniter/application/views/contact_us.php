@@ -7,23 +7,23 @@
                         <h2>Contact Us</h2>
                         <p>Do you have concerns?</p>
                         <p>Please feel free to drop us a message and we'll get back to you soonest.</p>
-                        <p>Email: info@mydentistpal.com</p>
+                        <p>Email: info@medix.ph</p>
                         <p>Landline: (02) 436.3621</p>
                     </div>
                     <div class="form">
-                        <div class="form_row">
+                        <div class="col-md-11 form_row">
                             <label id="error"></label>
                         </div>
-                        <div class="form_row">
-                            <input name="full_name" maxlength="30" type="text" Placeholder="Full Name" id="fullname"/>
+                        <div class="col-md-11 form_row">
+                            <input name="full_name" maxlength="30" type="text" Placeholder="Full Name" id="fullname" class="form-control"/>
                         </div>
-                        <div class="form_row">
-                            <input name="email" maxlength="50" type="text" Placeholder="Email Address" id="email_address"/>
+                        <div class="col-md-11 form_row">
+                            <input name="email" maxlength="50" type="text" Placeholder="Email Address" id="email_address" class="form-control"/>
                         </div>
-                        <div class="form_row">
-                            <textarea name="message" cols="20" rows="10" Placeholder="Message" id="message"></textarea>
+                        <div class="col-md-11 form_row">
+                            <textarea name="message" cols="20" rows="10" Placeholder="Message" id="message" class="form-control"></textarea>
                         </div>
-                        <div class="form_row">
+                        <div class="col-md-11 form_row">
                             <div class="register" id="submit">
                                 <p>Submit</p>
                             </div>
