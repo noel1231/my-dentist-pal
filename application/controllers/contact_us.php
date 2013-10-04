@@ -13,6 +13,7 @@ class Contact_Us extends CI_Controller
         $data['body'] = $this->load->view('contact_us', $data, true);
         $data['header'] = $this->load->view('homepage/header', '', true);
         $data['identifier'] = true;
+        $data['contact'] = true;
         $this->load->view('homepage', $data);
     }
     
@@ -23,7 +24,7 @@ class Contact_Us extends CI_Controller
         $full_name = $_POST['full_name'];
         $QuestionComment = $_POST['message'];
 
-        $subject = "My Dentist Pal Inquiry";
+        $subject = "Medix Inquiry";
         $email_address = $_POST['email']; 
         $message = "Full Name: ".$full_name. "\nEmail: ".$email_address. "\nMessage: ". $QuestionComment;
 
@@ -46,10 +47,10 @@ class Contact_Us extends CI_Controller
         $message2 = "Your message below has been sent:\n" . $QuestionComment . "\n\n www.mydentistpal.com";
 
         $to2 = $email_address; 
-        $email_subject2 = "My Dentist Pal Inquiry";
+        $email_subject2 = "Medix Inquiry";
         $email_body2 = "$message2"; 
 
-        $headers2 = "From: My Dentist Pal <$myemail>\n"; 
+        $headers2 = "From: Medix <$myemail>\n"; 
         $headers2 .= "Reply-To: $myemail";
 
 

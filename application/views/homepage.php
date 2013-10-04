@@ -71,19 +71,26 @@
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="//code.jquery.com/jquery.min.js"></script>
-	<script>window.jQuery || document.write('<script src="<?php echo base_url();?>js/jquery.min.js">\x3C/script>')</script>
+	<!--<script>window.jQuery || document.write('<script src="<?php //echo base_url();?>js/jquery.min.js">\x3C/script>')</script>-->
 
 	<script src="<?php echo base_url();?>bootstrap/js/bootstrap.js"></script>
 	
     <script src="//code.jquery.com/ui/1.10.3/jquery-ui.min.js"></script>
-	<script>window.jQuery.ui || document.write('<script src="<?php echo base_url();?>js/jquery-ui.min.js">\x3C/script>')</script>
+	<!--<script>window.jQuery.ui || document.write('<script src="<?php //echo base_url();?>js/jquery-ui.min.js">\x3C/script>')</script>-->
     <!-- Include all compiled plugins (below), or include individual files as needed -->
 
 	<script type='text/javascript' src='<?php echo base_url();?>fullcalendar/fullcalendar.js'></script>
 	<script type='text/javascript' src='<?php echo base_url();?>jonthornton-jquery-timepicker/jquery.timepicker.min.js'></script>
 	<script type='text/javascript' src='<?php echo base_url();?>mobiscroll/js/mobiscroll.custom-2.6.2.min.js'></script>
-
-    <script src="<?php echo base_url();?>js/jquery.blockui.js"></script>
+    <?php 
+         if(isset($contact))
+         {?>
+                <script src="<?php echo base_url();?>js/email.blockui.js"></script>
+    <?php }
+        else
+        {?>
+                <script src="<?php echo base_url();?>js/jquery.blockui.js"></script>
+    <?php } ?>
     <script src="<?php echo base_url();?>js/jquery.form.js"></script>
 
 	<script src='<?php echo base_url();?>js/appointments.js'></script>
