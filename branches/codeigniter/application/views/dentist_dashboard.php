@@ -113,40 +113,35 @@
 		'class' => 'form-horizontal',
 		'id' => 'appointment_form',
 		'name' => 'appointment_form',
-		'role' => 'form'
+		'role' => 'form',
+		'style'=>'overflow: hidden;'
 	);
 	echo form_open('', $form_attrib);
 ?>
 	<input type="hidden" id="appointment_id" name="appointment_id" />
 	<input type="hidden" name="dentist_id" value="<?php echo $id; ?>" />
 	<div class="form-group">
-		<label for="inputTitle1" class="col-md-2 control-label"> Title: </label>
-		<div class="col-md-10">
-			<div class="col-md-12 col-sm-12">
-				<input type="text" class="form-control" id="inputTitle1" name="title" required data-content="Title is required">
-			</div>
+		<label for="inputTitle1" class="col-md-3 col-sm-3 control-label"> Title: </label>
+		<div class="col-md-9 col-sm-9">
+			<input type="text" class="form-control" id="inputTitle1" name="title" required data-content="Title is required">
 		</div>
 	</div>
 	<div class="form-group">
-		<label for="inputDescription1" class="col-md-2 control-label"> Description: </label>
-		<div class="col-md-10">
-			<div class="col-md-12 col-sm-12">
-				<input type="text" class="form-control" id="inputDescription1" name="description">
-			</div>
+		<label for="inputDescription1" class="col-md-3 col-sm-3 control-label"> Description: </label>
+		<div class="col-md-9 col-sm-9">			
+			<input type="text" class="form-control" id="inputDescription1" name="description">
 		</div>
 	</div>
 	<div class="form-group">
-		<label for="inputDate1" class="col-md-2 control-label"> Date: </label>
-		<div class="col-md-10">
-			<div class="col-md-5 col-sm-5">
-				<input type="text" class="form-control datepicker" id="inputDate1" placeholder="MM/DD/YY" name="date1" tabindex="-1" value="<?php echo date('m/d/Y', time()) ?>">
-			</div>
+		<label for="inputDate1" class="col-md-3 col-sm-3 control-label"> Date: </label>
+		<div class="col-md-9 col-sm-9">
+			<input type="text" class="form-control datepicker" id="inputDate1" placeholder="MM/DD/YY" name="date1" tabindex="-1" value="<?php echo date('m/d/Y', time()) ?>">
 		</div>
 	</div>
 	<div class="form-group">
-		<label for="inputTime1" class="col-md-2 col-sm-2 control-label"> From: </label>
-		<div class="col-md-10 col-sm-10 form-inline">
-			
+		<label for="inputTime1" class="col-md-3 col-sm-3 control-label"> From: </label>
+		<div class="col-md-9 col-sm-9 form-inline">
+			<div class="row">
 				<div class="col-md-5 col-sm-5">
 					<input type="text" class="form-control timepicker" id="inputTime1" placeholder="00:00" name="time1" required>
 				</div>
@@ -154,7 +149,7 @@
 				<div class="col-md-5 col-sm-5">
 					<input type="text" class="form-control timepicker1" id="inputTime2" placeholder="00:00" name="time2" required>
 				</div>
-			
+			</div>
 		</div>
 	</div>
 <?php

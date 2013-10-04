@@ -59,8 +59,8 @@ CREATE TABLE IF NOT EXISTS `dentist_appointments` (
 					'end' => $jqcalendar['EndTime'],
 					'start_date' => date('m/d/Y', strtotime($jqcalendar['StartTime'])),
 					'end_date' => date('m/d/Y', strtotime($jqcalendar['StartTime'])),
-					'start_time' => date('H:i:s', strtotime($jqcalendar['StartTime'])),
-					'end_time' => date('H:i:s', strtotime($jqcalendar['StartTime'])),
+					'start_time' => date('h:i A', strtotime($jqcalendar['StartTime'])),
+					'end_time' => date('h:i A', strtotime($jqcalendar['StartTime'])),
 					'location' => $jqcalendar['Location']
 				);
 				$insert = $this->db->insert('dentist_appointments', $insert_array);
