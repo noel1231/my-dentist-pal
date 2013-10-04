@@ -15,10 +15,36 @@
 				<div class="container">
 					<div class="row" style="margin-bottom:30px;">
 						<div class="col-md-6">
-						
+						<?php
+							if($dashboard_title != 'Edit Patients')
+							{
+						?>
 						  <h1 style="margin-top: 0;"><?php echo $dashboard_title == 'Dashboard' ? 'What\'s Happening?' : $dashboard_title; ?></h1>
+						<?php
+							}else
+							{
+						?>
+						<div class="col-md-12">
+							<div class="row">
+								<div class="col-md-4">
+									<div class="profile_pic_container">
+										<a href="#">
+											<img class="profile_pic" alt="Profile Pic" src="<?php echo is_file($patient_picture) ? base_url().$patient_picture : base_url('img/profile_pic.gif'); ?>">
+										</a>
+									</div>
+								</div>
+								<div class="col-md-8">
+									<div> Patient ID Number : <?php echo $id; ?> </div>
+									<div> Patient Name: <?php echo $patient_name; ?> </div>
+									
+								</div>
+							</div>
+						</div>				
+						<?php
+							}
+						?>
 						</div>
-						<div class="col-md-6" style="text-align: right;">
+						<div class="col-md-6 <?php echo $dashboard_title != 'Edit Patients' ? 'pull-right' : ''; ?>" style="text-align: right;">
 						  <?php
 								$this->load->view('menu'); 
 							?>
@@ -30,6 +56,10 @@
 	</div>
 
 		<div class="container">
+		<?php
+			if($dashboard_title != 'Edit Patients')
+			{
+		?>
 			<div class="col-md-6">
 				<div class="row">
 					<div class="col-md-4">
@@ -46,6 +76,9 @@
 					</div>
 				</div>
 			</div>
+		<?php
+			}
+		?>
 			<div class="col-md-6">
 				<?php echo isset($add_patient_search) ? $add_patient_search : ''; ?>
 			</div>
