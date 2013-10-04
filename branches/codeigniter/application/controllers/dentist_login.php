@@ -33,7 +33,7 @@ class Dentist_Login extends CI_Controller {
 		
 	}
 	
-	function  check_login()
+	function check_login()
 	{
 		$email = $this->input->post('input_email');
 		$pass = $this->input->post('input_pass');

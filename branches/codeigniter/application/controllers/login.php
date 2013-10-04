@@ -53,7 +53,7 @@ class Login extends CI_Controller {
 		
 	}
 	
-	function  check_login()
+	function check_login()
 	{
 		$email = $this->input->post('input_email');
 		$pass = $this->input->post('input_pass');
@@ -116,4 +116,74 @@ class Login extends CI_Controller {
 		}
 	}
 
+	function forgot_password()
+	{
+		$return = '';
+		
+		$email = $this->input->post('forgot_email');
+		$this->db->where('email',$email);
+		$query = $this->db->get('dentist_list');
+		$row = $query->row_array();
+		$keyType = md5(time());
+		
+		if($query->num_rows() > 0)
+		{
+			$return = 'success';
+			$data_array = array(
+				'forgot_key'=>$keyType
+			);
+			/* update database */
+			$this->db->where('email',$email)->update('dentist_list',$data_array);
+			
+			/* send email */
+			$message = '
+				Thank you for signing up!<br> 
+				Before we can give you access to all of Medix&#39;s features, please confirm your account by clicking the button/link below.<br>
+				<a href="'.base_url('login?reset='.$row['id'].'&accessNumber='.$keyType).'"> Click here to activate.</a>
+			';
+			
+			$config['protocol'] = 'smtp';
+			$config['smtp_host'] = 'mail.mydentistpal.com';
+			$config['smtp_user'] = 'info@mydentistpal.com';
+			$config['smtp_pass'] = 'mdp2468';
+			$config['smtp_port'] = 26;
+			$config['mailtype'] = 'html';
+			
+			$this->email->initialize($config);
+			
+			$this->email->from('info@medix.ph', 'Medix');
+			$this->email->to($email); 
+			$this->email->subject("Medix Account Confirmation to ".$email);
+			$this->email->message($message);
+			
+			$sentmail = $this->email->send();
+			echo $sentmail;
+		}else
+		{
+			$return = 'email not found';
+			echo $return;
+		}
+		
+	}
+	
+	function password_reset() 
+	{
+		extract($this->input->post());
+		$query = $this->db->where('id', $accessId)->where('forgot_key', $accessKey)->get('dentist_list');
+		
+		if($query->num_rows() > 0)
+		{
+			$data = array(
+				'dentist_pass' => md5($new_password),
+				'forgot_key' => md5(time())
+			);
+			$this->db->where('id', $accessId)->update('dentist_list', $data);
+			
+			echo "true";
+		}else
+		{
+			echo "false";
+		}
+			
+	}
 }
