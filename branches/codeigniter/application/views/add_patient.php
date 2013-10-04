@@ -30,6 +30,18 @@
 	}
 	.extra_css li a {
 		border-radius:0;
+		color:#fff;
+	}
+	.extra_css li a:hover {
+		color:#2a6496;
+	}
+	.extra_css li.active a:hover {
+		background-color:#eee;
+		color:#2a6496;
+	}
+	.extra_css li.active a {
+		background-color:#eee;
+		color:#2a6496;
 	}
 	.extra_css_padding {
 		padding:0;
@@ -43,7 +55,7 @@
 		<div class="tabbable tabs-left" style="<?php echo isset($access) ? '' : ''; ?>">
 			<div class="col-md-2 extra_css_padding">
 				
-					<ul class="nav nav-pills nav-stacked extra_css">
+					<ul class="nav nav-pills nav-stacked extra_css" style="background-color:#428bca;">
 						<li class="active"><a href="#add_patient" data-toggle="tab"> Patient Info </a></li>
 						<li><a href="#dentist_history" data-toggle="tab"> Dental History </a></li>
 						<li><a href="#medical_history" data-toggle="tab"> Medical History </a></li>
