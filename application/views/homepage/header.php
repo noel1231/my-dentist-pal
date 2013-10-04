@@ -10,7 +10,7 @@
 	  <span class="icon-bar"></span>
 	  <span class="icon-bar"></span>
 	</button>
-	<a class="navbar-brand" href="#"><img src="<?php echo base_url(); ?>img/logo.png" alt="Logo" /></a>
+      <a class="navbar-brand" href="<?php echo base_url(); ?>"><img src="<?php echo base_url(); ?>img/logo.png" alt="Logo" /></a>
   </div>
   <div class="collapse navbar-collapse navbar-ex1-collapse">
           <ul class="nav navbar-nav navbar-right">
@@ -42,7 +42,7 @@
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
     </button>
-    <a href="#" class="col-md-12">
+      <a href="<?php echo base_url();?>dentist_dashboard" class="col-md-12">
 		<img alt="Profile Pic" src="<?php echo base_url(); ?>img/logo.png" style="max-height: 51px;">
 	</a>
   </div>
