@@ -18,9 +18,9 @@
 		
 		$this->db->where('dentist_id',$dentist_id);
 		$this->db->like('patient_name',$word);
+		$this->db->or_like('id',$word);
 		$this->db->or_like('patient_surname',$word);
 		$this->db->or_like('patient_middle_name',$word);
-		$this->db->or_like('id',$word);
 		$this->db->order_by('id',$type);
 		$query = $this->db->get('patient_list');
 		
@@ -84,13 +84,13 @@
 							<td><?php echo date('M-t-Y',strtotime($row['date_of_entry'])); ?></td>
 							<td><?php echo trim($row['last_login']) != '0000-00-00' ? date('M-t-Y',strtotime($row['last_login'])) : 'Not visit'; ?></td>
 							<td>
-								<a href="<?php echo base_url('patient_edit?id='.$row['id']); ?>" style="color: #333;">
-									<span class="edit_patient glyphicon glyphicon-edit" title="Edit patient info"></span>
+								<a href="<?php echo base_url('patient_edit?id='.$row['id']); ?>" style="color: #333;display: inline-block;margin-right: 5px;">
+									<span class="edit_patient glyphicon glyphicon-edit" title="Edit patient info" style="font-size:20px;"></span>
 								</a>
-								<a href="<?php echo base_url('patient_access?id='.$row['id']); ?>" style="color: #333;">
-									<span class="glyphicon glyphicon-globe" title="Manage patient account access"></span>
+								<a href="<?php echo base_url('patient_access?id='.$row['id']); ?>" style="color: #333;display: inline-block;margin-right: 5px;">
+									<span class="glyphicon glyphicon-globe" title="Manage patient account access" style="font-size:20px;"></span>
 								</a>
-								<span class="glyphicon glyphicon-trash delete_patient" title="Delete patient" style="cursor:pointer" id="<?php echo $row['id']; ?>"></span>
+								<span class="glyphicon glyphicon-trash delete_patient" title="Delete patient" style="cursor:pointer;font-size:20px;" id="<?php echo $row['id']; ?>"></span>
 							</td>
 						</tr>
 <?php
