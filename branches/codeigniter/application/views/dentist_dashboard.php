@@ -11,29 +11,29 @@
 						<div class="row">
 							<div class="container">
 								<div class="row" style="margin-bottom:30px;">
-									<?php
-                                                                            if($dashboard_title != 'Dentist Profile')
-                                                                            {
-                                                                    ?>
-                                                                            <div class="col-md-6">
-                                                                                    <div class="row">
-                                                                                            <div class="col-md-4">
-                                                                                                    <div class="profile_pic_container">
-                                                                                                            <a href="#">
-                                                                                                                    <img class="profile_pic" alt="Profile Pic" src="<?php echo trim($profile_pic) != null ? base_url().$profile_pic : base_url('img/profile_pic.gif'); ?>" />
-                                                                                                            </a>
-                                                                                                    </div>
-                                                                                            </div>
-                                                                                            <div class="col-md-8">
-                                                                                                    <h1 style="margin-top: 0;">
-                                                                                                            Hi, Doctor <?php echo $first_name; ?>!
-                                                                                                    </h1>
-                                                                                            </div>
-                                                                                    </div>
-                                                                            </div>
-                                                                    <?php
-                                                                            }
-                                                                    ?>
+							<?php
+									if($dashboard_title != 'Dentist Profile')
+									{
+							?>
+									<div class="col-md-6">
+										<div class="row">
+											<div class="col-md-4">
+												<div class="profile_pic_container">
+													<a href="#">
+															<img class="profile_pic" alt="Profile Pic" src="<?php echo trim($profile_pic) != null ? base_url().$profile_pic : base_url('img/profile_pic.gif'); ?>" />
+													</a>
+												</div>
+											</div>
+											<div class="col-md-8">
+												<h1 style="margin-top: 0;">
+														Hi, Doctor <?php echo $first_name; ?>!
+												</h1>
+											</div>
+										</div>
+									</div>
+							<?php
+									}
+							?>
                                                                     
                                                                         
 									<div class="col-md-6" style="text-align: right;">
@@ -53,9 +53,11 @@
 					</div>
 				</div>
 				<div class="row">
-                                        <div class="col-md-4">
-                                            <div style="font-size: 32px;"><?php echo $dashboard_title == 'Dashboard' ? 'What\'s Happening?' : $dashboard_title; ?></div>
-                                          </div>
+					<div class="col-md-4">
+						<div style="font-size: 32px;">
+							<?php echo $dashboard_title == 'Dashboard' ? 'What\'s Happening?' : $dashboard_title; ?>
+						</div>
+					</div>
                                     
 					<div class="col-md-8">
 						<?php 

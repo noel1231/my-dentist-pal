@@ -15,6 +15,7 @@
 				<div class="container">
 					<div class="row" style="margin-bottom:30px;">
 						<div class="col-md-6">
+						<button type="button" data-loading-text="Loading..." class="asdasd">reset</button>
 						  <h1 style="margin-top: 0;"><?php echo $dashboard_title == 'Dashboard' ? 'What\'s Happening?' : $dashboard_title; ?></h1>
 						</div>
 						<div class="col-md-6" style="text-align: right;">

@@ -16,11 +16,10 @@
 		
 		$word = trim($_GET['search_field']);
 		
+		$connect_query = '(patient_name LIKE "%'.$word.'%" OR id LIKE "%'.$word.'%" OR patient_surname LIKE "%'.$word.'%" OR patient_middle_name LIKE "%'.$word.'%")';
+		
 		$this->db->where('dentist_id',$dentist_id);
-		$this->db->like('patient_name',$word);
-		$this->db->or_like('id',$word);
-		$this->db->or_like('patient_surname',$word);
-		$this->db->or_like('patient_middle_name',$word);
+		$this->db->where($connect_query,null,false);
 		$this->db->order_by('id',$type);
 		$query = $this->db->get('patient_list');
 		
