@@ -1,30 +1,54 @@
-				<div class="row">
-					<div class="pull-right" style="">
-					<?php
-						$data_params = array(
-							'name'=>'patient_search_from',
-							'id'=>'patient_search_from',
-							'role'=>'form',
-							'class'=>'form-inline',
-							'method'=>'get'
-						);
-						echo form_open(base_url('patient_records'),$data_params);
-					?>
-						<!--<form action="patient_list.php" method="post" role="form" class="form-inline">-->
-							<div class="addpatient form-group">
-								<a data-toggle="modal" href="#myModalAddingPatient" class="btn btn-primary btn-lg">
-									+ ADD PATIENT
-								</a>
-							</div>
-							<div class="form-group">
-								<input type="text" name="search_field" class="form-control input-lg search" placeholder="Search..." value="" />
-							</div>
-							<div class="form-group">
-								<button type="submit" class="submit btn btn_design btn-primary btn-lg" />SEARCH</button>
-							</div>
-						</form>
-					</div>
-				</div>
+<style>
+
+	/* michael codes */
+	@media(max-width: 1213px)
+	{
+		.form-inline .form-group.adjust_display {
+			display:block;
+			margin-bottom: 15px;
+		}
+	}
+	@media(max-width: 950px)
+	{
+		.form-inline .form-group.adjust_display {
+			display:inline-block;
+		}
+	}
+	@media(max-width: 783px)
+	{
+		.form-inline .form-group.adjust_display {
+			display:block;
+			margin-bottom: 15px;
+		}
+	}
+</style>	
+<div class="row">
+	<div class="pull-right" style="">
+	<?php
+		$data_params = array(
+			'name'=>'patient_search_from',
+			'id'=>'patient_search_from',
+			'role'=>'form',
+			'class'=>'form-inline',
+			'method'=>'get'
+		);
+		echo form_open(base_url('patient_records'),$data_params);
+	?>
+		<!--<form action="patient_list.php" method="post" role="form" class="form-inline">-->
+			<div class="addpatient form-group adjust_display">
+				<a data-toggle="modal" href="#myModalAddingPatient" class="btn btn-primary btn-lg">
+					+ ADD PATIENT
+				</a>
+			</div>
+			<div class="form-group adjust_display">
+				<input type="text" name="search_field" class="form-control input-lg search" placeholder="Search..." value="" />
+			</div>
+			<div class="form-group adjust_display">
+				<button type="submit" class="submit btn btn_design btn-primary btn-lg" />SEARCH</button>
+			</div>
+		</form>
+	</div>
+</div>
 				
   <!-- Modal -->
   <div class="modal fade" id="myModalAddingPatient" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static">

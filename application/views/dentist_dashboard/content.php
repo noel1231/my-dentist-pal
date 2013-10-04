@@ -137,25 +137,25 @@
 				<ul class="list-group">
 <?php
 			$procedure_array = array(
-	'D' => 'Decayed (Caries Indicated for Filling)',
-	'M' => 'Missing due to Caries',
-	'F' => 'Filled',
-	'I' => 'Caries Indicated for Extraction',
-	'RF' => 'Root Fragment',
-	'MO' => 'Missing due to Other Causes',
-	'Im' => 'Impacted Tooth',
-	'J' => 'Jacket Crown',
-	'AM' => 'Amalgam Filling',
-	'AB' => 'Abutment',
-	'P' => 'Pontic',
-	'In' => 'Inlay',
-	'FX' => 'Fixed Cure Composite',
-	'Rm' => 'Removable Denture',
-	'X' => 'Extraction due to Caries',
-	'XO' => 'Extraction due to Other Causes',
-	'&check;' => 'Present Teeth',
-	'Cm' => 'Congenitally Missing',
-	'Sp' => 'Supernumerary'
+				'D' => 'Decayed (Caries Indicated for Filling)',
+				'M' => 'Missing due to Caries',
+				'F' => 'Filled',
+				'I' => 'Caries Indicated for Extraction',
+				'RF' => 'Root Fragment',
+				'MO' => 'Missing due to Other Causes',
+				'Im' => 'Impacted Tooth',
+				'J' => 'Jacket Crown',
+				'AM' => 'Amalgam Filling',
+				'AB' => 'Abutment',
+				'P' => 'Pontic',
+				'In' => 'Inlay',
+				'FX' => 'Fixed Cure Composite',
+				'Rm' => 'Removable Denture',
+				'X' => 'Extraction due to Caries',
+				'XO' => 'Extraction due to Other Causes',
+				'&check;' => 'Present Teeth',
+				'Cm' => 'Congenitally Missing',
+				'Sp' => 'Supernumerary'
 			);
 			$rprocedure_count = $qprocedure_count->result_array();
 			foreach($rprocedure_count as $procedure) {

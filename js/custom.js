@@ -295,7 +295,7 @@ $(function() {
 		changeMonth: true,
 		changeYear: true,
 		yearRange: '1910:2016',
-		maxDate: 0,
+		/* maxDate: 0, */
 		onClose: function(selectedDate){
 			var computedAge = getAge(selectedDate);
 			if(isNaN(computedAge))

@@ -163,11 +163,11 @@ class Patient_Edit extends CI_Controller {
 			'chart_id' => $chart_id,
 			'tooth_num' => $tooth_num,
 			'tooth_area' => str_pad($pic_num, 2, '0', STR_PAD_LEFT),
-			'tooth_procedure' => htmlentities($legend, ENT_HTML5),
+			'tooth_procedure' => htmlentities($legend, ENT_SUBSTITUTE, 'ISO-8859-1'),
 			'date_procedure' => date('Y-m-d', time()),
 			'timestamp' => time()
 		);
-
+		
 		$this->db->insert('patient_tooth_chart_extra', $set_tooth_array);
 		$callback['id'] = $this->db->insert_id();
 
@@ -175,6 +175,12 @@ class Patient_Edit extends CI_Controller {
 
 		$callback['new_chart'] = $new_chart;
 		$callback['chart_name'] = $chart_name;
+		
+		
+		$data_array_patient = array(
+			'last_procedure'=> date('Y-m-d', time())
+		);
+		$this->db->where('id',$patient_id)->update('patient_list',$data_array_patient);
 
 		echo json_encode($callback);
 	}

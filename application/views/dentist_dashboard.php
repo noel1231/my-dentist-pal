@@ -120,20 +120,20 @@
 	<input type="hidden" id="appointment_id" name="appointment_id" />
 	<input type="hidden" name="dentist_id" value="<?php echo $id; ?>" />
 	<div class="form-group">
-		<label for="inputTitle1" class="col-lg-3 control-label"> Title: </label>
-		<div class="col-lg-9">
+		<label for="inputTitle1" class="col-md-2 control-label"> Title: </label>
+		<div class="col-md-10">
 			<input type="text" class="form-control" id="inputTitle1" name="title" required data-content="Title is required">
 		</div>
 	</div>
 	<div class="form-group">
-		<label for="inputDescription1" class="col-lg-3 control-label"> Description: </label>
-		<div class="col-lg-9">
+		<label for="inputDescription1" class="col-md-2 control-label"> Description: </label>
+		<div class="col-md-10">
 			<input type="text" class="form-control" id="inputDescription1" name="description">
 		</div>
 	</div>
 	<div class="form-group">
-		<label for="inputDate1" class="col-lg-3 control-label"> Date: </label>
-		<div class="col-lg-9 form-inline">
+		<label for="inputDate1" class="col-md-2 control-label"> Date: </label>
+		<div class="col-md-10 form-inline">
 			<div class="form-group">
 				<div class="col-sm-12">
 					<input type="text" class="form-control datepicker" id="inputDate1" placeholder="MM/DD/YY" name="date1" tabindex="-1" value="<?php echo date('m/d/Y', time()) ?>">
@@ -142,14 +142,14 @@
 		</div>
 	</div>
 	<div class="form-group">
-		<label for="inputTime1" class="col-lg-3 control-label"> From: </label>
-		<div class="col-lg-9 form-inline">
+		<label for="inputTime1" class="col-md-2 col-sm-2 control-label"> From: </label>
+		<div class="col-md-10 col-sm-10 form-inline">
 			<div class="form-group">
-				<div class="col-lg-5">
+				<div class="col-md-5 col-sm-5">
 					<input type="text" class="form-control timepicker" id="inputTime1" placeholder="00:00" name="time1" required>
 				</div>
-				<label for="inputTime2" class="col-lg-2 control-label"> To: </label>
-				<div class="col-lg-5">
+				<label for="inputTime2" class="col-md-2 control-label"> To: </label>
+				<div class="col-md-5 col-sm-5">
 					<input type="text" class="form-control timepicker1" id="inputTime2" placeholder="00:00" name="time2" required>
 				</div>
 			</div>
