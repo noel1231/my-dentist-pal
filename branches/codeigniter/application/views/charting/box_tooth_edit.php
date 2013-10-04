@@ -65,7 +65,7 @@
 
 	<div>
 
-		<div id="chart_container">
+		<div id="chart_container" style="padding-top: 20px">
 <?php
 		// if($this->input->get('key') && $this->input->get('key') !== 'none') {
 			$data_tooth_chart_patient = $this->charting->load_chart($chart_id, $patient_id);
