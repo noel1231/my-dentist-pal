@@ -13,10 +13,17 @@ class Welcome extends CI_Controller {
 		$this->load->library('image_lib');
 		$this->load->library('cart');
 		$this->load->library('encrypt');
+		$this->load->model('Patient_Edit_Model', 'patient_edit');
+		$this->load->model('Charting_Model', 'charting');
+		$this->load->model('Appointment_Model', 'appointment');
 	}
 
 	public function index()
 	{
+		$this->patient_edit->check_missing_db();
+		$this->charting->check_missing_db();
+		$this->appointment->check_missing_db();
+
 		$data['title'] = 'Medix Dental - Digitize your dental management practice. A full-featured online tool that integrates dental practice management and confidential patient clinical charting, which dentist can access wherever they are.';
 	    
                 $data['body'] = $this->load->view('homepage/body', '', true);

@@ -88,6 +88,9 @@ class Patient_Edit_Model extends CI_Model {
 		if(!$this->db->field_exists('last_procedure', 'patient_list')) {
 			$this->db->query('ALTER TABLE `patient_list` ADD `last_procedure` TEXT');
 		}
+		if(!$this->db->field_exists('medical_treatment', 'patient_list')) {
+			$this->db->query('ALTER TABLE `patient_list` ADD `medical_treatment` TEXT');
+		}
 
 	}
 	

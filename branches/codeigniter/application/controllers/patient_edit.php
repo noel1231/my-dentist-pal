@@ -17,6 +17,36 @@ class Patient_Edit extends CI_Controller {
 	
 	function index()
 	{
+		switch ($this->input->post('submit')) {
+			case 'tooth':
+				$this->set_tooth(); return false;
+				break;
+			case 'chart':
+				$chart_name = $this->input->post('chart_name');
+				$dentist_id = $this->input->post('dentist_id');
+				$patient_id = $this->input->post('patient_id');
+				$this->insert_chart($chart_name, $dentist_id, $patient_id); return false;
+				break;
+			case 'select_chart':
+				$chart_id = $this->input->post('chart');
+				$patient_id = $this->input->post('patient_id');
+				$this->select_chart($chart_id, $patient_id); return false;
+				break;
+			case 'chart_info':
+				// $chart_id = $this->input->post('chart');
+				// $patient_id = $this->input->post('patient_id');
+				// $this->select_chart($chart_id, $patient_id); return false;
+				$this->chart_info(); return false;
+				break;
+		}
+
+		switch ($this->input->post('view')) {
+			case 'treatment_record':
+				$dentist_id = $this->input->post('dentist_id');
+				$this->treatment_record($dentist_id); return false;
+				break;
+		}
+
 		if($this->session->userdata('id')) {
 			$data['sess_id'] = $this->session->userdata('id');
 
@@ -24,36 +54,6 @@ class Patient_Edit extends CI_Controller {
 				redirect(base_url().'dentist_dashboard');
 			}
 
-			switch ($this->input->post('submit')) {
-				case 'tooth':
-					$this->set_tooth(); return false;
-					break;
-				case 'chart':
-					$chart_name = $this->input->post('chart_name');
-					$dentist_id = $this->input->post('dentist_id');
-					$patient_id = $this->input->post('patient_id');
-					$this->insert_chart($chart_name, $dentist_id, $patient_id); return false;
-					break;
-				case 'select_chart':
-					$chart_id = $this->input->post('chart');
-					$patient_id = $this->input->post('patient_id');
-					$this->select_chart($chart_id, $patient_id); return false;
-					break;
-				case 'chart_info':
-					// $chart_id = $this->input->post('chart');
-					// $patient_id = $this->input->post('patient_id');
-					// $this->select_chart($chart_id, $patient_id); return false;
-					$this->chart_info(); return false;
-					break;
-			}
-
-			switch ($this->input->post('view')) {
-				case 'treatment_record':
-					$dentist_id = $this->input->post('dentist_id');
-					$this->treatment_record($dentist_id); return false;
-					break;
-			}
-			
 			$this->db->where('id', $this->input->get('id'));
 			$qdentist_list = $this->db->get('patient_list');
 			$rdentist_list = $qdentist_list->row_array();
@@ -128,7 +128,7 @@ class Patient_Edit extends CI_Controller {
 	{
 		$new_chart = $this->input->post('new_chart');
 		$chart_id = $this->charting->insert_chart($chart_name, $dentist_id, $patient_id);
-		$this->select_chart($chart_id, $dentist_id, $patient_id, $new_chart);
+		$this->select_chart($chart_id, $patient_id);
 	}
 
 	private function set_tooth() {

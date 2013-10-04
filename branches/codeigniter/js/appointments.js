@@ -120,7 +120,7 @@ $(function(){
 					custom_param2: 'somethingelse'
 				},
 				error: function() {
-					alert('there was an error while fetching events!');
+					// alert('there was an error while fetching events!');
 				},
 				color: '#3A87AD',   // a non-ajax option
 				textColor: '#FFFFFF', // a non-ajax option
@@ -133,7 +133,7 @@ $(function(){
 					custom_param2: 'somethingelse'
 				},
 				error: function() {
-					alert('there was an error while fetching events!');
+					// alert('there was an error while fetching events!');
 				},
 				color: '#5cb85c',   // a non-ajax option
 				textColor: '#FFFFFF' // a non-ajax option				
@@ -146,7 +146,7 @@ $(function(){
 					custom_param2: 'somethingelse'
 				},
 				error: function() {
-					alert('there was an error while fetching events!');
+					// alert('there was an error while fetching events!');
 				},
 				color: '#f0ad4e',   // a non-ajax option
 				textColor: '#FFFFFF' // a non-ajax option				
