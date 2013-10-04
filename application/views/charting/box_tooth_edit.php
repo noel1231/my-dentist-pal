@@ -290,6 +290,7 @@
   <div class="modal-content">
 <?php
 	$form_attrib = array(
+		'method' => 'post',
 		'role' => 'form',
 		'class' => 'form-horizontal',
 		'id' => 'form_add_chart',

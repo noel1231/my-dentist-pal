@@ -16,6 +16,14 @@ class Charting_Model extends CI_Model {
 		   date_default_timezone_set('Asia/Manila');
 		}
 
+		if(!$this->db->field_exists('chart_id', 'patient_tooth_chart_extra_adult')) {
+			$this->db->query('ALTER TABLE `patient_tooth_chart_extra_adult` ADD `chart_id` INT');
+		}
+
+		if(!$this->db->field_exists('chart_id', 'patient_tooth_chart_extra_child')) {
+			$this->db->query('ALTER TABLE `patient_tooth_chart_extra_child` ADD `chart_id` INT');
+		}
+
 		if(!$this->db->table_exists('patient_tooth_chart')) {
 			$this->db->update('patient_tooth_chart_extra_adult', array('chart_id' => 0));
 			$this->db->update('patient_tooth_chart_extra_child', array('chart_id' => 0));
@@ -54,11 +62,11 @@ CREATE TABLE IF NOT EXISTS `patient_tooth_chart_extra` (
 			$this->db->query('ALTER TABLE `patient_tooth_chart` ADD `periodical_screening` TEXT NOT NULL');
 		}
 
-		/* insert adult tooth_chart from old to new patient_tooth_chart */
-
-		if(!$this->db->field_exists('chart_id', 'patient_tooth_chart_extra_adult')) {
-			$this->db->query('ALTER TABLE `patient_tooth_chart_extra_adult` ADD `chart_id` TEXT NOT NULL');
+		if(!$this->db->field_exists('status', 'patient_tooth_chart_extra')) {
+			$this->db->query('ALTER TABLE `patient_tooth_chart_extra` ADD `status` INT');
 		}
+
+		/* insert adult tooth_chart from old to new patient_tooth_chart */
 
 		$select = $this->db->select('id, patient_id, chart_name, date_chart, chart_remarks')->where_in('chart_id', array('', 0, '0'))->get('patient_tooth_chart_extra_adult');
 		if($select->num_rows())
@@ -83,10 +91,6 @@ CREATE TABLE IF NOT EXISTS `patient_tooth_chart_extra` (
 			}
 		}
 		/* insert child tooth_chart from old to new patient_tooth_chart */
-
-		if(!$this->db->field_exists('chart_id', 'patient_tooth_chart_extra_child')) {
-			$this->db->query('ALTER TABLE `patient_tooth_chart_extra_child` ADD `chart_id` TEXT NOT NULL');
-		}
 
 		$select = $this->db->select('id, patient_id, chart_name, date_chart, chart_remarks')->where_in('chart_id', array('', 0, '0'))->get('patient_tooth_chart_extra_child');
 		if($select->num_rows())
