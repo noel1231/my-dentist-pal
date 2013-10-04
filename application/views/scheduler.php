@@ -40,7 +40,7 @@ if ($this->db->table_exists('dentist_appointments'))
 			</div>
 			<div class="pull-right">
 				<div class="btn-group">
-					<button id="show_add_sched" type="button" class="btn" style="background-color: transparent;border: 1px solid#ddd;"> + Add Schedule </button>
+					<button id="show_add_sched" type="button" class="btn btn-primary"> + Add Schedule </button>
 				</div>
 			</div>
 		</div>

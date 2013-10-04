@@ -52,12 +52,12 @@
 						</div>
 					</div>
 				</div>
-				<div class="container">
-                                        <div class="col-md-5" style="padding-left: 0; margin-left: -15px;">
-                                            <h1 style="margin-top: 0;"><?php echo $dashboard_title == 'Dashboard' ? 'What\'s Happening?' : $dashboard_title; ?></h1>
+				<div class="row">
+                                        <div class="col-md-4">
+                                            <div style="font-size: 32px;"><?php echo $dashboard_title == 'Dashboard' ? 'What\'s Happening?' : $dashboard_title; ?></div>
                                           </div>
                                     
-					<div class="col-md-7" style="padding-right: 0;">
+					<div class="col-md-8">
 						<?php 
 						if(isset($_GET['scheduler']))
 						{
