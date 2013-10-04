@@ -11,39 +11,21 @@ class Dentist_Dashboard extends CI_Controller {
 		$this->load->database();
 		$this->load->model('Patient_Edit_Model', 'patient_edit');
 		$this->load->model('Charting_Model', 'charting');
+		$this->load->model('Appointment_Model', 'appointment');
 
 	}
 
 	function index()
 	{
-		$this->patient_edit->check_missing_db();
-		$this->charting->check_missing_db();
-
-		$this->db->query('
-CREATE TABLE IF NOT EXISTS `dentist_appointments` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `dentist_id` text NOT NULL,
-  `title` text NOT NULL,
-  `description` text NOT NULL,
-  `start` text NOT NULL,
-  `end` text,
-  `start_date` text NOT NULL,
-  `start_time` text NOT NULL,
-  `end_date` text NOT NULL,
-  `end_time` text NOT NULL,
-  `timestamp` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=37 ;
-		');
-
-		if(!$this->db->field_exists('status', 'dentist_appointments')) {
-			$this->db->query('ALTER TABLE `dentist_appointments` ADD `status` TEXT NOT NULL');
-		}
-
 		if( ! ini_get('date.timezone') )
 		{
-		   date_default_timezone_set('GMT');
+		   date_default_timezone_set('Asia/Manila');
 		}
+
+		$this->patient_edit->check_missing_db();
+		$this->charting->check_missing_db();
+		$this->appointment->check_missing_db();
+
 
 		// $sess_id=$_SESSION['id'];
 		if($this->session->userdata('id')) {
@@ -133,7 +115,7 @@ CREATE TABLE IF NOT EXISTS `dentist_appointments` (
 				$this->db->where('start_date', $start_date);
 
 			$this->db->where('dentist_id', $dentist_id);
-			$this->db->where('status', null);
+			$this->db->where_in('status', array('', NULL));
 
 			$qappointments = $this->db->get('dentist_appointments');
 			$rappointments = $qappointments->result_array();

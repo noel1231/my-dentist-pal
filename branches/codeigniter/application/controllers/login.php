@@ -17,6 +17,10 @@ class Login extends CI_Controller {
 	
 	function index()
 	{
+		if(!$this->db->field_exists('status', 'dentist_list')) {
+			$this->db->query('ALTER TABLE `dentist_list` ADD `status` INT NOT NULL');
+		}
+
 		if(isset($_GET['accessNumber']))
 		{
 			if($_GET['accessNumber'])
