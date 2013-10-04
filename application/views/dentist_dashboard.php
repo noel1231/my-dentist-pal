@@ -122,37 +122,39 @@
 	<div class="form-group">
 		<label for="inputTitle1" class="col-md-2 control-label"> Title: </label>
 		<div class="col-md-10">
-			<input type="text" class="form-control" id="inputTitle1" name="title" required data-content="Title is required">
+			<div class="col-md-12 col-sm-12">
+				<input type="text" class="form-control" id="inputTitle1" name="title" required data-content="Title is required">
+			</div>
 		</div>
 	</div>
 	<div class="form-group">
 		<label for="inputDescription1" class="col-md-2 control-label"> Description: </label>
 		<div class="col-md-10">
-			<input type="text" class="form-control" id="inputDescription1" name="description">
+			<div class="col-md-12 col-sm-12">
+				<input type="text" class="form-control" id="inputDescription1" name="description">
+			</div>
 		</div>
 	</div>
 	<div class="form-group">
 		<label for="inputDate1" class="col-md-2 control-label"> Date: </label>
-		<div class="col-md-10 form-inline">
-			<div class="form-group">
-				<div class="col-sm-12">
-					<input type="text" class="form-control datepicker" id="inputDate1" placeholder="MM/DD/YY" name="date1" tabindex="-1" value="<?php echo date('m/d/Y', time()) ?>">
-				</div>
+		<div class="col-md-10">
+			<div class="col-md-5 col-sm-5">
+				<input type="text" class="form-control datepicker" id="inputDate1" placeholder="MM/DD/YY" name="date1" tabindex="-1" value="<?php echo date('m/d/Y', time()) ?>">
 			</div>
 		</div>
 	</div>
 	<div class="form-group">
 		<label for="inputTime1" class="col-md-2 col-sm-2 control-label"> From: </label>
 		<div class="col-md-10 col-sm-10 form-inline">
-			<div class="form-group">
+			
 				<div class="col-md-5 col-sm-5">
 					<input type="text" class="form-control timepicker" id="inputTime1" placeholder="00:00" name="time1" required>
 				</div>
-				<label for="inputTime2" class="col-md-2 control-label"> To: </label>
+				<label for="inputTime2" class="col-md-2 col-sm-2 control-label"> To: </label>
 				<div class="col-md-5 col-sm-5">
 					<input type="text" class="form-control timepicker1" id="inputTime2" placeholder="00:00" name="time2" required>
 				</div>
-			</div>
+			
 		</div>
 	</div>
 <?php
