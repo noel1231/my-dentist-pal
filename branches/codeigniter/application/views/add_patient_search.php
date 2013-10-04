@@ -1,4 +1,4 @@
-<style>
+<!--<style>
 
 	/* michael codes */
 	@media(max-width: 1213px)
@@ -21,9 +21,9 @@
 			margin-bottom: 15px;
 		}
 	}
-</style>	
-<div class="row">
-	<div class="pull-right" style="">
+</style>	-->
+<div class="pull-right">
+	
 	<?php
 		$data_params = array(
 			'name'=>'patient_search_from',
@@ -47,7 +47,6 @@
 				<button type="submit" class="submit btn btn_design btn-primary btn-lg" />SEARCH</button>
 			</div>
 		</form>
-	</div>
 </div>
 				
   <!-- Modal -->
