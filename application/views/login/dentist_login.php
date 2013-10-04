@@ -211,6 +211,7 @@
 					<div class="container">
 						<div class="alert alert-success send_msg" style="text-align:center;margin-top:10px;display:none;"><?php //echo validation_errors(); ?></div>
 						<div class="alert alert-success np_success_msg" style="text-align:center;margin-top:10px;display:none;"><?php //echo validation_errors(); ?></div>	
+						<div class="alert alert-danger np_error_msg" style="text-align:center;margin-top:10px;display:none;"><?php //echo validation_errors(); ?></div>
 					</div>
 					<!--<p>Please verify your email to activate your account.</p>-->
 					<div class="modal-footer">

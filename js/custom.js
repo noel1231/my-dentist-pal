@@ -602,9 +602,9 @@ $(function() {
 				}else
 				{
 					// $('.np_error_msg').show();
-					$('.np_error_msg').html('Password changed failed').show();
+					$('.np_error_msg').html('Password changed failed invalid URL').show();
 					$('#myModalNewPassword').modal('hide');
-					// $('#mySuccessReset').modal('show'); //test
+					$('#mySuccessReset').modal('show'); //test
 				}
 				
 				

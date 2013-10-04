@@ -137,8 +137,8 @@ class Login extends CI_Controller {
 			
 			/* send email */
 			$message = '
-				Thank you for signing up!<br> 
-				Before we can give you access to all of Medix&#39;s features, please confirm your account by clicking the button/link below.<br>
+				Good Day!<br> 
+				Please confirm to create new password by clicking the button/link below.<br>
 				<a href="'.base_url('login?reset='.$row['id'].'&accessNumber='.$keyType).'"> Click here to activate.</a>
 			';
 			
