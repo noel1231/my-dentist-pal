@@ -105,6 +105,10 @@ class Login extends CI_Controller {
 		if($query->num_rows() > 0)
 		{
 			echo $row['id'];
+			$data = array(
+				'last_login'=> date('Y-m-d',time())
+			);
+			$this->db->where('email',$email)->update('patient_list',$data);
 		}
 		else
 		{
