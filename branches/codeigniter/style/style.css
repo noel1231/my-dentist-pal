@@ -620,16 +620,6 @@ color:#FFF;
 }
 
 
-#add_sched .modal-dialog {
-	width: 55%;
-}
-
-@media(max-width: 768px){
-	#add_sched .modal-dialog {
-		width: auto;
-	}
-}
-
 /* for charting */
 .tooth {
 	cursor: pointer;
