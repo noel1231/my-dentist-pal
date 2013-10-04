@@ -11,7 +11,10 @@ class Charting_Model extends CI_Model {
 
 	function check_missing_db() {
 
-		date_default_timezone_set('Asia/Manila');
+		if( ! ini_get('date.timezone') )
+		{
+		   date_default_timezone_set('Asia/Manila');
+		}
 
 		$this->db->query('
 CREATE TABLE IF NOT EXISTS `patient_tooth_chart` (
@@ -101,7 +104,7 @@ CREATE TABLE IF NOT EXISTS `patient_tooth_chart_extra` (
 			}
 		}
 
-		if(!$this->db->field_exists('status', 'patient_tooth_chart_extra')) {
+		if(!$this->db->field_exists('date_modified', 'patient_tooth_chart_extra')) {
 			$this->db->query('ALTER TABLE `patient_tooth_chart_extra` ADD `date_modified` INT NOT NULL');
 		}
 
