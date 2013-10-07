@@ -252,7 +252,7 @@ $(function(){
 	});
 	
 	$( "#inputDate1.datepicker" ).datepicker({
-		minDate: '-0D',
+		// minDate: '-0D',
 	});
 
 	$('#add_sched').on('shown.bs.modal', function () {

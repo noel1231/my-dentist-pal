@@ -60,47 +60,47 @@
 		<form class="form-horizontal" role="form" method="POST" accept-charset="utf-8" enctype="multipart/form-data" name="adding_patient_form" id="adding_patient_form">
 			<div class="modal-body">
 			  <div class="form-group">
-				<label class="col-lg-4 control-label">Patien ID number</label>
-				<div class="col-lg-6">
+				<label class="col-lg-4 col-md-4 col-sm-4 control-label">Patien ID number</label>
+				<div class="col-lg-6 col-md-6 col-sm-6">
 				  <input type="text" name="modal_p_num" class="form-control" value="<?php echo time(); ?>" readonly>
 				</div>
 			  </div>
 			  <div class="form-group">
-				<label class="col-lg-4 control-label">Entry Date</label>
-				<div class="col-lg-6">
+				<label class="col-lg-4 col-md-4 col-sm-4 control-label">Entry Date</label>
+				<div class="col-lg-6 col-md-6 col-sm-6">
 				  <input type="text" name="modal_p_entrydate" class="form-control" value="<?php echo date('Y-m-d H:i:s',time()); ?>" readonly>
 				</div>
 			  </div>
 			  <div class="form-group">
-				<label class="col-lg-4 control-label">Photo</label>
-				<div class="col-lg-6">
+				<label class="col-lg-4 col-md-4 col-sm-4 control-label">Photo</label>
+				<div class="col-lg-6 col-md-6 col-sm-6">
 					<input type="file" id="modal_p_photo" name="modal_p_photo" onchange="handleFiles(this.files)">
-					<div class="col-sm-12" style="margin-top: 10px;">
+					<div class="col-sm-12 col-md-12 col-lg-12" style="margin-top: 10px;">
 						<img class="p_photo_view img-thumbnail" src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&text=no+image" style="width:200px;" >
 					</div>
 				</div>
 			  </div>
 			  <div class="form-group">
-				<label class="col-lg-4 control-label">First Name</label>
-				<div class="col-lg-6">
+				<label class="col-lg-4 col-md-4 col-sm-4 control-label">First Name</label>
+				<div class="col-lg-6 col-md-6 col-sm-6">
 				  <input type="text" name="modal_p_fname" class="form-control" value="" required>
 				</div>
 			  </div>
 			  <div class="form-group">
-				<label class="col-lg-4 control-label">Middle Name</label>
-				<div class="col-lg-6">
+				<label class="col-lg-4 col-md-4 col-sm-4 control-label">Middle Name</label>
+				<div class="col-lg-6 col-md-6 col-sm-6">
 				  <input type="text" name="modal_p_mname" class="form-control" value="">
 				</div>
 			  </div>
 			  <div class="form-group">
-				<label class="col-lg-4 control-label">Last Name</label>
-				<div class="col-lg-6">
+				<label class="col-lg-4 col-md-4 col-sm-4 control-label">Last Name</label>
+				<div class="col-lg-6 col-md-6 col-sm-6">
 				  <input type="text" name="modal_p_lname" class="form-control" value="" required>
 				</div>
 			  </div>
 			  <div class="form-group">
-				<label class="col-lg-4 control-label">Gender</label>
-				<div class="col-lg-6">
+				<label class="col-lg-4 col-md-4 col-sm-4 control-label">Gender</label>
+				<div class="col-lg-6 col-md-6 col-sm-6">
 				  <select name="modal_p_sex" class="form-control" required>
 					<option value=""></option>
 					<option value="female">Female</option>
@@ -109,20 +109,20 @@
 				</div>
 			  </div>
 			  <div class="form-group">
-				<label class="col-lg-4 control-label">Birth Date</label>
-				<div class="col-lg-6">
+				<label class="col-lg-4 col-md-4 col-sm-4 control-label">Birth Date</label>
+				<div class="col-lg-6 col-md-6 col-sm-6">
 				  <input type="text" class="form-control datepickerBday" name="modal_p_bday" value="" placeholder="mm/dd/yyyy" required>
 				</div>
 			  </div>
 			  <div class="form-group">
-				<label class="col-lg-4 control-label">Age</label>
-				<div class="col-lg-6">
+				<label class="col-lg-4 col-md-4 col-sm-4 control-label">Age</label>
+				<div class="col-lg-6 col-md-6 col-sm-6">
 				  <input type="text" class="form-control" name="modal_p_age" value="" readonly>
 				</div>
 			  </div>
 			  <div class="form-group">
-				<label class="col-lg-4 control-label">Home Address</label>
-				<div class="col-lg-6">
+				<label class="col-lg-4 col-md-4 col-sm-4 control-label">Home Address</label>
+				<div class="col-lg-6 col-md-6 col-sm-6">
 				  <textarea rows="3" class="form-control" name="modal_p_address" required></textarea>
 				</div>
 			  </div>

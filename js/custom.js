@@ -295,6 +295,7 @@ $(function() {
 	
 	$( ".datepicker" ).datepicker({
 		changeMonth: true,
+		yearRange: '1910:2016',
 		changeYear: true
 	});
 	

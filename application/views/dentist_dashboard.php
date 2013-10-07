@@ -36,7 +36,7 @@
 							?>
                                                                     
                                                                         
-									<div class="col-md-6 pull-right" style="text-align: right;">
+									<div class="col-md-6 col-xs-12 pull-right" style="text-align: right;">
 									  <?php
 										if(isset($activeMenu))
 										{
@@ -59,7 +59,7 @@
 						</div>
 					</div>
                                     
-					<div class="col-md-6">
+					<div class="col-md-6 col-xs-11 col-sm-12">
 						<?php 
 						if(isset($_GET['scheduler']))
 						{
@@ -145,11 +145,11 @@
 		<div class="col-md-9 col-sm-9 form-inline">
 			<div class="row">
 				<div class="col-md-5 col-sm-5">
-					<input type="text" class="form-control timepicker" id="inputTime1" placeholder="00:00" name="time1" required>
+					<input type="text" class="form-control timepicker" id="inputTime1" placeholder="00:00" name="time1" readonly>
 				</div>
 				<label for="inputTime2" class="col-md-2 col-sm-2 control-label"> To: </label>
 				<div class="col-md-5 col-sm-5">
-					<input type="text" class="form-control timepicker1" id="inputTime2" placeholder="00:00" name="time2" required>
+					<input type="text" class="form-control timepicker1" id="inputTime2" placeholder="00:00" name="time2" readonly>
 				</div>
 			</div>
 		</div>
