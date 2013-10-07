@@ -31,6 +31,16 @@ class Welcome extends CI_Controller {
                 $data['identifier'] = true;
 		$this->load->view('homepage', $data);
 	}
+	
+	public function admin()
+	{
+		$data['title'] = 'Medix Dental - Digitize your dental management practice. A full-featured online tool that integrates dental practice management and confidential patient clinical charting, which dentist can access wherever they are.';
+	    
+        $data['body'] = $this->load->view('admin/admin_body', '', true);
+		$data['header'] = $this->load->view('admin/admin_header', '', true);
+                
+		$this->load->view('admin/admin_content', $data);
+	}
 }
 
 /* End of file welcome.php */
