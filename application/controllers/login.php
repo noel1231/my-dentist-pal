@@ -186,4 +186,61 @@ class Login extends CI_Controller {
 		}
 			
 	}
+	
+	function resend_email()
+	{
+		// print_r($this->input->post());
+		$email_resend = $this->input->post('resend_email');
+		$passkey = md5($email_resend);
+		// echo $email_resend;
+		
+		$query = $this->db->where('email', $email_resend)->get('dentist_list');
+		$row = $query->row_array();
+		if($query->num_rows() > 0)
+		{
+					
+			$message = '
+				Email resend!<br> 
+				Before we can give you access to all of Medix&#39;s features, please confirm your account by clicking the button/link below.<br>
+				<a href="'.base_url('login?valid=success&accessNumber='.$row['id']).'"> Click here to activate.</a>
+				
+			';
+			/* <a href="'.base_url().'login/confirm?email='.$email1.'&passkey='.$passkey.'&valid=success"> Click here to activate.</a> */
+			$this->load->library('email');
+			
+			$config['protocol'] = 'smtp';
+			$config['smtp_host'] = 'mail.mydentistpal.com';
+			$config['smtp_user'] = 'info@mydentistpal.com';
+			$config['smtp_pass'] = 'mdp2468';
+			$config['smtp_port'] = 26;
+			$config['mailtype'] = 'html';
+			
+			$this->email->initialize($config);
+			
+			$this->email->from('info@medix.ph', 'Medix');
+			$this->email->to($email_resend); 
+			$this->email->subject("Medix Account Confirmation to $email_resend");
+			$this->email->message($message);	
+
+			$sentmail = $this->email->send();
+			
+			if($sentmail)
+			{
+				$data = array(
+					'forgot_key' => $passkey				
+				);
+				$this->db->where('email', $email_resend)->update('dentist_list', $data);
+				$message_status = "Yes";
+			}else
+			{
+				$message_status = "No";
+			}
+			
+			echo 'resend success';
+		}else
+		{
+			echo 'email not found';
+		}
+		
+	}
 }

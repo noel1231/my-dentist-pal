@@ -51,7 +51,6 @@
                         <div class="col-lg-offset-3 col-lg-10">
                             <!--<a href="<?php //echo base_url('forgot_password'); ?>">Forgot Password?</a>-->
 							<a href="#myModalForgotPassword" id="forgotpassword">Forgot Password?</a>
-                            <!--<a href="<?php //echo base_url(); ?>">Resend email verification for password</a>-->
                         </div>
 						<div class="col-lg-offset-3 col-lg-10">
                             <a href="#myModalResendEmail" id="resendemail" style="display:none;">Resend Confirmation Email</a>
@@ -147,13 +146,12 @@
 					</div>
 				</div>
 				<div class="modal-body">
-					<div class="alert alert-danger error_msg" style="text-align:center;margin-top:10px;display:none;"><?php //echo validation_errors(); ?></div>
-					<!--<div class="alert alert-success send_msg" style="text-align:center;margin-top:10px;display:none;"><?php //echo validation_errors(); ?></div>-->
+					<div class="alert alert-danger error_msg" style="text-align:center;margin-top:10px;display:none;"></div>
 					<div></div>&nbsp;
 					<div class="form-group"><!--start full name-->
 						<label for="" class="col-lg-3 control-label">Email Address:</label>
 						<div class="col-lg-8">
-							<input type="text" id="forgot_email" name="forgot_email" class="form-control" value="<?php //echo set_value('forgot_email') ?>" placeholder="">
+							<input type="text" id="forgot_email" name="forgot_email" class="form-control" value="" placeholder="">
 						</div>	
 					</div>
 				</div>
@@ -171,7 +169,7 @@
  
     <!-- Modal for Resend Confiramtion Email to access dentist-->
 <div class="modal fade" id="myModalResendEmail" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static">
-	<form class="form-horizontal"  id="form_resend_email" role="form" method="post" action="#">	
+	<form class="form-horizontal"  id="form_resend_email" role="form" method="post" action="<?php echo base_url('login/resend_email'); ?>">	
 		<div class="modal-dialog">
 			<div class="modal-content modal_btop">
 				<div class="modal-header">
@@ -181,19 +179,19 @@
 					</div>
 				</div>
 				<div class="modal-body">
-					<div class="alert alert-danger error_msg" style="text-align:center;margin-top:10px;display:none;"></div>
+					<div class="alert alert-danger resend_error_msg" style="text-align:center;margin-top:10px;display:none;"></div>
 					<div></div>&nbsp;
 					<div class="form-group"><!--start full name-->
 						<label for="" class="col-lg-3 control-label">Email Address:</label>
 						<div class="col-lg-8">
-							<input type="text" id="resend_email" name="resend_email" class="form-control" value="<?php echo set_value('resend_email') ?>" placeholder="">
+							<input type="text" id="resend_email" name="resend_email" class="form-control" value="<?php //echo set_value('resend_email') ?>" placeholder="">
 						</div>	
 					</div>
 				</div>
 				<div class="modal-footer">
 					<div class="form-group">
 						<div class="col-lg-11">
-							<input type="submit" name="submit" value="Continue" class="btn btn-default"/>
+							<button type="" class="btn btn-default submit_resend_email" data-loading-text="Loading..."> Continue </button>
 						</div>
 					</div>
 				</div>
@@ -209,9 +207,9 @@
 				<div class="modal-body modal_btop">
 					<!--<p>Profile updated success...</p>-->
 					<div class="container">
-						<div class="alert alert-success send_msg" style="text-align:center;margin-top:10px;display:none;"><?php //echo validation_errors(); ?></div>
-						<div class="alert alert-success np_success_msg" style="text-align:center;margin-top:10px;display:none;"><?php //echo validation_errors(); ?></div>	
-						<div class="alert alert-danger np_error_msg" style="text-align:center;margin-top:10px;display:none;"><?php //echo validation_errors(); ?></div>
+						<div class="alert alert-success send_msg" style="text-align:center;margin-top:10px;display:none;"></div>
+						<div class="alert alert-success np_success_msg" style="text-align:center;margin-top:10px;display:none;"></div>	
+						<div class="alert alert-danger np_error_msg" style="text-align:center;margin-top:10px;display:none;"></div>
 					</div>
 					<!--<p>Please verify your email to activate your account.</p>-->
 					<div class="modal-footer">

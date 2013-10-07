@@ -36,7 +36,7 @@
 							?>
                                                                     
                                                                         
-									<div class="col-md-6" style="text-align: right;">
+									<div class="col-md-6 pull-right" style="text-align: right;">
 									  <?php
 										if(isset($activeMenu))
 										{
