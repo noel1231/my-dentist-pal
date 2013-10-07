@@ -265,6 +265,10 @@ class Dentist_Dashboard extends CI_Controller {
 				$ap_id = $this->input->post('appointment_id');
 				
 				echo $this->input->post('appointment_id').'-';
+				$this->db->where('id', $this->input->post('appointment_id'));
+				$queryApp = $this->db->get('dentist_appointments');
+				$rowApp = $queryApp->row_array();
+				$status = $rowApp['status'];
 			}
 		}
 
@@ -275,11 +279,38 @@ class Dentist_Dashboard extends CI_Controller {
 				<td>'.$insert_data['description'].'</td>
 				<td>'.$insert_data['start_time'].' '.($insert_data['end_time'] ? 'to '.$insert_data['end_time'] : '').'</td>
 				<td>
+		';
+		if(!isset($status) || trim($status) == '')
+		{
+			echo '
 					<select class="select_status" style="background-color: #E7F4FF;">
-						<option value="">Select Status</option>
+						<option value="">Select Status...</option>
 						<option value="confirmed"> Confirmed </option>
 						<option value="cancelled"> Cancelled </option>
 					</select>
+			';
+		}else if($status == 'confirmed')
+		{
+			echo '
+					<select class="select_status" style="background-color: #E7F4FF;">
+						<option value="">Select Status...</option>
+						<option value="confirmed" selected> Confirmed </option>
+						<option value="cancelled"> Cancelled </option>
+					</select>
+			';
+			
+		}else if($status == 'cancelled')
+		{
+			echo '
+					<select class="select_status" style="background-color: #E7F4FF;">
+						<option value="">Select Status...</option>
+						<option value="confirmed"> Confirmed </option>
+						<option value="cancelled" selected> Cancelled </option>
+					</select>
+			';
+		}
+		
+		echo '
 				</td>
 				<td>
 					<span class="glyphicon glyphicon-trash delete_appointment" title="Delete" style="cursor:pointer"></span>
