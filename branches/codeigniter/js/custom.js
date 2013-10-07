@@ -556,7 +556,6 @@ $(function() {
 					$('#mySuccessReset').modal('show');
 					$('#forgot_email').val('');
 				}
-				
 			}
 		}).submit();
 	});
@@ -606,12 +605,50 @@ $(function() {
 					$('#myModalNewPassword').modal('hide');
 					$('#mySuccessReset').modal('show'); //test
 				}
-				
-				
-				
 			}
-		
-		
+		}).submit();
+	});
+	/* Resend The Dentist Email for account verification to access Medix  */
+	$('.submit_resend_email').click(function(){
+		var dis = $(this);
+		dis.prop('disabled',true);
+		$('#form_resend_email').ajaxForm({
+			type: 'POST',
+			
+			beforeSubmit: function(arr, jqform, option)
+			{
+				var form = jqform[0];
+				if(form.resend_email.value.trim() == ''){
+					$('.resend_error_msg').html('Enter your email address in the required field to proceed.').show();
+					$('#resend_email').focus();
+					return false;
+				}else if(!form.resend_email.value.match(/^([a-z0-9._-]+@[a-z0-9._-]+\.[a-z]{2,4}$)/i))
+				{
+					$('.resend_error_msg').html('Enter valid email address in the required field to proceed.').show();
+					$('#resend_email').focus();
+					$('#resend_email').val('');
+					return false;
+				}
+			},
+			
+			success: function(html)
+			{
+				alert(html)
+				// return false;
+				if(html == 'email not found')
+				{
+					$('.resend_error_msg').html('Resend failed. Email not found!').show();
+					dis.prop('disabled',false);
+				}
+				else
+				{
+					$('.resend_error_msg').hide();
+					$('.send_msg').html('Email resend successfully...').show();
+					$('#myModalResendEmail').modal('hide');
+					$('#mySuccessReset').modal('show'); 
+					$('#resend_email').val('');
+				}
+			}
 		});
 	});
 	
