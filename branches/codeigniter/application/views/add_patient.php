@@ -530,7 +530,7 @@
 								<div class="row show_question3" style="<?php if(isset($row) && isset($hospitalized) && $hospitalized->because != ' '){ echo 'display:block;'; }else{ echo 'display:none;'; }?>" <?php echo $disabled; ?>>
 									<div class="col-md-4 col-lg-4 col-sm-4" style="padding-right: 0;text-align: right;">If so, when and why?&nbsp;</div>
 									<div class="col-md-8 col-lg-8 col-sm-8" style="padding-left:0;text-align: right;">
-										<input type="text" class="col-md-6 col-lg-6 col-sm-6 datepicker" placeholder="mm/dd/yyyy" name="patient_when_hospitalized" value="<?php if(isset($row) && isset($hospitalized)){ echo $hospitalized->when; } ?>" <?php echo $disabled; ?>>
+										<input type="text" style="margin-right:5px;" class="col-md-5 col-lg-5 col-sm-5 datepicker" placeholder="mm/dd/yyyy" name="patient_when_hospitalized" value="<?php if(isset($row) && isset($hospitalized)){ echo $hospitalized->when; } ?>" <?php echo $disabled; ?>>
 										<input type="text" class="col-md-6 col-lg-6 col-sm-6" name="patient_why_hospitalized" value="<?php if(isset($row) && isset($hospitalized)){ echo $hospitalized->because; } ?>">
 									</div>
 								</div>
