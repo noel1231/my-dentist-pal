@@ -164,7 +164,7 @@ $(function() {
 	$('#treatment_record').delegate('.amtchg', 'keypress', function(e) {
 		var inputValue = this.value;
 		if( e.keyCode == 13 ) {
-			$(this).parents('td').html(inputValue);
+			$(this).parents('td').html('<div class="form-control-static"> '+inputValue);
 		}
 	})
 
