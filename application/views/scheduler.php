@@ -1,5 +1,27 @@
+<div class="row">
+	<div class="col-md-6">
+		<h3 style="margin-top: 10px;margin-bottom: 20px;">Scheduler</h3>
+	</div>
+	<div class="col-md-6" style="text-align: right;margin-bottom:15px;">
+	<?php
+		if(isset($_GET['scheduler']))
+		{
+			if($_GET['scheduler'] == 'true')
+			{
+	?>
+		<form class="form-inline" id="search_appointment_form" role="form" method="POST" action="" accept-charset="utf-8" >
+			<div class="form-group">
+				<input type="text" class="form-control col-sm-6" id="appoinment_name" placeholder="Search appointment" name="appoinment_name" >
+			</div>
+			<button type="submit" class="btn btn-primary">Search</button>
+		</form>
+	<?php
+			}
+		}
+	?>
+	</div>
+</div>
 
-<h3 style="margin-top: 10px;margin-bottom: 20px;">Scheduler</h3>
 <div id="scheduler" class="col-md-5" style="cursor: pointer;">
 	<div id="calendar"></div>
 </div>
@@ -16,24 +38,7 @@ if ($this->db->table_exists('dentist_appointments'))
 
 <div id="appointment" class="col-md-7" style="margin-top:30px;">
 	<div class="container">
-		<div class="row">
-		<?php
-			if(isset($_GET['scheduler']))
-			{
-				if($_GET['scheduler'] == 'true')
-				{
-		?>
-			<form class="form-inline" id="search_appointment_form" role="form" method="POST" action="" accept-charset="utf-8" >
-				<div class="form-group">
-					<input type="text" class="form-control" id="appoinment_name" placeholder="Search appointment" name="appoinment_name" >
-				</div>
-				<button type="submit" class="btn btn-primary">Search</button>
-			</form>
-		<?php
-				}
-			}
-		?>
-		</div>
+		
 		<div class="row">
 			<div class="pull-left">
 				<h4> <span id="date_appoint"> Today's </span> Appointment(s): <strong id="num_of_appoint"> <?php echo $qdentist_appointments->num_rows(); ?> </strong> </h4>
