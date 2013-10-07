@@ -2,7 +2,7 @@
 
 
 	<!--start dentist profile form-->
-	<div class="container wrapper" style="padding-bottom: 140px;">
+	<div class="container wrapper">
 		<div id="dp-wrapper-form" class="">			
 			<!--start dentist registration form-->
 			<div id="form-wrapper" class=""><!-- start dentist registration form wrapper-->
