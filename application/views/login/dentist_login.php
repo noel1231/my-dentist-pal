@@ -18,7 +18,7 @@
 	
 ?>
 <div class="container wrapper">
-    <div class="col-md-6 col-md-offset-3">
+    <div class="col-md-6 col-md-offset-3" style="padding-bottom: 30px;">
 		<input type="hidden" class="sample_login" value="<?php echo $answer; ?>">
 		<input type="hidden" class="sample_login1" value="<?php echo $answer1; ?>">
 	

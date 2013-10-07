@@ -54,7 +54,7 @@
 				</div>
 				<div class="row">
 					<div class="col-md-6">
-						<div style="font-size: 32px;">
+						<div style="font-size: 30px;">
 							<?php echo $dashboard_title == 'Dashboard' ? 'What\'s Happening?' : $dashboard_title; ?>
 						</div>
 					</div>
