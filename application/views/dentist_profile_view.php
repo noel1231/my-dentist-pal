@@ -4,18 +4,18 @@
 			<div id="form-wrapper"><!-- start dentist profile form wrapper-->
 				<div id="dp-wrapper-form"><!--start dentist profile form-->
 					<div id="dp-body-wraper">
-						<form class="form-horizontal col-lg-offset-1" id="form_dentist_profile" role="form" method="post" enctype="multipart/form-data" name="DentistProfileForm" onsubtmit="return false;">
+						<form class="form-horizontal col-md-offset-1 col-lg-offset-1 col-sm-offset-1" id="form_dentist_profile" role="form" method="post" enctype="multipart/form-data" name="DentistProfileForm" onsubtmit="return false;">
 								<!--START PERSONAL INFO-->
 									<!--<div class="alert alert-danger alert_msg" style="text-align:center;display:none;width:505px;margin-left:270px;"></div>-->
 									<div class="form-group"><!--start dentist id number-->
-										<label for="" class="col-lg-3 control-label">Dentist ID Number:</label>
-										<div class="col-lg-6">
+										<label for="" class="col-lg-3 col-md-3 col-sm-3 control-label">Dentist ID Number:</label>
+										<div class="col-lg-6 col-md-6 col-sm-6">
 											<input type="text" id="dentist-id" name="dentist-id" value="<?php echo $id; ?>" class="form-control" disabled="disabled"/>
 										</div>
 									</div><!--end dentist id number-->
 									<div class="form-group"><!--start dentist picture-->
-										<label for="" class="col-lg-3 control-label"></label>
-										<div class="col-lg-6">
+										<label for="" class="col-lg-3 col-md-3 col-sm-3 control-label"></label>
+										<div class="col-lg-6 col-md-6 col-sm-6">
 											<div>
 												<div>
 													<img src="<?php if(isset($profile_pic) && trim($profile_pic)){ echo base_url($profile_pic); }else{echo '';} ?>" alt="dentist image" id="dentist-img" name="dentist-img" class="img-circle dentist_photo_view" onerror="this.src='http://www.placehold.it/200x200/EFEFEF/AAAAAA&text=no+image'" style="width:200px;margin-bottom:10px;">
@@ -33,14 +33,14 @@
 										</div>
 									</div><!--end dentist picture-->
 									<div class="form-group"><!--start full name-->
-										<label for="" id="dp-label" class="col-lg-3 control-label">Name:</label>
-											<div class="col-lg-2">
+										<label for="" id="dp-label" class="col-lg-3 col-md-3 col-sm-3 control-label">Name:</label>
+											<div class="col-lg-2 col-md-2 col-sm-2">
 												<input type="text" id="fname" name="fname" class="form-control"  placeholder="First name" value="<?php echo isset($first_name) ? $first_name : ''; ?>">
 											</div>
-											<div class="col-lg-2">
+											<div class="col-lg-2 col-md-2 col-sm-2">
 												<input type="text" id="middle" name="middle" class="form-control" placeholder="Middle name" value="<?php echo isset($middle_name) ? $middle_name : ''; ?>">
 											</div>
-											<div class="col-lg-2">
+											<div class="col-lg-2 col-md-2 col-sm-2">
 												<input type="text" id="lname" name="lname" class="form-control" placeholder="Last name" value="<?php echo isset($sur_name) ? $sur_name : '' ?>">
 											</div>
 									</div><!--end full name-->
@@ -78,14 +78,14 @@
 									}
 								?>
 								<div class="form-group"><!--start dob-->
-									<label for="" class="col-lg-3 control-label">Birth Date:</label>
-									<div class="col-lg-6">
-										<input type="text" id="datepicker" name="bod" class="form-control datepick" placeholder="<?php echo isset($bod) ? $bod : '' ?>"" value="<?php echo isset($bod) ? $bod : '' ?>" />
+									<label for="" class="col-lg-3 col-md-3 col-sm-3 control-label">Birth Date:</label>
+									<div class="col-lg-6 col-md-6 col-sm-6">
+										<input type="text" id="datepicker" name="bod" class="form-control datepick" placeholder="<?php echo isset($bod) ? $bod : '' ?>" value="<?php echo isset($bod) ? $bod : '' ?>" />
 									</div>
 								</div><!--end dob-->
 								<div class="form-group"><!--start gender-->
-									<label for="" class="col-lg-3 control-label">Gender:</label>
-									<div class="col-lg-6">
+									<label for="" class="col-lg-3 col-md-3 col-sm-3 control-label">Gender:</label>
+									<div class="col-lg-6 col-md-6 col-sm-6">
 										<select id="dentist-gender" name="dentist-gender" class="form-control">
 											<option value="">Select...</option>
 											<option value="male"<?php echo isset($dentist_gender) && $dentist_gender == 'male' ? 'selected="selected"' : ''?>>Male</option>
@@ -95,27 +95,27 @@
 								</div><!--end gender-->
 								
 								<div class="form-group"><!--start license number-->
-									<label for="inputEmail1" class="col-lg-3 control-label">License Number:</label>
-									<div class="col-lg-6">
+									<label for="inputEmail1" class="col-lg-3 col-md-3 col-sm-3 control-label">License Number:</label>
+									<div class="col-lg-6 col-md-6 col-sm-6">
 										<input type="text" id="license" name="license" class="form-control" value="<?php echo isset($license_number) ? $license_number : '' ?>"/>
 									</div>
 								</div><!--end license number-->
 								<div class="form-group">
-									<div class="col-lg-offset-3 col-lg-10">
-										<button type="submit" name="save" value="Save" class="btn btn-primary submit_dental_form1" id="save"> Save </button>
+									<div class="col-lg-9 col-md-9 col-sm-9">
+										<button type="submit" name="save" value="Save" class="pull-right btn btn-primary submit_dental_form1" id="save"> Save </button>
 									</div>
 								</div>							
 								<!--END PERSONAL INFO-->
 								<!--START CLINIC DETAILS-->
 								<div class="form-group" <!--style="margin-left:62px;border:solid 0px red;width:27%;"--><!--start clinic details-->
 									
-										<label for="" class="col-lg-3 control-label"><h2><span>Clinic Details</span></h2></label>
+										<label for="" class="col-lg-3 col-md-3 col-sm-3 control-label"><h2><span>Clinic Details</span></h2></label>
 										<!--<h2><span>Clinic Details</span></h2>-->
 									
 								</div><!--end clinic details-->
 								<div class="form-group"><!--start dentist clinic picture-->
-									<label for="" class="col-lg-3 control-label"></label>
-									<div class="col-lg-6">
+									<label for="" class="col-lg-3 col-md-3 col-sm-3 control-label"></label>
+									<div class="col-lg-6 col-md-6 col-sm-6">
 										<div>
 											<div>
 												<img src="<?php if(isset($clinic_pic) && trim($clinic_pic)){ echo base_url($clinic_pic);}else { echo '';}  ?>" alt="clinic image" id="clinic-img" name="clinic-img"  class="thumbnail img-rounded clinic_photo_view" onerror="this.src='http://www.placehold.it/200x150/EFEFEF/AAAAAA&text=no+image'" style="width:200px;">
@@ -133,8 +133,8 @@
 									</div>
 								</div><!--end dentist clinic picture-->
 								<div class="form-group"><!--start clinic name-->
-										<label for="" class="col-lg-3 control-label">Clinic Name:</label>
-										<div class="col-lg-6">
+										<label for="" class="col-lg-3 col-md-3 col-sm-3 control-label">Clinic Name:</label>
+										<div class="col-lg-6 col-md-6 col-sm-6">
 											<input type="text" id="clinic_name" name="clinic_name" class="form-control" placeholder="" value="<?php echo isset($clinic_name) ? $clinic_name : ''?>">											
 										</div>	
 								</div><!--end clinic name-->
@@ -185,8 +185,8 @@
 								
 								?>
 								<div class="form-group"><!--start dentist service-->
-									<label for="" class="col-lg-3 control-label">Service:</label>
-									<div class="col-lg-3">
+									<label for="" class="col-lg-3 col-md-3 col-sm-3 control-label">Service:</label>
+									<div class="col-lg-3 col-md-3 col-sm-3">
 										<div class="checkbox"><input type="checkbox" name="service[]" value="Dental Emergency-Same Day" <?php if(isset($dental_services) && $dental_services != ''){echo 'checked'; } ?>>Dental Emergency-Same Day</div>
 										<div class="checkbox"><input type="checkbox" name="service[]" value="Bone Grafts" <?php if(isset($dental_services1) && $dental_services1 != ''){echo 'checked'; } ?>>Bone Grafts</div>
 										<div class="checkbox"><input type="checkbox" name="service[]" value="Cosmetic Dentistry" <?php if(isset($dental_services2) && $dental_services2 != ''){echo 'checked'; } ?>>Cosmetic Dentistry</div>
@@ -206,7 +206,7 @@
 										<div class="checkbox"><input type="checkbox" name="service[]" value="Laser Dentistry" <?php if(isset($dental_services16) && $dental_services16 != ''){echo 'checked'; } ?>>Laser Dentistry</div>
 										<div class="checkbox"><input type="checkbox" name="service[]" value="Lumineers" <?php if(isset($dental_services17) && $dental_services17 != ''){echo 'checked'; } ?>>Lumineers</div>
 									</div>
-									<div class="col-lg-3">
+									<div class="col-lg-3 col-md-3 col-sm-3">
 										<div class="checkbox"><input type="checkbox" name="service[]" value="Medical Insurance Billing" <?php if(isset($dental_services18) && $dental_services18 != ''){echo 'checked'; } ?>>Medical Insurance Billing</div>
 										<div class="checkbox"><input type="checkbox" name="service[]" value="Oral Appliance Therapy" <?php if(isset($dental_services19) && $dental_services19 != ''){echo 'checked'; } ?>>Oral Appliance Therapy</div>
 										<div class="checkbox"><input type="checkbox" name="service[]" value="Oral rehabilitation" <?php if(isset($dental_services20) && $dental_services20 != ''){echo 'checked'; } ?>>Oral rehabilitation</div>
@@ -227,26 +227,26 @@
 									</div>
 								</div><!--end dentist service-->
 								<div class="form-group"><!--start dentist service-->
-									<label for="" class="col-lg-3 control-label">Other Service:</label>
-									<div class="col-lg-6">
+									<label for="" class="col-lg-3 col-md-3 col-sm-3 control-label">Other Service:</label>
+									<div class="col-lg-6 col-md-6 col-sm-6">
 										<textarea rows="5" cols="" id="other_service" name="other_service" class="form-control"><?php echo isset($services_offered) ?  $services_offered : ''; ?></textarea>
 									</div>
 								</div><!--end dentist other service-->
 								<div class="form-group"><!--start clinic address-->
-										<label for="" class="col-lg-3 control-label">Clinic Address:</label>
-										<div class="col-lg-6">
+										<label for="" class="col-lg-3 col-md-3 col-sm-3 control-label">Clinic Address:</label>
+										<div class="col-lg-6 col-md-6 col-sm-6">
 											<input type="text" id="clinic_address" name="clinic_address" class="form-control" placeholder="" value="<?php echo isset($clinic_address) ? $clinic_address : ''?>">
 										</div>	
 								</div><!--end clinic address-->
 								<div class="form-group"><!--start landline number-->
-										<label for="" class="col-lg-3 control-label">Landline number:</label>
-										<div class="col-lg-6">
+										<label for="" class="col-lg-3 col-md-3 col-sm-3 control-label">Landline number:</label>
+										<div class="col-lg-6 col-md-6 col-sm-6">
 											<input type="text" id="landline" name="landline" class="form-control" placeholder="" value="<?php echo isset($tel_number) ? $tel_number : ''?>">
 										</div>	
 								</div><!--end landline number-->
 								<div class="form-group"><!--start mobile number-->
-										<label for="" class="col-lg-3 control-label">Mobile number:</label>
-										<div class="col-lg-6">
+										<label for="" class="col-lg-3 col-md-3 col-sm-3 control-label">Mobile number:</label>
+										<div class="col-lg-6 col-md-6 col-sm-6">
 											<input type="text" id="mobile" name="mobile" class="form-control" placeholder="" value="<?php echo isset($cel_number) ? $cel_number : ''?>">
 										</div>	
 								</div><!--end mobile number-->
