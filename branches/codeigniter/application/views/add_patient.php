@@ -252,13 +252,13 @@
 									</div>
 								</div>
 								<div class="form-group">
-									<div class="col-lg-5 col-md-offset-4">
-										<button type="button" alt="dentist_history" class="button_next btn btn-primary col-lg-5">Next</button>
+									<div class="col-md-12" style="text-align:right;">
+										<button type="button" alt="dentist_history" class="button_next btn btn-primary">Next</button>
 							<?php
 								if(!$disabled)
 								{
 							?>
-										<button type="button" class="submit_all_form btn btn-primary col-lg-5">Save</button>
+										<button type="button" class="submit_all_form btn btn-primary">Save</button>
 							<?php
 								}
 							?>
@@ -409,14 +409,14 @@
 									</div>
 								</div>
 								<div class="form-group">
-									<div class="col-md-5 col-md-offset-4">
-										<button type="button" alt="add_patient" class="button_next btn btn-primary col-md-4">Back</button>
-										<button type="button" alt="medical_history" class="button_next btn btn-primary col-md-4">Next</button>
+									<div class="col-md-12" style="text-align:right;">
+										<button type="button" alt="add_patient" class="button_next btn btn-primary">Back</button>
+										<button type="button" alt="medical_history" class="button_next btn btn-primary">Next</button>
 							<?php
 								if(!$disabled)
 								{
 							?>
-										<button type="button" class="submit_all_form btn btn-primary col-md-4">Save</button>
+										<button type="button" class="submit_all_form btn btn-primary">Save</button>
 							<?php
 								}
 							?>
@@ -866,13 +866,13 @@
 									</div>
 								</div>
 								<div class="form-group">
-									<div class="col-lg-5 col-md-offset-7">
-										<button type="button" alt="dentist_history" class="button_next btn btn-primary col-lg-5">Back</button>
+									<div class="col-lg-12" style="text-align:right;">
+										<button type="button" alt="dentist_history" class="button_next btn btn-primary">Back</button>
 							<?php
 								if(!$disabled)
 								{
 							?>
-										<button type="button" class="submit_all_form btn btn-primary col-lg-5">Save</button>
+										<button type="button" class="submit_all_form btn btn-primary">Save</button>
 							<?php
 								}
 							?>
