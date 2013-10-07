@@ -148,14 +148,6 @@ $(function() {
 		}).submit();
 	});
 
-
-	$('#treatment_record').delegate('.amtchg', 'keypress', function(e) {
-		var inputValue = this.value;
-		if( e.keyCode == 13 ) {
-			$(this).parents('td').html(inputValue);
-		}
-	})
-
 	$('#charting').delegate('.checkbox', 'change', function(e) {
 		$('#patient_tooth_add').ajaxForm({
 			data: {'submit':'chart_info'}
@@ -167,4 +159,14 @@ $(function() {
 			data: {'submit':'chart_info'}
 		}).submit();
 	});
+
+	/* treatment record scripts */
+	$('#treatment_record').delegate('.amtchg', 'keypress', function(e) {
+		var inputValue = this.value;
+		if( e.keyCode == 13 ) {
+			$(this).parents('td').html(inputValue);
+		}
+	})
+
+
 });

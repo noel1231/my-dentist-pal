@@ -35,7 +35,7 @@
 		foreach($rchart as $chart) {
 
 			$this->db->where('chart_id', $chart['id']);
-			$this->db->where('status', 0);
+			$this->db->where('date_modified', 0);
 			$qtooth = $this->db->get('patient_tooth_chart_extra');
 
 			if($qtooth->num_rows() > 0) {
@@ -110,12 +110,6 @@
 					</tr>
 <?php
 				}
-			} else {
-?>
-			<tr>
-				<td colspan="6" align="center"> No Treatment Record to display </td>
-			</tr>
-<?php
 			}
 		}
 	} else {
