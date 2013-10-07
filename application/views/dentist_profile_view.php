@@ -83,14 +83,13 @@
 										<input type="text" id="datepicker" name="bod" class="form-control datepick" placeholder="<?php echo isset($bod) ? $bod : '' ?>"" value="<?php echo isset($bod) ? $bod : '' ?>" />
 									</div>
 								</div><!--end dob-->
-								
 								<div class="form-group"><!--start gender-->
 									<label for="" class="col-lg-3 control-label">Gender:</label>
 									<div class="col-lg-6">
 										<select id="dentist-gender" name="dentist-gender" class="form-control">
 											<option value="">Select...</option>
-											<option value="male">Male</option>
-											<option value="female">Female</option>
+											<option value="male"<?php echo isset($dentist_gender) && $dentist_gender == 'male' ? 'selected="selected"' : ''?>>Male</option>
+											<option value="female"<?php echo isset($dentist_gender) && $dentist_gender == 'female' ? 'selected="selected"' : ''?>>Female</option>
 										</select>
 									</div>
 								</div><!--end gender-->
