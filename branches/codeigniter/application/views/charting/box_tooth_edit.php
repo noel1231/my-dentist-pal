@@ -171,7 +171,7 @@
 <?php
 		}
 ?>
-			<input type="text" class="form-control" id="other_appliances" placeholder="Other" name="appliances[others]" value="<?php echo $chart_info['appliances']['others'] ? $chart_info['appliances']['others'] : ''; ?>">
+			<input type="text" class="form-control" id="other_appliances" placeholder="Other" name="appliances[others]" value="<?php echo isset($chart_info['appliances']['others']) ? $chart_info['appliances']['others'] : ''; ?>">
 		</div>
 		<div class="col-md-3">
 			TMD:

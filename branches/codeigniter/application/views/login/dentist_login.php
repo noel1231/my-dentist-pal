@@ -17,10 +17,10 @@
 	}
 	
 ?>
-<div class="wrapper">
+<div class="container wrapper">
     <div class="col-md-6 col-md-offset-3">
-    <input type="hidden" class="sample_login" value="<?php echo $answer; ?>">
-	<input type="hidden" class="sample_login1" value="<?php echo $answer1; ?>">
+		<input type="hidden" class="sample_login" value="<?php echo $answer; ?>">
+		<input type="hidden" class="sample_login1" value="<?php echo $answer1; ?>">
 	
         <div class="well well-lg" style="border-top:solid 10px #42a9f6;">
             <!--<div>
@@ -29,7 +29,7 @@
 			<div class="row">
 				<div class="col-md-10"><!-- start center-->
 					<div style=""><!--Dentist's Dashboard--><!--<img src="images/dentist_dashboard.png" />-->
-						<label class="control-label"><h1><span style="font-size:40px;">Dentist Login</span></h1></label>
+						<span style="font-size:40px;">Dentist Login</span>
 					</div>
 				</div><!--end center-->
 			</div>&nbsp;

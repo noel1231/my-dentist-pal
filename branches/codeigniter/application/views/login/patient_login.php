@@ -1,14 +1,14 @@
 <?php 
 	
 ?>
-<div class="wrapper">
+<div class="container wrapper">
 	<div class="col-md-6 col-md-offset-3">
 	<div class="well well-lg" style="border-top:solid 10px #42a9f6;">
 		
 		<div class="row">
 				<div class="col-md-10"><!-- start center-->
 					<div style=""><!--Dentist's Dashboard--><!--<img src="images/dentist_dashboard.png" />-->
-						<label class="control-label"><h1><span style="font-size:40px;">Patient Login</span></h1></label>
+						<span style="font-size:40px;">Patient Login</span>
 					</div>
 				</div><!--end center-->
 			</div>&nbsp;
