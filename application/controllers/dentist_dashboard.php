@@ -258,13 +258,15 @@ class Dentist_Dashboard extends CI_Controller {
 				$this->db->insert('dentist_appointments', $insert_data);
 				$ap_id = $this->db->insert_id();
 				
-				echo '1-';
+				echo '0-';
 			} else {
+			
 				$this->db->where('id', $this->input->post('appointment_id'));
 				$this->db->update('dentist_appointments', $insert_data);
 				$ap_id = $this->input->post('appointment_id');
 				
 				echo $this->input->post('appointment_id').'-';
+				
 				$this->db->where('id', $this->input->post('appointment_id'));
 				$queryApp = $this->db->get('dentist_appointments');
 				$rowApp = $queryApp->row_array();
@@ -273,50 +275,97 @@ class Dentist_Dashboard extends CI_Controller {
 		}
 
 		// echo json_encode($insert_data);
-		echo '
-			<tr id="'.$ap_id.'">
-				<td>'.$insert_data['title'].'</td>
-				<td>'.$insert_data['description'].'</td>
-				<td>'.$insert_data['start_time'].' '.($insert_data['end_time'] ? 'to '.$insert_data['end_time'] : '').'</td>
-				<td>
-		';
-		if(!isset($status) || trim($status) == '')
-		{
+		if($this->input->post('action') == 'insert') {
 			echo '
-					<select class="select_status" style="background-color: #E7F4FF;">
-						<option value="">Select Status...</option>
-						<option value="confirmed"> Confirmed </option>
-						<option value="cancelled"> Cancelled </option>
-					</select>
+				<tr id="'.$ap_id.'">
+					<td>'.$insert_data['title'].'</td>
+					<td>'.$insert_data['description'].'</td>
+					<td>'.$insert_data['start_time'].' '.($insert_data['end_time'] ? 'to '.$insert_data['end_time'] : '').'</td>
+					<td>
 			';
-		}else if($status == 'confirmed')
-		{
-			echo '
-					<select class="select_status" style="background-color: #E7F4FF;">
-						<option value="">Select Status...</option>
-						<option value="confirmed" selected> Confirmed </option>
-						<option value="cancelled"> Cancelled </option>
-					</select>
-			';
+			if(!isset($status) || trim($status) == '')
+			{
+				echo '
+						<select class="select_status" style="background-color: #E7F4FF;">
+							<option value="">Select Status...</option>
+							<option value="confirmed"> Confirmed </option>
+							<option value="cancelled"> Cancelled </option>
+						</select>
+				';
+			}else if($status == 'confirmed')
+			{
+				echo '
+						<select class="select_status" style="background-color: #E7F4FF;">
+							<option value="">Select Status...</option>
+							<option value="confirmed" selected> Confirmed </option>
+							<option value="cancelled"> Cancelled </option>
+						</select>
+				';
+				
+			}else if($status == 'cancelled')
+			{
+				echo '
+						<select class="select_status" style="background-color: #E7F4FF;">
+							<option value="">Select Status...</option>
+							<option value="confirmed"> Confirmed </option>
+							<option value="cancelled" selected> Cancelled </option>
+						</select>
+				';
+			}
 			
-		}else if($status == 'cancelled')
+			echo '
+					</td>
+					<td>
+						<span class="glyphicon glyphicon-trash delete_appointment" title="Delete" style="cursor:pointer"></span>
+					</td>
+				</tr>	
+			';
+		
+		}else
 		{
 			echo '
-					<select class="select_status" style="background-color: #E7F4FF;">
-						<option value="">Select Status...</option>
-						<option value="confirmed"> Confirmed </option>
-						<option value="cancelled" selected> Cancelled </option>
-					</select>
+					<td>'.$insert_data['title'].'</td>
+					<td>'.$insert_data['description'].'</td>
+					<td>'.$insert_data['start_time'].' '.($insert_data['end_time'] ? 'to '.$insert_data['end_time'] : '').'</td>
+					<td>
+			';
+			if(!isset($status) || trim($status) == '')
+			{
+				echo '
+						<select class="select_status" style="background-color: #E7F4FF;">
+							<option value="">Select Status...</option>
+							<option value="confirmed"> Confirmed </option>
+							<option value="cancelled"> Cancelled </option>
+						</select>
+				';
+			}else if($status == 'confirmed')
+			{
+				echo '
+						<select class="select_status" style="background-color: #E7F4FF;">
+							<option value="">Select Status...</option>
+							<option value="confirmed" selected> Confirmed </option>
+							<option value="cancelled"> Cancelled </option>
+						</select>
+				';
+				
+			}else if($status == 'cancelled')
+			{
+				echo '
+						<select class="select_status" style="background-color: #E7F4FF;">
+							<option value="">Select Status...</option>
+							<option value="confirmed"> Confirmed </option>
+							<option value="cancelled" selected> Cancelled </option>
+						</select>
+				';
+			}
+			
+			echo '
+					</td>
+					<td>
+						<span class="glyphicon glyphicon-trash delete_appointment" title="Delete" style="cursor:pointer"></span>
+					</td>
 			';
 		}
-		
-		echo '
-				</td>
-				<td>
-					<span class="glyphicon glyphicon-trash delete_appointment" title="Delete" style="cursor:pointer"></span>
-				</td>
-			</tr>	
-		';
 	}
 	
 	function delete_appointment()

@@ -303,14 +303,13 @@ $(function(){
 				$('#calendar').fullCalendar( 'refetchEvents' );
 				$('#add_sched').modal('hide');
 			
-				if(split[0] == 1)
+				if(split[0] == 0)
 				{
 					$('.no_sched_row').remove();
 					$('#tbody_appointment').append(html);
 				}else
 				{
-					$('#tbody_appointment').find('#'+split[0]).remove();
-					$('#tbody_appointment').append(html);
+					$('#tbody_appointment').find('#'+split[0]).html(html);
 				}
 			}
 		}).submit();
