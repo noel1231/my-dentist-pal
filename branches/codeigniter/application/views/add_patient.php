@@ -53,7 +53,7 @@
 
 	<div class="container">
 		<div class="tabbable tabs-left" style="<?php echo isset($access) ? '' : ''; ?>">
-			<div class="col-md-2 extra_css_padding">
+			<div class="col-md-2 col-sm-2 extra_css_padding">
 				
 					<ul class="nav nav-pills nav-stacked extra_css" style="background-color:#428bca;">
 						<li class="active"><a href="#add_patient" data-toggle="tab"> Patient Info </a></li>
@@ -64,7 +64,7 @@
 					</ul>
 				
 			</div>
-			<div class="col-md-10 extra_css_padding">
+			<div class="col-md-10 col-sm-10 extra_css_padding">
 				<div class="tab-content extra_css_border_content">
 					<div class="tab-pane active" id="add_patient">
 						<div class="container">
@@ -79,22 +79,22 @@
 							
 								<h3 style="font-weight:bold">Patient Info</h3>
 								<div class="form-group">
-									<label for="inputEmail1" class="col-lg-4 control-label">Patient ID number</label>
-									<div class="col-lg-5">
+									<label for="inputEmail1" class="col-lg-4 col-md-4 col-sm-4 control-label">Patient ID number</label>
+									<div class="col-lg-5 col-md-5 col-sm-5">
 										<span style="line-height: 27px;"><?php echo isset($row) ? $row['id'] : time(); ?></span>
 										<input type="hidden" class="form-control" id="patient_id" name="patient_id" value="<?php echo isset($row) ? $row['id'] : time(); ?>">
 										<input type="hidden" class="form-control" id="dentist_id" name="dentist_id" value="<?php echo $this->session->userdata('id'); ?>">
 									</div>
 								</div>
 								<div class="form-group">
-									<label for="inputEmail1" class="col-lg-4 control-label">Entry Date</label>
-									<div class="col-lg-5">
+									<label for="inputEmail1" class="col-lg-4 col-md-4 col-sm-4 control-label">Entry Date</label>
+									<div class="col-lg-5 col-md-5 col-sm-5">
 										<input type="text" class="form-control" name="patient_date" value="<?php echo isset($row) ? $row['date_of_entry'] : date('Y-m-d H:i:s',time()); ?>" readonly>
 									</div>
 								</div>
 								<div class="form-group">
-									<label for="inputPassword1" class="col-lg-4 control-label">Photo</label>
-									<div class="col-lg-5">
+									<label for="inputPassword1" class="col-lg-4 col-md-4 col-sm-4 control-label">Photo</label>
+									<div class="col-lg-5 col-md-5 col-sm-5">
 										<input type="file" id="patient_photo" name="patient_photo" <?php echo $disabled; ?>>
 										<input type="hidden" id="patient_photo_existing_file" name="patient_photo_existing_file" value="<?php if(isset($row) && $row['patient_picture'] != ' '){ echo $row['patient_picture']; } ?>">
 										<input type="hidden" id="patient_photo_file" name="patient_photo_file" value="<?php if(isset($row) && $row['patient_picture'] != ' '){ echo $row['patient_picture']; } ?>">
@@ -104,32 +104,32 @@
 									</div>
 								</div>
 								<div class="form-group">
-									<label for="inputEmail1" class="col-lg-4 control-label">First Name</label>
-									<div class="col-lg-5">
+									<label for="inputEmail1" class="col-lg-4 col-md-4 col-sm-4 control-label">First Name</label>
+									<div class="col-lg-5 col-md-5 col-sm-5">
 										<input type="text" class="form-control" id="patient_fname" name="patient_fname" value="<?php echo isset($row) ? $row['patient_first_name'] : null; ?>" <?php echo $disabled; ?>>
 									</div>
 								</div>
 								<div class="form-group">
-									<label for="inputEmail1" class="col-lg-4 control-label">Middle Name</label>
-									<div class="col-lg-5">
+									<label for="inputEmail1" class="col-lg-4 col-md-4 col-sm-4 control-label">Middle Name</label>
+									<div class="col-lg-5 col-md-5 col-sm-5">
 										<input type="text" class="form-control" id="patient_mname" name="patient_mname" value="<?php echo isset($row) ? $row['patient_middle_name'] : null; ?>" <?php echo $disabled; ?>>
 									</div>
 								</div>
 								<div class="form-group">
-									<label for="inputEmail1" class="col-lg-4 control-label">Last Name</label>
-									<div class="col-lg-5">
+									<label for="inputEmail1" class="col-lg-4 col-md-4 col-sm-4 control-label">Last Name</label>
+									<div class="col-lg-5 col-md-5 col-sm-5">
 										<input type="text" class="form-control" id="patient_lname" name="patient_lname" value="<?php echo isset($row) ? $row['patient_surname'] : null; ?>" <?php echo $disabled; ?>>
 									</div>
 								</div>
 								<div class="form-group">
-									<label for="inputEmail1" class="col-lg-4 control-label">Nick Name</label>
-									<div class="col-lg-5">
+									<label for="inputEmail1" class="col-lg-4 col-md-4 col-sm-4 control-label">Nick Name</label>
+									<div class="col-lg-5 col-md-5 col-sm-5">
 										<input type="text" class="form-control" id="patient_nname" name="patient_nname" value="<?php echo isset($row) ? $row['patient_nickname'] : null; ?>" <?php echo $disabled; ?>>
 									</div>
 								</div>
 								<div class="form-group">
-									<label for="inputEmail1" class="col-lg-4 control-label">Sex</label>
-									<div class="col-lg-5">
+									<label for="inputEmail1" class="col-lg-4 col-md-4 col-sm-4 control-label">Sex</label>
+									<div class="col-lg-5 col-md-5 col-sm-5">
 							<?php
 								if(isset($row))
 								{
@@ -147,107 +147,107 @@
 									</div>
 								</div>
 								<div class="form-group">
-									<label for="inputEmail1" class="col-lg-4 control-label">Birth Date</label>
-									<div class="col-lg-5">
+									<label for="inputEmail1" class="col-lg-4 col-md-4 col-sm-4 control-label">Birth Date</label>
+									<div class="col-lg-5 col-md-5 col-sm-5">
 										<input type="text" class="form-control datepickerBday" name="patient_bday" value="<?php echo isset($row) ? $row['patient_bday'] : null; ?>" <?php echo $disabled; ?>>
 									</div>
 								</div>
 								<div class="form-group">
-									<label for="inputEmail1" class="col-lg-4 control-label">Age</label>
-									<div class="col-lg-2">
+									<label for="inputEmail1" class="col-lg-4 col-md-4 col-sm-4 control-label">Age</label>
+									<div class="col-lg-2 col-md-2 col-sm-2">
 										<input type="number" class="form-control" id="patient_age" name="patient_age" value="<?php echo isset($row) ? $row['patient_age'] : null; ?>" <?php echo $disabled; ?>>
 									</div>
 								</div>
 								<div class="form-group">
-									<label for="inputEmail1" class="col-lg-4 control-label">Home Address</label>
-									<div class="col-lg-5">
+									<label for="inputEmail1" class="col-lg-4 col-md-4 col-sm-4 control-label">Home Address</label>
+									<div class="col-lg-5 col-md-5 col-sm-5">
 										<textarea class="form-control" id="patient_address" rows="3" name="patient_address" <?php echo $disabled; ?>><?php echo isset($row) ? $row['patient_address'] : null; ?></textarea>
 									</div>
 								</div>
 								<div class="form-group">
-									<label for="inputEmail1" class="col-lg-4 control-label">Email Address</label>
-									<div class="col-lg-5">
+									<label for="inputEmail1" class="col-lg-4 col-md-4 col-sm-4 control-label">Email Address</label>
+									<div class="col-lg-5 col-md-5 col-sm-5">
 										<input type="email" class="form-control" id="patient_email" name="patient_email" value="<?php echo isset($row) ? $row['email'] : null; ?>" <?php echo $disabled; ?>>
 									</div>
 								</div>
 								<div class="form-group">
-									<label for="inputEmail1" class="col-lg-4 control-label">Home Number</label>
-									<div class="col-lg-5">
+									<label for="inputEmail1" class="col-lg-4 col-md-4 col-sm-4 control-label">Home Number</label>
+									<div class="col-lg-5 col-md-5 col-sm-5">
 										<input type="text" class="form-control" id="patient_homeNum" name="patient_homeNum" value="<?php echo isset($row) ? $row['patient_phone'] : null; ?>" <?php echo $disabled; ?>>
 									</div>
 								</div>
 								<div class="form-group">
-									<label for="inputEmail1" class="col-lg-4 control-label">Office Number</label>
-									<div class="col-lg-5">
+									<label for="inputEmail1" class="col-lg-4 col-md-4 col-sm-4 control-label">Office Number</label>
+									<div class="col-lg-5 col-md-5 col-sm-5">
 										<input type="text" class="form-control" id="patient_officeName" name="patient_officeName" value="<?php echo isset($row) ? $row['occupation_phone'] : null; ?>" <?php echo $disabled; ?>>
 									</div>
 								</div>
 								<div class="form-group">
-									<label for="inputEmail1" class="col-lg-4 control-label">Fax Number</label>
-									<div class="col-lg-5">
+									<label for="inputEmail1" class="col-lg-4 col-md-4 col-sm-4 control-label">Fax Number</label>
+									<div class="col-lg-5 col-md-5 col-sm-5">
 										<input type="text" class="form-control" id="patient_faxNum" name="patient_faxNum" value="<?php echo isset($row) ? $row['patient_fax_number'] : null; ?>" <?php echo $disabled; ?>>
 									</div>
 								</div>
 								<div class="form-group">
-									<label for="inputEmail1" class="col-lg-4 control-label">Mobile Number</label>
-									<div class="col-lg-5">
+									<label for="inputEmail1" class="col-lg-4 col-md-4 col-sm-4 control-label">Mobile Number</label>
+									<div class="col-lg-5 col-md-5 col-sm-5">
 										<input type="text" class="form-control" id="patient_mobileNum" name="patient_mobileNum" value="<?php if(isset($row)) { if($row['patient_mobile_number'] == ' '){ echo $row['patient_phone']; }else{ echo $row['patient_mobile_number']; } }; ?>" <?php echo $disabled; ?>>
 									</div>
 								</div>
 								<div class="form-group">
-									<label for="inputEmail1" class="col-lg-4 control-label">Occupation</label>
-									<div class="col-lg-5">
+									<label for="inputEmail1" class="col-lg-4 col-md-4 col-sm-4 control-label">Occupation</label>
+									<div class="col-lg-5 col-md-5 col-sm-5">
 										<input type="text" class="form-control" id="patient_occupation" name="patient_occupation" value="<?php echo isset($row) ? $row['patient_occupation'] : null; ?>" <?php echo $disabled; ?>>
 									</div>
 								</div>
 								<div class="form-group">
-									<label for="inputEmail1" class="col-lg-4 control-label">Nationality</label>
-									<div class="col-lg-5">
+									<label for="inputEmail1" class="col-lg-4 col-md-4 col-sm-4 control-label">Nationality</label>
+									<div class="col-lg-5 col-md-5 col-sm-5">
 										<input type="text" class="form-control" id="patient_nationality" name="patient_nationality" value="<?php echo isset($row) ? $row['patient_nationality'] : null; ?>" <?php echo $disabled; ?>>
 									</div>
 								</div>
 								<div class="form-group">
-									<label for="inputEmail1" class="col-lg-4 control-label">Religion</label>
-									<div class="col-lg-5">
+									<label for="inputEmail1" class="col-lg-4 col-md-4 col-sm-4 control-label">Religion</label>
+									<div class="col-lg-5 col-md-5 col-sm-5">
 										<input type="text" class="form-control" id="patient_religion" name="patient_religion" value="<?php echo isset($row) ? $row['patient_religion'] : null; ?>" <?php echo $disabled; ?>>
 									</div>
 								</div>
 								<div class="form-group">
-									<label for="inputEmail1" class="col-lg-4 control-label">Dental Insurance</label>
-									<div class="col-lg-5">
+									<label for="inputEmail1" class="col-lg-4 col-md-4 col-sm-4 control-label">Dental Insurance</label>
+									<div class="col-lg-5 col-md-5 col-sm-5">
 										<input type="text" class="form-control" id="patient_insurance" name="patient_insurance" value="<?php echo isset($row) ? $row['patient_dental_insurance'] : null; ?>" <?php echo $disabled; ?>>
 									</div>
 								</div>
 								<div class="form-group">
-									<label for="inputEmail1" class="col-lg-4 control-label">Effective Date</label>
-									<div class="col-lg-5">
+									<label for="inputEmail1" class="col-lg-4 col-md-4 col-sm-4 control-label">Effective Date</label>
+									<div class="col-lg-5 col-md-5 col-sm-5">
 										<input type="text" class="form-control datepicker" id="patient_effectiveDate" name="patient_effectiveDate" value="<?php echo isset($row) ? $row['effective_date'] : null; ?>" <?php echo $disabled; ?>>
 									</div>
 								</div>
 								<div class="form-group">
-									<h4 class="col-md-offset-2">For Minors</h4 >
+									<h4 class="col-md-offset-2 col-sm-offset-2 col-lg-offset-2">For Minors</h4 >
 								</div>
 								<div class="form-group">
-									<label for="inputEmail1" class="col-lg-4 control-label">Parent or Guardian Name</label>
-									<div class="col-lg-5">
+									<label for="inputEmail1" class="col-lg-4 col-md-4 col-sm-4 control-label">Parent or Guardian Name</label>
+									<div class="col-lg-5 col-md-5 col-sm-5">
 										<input type="text" class="form-control" id="patient_parent" name="patient_parent" value="<?php echo isset($row) ? $row['patient_guardian'] : null; ?>" <?php echo $disabled; ?>>
 									</div>
 								</div>
 								<div class="form-group">
-									<label for="inputEmail1" class="col-lg-4 control-label">Occupation</label>
-									<div class="col-lg-5">
+									<label for="inputEmail1" class="col-lg-4 col-md-4 col-sm-4 control-label">Occupation</label>
+									<div class="col-lg-5 col-md-5 col-sm-5">
 										<input type="text" class="form-control" id="patient_occupation_minor" name="patient_occupation_minor" value="<?php echo isset($row) ? $row['guardian_occupation'] : null; ?>" <?php echo $disabled; ?>>
 									</div>
 								</div>
 								<div class="form-group">
-									<label for="inputEmail1" class="col-lg-4 control-label">Whom may we think for referring you?</label>
-									<div class="col-lg-5">
+									<label for="inputEmail1" class="col-lg-4 col-md-4 col-sm-4 control-label">Whom may we think for referring you?</label>
+									<div class="col-lg-5 col-md-5 col-sm-5">
 										<input type="text" class="form-control" id="patient_referral" name="patient_referral" value="<?php echo isset($row) ? $row['referred_by'] : null; ?>" <?php echo $disabled; ?>>
 									</div>
 								</div>
 								<div class="form-group">
-									<label for="inputEmail1" class="col-lg-4 control-label">What is your reason for dental consultation?</label>
-									<div class="col-lg-5">
+									<label for="inputEmail1" class="col-lg-4 col-md-4 col-sm-4 control-label">What is your reason for dental consultation?</label>
+									<div class="col-lg-5 col-md-5 col-sm-5">
 										<textarea class="form-control" id="patient_consultation" rows="4" name="patient_consultation" <?php echo $disabled; ?>><?php echo isset($row) ? $row['dental_reason'] : null; ?></textarea>
 									</div>
 								</div>
@@ -272,40 +272,40 @@
 							<form class="form-horizontal" role="form" id="dental_history_form" method="post">
 								<h3 style="font-weight:bold">Dental History</h3>
 								<div class="form-group">
-									<label for="inputEmail1" class="col-lg-4 control-label">Previous Dentist</label>
-									<div class="col-lg-5">
+									<label for="inputEmail1" class="col-lg-4 col-md-4 col-sm-4 control-label">Previous Dentist</label>
+									<div class="col-lg-5 col-md-5 col-sm-5">
 										<input type="text" class="form-control" id="patient_previews_dentist" name="patient_previews_dentist" value="<?php echo isset($row) ? $row['former_dentist'] : null; ?>" <?php echo $disabled; ?>>
 									</div>
 								</div>
 								<div class="form-group">
-									<label for="inputEmail1" class="col-lg-4 control-label">Last Dental Visit</label>
-									<div class="col-lg-5">
+									<label for="inputEmail1" class="col-lg-4 col-md-4 col-sm-4 control-label">Last Dental Visit</label>
+									<div class="col-lg-5 col-md-5 col-sm-5">
 										<input type="text" class="form-control datepicker" id="patient_last_visit" name="patient_last_visit" value="<?php echo isset($row) ? $row['date_of_last_visit'] : null; ?>" <?php echo $disabled; ?>>
 									</div>
 								</div>
 								<div class="form-group">
-									<label for="inputEmail1" class="col-lg-4 control-label">Reason for last visit</label>
-									<div class="col-lg-5">
+									<label for="inputEmail1" class="col-lg-4 col-md-4 col-sm-4 control-label">Reason for last visit</label>
+									<div class="col-lg-5 col-md-5 col-sm-5">
 										<textarea class="form-control" id="patient_reason_visit" rows="4" name="patient_reason_visit" <?php echo $disabled; ?>><?php echo isset($row) ? $row['reason_for_visit'] : null; ?></textarea>
 									</div>
 								</div>
 								<div class="form-group">
-									<label for="inputEmail1" class="col-lg-4 control-label">How often do you floss?</label>
-									<div class="col-lg-5">
+									<label for="inputEmail1" class="col-lg-4 col-md-4 col-sm-4 control-label">How often do you floss?</label>
+									<div class="col-lg-5 col-md-5 col-sm-5">
 										<input type="text" class="form-control" id="patient_many_floss" name="patient_many_floss" value="<?php echo isset($row) ? $row['how_many_floss'] : null; ?>" <?php echo $disabled; ?>>
 									</div>
 								</div>
 								<div class="form-group">
-									<label for="inputEmail1" class="col-lg-4 control-label">How often do you brush?</label>
-									<div class="col-lg-5">
+									<label for="inputEmail1" class="col-lg-4 col-md-4 col-sm-4 control-label">How often do you brush?</label>
+									<div class="col-lg-5 col-md-5 col-sm-5">
 										<input type="text" class="form-control" id="patient_many_brush" name="patient_many_brush" value="<?php echo isset($row) ? $row['how_many_brush'] : null; ?>" <?php echo $disabled; ?>>
 									</div>
 								</div>
 								<div class="form-group">
-									<h4 class="col-md-offset-1">Do you have any of the following?</h4>
+									<h4 class="col-md-offset-1 col-lg-offset-1 col-sm-offset-1">Do you have any of the following?</h4>
 								</div>
 								<div class="form-group">
-									<div class="col-lg-offset-4 col-lg-10">
+									<div class="col-lg-offset-4 col-lg-8 col-md-offset-4 col-md-8 col-sm-offset-4 col-sm-8">
 										<div class="checkbox">
 											<label>
 												<input type="checkbox" name="cavity[]" value="bad_breath" <?php if(isset($row)){ if($row['bad_breath'] == 'yes'){ echo 'checked'; } } ?> <?php echo $disabled; ?>> 
@@ -313,7 +313,7 @@
 											</label>
 										</div>
 									</div>
-									<div class="col-lg-offset-4 col-lg-10">
+									<div class="col-lg-offset-4 col-lg-8 col-md-offset-4 col-md-8 col-sm-offset-4 col-sm-8">
 										<div class="checkbox">
 											<label>
 												<input type="checkbox" name="cavity[]" value="bleeding_gums" <?php if(isset($row)){ if($row['bleeding_gums'] == 'yes'){ echo 'checked'; } } ?> <?php echo $disabled; ?>> 
@@ -321,7 +321,7 @@
 											</label>
 										</div>
 									</div>
-									<div class="col-lg-offset-4 col-lg-10">
+									<div class="col-lg-offset-4 col-lg-8 col-md-offset-4 col-md-8 col-sm-offset-4 col-sm-8">
 										<div class="checkbox">
 											<label>
 												<input type="checkbox" name="cavity[]" value="clicking_jaw" <?php if(isset($row)){ if($row['clicking_popping_jaw'] == 'yes'){ echo 'checked'; } } ?> <?php echo $disabled; ?>> 
@@ -329,7 +329,7 @@
 											</label>
 										</div>
 									</div>
-									<div class="col-lg-offset-4 col-lg-10">
+									<div class="col-lg-offset-4 col-lg-8 col-md-offset-4 col-md-8 col-sm-offset-4 col-sm-8">
 										<div class="checkbox">
 											<label>
 												<input type="checkbox" name="cavity[]" value="food_collect" <?php if(isset($row)){ if($row['food_collect'] == 'yes'){ echo 'checked'; } } ?> <?php echo $disabled; ?>> 
@@ -337,7 +337,7 @@
 											</label>
 										</div>
 									</div>
-									<div class="col-lg-offset-4 col-lg-10">
+									<div class="col-lg-offset-4 col-lg-8 col-md-offset-4 col-md-8 col-sm-offset-4 col-sm-8">
 										<div class="checkbox">
 											<label>
 												<input type="checkbox" name="cavity[]" value="grinding_teeth" <?php if(isset($row)){ if($row['grinding_teeth'] == 'yes'){ echo 'checked'; } } ?> <?php echo $disabled; ?>> 
@@ -345,7 +345,7 @@
 											</label>
 										</div>
 									</div>
-									<div class="col-lg-offset-4 col-lg-10">
+									<div class="col-lg-offset-4 col-lg-8 col-md-offset-4 col-md-8 col-sm-offset-4 col-sm-8">
 										<div class="checkbox">
 											<label>
 												<input type="checkbox" name="cavity[]" value="loose_teeth" <?php if(isset($row)){ if($row['loose_teeth'] == 'yes'){ echo 'checked'; } } ?> <?php echo $disabled; ?>>  
@@ -353,7 +353,7 @@
 											</label>
 										</div>
 									</div>
-									<div class="col-lg-offset-4 col-lg-10">
+									<div class="col-lg-offset-4 col-lg-8 col-md-offset-4 col-md-8 col-sm-offset-4 col-sm-8">
 										<div class="checkbox">
 											<label>
 												<input type="checkbox" name="cavity[]" value="periodental_treatment" <?php if(isset($row)){ if($row['periodental_treatment'] == 'yes'){ echo 'checked'; } } ?> <?php echo $disabled; ?>> 
@@ -361,7 +361,7 @@
 											</label>
 										</div>
 									</div>
-									<div class="col-lg-offset-4 col-lg-10">
+									<div class="col-lg-offset-4 col-lg-8 col-md-offset-4 col-md-8 col-sm-offset-4 col-sm-8">
 										<div class="checkbox">
 											<label>
 												<input type="checkbox" name="cavity[]" value="sensitive_hot" <?php if(isset($row)){ if($row['sensitive_hot'] == 'yes'){ echo 'checked'; } } ?> <?php echo $disabled; ?>> 
@@ -369,7 +369,7 @@
 											</label>
 										</div>
 									</div>
-									<div class="col-lg-offset-4 col-lg-10">
+									<div class="col-lg-offset-4 col-lg-8 col-md-offset-4 col-md-8 col-sm-offset-4 col-sm-8">
 										<div class="checkbox">
 											<label>
 												<input type="checkbox" name="cavity[]" value="sensitive_cold" <?php if(isset($row)){ if($row['sensitive_cold'] == 'yes'){ echo 'checked'; } } ?> <?php echo $disabled; ?>> 
@@ -377,7 +377,7 @@
 											</label>
 										</div>
 									</div>
-									<div class="col-lg-offset-4 col-lg-10">
+									<div class="col-lg-offset-4 col-lg-8 col-md-offset-4 col-md-8 col-sm-offset-4 col-sm-8">
 										<div class="checkbox">
 											<label>
 												<input type="checkbox" name="cavity[]" value="sensitive_sweet" <?php if(isset($row)){ if($row['sensitive_sweet'] == 'yes'){ echo 'checked'; } } ?> <?php echo $disabled; ?>> 
@@ -385,7 +385,7 @@
 											</label>
 										</div>
 									</div>
-									<div class="col-lg-offset-4 col-lg-10">
+									<div class="col-lg-offset-4 col-lg-8 col-md-offset-4 col-md-8 col-sm-offset-4 col-sm-8">
 										<div class="checkbox">
 											<label>
 												<input type="checkbox" name="cavity[]" value="sensitive_biting" <?php if(isset($row)){ if($row['sensitive_bite'] == 'yes'){ echo 'checked'; } } ?> <?php echo $disabled; ?>> 
@@ -393,7 +393,7 @@
 											</label>
 										</div>
 									</div>
-									<div class="col-lg-offset-4 col-lg-10">
+									<div class="col-lg-offset-4 col-lg-8 col-md-offset-4 col-md-8 col-sm-offset-4 col-sm-8">
 										<div class="checkbox">
 											<label>
 												<input type="checkbox" name="cavity[]" value="sore_in_mouth" <?php if(isset($row)){ if($row['sores_in_mouth'] == 'yes'){ echo 'checked'; } } ?> <?php echo $disabled; ?>> 
@@ -403,13 +403,13 @@
 									</div>
 								</div>
 								<div class="form-group">
-									<label for="inputEmail1" class="col-lg-4 control-label">Others</label>
-									<div class="col-lg-5">
+									<label for="inputEmail1" class="col-lg-4 col-md-4 col-sm-4 control-label">Others</label>
+									<div class="col-lg-5 col-md-5 col-sm-5">
 										<input type="text" class="form-control" id="patient_other_info" name="patient_other_info" value="<?php echo isset($row) ? $row['other_info'] : null; ?>" <?php echo $disabled; ?>>
 									</div>
 								</div>
 								<div class="form-group">
-									<div class="col-md-12" style="text-align:right;">
+									<div class="col-md-12 col-lg-12 col-sm-12" style="text-align:right;">
 										<button type="button" alt="add_patient" class="button_next btn btn-primary">Back</button>
 										<button type="button" alt="medical_history" class="button_next btn btn-primary">Next</button>
 							<?php
