@@ -34,8 +34,8 @@
 									</div>
 								</div>
 								<div class="col-md-8">
-									<div> Patient ID Number : <?php echo $id; ?> </div>
-									<div> Patient Name: <?php echo $patient_name; ?> </div>
+									<div><strong>Patient ID Number:</strong> <?php echo $id; ?> </div>
+									<div><strong>Patient Name:</strong> <?php echo $patient_name; ?> </div>
 									
 								</div>
 							</div>
@@ -45,9 +45,10 @@
 						?>
 						</div>
 						<div class="col-md-6 <?php echo $dashboard_title != 'Edit Patients' ? 'pull-right' : ''; ?>" style="text-align: right;">
-						  <?php
+						<?php
+							if(!isset($_GET['access']))
 								$this->load->view('menu'); 
-							?>
+						?>
 						</div>
 					</div>
 				</div>

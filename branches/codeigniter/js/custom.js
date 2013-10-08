@@ -333,6 +333,7 @@ $(function() {
 		type: 'POST',
 		url: 'patient_add/adding_patient_modal',
 		beforeSubmit:function(arr, jform, option){
+			$('#adding_patient_form').find('button[type=submit]').button('loading');
 			var form = jform[0];
 			if(form.modal_p_fname.value.trim() == '')
 			{
@@ -355,6 +356,7 @@ $(function() {
 			}
 		},
 		success: function(html){
+			$('#adding_patient_form').find('button[type=submit]').button('reset');
 			$('#myModalAddingSaying').modal('show');
 			$('#myModalAddingPatient').modal('hide');
 			$('#myModalAddingSaying').find('.link_to_edit').attr('href','patient_edit?id='+html);

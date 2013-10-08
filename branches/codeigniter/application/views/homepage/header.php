@@ -33,23 +33,29 @@
 <?php
 	} else {
 ?>
+
 <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+<div class="container">
   <!-- Brand and toggle get grouped for better mobile display -->
-  <div class="container navbar-header">
+  <div class="navbar-header">
     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
       <span class="sr-only">Toggle navigation</span>
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
     </button>
-      <a href="<?php echo base_url();?>dentist_dashboard" class="col-md-12">
+      <a href="<?php echo base_url();?>dentist_dashboard" class="">
 		<img alt="Profile Pic" src="<?php echo base_url(); ?>img/logo.png" style="max-height: 51px;">
 	</a>
   </div>
 
   <!-- Collect the nav links, forms, and other content for toggling -->
-  <div class="container collapse navbar-collapse navbar-ex1-collapse">
+  <div class="collapse navbar-collapse navbar-ex1-collapse">
     <ul class="nav navbar-nav navbar-right">
+	<?php
+		if(!isset($patient_access_account))
+		{
+	?>
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <span class="glyphicon glyphicon-user"></span> <b class="caret"></b></a>
 		<ul class="dropdown-menu">
@@ -58,8 +64,12 @@
 			<li><a href="logout"> Log out </a></li>
 		</ul>
       </li>
+	<?php
+		}
+	?>
     </ul>
   </div><!-- /.navbar-collapse -->
+</div>
 </nav>
 
 <?php /*

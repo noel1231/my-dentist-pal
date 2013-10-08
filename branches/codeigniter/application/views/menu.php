@@ -19,14 +19,14 @@
 	<ul class="top_menu btn-group hidden-xs">
 		<li>
 			<div class="btn-group">			
-			<a href="dentist_dashboard" id="link1" class="btn btn-default">
-				<span <?php if(isset($activeMenu) && $activeMenu == 'dashboard'){echo 'style="color: #52AFFF;"';}?>> Dashboard </span>
+			<a href="dentist_dashboard" id="link1" class="btn btn-default btn-sm">
+				<span <?php if(isset($activeMenu) && $activeMenu == 'dashboard' && !isset($_GET['scheduler'])){echo 'style="color: #52AFFF;"';}?>> Dashboard </span>
 			</a>
-			<a href="patient_records" id="link3" class="btn btn-default">
+			<a href="patient_records" id="link3" class="btn btn-default btn-sm">
 				<span <?php if(isset($activeMenu) && $activeMenu == 'patient_records'){echo 'style="color: #52AFFF;"';}?>> Patient Records </span>
 			</a>
-			<a href="<?php echo base_url('dentist_dashboard?scheduler=true'); ?>" id="link5" class="btn btn-default">
-				<span> Scheduler </span>
+			<a href="<?php echo base_url('dentist_dashboard?scheduler=true'); ?>" id="link5" class="btn btn-default btn-sm">
+				<span <?php echo isset($_GET['scheduler']) ? 'style="color: #52AFFF;"' : null; ?>> Scheduler </span>
 			</a>
 			</div>
 		</li>

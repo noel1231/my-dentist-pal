@@ -31,7 +31,7 @@
 
     <title><?php echo isset($title) ? $title : 'Medix Dental'; ?></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+	<link href="<?php echo base_url(); ?>img/favicon.png" rel="icon">
     <!-- Bootstrap -->
     <link href="<?php echo base_url();?>bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
 
@@ -47,7 +47,7 @@
 	<link href="<?php echo base_url();?>style/style_new.css" rel="stylesheet">
 	<link href="<?php echo base_url();?>style/timepicker.css" rel="stylesheet">
 	
-
+	
 	<link rel='stylesheet' type='text/css' href='<?php echo base_url();?>fullcalendar/fullcalendar.css' />
 	<link rel='stylesheet' type='text/css' href='<?php echo base_url();?>jonthornton-jquery-timepicker/jquery.timepicker.css' />
 	<link rel='stylesheet' type='text/css' href='<?php echo base_url();?>mobiscroll/css/mobiscroll.custom-2.6.2.min.css' />
@@ -92,13 +92,12 @@
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <!--<script src="//code.jquery.com/jquery.min.js"></script>-->
 	<script>window.jQuery || document.write('<script src="<?php echo base_url();?>js/jquery.min.js">\x3C/script>')</script>
-
-	<script src="<?php echo base_url();?>bootstrap/js/bootstrap.js"></script>
 	
     <!--<script src="//code.jquery.com/ui/1.10.3/jquery-ui.min.js"></script>-->
 	<script>window.jQuery.ui || document.write('<script src="<?php echo base_url();?>js/jquery-ui.min.js">\x3C/script>')</script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
-
+	
+	<script src="<?php echo base_url();?>bootstrap/js/bootstrap.js"></script>
 	<script type='text/javascript' src='<?php echo base_url();?>fullcalendar/fullcalendar.js'></script>
 	<script type='text/javascript' src='<?php echo base_url();?>jonthornton-jquery-timepicker/jquery.timepicker.min.js'></script>
 	<script type='text/javascript' src='<?php echo base_url();?>mobiscroll/js/mobiscroll.custom-2.6.2.min.js'></script>

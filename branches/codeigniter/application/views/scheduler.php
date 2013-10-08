@@ -1,6 +1,6 @@
 <div class="row">
 	<div class="col-md-6">
-		<h3 style="margin-top: 10px;margin-bottom: 20px;">Scheduler</h3>
+		
 	</div>
 	<div class="col-md-6" style="text-align: right;margin-bottom:15px;">
 	<?php

@@ -53,13 +53,24 @@
 					</div>
 				</div>
 				<div class="row">
-					<div class="col-md-6">
-						<div style="font-size: 30px;">
-							<?php echo $dashboard_title == 'Dashboard' ? 'What\'s Happening?' : $dashboard_title; ?>
+					<div class="col-md-6 col-sm-5">
+						<div style="font-size: 30px;line-height: 32px;">
+							<?php
+								if(isset($_GET['scheduler']))
+								{
+									echo 'Scheduler';
+								}else if($dashboard_title == 'Dashboard')
+								{
+									echo 'What\'s Happening?';
+								}else
+								{
+									echo $dashboard_title;
+								}
+							?>
 						</div>
 					</div>
                                     
-					<div class="col-md-6 col-xs-11 col-sm-12">
+					<div class="col-md-6 col-xs-11 col-sm-7 get_centered">
 						<?php 
 						if(isset($_GET['scheduler']))
 						{
@@ -124,31 +135,31 @@
 	<input type="hidden" name="dentist_id" value="<?php echo $id; ?>" />
 	<div class="form-group">
 		<label for="inputTitle1" class="col-md-3 col-sm-3 control-label"> Title: </label>
-		<div class="col-md-9 col-sm-9">
+		<div class="col-md-8 col-sm-9">
 			<input type="text" class="form-control" id="inputTitle1" name="title" required data-content="Title is required">
 		</div>
 	</div>
 	<div class="form-group">
 		<label for="inputDescription1" class="col-md-3 col-sm-3 control-label"> Description: </label>
-		<div class="col-md-9 col-sm-9">			
+		<div class="col-md-8 col-sm-9">			
 			<input type="text" class="form-control" id="inputDescription1" name="description">
 		</div>
 	</div>
 	<div class="form-group">
 		<label for="inputDate1" class="col-md-3 col-sm-3 control-label"> Date: </label>
-		<div class="col-md-9 col-sm-9">
+		<div class="col-md-8 col-sm-9">
 			<input type="text" class="form-control datepicker" id="inputDate1" placeholder="MM/DD/YY" name="date1" tabindex="-1" value="<?php echo date('m/d/Y', time()) ?>">
 		</div>
 	</div>
 	<div class="form-group">
 		<label for="inputTime1" class="col-md-3 col-sm-3 control-label"> From: </label>
-		<div class="col-md-9 col-sm-9 form-inline">
+		<div class="col-md-8 col-sm-9 form-inline">
 			<div class="row">
-				<div class="col-md-5 col-sm-5">
+				<div class="col-md-4 col-sm-5">
 					<input type="text" class="form-control timepicker" id="inputTime1" placeholder="00:00" name="time1" readonly>
 				</div>
 				<label for="inputTime2" class="col-md-2 col-sm-2 control-label"> To: </label>
-				<div class="col-md-5 col-sm-5">
+				<div class="col-md-4 col-sm-5">
 					<input type="text" class="form-control timepicker1" id="inputTime2" placeholder="00:00" name="time2" readonly>
 				</div>
 			</div>
