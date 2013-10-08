@@ -13,15 +13,15 @@
 	?>
 		<!--<form action="patient_list.php" method="post" role="form" class="form-inline">-->
 			<div class="addpatient form-group adjust_display">
-				<a data-toggle="modal" href="#myModalAddingPatient" class="btn btn-primary">
+				<a data-toggle="modal" href="#myModalAddingPatient" class="btn btn-primary btn-sm">
 					+ ADD PATIENT
 				</a>
 			</div>
 			<div class="form-group adjust_display">
-				<input type="text" name="search_field" class="form-control search" placeholder="Search..." value="" />
+				<input type="text" name="search_field" class="form-control search input-sm" placeholder="Search..." value="" />
 			</div>
 			<div class="form-group adjust_display">
-				<button type="submit" class="submit btn btn_design btn-primary" />SEARCH</button>
+				<button type="submit" class="submit btn btn_design btn-primary btn-sm" />SEARCH</button>
 			</div>
 		</form>
 </div>

@@ -9,7 +9,7 @@
 	
 	$access = $this->input->get('access');
 	
-	if(isset($access) && $access == 'granted')
+	if(isset($access))
 	{
 		$disabled = 'disabled';
 	}else
@@ -155,7 +155,7 @@
 								<div class="form-group">
 									<label for="patient_age" class="col-lg-4 col-md-4 col-sm-4 control-label">Age</label>
 									<div class="col-lg-2 col-md-2 col-sm-2">
-										<input type="number" class="form-control" id="patient_age" name="patient_age" value="<?php echo isset($row) ? $row['patient_age'] : null; ?>" <?php echo $disabled; ?>>
+										<input type="text" class="form-control" id="patient_age" name="patient_age" value="<?php echo isset($row) ? $row['patient_age'] : null; ?>" <?php echo $disabled; ?> readonly>
 									</div>
 								</div>
 								<div class="form-group">
@@ -280,7 +280,7 @@
 								<div class="form-group">
 									<label for="patient_last_visit" class="col-lg-4 col-md-4 col-sm-4 control-label">Last Dental Visit</label>
 									<div class="col-lg-5 col-md-5 col-sm-5">
-										<input type="text" class="form-control datepicker" id="patient_last_visit" name="patient_last_visit" value="<?php echo isset($row) ? $row['date_of_last_visit'] : null; ?>" <?php echo $disabled; ?>>
+										<input type="text" class="form-control datepicker" id="patient_last_visit" name="patient_last_visit" placeholder="mm/dd/yyyy" value="<?php echo isset($row) ? $row['date_of_last_visit'] : null; ?>" <?php echo $disabled; ?>>
 									</div>
 								</div>
 								<div class="form-group">
@@ -479,7 +479,7 @@
 									</div>
 								</div>
 								
-								<div class="row show_question" style="<?php if(isset($row) && isset($dataextract) && $dataextract->because != ' '){ echo 'display:block;'; }else{ echo 'display:none;'; }?>" <?php echo $disabled; ?>>
+								<div class="row show_question" style="<?php if(isset($row) && isset($dataextract) && $dataextract->because != ' '){ echo 'display:block;'; }else{ echo 'display:none;'; }?> margin-bottom: 15px;" <?php echo $disabled; ?>>
 									<div class="col-md-6 col-lg-6 col-sm-6" style="padding-right: 0;text-align: right;">If so, what is the condition being treated?&nbsp;</div>
 									<div class="col-md-6 col-lg-6 col-sm-6" style="padding-left:0;text-align: right;">
 										<input type="text" class="col-md-12 col-lg-12 col-sm-12" name="patient_what_treatment" value="<?php if(isset($row) && isset($dataextract)){ echo $dataextract->because; } ?>" <?php echo $disabled; ?>>
@@ -504,7 +504,7 @@
 										</label>
 									</div>
 								</div>
-								<div class="row show_question2" style="<?php if(isset($row) && isset($illness) && $illness->because != ' '){ echo 'display:block;'; }else{ echo 'display:none;'; } ?>" <?php echo $disabled; ?>>
+								<div class="row show_question2" style="<?php if(isset($row) && isset($illness) && $illness->because != ' '){ echo 'display:block;'; }else{ echo 'display:none;'; } ?> margin-bottom: 15px;" <?php echo $disabled; ?>>
 									<div class="col-md-6 col-lg-6 col-sm-6" style="padding-right: 0;text-align: right;">If so, what illness or operation?&nbsp;</div>
 									<div class="col-md-6 col-lg-6 col-sm-6" style="padding-left:0;text-align: right;">
 										<input type="text" class="col-md-12 col-lg-12 col-sm-12" name="patient_what_illness" value="<?php if(isset($row) && isset($illness)){ echo $illness->because; } ?>" <?php echo $disabled; ?>>
@@ -527,7 +527,7 @@
 										</label>
 									</div>
 								</div>
-								<div class="row show_question3" style="<?php if(isset($row) && isset($hospitalized) && $hospitalized->because != ' '){ echo 'display:block;'; }else{ echo 'display:none;'; }?>" <?php echo $disabled; ?>>
+								<div class="row show_question3" style="<?php if(isset($row) && isset($hospitalized) && $hospitalized->because != ' '){ echo 'display:block;'; }else{ echo 'display:none;'; }?> margin-bottom: 15px;" <?php echo $disabled; ?>>
 									<div class="col-md-4 col-lg-4 col-sm-4" style="padding-right: 0;text-align: right;">If so, when and why?&nbsp;</div>
 									<div class="col-md-8 col-lg-8 col-sm-8" style="padding-left:0;text-align: right;">
 										<input type="text" style="margin-right:5px;" class="col-md-5 col-lg-5 col-sm-5 datepicker" placeholder="mm/dd/yyyy" name="patient_when_hospitalized" value="<?php if(isset($row) && isset($hospitalized)){ echo $hospitalized->when; } ?>" <?php echo $disabled; ?>>
@@ -551,7 +551,7 @@
 										</label>
 									</div>
 								</div>
-								<div class="row show_question4" style="<?php if(isset($row)){ if(isset($prescription_medication) && $prescription_medication->because != ' '){ echo 'display:block;'; }else{ echo 'display:none;'; } } ?>" <?php echo $disabled; ?>>
+								<div class="row show_question4" style="<?php if(isset($row)){ if(isset($prescription_medication) && $prescription_medication->because != ' '){ echo 'display:block;'; }else{ echo 'display:none;'; } } ?> margin-bottom: 15px;" <?php echo $disabled; ?>>
 									<div class="col-md-6 col-lg-6 col-sm-6" style="padding-right: 0;text-align: right;">If so, please specify?&nbsp;</div>
 									<div class="col-md-6 col-lg-6 col-sm-6" style="padding-left:0;text-align: right;">
 										<input type="text" class="col-md-12 col-lg-12 col-sm-12" name="patient_specify_prescription" value="<?php if(isset($row) && isset($prescription_medication)){ echo $prescription_medication->because; } ?>" <?php echo $disabled; ?>>
@@ -664,7 +664,13 @@
 											<option value="">Select...</option>
 											<option value="a" <?php echo $selected_blood == 'a' ? 'checked' : ''; ?>>Type A</option>
 											<option value="b" <?php echo $selected_blood == 'b' ? 'checked' : ''; ?>>Type B</option>
-											<option value="c" <?php echo $selected_blood == 'c' ? 'checked' : ''; ?>>Type O</option>
+											<option value="o" <?php echo $selected_blood == 'o' ? 'checked' : ''; ?>>Type O</option>
+											<option value="ab" <?php echo $selected_blood == 'ab' ? 'checked' : ''; ?>>Type AB</option>
+											<option value="aa" <?php echo $selected_blood == 'aa' ? 'checked' : ''; ?>>Type AA</option>
+											<option value="ao" <?php echo $selected_blood == 'ao' ? 'checked' : ''; ?>>Type AO</option>
+											<option value="bb" <?php echo $selected_blood == 'bb' ? 'checked' : ''; ?>>Type BB</option>
+											<option value="bo" <?php echo $selected_blood == 'bo' ? 'checked' : ''; ?>>Type BO</option>
+											<option value="oo" <?php echo $selected_blood == 'oo' ? 'checked' : ''; ?>>Type OO</option>
 										</select>
 									</div>
 								</div>
@@ -677,7 +683,7 @@
 								<div class="row" style="margin-bottom:15px">
 									<div class="col-md-6 col-md-offset-1 col-lg-6 col-lg-offset-1 col-sm-6 col-sm-offset-1">13. Do you have or have you any of the following? Check which apply:</div>
 								</div>
-								<div class="container">
+								<div class="container col-md-offset-1">
 									<?php 
 										if(isset($row))
 										{

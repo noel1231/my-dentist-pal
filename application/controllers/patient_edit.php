@@ -89,7 +89,11 @@ class Patient_Edit extends CI_Controller {
 
 			$this->load->view('homepage', $data);
 			
-		} else if($this->input->get('access')) {
+		}else {
+			redirect(base_url().'login');
+		}
+		
+		if($this->input->get('access')) {
 			
 			$this->db->where('id', $this->input->get('id'));
 			$qdentist_list = $this->db->get('patient_list');
@@ -102,7 +106,9 @@ class Patient_Edit extends CI_Controller {
 			$data['patient_query'] = $query;
 			
 			$data['dashboard_title'] = 'Edit Patients';
-			$data['header'] = $this->load->view('homepage/header', '', true);
+			
+			$data2['patient_access_account'] = true;
+			$data['header'] = $this->load->view('homepage/header', $data2, true);
 			
 			if($this->db->table_exists('patient_tooth_chart') && $this->db->table_exists('patient_tooth_chart_extra')) {
 				$data['charting'] = $this->load->view('charting/box_tooth_edit', $data, true);
@@ -113,8 +119,6 @@ class Patient_Edit extends CI_Controller {
 			$data['body'] = $this->load->view('patient_dashboard', $data, true);
 			$this->load->view('homepage', $data);
 			
-		} else {
-			redirect(base_url().'login');
 		}
 
 	}
