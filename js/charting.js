@@ -124,7 +124,7 @@ $(function() {
 		},
 		success: function(html) {
 			var data = JSON.parse(html);
-			$('#chart_name').html(data.chart_name);
+			$('#chart_name').html('Chart name: '+data.chart_name);
 			$('#chart_container').html(data.body);
 
 			$('.charts_option').removeAttr('selected');
@@ -141,7 +141,7 @@ $(function() {
 			data: {'submit': 'select_chart'},
 			success: function(html) {
 				var data = JSON.parse(html);
-				$('#chart_name').html(data.chart_name);
+				$('#chart_name').html('Chart name: '+data.chart_name);
 				$('#chart_container').html(data.body);
 				$('#chart_remarks').html(data.chart_remarks);
 			}

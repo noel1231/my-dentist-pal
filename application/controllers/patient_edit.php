@@ -91,6 +91,7 @@ class Patient_Edit extends CI_Controller {
 			$this->db->where('id', $this->input->get('id'));
 			$qdentist_list = $this->db->get('patient_list');
 			$rdentist_list = $qdentist_list->row_array();
+			
 			$data = $rdentist_list;
 			
 			$data['patient_id'] = $this->input->get('id');
