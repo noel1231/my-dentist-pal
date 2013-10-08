@@ -75,7 +75,8 @@ class Patient_Edit extends CI_Controller {
 			$data['patient_query'] = $query;
 
 			$data['title'] = 'My Dentist Pal - Digitize your dental management practice. A full-featured online tool that integrates dental practice management and confidential patient clinical charting, which dentist can access wherever they are.';
-			$data['header'] = $this->load->view('homepage/header', '', true);
+			
+			$data['header'] = $this->load->view('homepage/header','', true);
 
 			$data['dashboard_title'] = 'Edit Patients';
 
@@ -89,11 +90,7 @@ class Patient_Edit extends CI_Controller {
 
 			$this->load->view('homepage', $data);
 			
-		}else {
-			redirect(base_url().'login');
-		}
-		
-		if($this->input->get('access')) {
+		}else if($this->input->get('access')) {
 			
 			$this->db->where('id', $this->input->get('id'));
 			$qdentist_list = $this->db->get('patient_list');
@@ -107,8 +104,9 @@ class Patient_Edit extends CI_Controller {
 			
 			$data['dashboard_title'] = 'Edit Patients';
 			
-			$data2['patient_access_account'] = true;
-			$data['header'] = $this->load->view('homepage/header', $data2, true);
+			$data['patient_access_account'] = true;
+			
+			$data['header'] = $this->load->view('homepage/header', $data, true);
 			
 			if($this->db->table_exists('patient_tooth_chart') && $this->db->table_exists('patient_tooth_chart_extra')) {
 				$data['charting'] = $this->load->view('charting/box_tooth_edit', $data, true);
@@ -119,8 +117,10 @@ class Patient_Edit extends CI_Controller {
 			$data['body'] = $this->load->view('patient_dashboard', $data, true);
 			$this->load->view('homepage', $data);
 			
+		}else
+		{
+			redirect(base_url().'login');
 		}
-
 	}
 
 	function treatment_record() {
