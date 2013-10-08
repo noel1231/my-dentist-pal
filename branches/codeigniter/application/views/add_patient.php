@@ -7,7 +7,9 @@
 		$row = null;
 	}
 	
-	if(isset($patient_access_account))
+	$access = $this->input->get('access');
+	
+	if(isset($access) && $access == 'granted')
 	{
 		$disabled = 'disabled';
 	}else
@@ -153,7 +155,7 @@
 								<div class="form-group">
 									<label for="patient_age" class="col-lg-4 col-md-4 col-sm-4 control-label">Age</label>
 									<div class="col-lg-2 col-md-2 col-sm-2">
-										<input type="text" class="form-control" id="patient_age" name="patient_age" value="<?php echo isset($row) ? $row['patient_age'] : null; ?>" <?php echo $disabled; ?> readonly>
+										<input type="number" class="form-control" id="patient_age" name="patient_age" value="<?php echo isset($row) ? $row['patient_age'] : null; ?>" <?php echo $disabled; ?>>
 									</div>
 								</div>
 								<div class="form-group">
@@ -278,7 +280,7 @@
 								<div class="form-group">
 									<label for="patient_last_visit" class="col-lg-4 col-md-4 col-sm-4 control-label">Last Dental Visit</label>
 									<div class="col-lg-5 col-md-5 col-sm-5">
-										<input type="text" class="form-control datepicker" id="patient_last_visit" name="patient_last_visit" placeholder="mm/dd/yyyy" value="<?php echo isset($row) ? $row['date_of_last_visit'] : null; ?>" <?php echo $disabled; ?>>
+										<input type="text" class="form-control datepicker" id="patient_last_visit" name="patient_last_visit" placeholder="mm/dd/yy" value="<?php echo isset($row) ? $row['date_of_last_visit'] : null; ?>" <?php echo $disabled; ?>>
 									</div>
 								</div>
 								<div class="form-group">
@@ -445,9 +447,9 @@
 										<textarea class="form-control" id="patient_physician_office_address" rows="5" name="patient_physician_office_address" <?php echo $disabled; ?>><?php echo isset($row) ? $row['physician_address'] : null; ?></textarea>
 									</div>
 								</div>
-								<div class="row" style="margin-bottom:15px">
-									<div class="col-md-6 col-md-offset-1 col-sm-6 col-sm-offset-1 col-lg-6 col-lg-offset-1">1. Are you in good health?</div>
-									<div class="col-md-5 col-lg-5 col-sm-5">
+								<div class="form-group" style="">
+									<div class="col-lg-4 col-md-4 col-sm-4">1. Are you in good health?</div>
+									<div class="">
 										<label class="checkbox-inline" style="padding-top:0;">
 											<input type="radio" id="health_yes" name="health_patient" value="yes" <?php if(isset($row)){ if($row['good_health'] == 'yes'){ echo 'checked'; } }?> <?php echo $disabled; ?>> 
 											Yes
@@ -465,9 +467,9 @@
 										
 									}	
 								?>
-								<div class="row" style="margin-bottom:15px">
-									<div class="col-md-6 col-md-offset-1 col-lg-6 col-lg-offset-1 col-sm-6 col-sm-offset-1">2. Are you under medical treatment now?</div>
-									<div class="col-md-5 col-lg-5 col-sm-5">
+								<div class="form-group" style="">
+									<div class="col-lg-4 col-md-4 col-sm-4">2. Are you under medical treatment now?</div>
+									<div class="">
 										<label class="checkbox-inline" style="padding-top:0;">
 											<input type="radio" id="treatment_yes" name="medical_treatment_patient" value="yes" <?php if(isset($row)){ if(isset($dataextract) && $dataextract->answer == 'yes'){ echo 'checked'; } } ?> <?php echo $disabled; ?>> Yes
 										</label>
@@ -477,10 +479,10 @@
 									</div>
 								</div>
 								
-								<div class="row show_question" style="<?php if(isset($row) && isset($dataextract) && $dataextract->because != ' '){ echo 'display:block;'; }else{ echo 'display:none;'; }?> margin-bottom: 15px;" <?php echo $disabled; ?>>
-									<div class="col-md-6 col-lg-6 col-sm-6" style="padding-right: 0;text-align: right;">If so, what is the condition being treated?&nbsp;</div>
-									<div class="col-md-6 col-lg-6 col-sm-6" style="padding-left:0;text-align: right;">
-										<input type="text" class="col-md-12 col-lg-12 col-sm-12" name="patient_what_treatment" value="<?php if(isset($row) && isset($dataextract)){ echo $dataextract->because; } ?>" <?php echo $disabled; ?>>
+								<div class="row show_question" style="<?php if(isset($row) && isset($dataextract) && $dataextract->because != ' '){ echo 'display:block;'; }else{ echo 'display:none;'; }?>" <?php echo $disabled; ?>>
+									<div class="col-lg-4 col-md-4 col-sm-4" style="text-indent:15px;">If so, what is the condition being treated?&nbsp;</div>
+									<div class="col-lg-5 col-md-5 col-sm-5" style="">
+										<input type="text" class="col-lg-6 col-md-6 col-sm-6 form-control" name="patient_what_treatment" value="<?php if(isset($row) && isset($dataextract)){ echo $dataextract->because; } ?>" <?php echo $disabled; ?>>
 									</div>
 								</div>
 								<?php
@@ -489,9 +491,9 @@
 										$illness = json_decode($row['illness_operation']);
 									}
 								?>
-								<div class="row" style="margin-bottom:15px">
-									<div class="col-md-6 col-md-offset-1 col-lg-6 col-lg-offset-1 col-sm-6 col-sm-offset-1">3. Have you ever had serious illness or surgical operation?</div>
-									<div class="col-md-5 col-lg-5 col-sm-5">
+								<div class="form-group" style="margin-top:15px;">
+									<div class="col-lg-4 col-md-4 col-sm-4">3. Have you ever had serious illness or surgical operation?</div>
+									<div class="">
 										<label class="checkbox-inline" style="padding-top:0;">
 											<input type="radio" name="illness_patient" value="yes" <?php if(isset($row)){ if(isset($illness) && $illness->answer == 'yes'){ echo 'checked'; } } ?> <?php echo $disabled; ?>> 
 											Yes
@@ -502,10 +504,10 @@
 										</label>
 									</div>
 								</div>
-								<div class="row show_question2" style="<?php if(isset($row) && isset($illness) && $illness->because != ' '){ echo 'display:block;'; }else{ echo 'display:none;'; } ?> margin-bottom: 15px;" <?php echo $disabled; ?>>
-									<div class="col-md-6 col-lg-6 col-sm-6" style="padding-right: 0;text-align: right;">If so, what illness or operation?&nbsp;</div>
-									<div class="col-md-6 col-lg-6 col-sm-6" style="padding-left:0;text-align: right;">
-										<input type="text" class="col-md-12 col-lg-12 col-sm-12" name="patient_what_illness" value="<?php if(isset($row) && isset($illness)){ echo $illness->because; } ?>" <?php echo $disabled; ?>>
+								<div class="form-group show_question2" style="<?php if(isset($row) && isset($illness) && $illness->because != ' '){ echo 'display:block;'; }else{ echo 'display:none;'; } ?>" <?php echo $disabled; ?>>
+									<div class="col-lg-4 col-md-4 col-sm-4" style="text-indent:15px;">If so, what illness or operation?&nbsp;</div>
+									<div class="col-lg-5 col-md-5 col-sm-5" style="">
+										<input type="text" class="col-lg-6 col-md-6 col-sm-6 form-control" name="patient_what_illness" value="<?php if(isset($row) && isset($illness)){ echo $illness->because; } ?>" <?php echo $disabled; ?>>
 									</div>
 								</div>
 								<?php
@@ -514,9 +516,9 @@
 										$hospitalized = json_decode($row['hospitalized']);
 									}
 								?>
-								<div class="row" style="margin-bottom:15px">
-									<div class="col-md-6 col-md-offset-1 col-lg-6 col-lg-offset-1 col-sm-6 col-sm-offset-1">4. Have you ever been hospitalized?</div>
-									<div class="col-md-5 col-lg-5 col-sm-5">
+								<div class="form-group" style="">
+									<div class="col-lg-4 col-md-4 col-sm-4">4. Have you ever been hospitalized?</div>
+									<div class="">
 										<label class="checkbox-inline" style="padding-top:0;">
 											<input type="radio" name="hospitalized_patient" value="yes" <?php if(isset($row)){ if(isset($hospitalized) && $hospitalized->answer == 'yes'){ echo 'checked'; } } ?> <?php echo $disabled; ?>> Yes
 										</label>
@@ -525,11 +527,11 @@
 										</label>
 									</div>
 								</div>
-								<div class="row show_question3" style="<?php if(isset($row) && isset($hospitalized) && $hospitalized->because != ' '){ echo 'display:block;'; }else{ echo 'display:none;'; }?> margin-bottom: 15px;" <?php echo $disabled; ?>>
-									<div class="col-md-4 col-lg-4 col-sm-4" style="padding-right: 0;text-align: right;">If so, when and why?&nbsp;</div>
-									<div class="col-md-8 col-lg-8 col-sm-8" style="padding-left:0;text-align: right;">
-										<input type="text" style="margin-right:5px;" class="col-md-5 col-lg-5 col-sm-5 datepicker" placeholder="mm/dd/yyyy" name="patient_when_hospitalized" value="<?php if(isset($row) && isset($hospitalized)){ echo $hospitalized->when; } ?>" <?php echo $disabled; ?>>
-										<input type="text" class="col-md-6 col-lg-6 col-sm-6" name="patient_why_hospitalized" value="<?php if(isset($row) && isset($hospitalized)){ echo $hospitalized->because; } ?>">
+								<div class="form-group show_question3" style="<?php if(isset($row) && isset($hospitalized) && $hospitalized->because != ' '){ echo 'display:block;'; }else{ echo 'display:none;'; }?>" <?php echo $disabled; ?>>
+									<div class="col-lg-4 col-md-4 col-sm-4" style="text-indent:15px;">If so, when and why?&nbsp;</div>
+									<div class="col-lg-5 col-md-5 col-sm-5" style="">
+										<input type="text" style="margin-bottom:5px;" class="col-lg-2 col-md-2 col-sm-2 datepicker form-control" placeholder="mm/dd/yyyy" name="patient_when_hospitalized" value="<?php if(isset($row) && isset($hospitalized)){ echo $hospitalized->when; } ?>" <?php echo $disabled; ?>>
+										<input type="text" class="col-lg-2 col-md-2 col-sm-2 form-control" name="patient_why_hospitalized" value="<?php if(isset($row) && isset($hospitalized)){ echo $hospitalized->because; } ?>">
 									</div>
 								</div>
 								<?php
@@ -538,9 +540,9 @@
 										$prescription_medication = json_decode($row['prescription_medication']);
 									}
 								?>
-								<div class="row" style="margin-bottom:15px">
-									<div class="col-md-6 col-md-offset-1 col-lg-6 col-lg-offset-1 col-sm-6 col-sm-offset-1">5. Are you taking any presciption or non prescription medication?</div>
-									<div class="col-md-5 col-lg-5 col-sm-5">
+								<div class="form-group" style="">
+									<div class="col-lg-4 col-md-4 col-sm-4">5. Are you taking any presciption or non prescription medication?</div>
+									<div class="">
 										<label class="checkbox-inline" style="padding-top:0;">
 											<input type="radio" name="presciption_patient" value="yes" <?php if(isset($row)){ if(isset($prescription_medication) && $prescription_medication->answer == 'yes'){ echo 'checked'; } } ?> <?php echo $disabled; ?>> Yes
 										</label>
@@ -549,15 +551,15 @@
 										</label>
 									</div>
 								</div>
-								<div class="row show_question4" style="<?php if(isset($row)){ if(isset($prescription_medication) && $prescription_medication->because != ' '){ echo 'display:block;'; }else{ echo 'display:none;'; } } ?> margin-bottom: 15px;" <?php echo $disabled; ?>>
-									<div class="col-md-6 col-lg-6 col-sm-6" style="padding-right: 0;text-align: right;">If so, please specify?&nbsp;</div>
-									<div class="col-md-6 col-lg-6 col-sm-6" style="padding-left:0;text-align: right;">
-										<input type="text" class="col-md-12 col-lg-12 col-sm-12" name="patient_specify_prescription" value="<?php if(isset($row) && isset($prescription_medication)){ echo $prescription_medication->because; } ?>" <?php echo $disabled; ?>>
+								<div class="form-group show_question4" style="<?php if(isset($row)){ if(isset($prescription_medication) && $prescription_medication->because != ' '){ echo 'display:block;'; }else{ echo 'display:none;'; } } ?>" <?php echo $disabled; ?>>
+									<div class="col-lg-4 col-md-4 col-sm-4" style="text-indent:15px;">If so, please specify?&nbsp;</div>
+									<div class="col-lg-5 col-md-5 col-sm-5" style="">
+										<input type="text" class="col-md-6 col-lg-6 col-sm-6 form-control" name="patient_specify_prescription" value="<?php if(isset($row) && isset($prescription_medication)){ echo $prescription_medication->because; } ?>" <?php echo $disabled; ?>>
 									</div>
 								</div>
-								<div class="row" style="margin-bottom:15px">
-									<div class="col-md-6 col-md-offset-1 col-lg-6 col-lg-offset-1 col-sm-6 col-sm-offset-1">6. Do you use tabacco products?</div>
-									<div class="col-md-5 col-lg-5 col-sm-5">
+								<div class="form-group" style="">
+									<div class="col-lg-4 col-md-4 col-sm-4">6. Do you use tabacco products?</div>
+									<div class="">
 										<label class="checkbox-inline" style="padding-top:0;">
 											<input type="radio" name="tabacco_patient" value="yes" <?php if(isset($row)){ if($row['tabacco_products'] == 'yes'){ echo 'checked'; } } ?> <?php echo $disabled; ?>> Yes
 										</label>
@@ -566,9 +568,9 @@
 										</label>
 									</div>
 								</div>
-								<div class="row" style="margin-bottom:15px">
-									<div class="col-md-6 col-md-offset-1 col-lg-6 col-lg-offset-1 col-sm-6 col-sm-offset-1">7. Do you use alcohol coccaine or other dangerous drugs?</div>
-									<div class="col-md-5 col-lg-5 col-sm-5">
+								<div class="form-group" style="">
+									<div class="col-lg-4 col-md-4 col-sm-4">7. Do you use alcohol coccaine or other dangerous drugs?</div>
+									<div class="">
 										<label class="checkbox-inline" style="padding-top:0;">
 											<input type="radio" name="drugs_patient" value="yes" <?php if(isset($row)){ if($row['alcohol_drugs'] == 'yes'){ echo 'checked'; } } ?> <?php echo $disabled; ?>> Yes
 										</label>
@@ -577,9 +579,9 @@
 										</label>
 									</div>
 								</div>
-								<div class="row" style="margin-bottom:15px">
-									<div class="col-md-6 col-md-offset-1 col-lg-6 col-lg-offset-1 col-sm-6 col-sm-offset-1">8. Are you allergic to any of the following?</div>
-									<div class="col-md-5 col-lg-5 col-sm-5">
+								<div class="form-group" style="">
+									<div class="col-lg-4 col-md-4 col-sm-4">8. Are you allergic to any of the following?</div>
+									<div class="col-lg-5 col-md-5 col-sm-5">
 										<div class="checkbox">
 											<input type="checkbox" name="allergic[]" value="anesthetic" <?php if(isset($row)){ if($row['local_anesthetic'] == 'yes'){ echo 'checked'; } } ?> <?php echo $disabled; ?>>
 											Local Anesthetic (ex.Lidocaine)
@@ -602,19 +604,19 @@
 										</div>
 									</div>
 								</div>
-								<div class="row" style="margin-bottom:15px">
-									<div class="col-md-6 col-md-offset-1 col-lg-6 col-lg-offset-1 col-sm-6 col-sm-offset-1">9. Bleeding time?</div>
-									<div class="col-md-5 col-lg-5 col-sm-5">
-										<input type="text" class="col-md-12 col-lg-12 col-sm-12" name="patient_bleeding_time" value="<?php echo isset($row) ? $row['menstruation'] : null; ?>" <?php echo $disabled; ?>>
+								<div class="form-group" style="">
+									<div class="col-lg-4 col-md-4 col-sm-4">9. Bleeding time?</div>
+									<div class="col-lg-5 col-md-5 col-sm-5">
+										<input type="text" class="col-md-6 col-lg-6 col-sm-6 form-control" name="patient_bleeding_time" value="<?php echo isset($row) ? $row['menstruation'] : null; ?>" <?php echo $disabled; ?>>
 									</div>
 								</div>
-								<div class="row" style="margin-bottom:15px">
-									<div class="col-md-6 col-md-offset-1 col-lg-6 col-lg-offset-1 col-sm-6 col-sm-offset-1">10. For women only:</div>
+								<div class="form-group" style="">
+									<div class="col-lg-4 col-md-4 col-sm-4">10. For women only:</div>
 								</div>
-								<div class="row" style="margin-bottom:15px">
-									<div class="container">
-										<div class="col-md-5 col-md-offset-2 col-lg-5 col-lg-offset-2 col-sm-5 col-sm-offset-2">A. Are you pregnant?</div>
-										<div class="col-md-5 col-lg-5 col-sm-5">
+								<div class="container" style="">
+									<div class="form-group">
+										<div class="col-lg-4 col-md-4 col-sm-4" style="text-indent:10px;">A. Are you pregnant?</div>
+										<div class="">
 											<label class="checkbox-inline" style="padding-top:0;">
 												<input type="radio" name="pregnant_patient" value="yes" <?php if(isset($row)){ if($row['pregnant'] == 'yes'){ echo 'checked'; } } ?> <?php echo $disabled; ?>> Yes
 											</label>
@@ -623,9 +625,9 @@
 											</label>
 										</div>
 									</div>
-									<div class="container">
-										<div class="col-md-5 col-md-offset-2 col-lg-5 col-lg-offset-2 col-sm-5 col-sm-offset-2">B. Are you nursing?</div>
-										<div class="col-md-5 col-lg-5 col-sm-5">
+									<div class="form-group">
+										<div class="col-lg-4 col-md-4 col-sm-4" style="text-indent:10px;">B. Are you nursing?</div>
+										<div class="">
 											<label class="checkbox-inline" style="padding-top:0;">
 												<input type="radio" name="nursing_patient" value="yes" <?php if(isset($row)){ if($row['nursing'] == 'yes'){ echo 'checked'; } } ?> <?php echo $disabled; ?>> Yes
 											</label>
@@ -634,9 +636,9 @@
 											</label>
 										</div>
 									</div>
-									<div class="container">
-										<div class="col-md-5 col-md-offset-2 col-lg-5 col-lg-offset-2 col-sm-5 col-sm-offset-2">C. Are you taking birth control pills?</div>
-										<div class="col-md-5 col-lg-5 col-sm-5">
+									<div class="form-group">
+										<div class="col-lg-4 col-md-4 col-sm-4" style="text-indent:10px;">C. Are you taking birth control pills?</div>
+										<div class="">
 											<label class="checkbox-inline" style="padding-top:0;">
 												<input type="radio" name="pills_patient" value="yes" <?php if(isset($row)){ if($row['control_pills'] == 'yes'){ echo 'checked'; } } ?> <?php echo $disabled; ?>> Yes
 											</label>
@@ -655,10 +657,10 @@
 										$selected_blood = null;
 									}
 								?>
-								<div class="row" style="margin-bottom:15px">
-									<div class="col-md-5 col-md-offset-1 col-lg-5 col-lg-offset-1 col-sm-5 col-sm-offset-1">11. Blood type?</div>
-									<div class="col-md-5 col-md-offset-1 col-lg-5 col-lg-offset-1 col-sm-5 col-sm-offset-1">
-										<select name="patient_blood_type" <?php echo $disabled; ?>>
+								<div class="form-group" style="">
+									<div class="col-lg-4 col-md-4 col-sm-4">11. Blood type?</div>
+									<div class="col-lg-5 col-md-5 col-sm-5">
+										<select name="patient_blood_type" class="form-control"<?php echo $disabled; ?>>
 											<option value="">Select...</option>
 											<option value="a" <?php echo $selected_blood == 'a' ? 'checked' : ''; ?>>Type A</option>
 											<option value="b" <?php echo $selected_blood == 'b' ? 'checked' : ''; ?>>Type B</option>
@@ -672,16 +674,16 @@
 										</select>
 									</div>
 								</div>
-								<div class="row" style="margin-bottom:15px">
-									<div class="col-md-6 col-md-offset-1 col-lg-6 col-lg-offset-1 col-sm-6 col-sm-offset-1">12. Blood presure?</div>
-									<div class="col-md-5 col-lg-5 col-sm-5">
-										<input type="text" class="col-md-12 col-lg-12 col-sm-12" name="patient_blood_presure" value="<?php echo isset($row) ? $row['blood_presure'] : ''; ?>" <?php echo $disabled; ?>>
+								<div class="form-group" style="">
+									<div class="col-lg-4 col-md-4 col-sm-4">12. Blood presure?</div>
+									<div class="col-lg-5 col-md-5 col-sm-5">
+										<input type="text" class="col-md-6 col-lg-6 col-sm-6 form-control" name="patient_blood_presure" value="<?php echo isset($row) ? $row['blood_presure'] : ''; ?>" <?php echo $disabled; ?>>
 									</div>
 								</div>
-								<div class="row" style="margin-bottom:15px">
-									<div class="col-md-6 col-md-offset-1 col-lg-6 col-lg-offset-1 col-sm-6 col-sm-offset-1">13. Do you have or have you any of the following? Check which apply:</div>
+								<div class="form-group" style="">
+									<div class="col-lg-12 col-md-12 col-sm-12">13. Do you have or have you any of the following? Check which apply:</div>
 								</div>
-								<div class="container col-md-offset-1">
+								<div class="container">
 									<?php 
 										if(isset($row))
 										{

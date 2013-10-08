@@ -292,8 +292,8 @@
 								}
 ?>
 								<div class="form-group">
-									<div class="col-lg-offset-3 col-lg-10">
-										<button type="submit" name="save" value="Save" class="btn btn-primary submit_dental_form1" id="save"> Save </button>
+									<div class="col-lg-9 col-md-9 col-sm-9">
+										<button type="submit" name="save" value="Save" class="btn btn-primary submit_dental_form1 pull-right" id="save"> Save </button>
 									</div>
 								</div>	
 						</form>
