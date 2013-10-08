@@ -20,7 +20,7 @@
 											<div class="col-md-4 col-sm-3">
 												<div class="profile_pic_container">
 													<a href="#">
-															<img class="profile_pic" alt="Profile Pic" src="<?php echo trim($profile_pic) != null ? base_url().$profile_pic : base_url('img/profile_pic.gif'); ?>" />
+															<img class="profile_pic" alt="Profile Pic" src="<?php echo trim($profile_pic) != null ? base_url().$profile_pic : base_url('img/default_pic.gif'); ?>" />
 													</a>
 												</div>
 											</div>

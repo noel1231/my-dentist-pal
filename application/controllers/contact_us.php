@@ -9,7 +9,7 @@ class Contact_Us extends CI_Controller
 
     public function index()
     {
-        $data['title'] = 'Medix - Contact Us';
+        $data['title'] = 'Medix Dental - Contact Us';
         $data['body'] = $this->load->view('contact_us', $data, true);
         $data['header'] = $this->load->view('homepage/header', '', true);
         $data['identifier'] = true;

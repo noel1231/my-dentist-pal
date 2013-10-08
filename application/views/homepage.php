@@ -2,12 +2,33 @@
 <html>
   <head>
 <?php
-	if($_SERVER['HTTP_HOST'] == 'alpha.mydentistpal.com') {
+	if($_SERVER['HTTP_HOST'] == 'alpha.medix.ph') {
 ?>
 	<meta name="robots" content="noindex">
 <?php
 	}
 ?>
+
+<?php
+	if($_SERVER['HTTP_HOST'] == 'www.medix.ph') {
+?>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-39650233-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<?php
+	}
+?>
+
     <title><?php echo isset($title) ? $title : 'Medix Dental'; ?></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 

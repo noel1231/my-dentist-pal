@@ -29,7 +29,7 @@ class Patient_access extends CI_Controller {
 		
 		$data = $rdentist_list;
 
-		$data['title'] = 'My Dentist Pal - Digitize your dental management practice. A full-featured online tool that integrates dental practice management and confidential patient clinical charting, which dentist can access wherever they are.';
+		$data['title'] = 'Medix Dental - Patient Dashboard';
 		$data['header'] = $this->load->view('homepage/header', '', true);
 
 		$data['dashboard_title'] = 'Patients Access';

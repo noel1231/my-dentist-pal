@@ -38,6 +38,12 @@ class Patient_Edit extends CI_Controller {
 				// $this->select_chart($chart_id, $patient_id); return false;
 				$this->chart_info(); return false;
 				break;
+			case 'charges':
+				$this->set_charges(); return false;
+				break;
+			case 'payment':
+				$this->set_payment(); return false;
+				break;
 		}
 
 		switch ($this->input->post('view')) {
@@ -50,8 +56,10 @@ class Patient_Edit extends CI_Controller {
 		if($this->session->userdata('id')) {
 			$data['sess_id'] = $this->session->userdata('id');
 
-			if(!$this->input->get('id')) {
-				redirect(base_url().'dentist_dashboard');
+			if($this->input->get()) {
+				if(!$this->input->get('id')) {
+					redirect(base_url().'dentist_dashboard');
+				}
 			}
 
 			$this->db->where('id', $this->input->get('id'));
@@ -227,6 +235,52 @@ class Patient_Edit extends CI_Controller {
 		$this->db->update('patient_tooth_chart', $update_array);
 
 		echo $update_array['chart_info'];
+	}
+
+	private function set_charges() {
+		$callback = array();
+		$amount_charged = $this->input->post('amount_charged');
+
+		foreach($amount_charged as $key=>$value) {
+			$this->db->where('patient_tooth_chart_extra_id', $key);
+			$qtac = $this->db->get('tooth_amount_charges');
+			$rtac = $qtac->row_array();
+			$data_array = array(
+				'amount_charged' => $value,
+				'timestamp' => time()
+			);
+			if($qtac->num_rows() > 0) {
+				$this->db->where('id', $rtac['id']);
+				$this->db->update('tooth_amount_charges', $data_array);
+			} else {
+				if($value !== '') {
+					$data_array['patient_tooth_chart_extra_id'] = $key;
+					$this->db->insert('tooth_amount_charges', $data_array);
+					$data_array['id'] = $this->db->insert_id();
+				}
+			}
+		}
+		echo json_encode($data_array);
+		
+	}
+
+	private function set_payment() {
+		$callback = array();
+		$amount_paid = $this->input->post('amount_paid');
+
+		foreach($amount_paid as $key=>$value) {
+			if($value !== '') {
+				$data_array = array(
+					'amount_paid' => $value,
+					'timestamp' => time()
+				);
+				$data_array['patient_tooth_chart_id'] = $key;
+				$this->db->insert('tooth_amount_paid', $data_array);
+				$data_array['id'] = $this->db->insert_id();
+			}
+		}
+
+		echo json_encode($data_array);
 	}
 
 }

@@ -29,7 +29,7 @@ class Account_setting extends CI_Controller {
 		
 		$data = $rdentist_list;
 
-		$data['title'] = 'Medix - Account Settings';
+		$data['title'] = 'Medix Dental - Account Settings';
 		$data['header'] = $this->load->view('homepage/header', '', true);
 
 		$data['dashboard_title'] = 'Patients Access';

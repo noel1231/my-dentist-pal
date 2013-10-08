@@ -18,7 +18,7 @@
 										<div class="col-lg-6 col-md-6 col-sm-6">
 											<div>
 												<div>
-													<img src="<?php if(isset($profile_pic) && trim($profile_pic)){ echo base_url($profile_pic); }else{echo '';} ?>" alt="dentist image" id="dentist-img" name="dentist-img" class="img-circle dentist_photo_view" onerror="this.src='http://www.placehold.it/200x200/EFEFEF/AAAAAA&text=no+image'" style="width:200px;margin-bottom:10px;">
+													<img src="<?php if(isset($profile_pic) && trim($profile_pic)){ echo base_url($profile_pic); }else{echo '';} ?>" alt="dentist image" id="dentist-img" name="dentist-img" class="img-circle dentist_photo_view" onerror="this.src='<?php echo base_url().'img/default_pic.gif'; ?>" style="width:200px;margin-bottom:10px;">
 												</div>
 												<div id="loading_prog" style="position:absolute;left:98px;top:88px;display:none;">
 													<img src="images/loading.gif" id="load_process" name="load_process" class="img-circle" alt="loading process"><br>
