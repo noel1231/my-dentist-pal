@@ -22,7 +22,7 @@
 	</div>
 </div>
 
-<div id="scheduler" class="col-md-5" style="cursor: pointer;overflow: auto;">
+<div id="scheduler" class="col-md-5" style="cursor: pointer;">
 	<div id="calendar"></div>
 </div>
 

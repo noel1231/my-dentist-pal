@@ -160,7 +160,7 @@
 			$rprocedure_count = $qprocedure_count->result_array();
 			foreach($rprocedure_count as $procedure) {
 ?>
-					<li class="list-group-item" style="border:none;">
+					<li class="list-group-item">
 						<span class="badge" style="background-color: #3798EC;"> <?php echo $procedure['procedure_count']; ?></span>
 						<?php echo $procedure_array[$procedure['tooth_procedure']]; ?>
 					</li>

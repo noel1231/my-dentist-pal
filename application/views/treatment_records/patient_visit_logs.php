@@ -169,7 +169,7 @@
 							$qtap = $this->db->get('tooth_amount_paid');
 							$rtap = $qtap->row_array();
 
-							if($rtap['amount_paid'] <= $rtac['amount_charged']) {
+							if($rtap['amount_paid'] < $rtac['amount_charged']) {
 ?>
 								<input type="text" id="amtpd_<?php echo $chart['id']; ?>" class="amtpd form-control text-right input-sm" name="amount_paid[<?php echo $chart['chart_id']; ?>]" />
 <?php
