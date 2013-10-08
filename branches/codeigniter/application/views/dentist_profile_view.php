@@ -251,25 +251,25 @@
 										</div>	
 								</div><!--end mobile number-->
 								<div class="form-group"><!--start email address-->
-										<label for="" class="col-lg-3 control-label">Email Address:</label>
-										<div class="col-lg-6">
+										<label for="" class="col-lg-3 col-md-3 col-sm-3 control-label">Email Address:</label>
+										<div class="col-lg-6 col-md-6 col-sm-6">
 											<input type="text" id="email1" name="email1" class="form-control" placeholder="" value="<?php echo isset($email) ? $email : ''; ?>">
 										</div>	
 								</div><!--end email address-->
 								<div class="form-group"><!--start facebook fan page-->
-										<label for="" class="col-lg-3 control-label"> Facebook Fan Page: </label>
-										<div class="col-lg-6">
+										<label for="" class="col-lg-3 col-md-3 col-sm-3 control-label"> Facebook Fan Page: </label>
+										<div class="col-lg-6 col-md-6 col-sm-6">
 											<input type="text" id="fanpage" name="fanpage" class="form-control" placeholder="www.facebook.com/FanpageName" value="<?php echo isset($fb_fanpage) ? $fb_fanpage : ''?>">
 										</div>	
 								</div><!--end facebook fan page-->
 								<div class="form-group"><!--start twitter-->
-										<label for="" class="col-lg-3 control-label">Twitter:</label>
-										<div class="col-lg-6">
+										<label for="" class="col-lg-3 col-md-3 col-sm-3 control-label">Twitter:</label>
+										<div class="col-lg-6 col-md-6 col-sm-6">
 											<input type="text" id="tweet" name="tweet" class="form-control" placeholder="@TwitterHandle" value="<?php echo isset($twitter) ? $twitter : ''?>">
 										</div>	
 								</div><!--end twitter-->
 								<div class="form-group">
-									<label for="" class="col-lg-3 control-label">Clinic Hours:</label>
+									<label for="" class="col-lg-3 col-md-3 col-sm-3 control-label">Clinic Hours:</label>
 								</div>
 <?php
 								
@@ -278,13 +278,13 @@
 									
 ?>
 								<div class="form-group"><!--start clinic hours sunday-->
-									<label for="" class="col-lg-3 control-label"></label>
-									<div id="c-hours-day" class="col-lg-1 control-label" style="text-align:left;"> <strong> <?php echo ucfirst($day); ?> </strong> </div>
-									<div id="sample2" class="col-lg-2">
+									<label for="" class="col-lg-3 col-md-1 col-sm-1 control-label"></label>
+									<div id="c-hours-day" class="col-lg-1 col-md-2 col-sm-2 control-label" style="text-align:left;"> <strong> <?php echo ucfirst($day); ?> </strong> </div>
+									<div id="sample2" class="col-lg-2 col-md-3 col-sm-3">
 										<input type="text" name="in_<?php echo $day; ?>" value="<?php echo isset(${$day.'_in'}) ? ${$day.'_in'} : ''?>" class="form-control timepick clinic_hr" placeholder="<?php echo isset(${$day.'_in'}) ? ${$day.'_in'} : ''?>">
 									</div>
-									<div id="c-hours-to" class="col-lg-1 control-label to_label" style="text-align:center;"> <strong> To </strong> </div>
-									<div id="sample2" class="ui-widget-content-old col-lg-2">
+									<div id="c-hours-to" class="col-lg-1 col-md-1 col-sm-1 control-label to_label" style="text-align:left;"> <strong> To </strong> </div>
+									<div id="sample2" class="ui-widget-content-old col-lg-2 col-md-3 col-sm-3">
 										<input type="text" name="out_<?php echo $day; ?>" value="<?php echo isset(${$day.'_out'}) ? ${$day.'_out'} : ''?>" class="form-control timepick" placeholder="<?php echo isset(${$day.'_out'}) ? ${$day.'_out'} : ''?>">
 									</div>
 								</div><!--end clinic hours sunday-->

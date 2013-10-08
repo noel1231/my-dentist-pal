@@ -1,27 +1,4 @@
-<!--<style>
 
-	/* michael codes */
-	@media(max-width: 1213px)
-	{
-		.form-inline .form-group.adjust_display {
-			display:block;
-			margin-bottom: 15px;
-		}
-	}
-	@media(max-width: 950px)
-	{
-		.form-inline .form-group.adjust_display {
-			display:inline-block;
-		}
-	}
-	@media(max-width: 783px)
-	{
-		.form-inline .form-group.adjust_display {
-			display:block;
-			margin-bottom: 15px;
-		}
-	}
-</style>	-->
 <div class="pull-right">
 	
 	<?php
