@@ -67,6 +67,7 @@ class Admin_model  extends CI_Model
             $output = array();
             $output['patient_1'] = 0;
             $output['patient_zero'] = 0;
+            
             foreach ($query->result_array() as $row)
             {
                $dentist_id = $row['id'];
@@ -114,7 +115,48 @@ class Admin_model  extends CI_Model
         
     }
     
-    
+    public function dentist_list()
+    {
+        $output = array();
+        $output['td'] = "";
+        
+        $query =  $this->db->select('*')
+                            ->from('dentist_list')
+                            ->limit('2','5')
+                            ->get();
+        
+        if ($query->num_rows() > 0)
+        {
+            foreach($query->result_array() as $row)
+            {
+                if($row['status'] == 1)
+                {
+                    $verify = 'yes';
+                }
+                else
+                {
+                    $verify = 'no';
+                }
+
+                $output['td'] .= "<tr>
+                                    <td>" . $row['id'] . "</td>
+                                    <td>" . $row['sur_name'] . "</td>
+                                    <td>" . $row['first_name'] . "</td>
+                                    <td>WEW</td>
+                                    <td>" . $row['email'] . "</td>
+                                    <td>" . $row['cel_number'] . "</td>
+                                    <td>" . $row['tel_number'] . "</td>
+                                    <td>0</td>
+                                    <td>" . $row['register_date'] . "</td>
+                                    <td>" . $verify . "</td>
+                                    <td></td>
+                                </tr>";
+
+               
+            }
+            return $output;
+        }
+    }
 }
 
 ?>
