@@ -70,12 +70,12 @@
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <!--<script src="//code.jquery.com/jquery.min.js"></script>-->
-	<script>window.jQuery || document.write('<script src="<?php //echo base_url();?>js/jquery.min.js">\x3C/script>')</script>
+	<script>window.jQuery || document.write('<script src="<?php echo base_url();?>js/jquery.min.js">\x3C/script>')</script>
 
 	<script src="<?php echo base_url();?>bootstrap/js/bootstrap.js"></script>
 	
     <!--<script src="//code.jquery.com/ui/1.10.3/jquery-ui.min.js"></script>-->
-	<script>window.jQuery.ui || document.write('<script src="<?php //echo base_url();?>js/jquery-ui.min.js">\x3C/script>')</script>
+	<script>window.jQuery.ui || document.write('<script src="<?php echo base_url();?>js/jquery-ui.min.js">\x3C/script>')</script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
 
 	<script type='text/javascript' src='<?php echo base_url();?>fullcalendar/fullcalendar.js'></script>
