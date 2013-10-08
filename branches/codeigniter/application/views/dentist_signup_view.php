@@ -8,9 +8,9 @@
 			<div id="form-wrapper" class=""><!-- start dentist registration form wrapper-->
 				<div id="" class="well-sm">
 					
-					<div class="well col-md-8 col-md-offset-2" style="border-top:solid 10px #42a9f6;">
+					<div class="well col-lg-8 col-md-8 col-sm-8 col-lg-offset-2 col-md-offset-2 col-sm-offset-2" style="border-top:solid 10px #42a9f6;">
 						<div class="row">
-							<div class="col-md-10"><!-- start center-->
+							<div class="col-lg-10 col-md-10 col-sm-10"><!-- start center-->
 								<div style=""><!--Dentist's Dashboard--><!--<img src="images/dentist_dashboard.png" />-->
 									<label class="control-label"><h1><span style="font-size:40px;">Dentist Registration</span></h1></label>
 								</div>
@@ -19,54 +19,54 @@
 						<form class="form-horizontal" id="form_dentist_signup" role="form" method="post" action="" enctype="multipart/form-data" name="ContactForm"><!--Registration form for Dentist-->
 							<div><!--start form content wrapper-->
 								<div class="form-group"><!--start full name-->
-									<label for="" class="col-md-4 control-label">First Name:</label>
-									<div class="col-md-5">
+									<label for="" class="col-lg-4 col-md-4 col-sm-4 control-label">First Name:</label>
+									<div class="col-lg-5 col-md-5 col-sm-5">
 										<input type="text" id="fname" name="fname" class="form-control" value="<?php echo set_value('fname') ?>" placeholder="First name">
 									</div>	
 								</div>
 								<div class="form-group">
-									<label for="" class="col-md-4 control-label">Middle Name:</label>
-									<div class="col-md-5">
+									<label for="" class="col-lg-4 col-md-4 col-sm-4 control-label">Middle Name:</label>
+									<div class="col-lg-5 col-md-5 col-sm-5">
 										<input type="text" id="middle" name="middle" class="form-control" value="<?php echo set_value('middle') ?>" placeholder="Middle name">
 									</div>	
 								</div>
 								<div class="form-group">
-									<label for="" class="col-md-4 control-label">Last Name:</label>
-									<div class="col-md-5">
+									<label for="" class="col-lg-4 col-md-4 col-sm-4 control-label">Last Name:</label>
+									<div class="col-lg-5 col-md-5 col-sm-5">
 										<input type="text" id="lname" name="lname" class="form-control" value="<?php echo set_value('lname') ?>" placeholder="Last name">
 									</div>	
 								</div><!--end full name-->
 								
 								<div class="form-group"><!--start email-->
-									<label for="" class="col-md-4 control-label">Email Address:</label>
-									<div class="col-md-5">
+									<label for="" class="col-lg-4 col-md-4 col-sm-4 control-label">Email Address:</label>
+									<div class="col-lg-5 col-md-5 col-sm-5">
 										<input type="text" id="email_sign" name="email_sign" class="form-control"/><span id="validEmail"></span>
 									</div>
 								</div><!--end email-->
 								
 								<div class="form-group"><!--start confirm email-->
-									<label for="" class="col-md-4 control-label">Confirm Email Address:</label>
-									<div class="col-md-5">
+									<label for="" class="col-lg-4 col-md-4 col-sm-4 control-label">Confirm Email Address:</label>
+									<div class="col-lg-5 col-md-5 col-sm-5">
 										<input type="text" id="email_sign1" name="email_sign1" class="form-control"/>
 									</div>
 								</div><!--end confirm email-->
 								
 								<div class="form-group"><!--start create password-->
-									<label for="" class="col-md-4 control-label">Create Password:</label>
-									<div class="col-md-5">
+									<label for="" class="col-lg-4 col-md-4 col-sm-4 control-label">Create Password:</label>
+									<div class="col-lg-5 col-md-5 col-sm-5">
 										<input type="password" id="pass1" name="pass1" id="pass1" class="form-control"/>
 									</div>
 								</div><!--end create password-->
 								
 								<div class="form-group"><!--start confirm password-->
-									<label for="" class="col-md-4 control-label">Confirm Password:</label>
-									<div class="col-md-5">
+									<label for="" class="col-lg-4 col-md-4 col-sm-4 control-label">Confirm Password:</label>
+									<div class="col-lg-5 col-md-5 col-sm-5">
 										<input type="password" id="pass2" name="pass2" id="pass2" class="form-control"/>
 									</div>	
 								</div><!--end confirm password-->
 									
 								<div class="form-group"><!--start submit and back button-->
-										<div class="col-md-offset-4 col-md-10">
+										<div class="col-lg-offset-4 col-md-offset-4 col-sm-offset-4 col-lg-10 col-md-10 col-sm-10">
 											<input type="submit" name="submit" value="Submit" class="btn btn-large btn-default" />
 										</div>
 								</div><!--end submit and back button-->
