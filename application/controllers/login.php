@@ -63,9 +63,10 @@ class Login extends CI_Controller {
 			// $this->db->where('status', 1);
 		// }
 
-			$this->db->where('email', $email);
-			$this->db->where('dentist_pass', $pass);
-			$query = $this->db->get('dentist_list');
+                $this->db->where('email', $email);
+                $this->db->where('dentist_pass', $pass);
+                $query = $this->db->get('dentist_list');
+                
 		if($query->num_rows() > 0)
 		{
 			$row1 = $query->row_array();
