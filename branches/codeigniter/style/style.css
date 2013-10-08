@@ -680,12 +680,3 @@ color:#FFF;
 }
 
 /* treatment record */
-.edit_box {
-	display: none;
-}
-.editable .form-control-static {
-	display: none;
-}
-.editable .form-control {
-	display: block;
-}

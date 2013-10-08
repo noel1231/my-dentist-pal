@@ -29,7 +29,7 @@
 								<div class="col-md-4">
 									<div class="profile_pic_container">
 										<a href="#">
-											<img class="profile_pic" alt="Profile Pic" src="<?php echo is_file($patient_picture) ? base_url().$patient_picture : base_url('img/profile_pic.gif'); ?>">
+											<img class="profile_pic" alt="Profile Pic" src="<?php echo is_file($patient_picture) ? base_url().$patient_picture : base_url('img/default_pic.gif'); ?>">
 										</a>
 									</div>
 								</div>
@@ -65,7 +65,7 @@
 					<div class="col-md-4">
 						<div class="profile_pic_container">
 							<a href="#">
-								<img class="profile_pic" alt="Profile Pic" src="<?php echo is_file($patient_picture) ? base_url().$patient_picture : base_url('img/profile_pic.gif'); ?>">
+								<img class="profile_pic" alt="Profile Pic" src="<?php echo is_file($patient_picture) ? base_url().$patient_picture : base_url('img/default_pic.gif'); ?>">
 							</a>
 						</div>
 					</div>

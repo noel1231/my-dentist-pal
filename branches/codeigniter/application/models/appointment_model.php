@@ -19,17 +19,17 @@ class Appointment_Model extends CI_Model {
 		$this->db->query('
 CREATE TABLE IF NOT EXISTS `dentist_appointments` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `dentist_id` text NOT NULL,
-  `title` text NOT NULL,
+  `dentist_id` text,
+  `title` text,
   `description` text,
-  `start` text NOT NULL,
+  `start` text,
   `end` text,
-  `start_date` text NOT NULL,
-  `end_date` text NOT NULL,
-  `start_time` text NOT NULL,
-  `end_time` text NOT NULL,
-  `status` text NOT NULL,
-  `timestamp` int(11) DEFAULT NULL,
+  `start_date` text,
+  `end_date` text,
+  `start_time` text,
+  `end_time` text,
+  `status` text,
+  `timestamp` int(11),
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 		');
@@ -38,7 +38,7 @@ CREATE TABLE IF NOT EXISTS `dentist_appointments` (
 			$this->db->query('ALTER TABLE `dentist_appointments` ADD `location` TEXT');
 		}
 		if(!$this->db->field_exists('status', 'dentist_appointments')) {
-			$this->db->query('ALTER TABLE `dentist_appointments` ADD `status` TEXT NOT NULL');
+			$this->db->query('ALTER TABLE `dentist_appointments` ADD `status` TEXT');
 		}
 		if(!$this->db->field_exists('appointment_id', 'jqcalendar')) {
 			$this->db->query('ALTER TABLE `jqcalendar` ADD `appointment_id` INT NOT NULL');

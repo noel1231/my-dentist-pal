@@ -164,9 +164,41 @@ $(function() {
 	$('#treatment_record').delegate('.amtchg', 'keypress', function(e) {
 		var inputValue = this.value;
 		if( e.keyCode == 13 ) {
-			$(this).parents('td').html('<div class="form-control-static"> '+inputValue);
+			$('#form_treatment_record').ajaxForm({
+				type: 'post',
+				data: { 'submit': 'charges' },
+				beforeSubmit: function(formData, jqForm, options) {
+					// console.log(formData);
+				},
+				success: function(json_data) {
+					var data = JSON.parse(json_data);
+					$(e.target).parents('.editable').removeClass('.editable').html('<div class="form-control-static text-right">'+inputValue+'</div>');
+				}
+			}).submit();
+
+			
 		}
-	})
+	});
+
+	$('#treatment_record').delegate('.amtpd', 'keypress', function(e) {
+		var inputValue = this.value;
+		if( e.keyCode == 13 ) {
+			$('#form_treatment_record').ajaxForm({
+				type: 'post',
+				data: { 'submit': 'payment' },
+				beforeSubmit: function(formData, jqForm, options) {
+					// console.log(formData);
+				},
+				success: function(json_data) {
+					var data = JSON.parse(json_data);
+					$(e.target).parents('.editable').find('.price').append('<div>'+inputValue+'</div>');
+					var balance = $('#balance_'+data.patient_tooth_chart_id).html();
+					var difference = parseFloat(balance) - parseFloat(data.amount_paid);
+					$('#balance_'+data.patient_tooth_chart_id).html(difference.toFixed(2));
+				}
+			}).submit();
+		}
+	});
 
 
 });

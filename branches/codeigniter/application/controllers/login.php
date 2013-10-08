@@ -37,7 +37,7 @@ class Login extends CI_Controller {
 			}
 		}
                 $data['identifier'] = true;
-		$data['title'] = 'My Dentist Pal - Digitize your dental management practice. A full-featured online tool that integrates dental practice management and confidential patient clinical charting, which dentist can access wherever they are.';
+		$data['title'] = 'Medix Dental - Dentist Login';
 		$data['header'] = $this->load->view('homepage/header', '', true);
 		$data['body'] = $this->load->view('login/dentist_login','',true);
 		$this->load->view('homepage', $data);
@@ -46,7 +46,7 @@ class Login extends CI_Controller {
 	function patient()
 	{
                 $data['identifier'] = true;
-		$data['title'] = 'My Dentist Pal - Digitize your dental management practice. A full-featured online tool that integrates dental practice management and confidential patient clinical charting, which dentist can access wherever they are.';
+		$data['title'] = 'Medix Dental - Patient Login';
 		$data['header'] = $this->load->view('homepage/header', '', true);
 		$data['body'] = $this->load->view('login/patient_login','',true);
 		$this->load->view('homepage', $data);

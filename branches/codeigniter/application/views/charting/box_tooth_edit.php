@@ -24,7 +24,7 @@
 		<div class="col-lg-4">
 			<h2> Charting </h2>
 		</div>
-		<div class="col-md-2 pull-right text-right">
+		<div class="col-md-2 pull-right text-right hide">
 			<input type="button" onclick="divPrint();" name="print" value="PRINT" class="btn btn-default submit" />
 		</div>
 	</div>
@@ -304,8 +304,8 @@
 	</div>
 	<div class="modal-body">
 	  <div class="form-group">
-		<label for="inputEmail1" class="col-lg-3 control-label"> Chart Name: </label>
-		<div class="col-lg-9">
+		<label for="inputChartName" class="col-lg-3 col-md-3 control-label"> Chart Name: </label>
+		<div class="col-lg-9 col-md-9">
 			<input type="hidden" name="new_chart" value="<?php echo $new_chart; ?>">
 			<input type="hidden" name="patient_id" value="<?php echo $patient_id;?>" />
 			<input type="hidden" name="dentist_id" value="<?php echo $dentist_id;?>" />
