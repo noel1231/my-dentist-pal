@@ -96,7 +96,9 @@ CREATE TABLE IF NOT EXISTS `tooth_amount_paid` (
 			);
 			$data_array['patient_tooth_chart_id'] = $key;
 			if($value !== '') {
-				$this->db->insert('tooth_amount_paid', $data_array);
+				if($value <= $balance) {
+					$this->db->insert('tooth_amount_paid', $data_array);
+				}
 			}
 			
 			array_push($callback, $data_array);
