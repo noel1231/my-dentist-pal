@@ -36,30 +36,30 @@
             <!--<div class="alert alert-danger invalid_login" style="display:none;text-align:center">Invalid email/password</div>-->
             <form class="form-horizontal" role="form" method="post" id="form_dentist_login" action="<?php echo base_url('login/check_login'); ?>">
                     <div class="form-group">
-                        <label for="inputEmail1" class="col-lg-3 control-label">Email:</label>
-                        <div class="col-lg-7">
-                            <input type="email" class="form-control" id="inputEmail1" name="input_email" placeholder="">
+                        <label for="inputEmail1" class="col-lg-3 col-md-3 col-sm-3 control-label">Email:</label>
+                        <div class="col-lg-7 col-md-7 col-sm-7">
+                            <input type="email" class="form-control" id="inputEmail1" name="input_email">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="inputPassword1" class="col-lg-3 control-label">Password:</label>
-                        <div class="col-lg-7">
-                            <input type="password" class="form-control" id="inputPassword1" name="input_pass" placeholder="">
+                        <label for="inputPassword1" class="col-lg-3 col-md-3 col-sm-3 control-label">Password:</label>
+                        <div class="col-lg-7 col-md-7 col-sm-7">
+                            <input type="password" class="form-control" id="inputPassword1" name="input_pass">
                         </div>
                     </div>
                     <div class="form-group">
-                        <div class="col-lg-offset-3 col-lg-10">
+                        <div class="col-lg-offset-3 col-md-offset-3 col-sm-offset-3 col-lg-10 col-md-10 col-sm-10">
                             <!--<a href="<?php //echo base_url('forgot_password'); ?>">Forgot Password?</a>-->
 							<a href="#myModalForgotPassword" id="forgotpassword">Forgot Password?</a>
                         </div>
-						<div class="col-lg-offset-3 col-lg-10">
+						<div class="col-lg-offset-3 col-md-offset-3 col-sm-offset-3 col-lg-10 col-md-10 col-sm-10">
                             <a href="#myModalResendEmail" id="resendemail" style="display:none;">Resend Confirmation Email</a>
                             <!--<a href="<?php //echo base_url(); ?>">Resend email verification</a>-->
                         </div>
                     </div>
 					
                     <div class="form-group">
-                        <div class="col-lg-offset-3 col-lg-10">
+                        <div class="col-lg-offset-3 col-lmd-offset-3 col-sm-offset-3 col-lg-10 col-md-10 col-sm-10">
                             <button type="submit" class="btn btn-default">Sign in</button>
                         </div>				
                     </div>

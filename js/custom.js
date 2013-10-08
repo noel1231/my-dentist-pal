@@ -483,7 +483,33 @@ $(function() {
 	
    	$('#form_dentist_login').ajaxForm({
 		type: 'POST',
-
+		
+		beforeSubmit: function()
+		{
+			var email = $('#inputEmail1').val();
+			var pass = $('#inputPassword1').val();
+			
+			if(email.trim() == '')
+			{
+				$('.invalid_login').html('Enter your email address in the required field to proceed.').show();
+				$('#myModalErrorDentistLogin').modal('show');
+				$('#resendemail').hide();
+				return false;
+			}else if(!email.match(/^([a-z0-9._-]+@[a-z0-9._-]+\.[a-z]{2,4}$)/i))
+			{
+				$('.invalid_login').html('Enter valid email address in the required field to proceed.').show();
+				$('#myModalErrorDentistLogin').modal('show');
+				$('#resendemail').hide();
+				return false;
+			}else if(pass.trim() == '')
+			{
+				$('.invalid_login').html('Enter your password in the required field to proceed.').show();
+				$('#myModalErrorDentistLogin').modal('show');
+				$('#resendemail').hide();
+				return false;
+			}
+		},
+		
 		success: function(html)
 		{
 			if(html == 'denied')
@@ -502,6 +528,24 @@ $(function() {
 			}
 		}
 	});
+	
+	$('#myModalErrorDentistLogin').on('hidden.bs.modal', function () {
+
+		var email = $('#inputEmail1').val();
+		var pass = $('#inputPassword1').val();
+		
+		if(email.trim() == '')
+		{
+			$('#inputEmail1').focus();
+		}else if(!email.match(/^([a-z0-9._-]+@[a-z0-9._-]+\.[a-z]{2,4}$)/i))
+		{
+			$('#inputEmail1').focus();
+		}else if(pass.trim() == '')
+		{
+			$('#inputPassword1').focus();
+		}
+	});
+	
 	//Modal Popup forgot password 
 	$('#forgotpassword').click(function(){
 	
