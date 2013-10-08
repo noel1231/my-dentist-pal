@@ -54,7 +54,6 @@
 	<div class="container">
 		<div class="tabbable tabs-left" style="<?php echo isset($access) ? '' : ''; ?>">
 			<div class="col-md-2 col-sm-2 extra_css_padding">
-				
 					<ul class="nav nav-pills nav-stacked extra_css" style="background-color:#428bca;">
 						<li class="active"><a href="#add_patient" data-toggle="tab"> Patient Info </a></li>
 						<li><a href="#dentist_history" data-toggle="tab"> Dental History </a></li>

@@ -29,15 +29,16 @@
 		</div>
 	</div>
 	
-	<div class="row">
-		<div class="col-lg-6">
-			<div id="chart_name" style="font-size: 16px;"> <?php echo $chart_id ? $rchart['chart_name'] : 'Chart '. date('Y-m-d', time()); ?> </div>
+	<div class="row" style="margin-bottom:15px;">
+		<div class="col-lg-12 col-md-12 col-sm-12">
+			<div style="font-size: 16px;">Date Today: <?php echo date('M. d, Y', time()); ?> </div>
+			<div id="chart_name" style="font-size: 16px;">Chart name: <?php echo $chart_id ? $rchart['chart_name'] : 'Chart '. date('Y-m-d', time()); ?> </div>
 		</div>
 	</div>
 
 	<div class="row">
 
-			<div class="col-md-2 col-sm-2">
+			<div class="col-md-2 col-sm-2 col-md-offset-6 col-sm-offset-6" style="text-align:right;">
 				<input type="hidden" name="id" value="<?php echo $patient_id;?>" />
 				<button type="button" name="new" class="btn btn-primary" value="add_chart" data-toggle="modal" data-target="#modal_add_chart"> Add Chart </button>
 			</div>
@@ -56,11 +57,6 @@
 				</select>
 			</div>
 
-
-			<div class="col-lg-2 pull-right text-right" style="font-weight:bold; color:#373838; font-size:12px;">
-				<?php echo date('Y-m-d');?>
-			</div>
-
 	</div>
 
 	<div>
@@ -76,13 +72,13 @@
 		</div>
 	</div>
 
-	<div class="container">
+	<div class="container" style="margin-top: 15px;">
 		<!--legend box-->
 		<div class="row">
 			<div class="lead" style="text-transform: uppercase;"> Legend </div>
 		</div>
 		<div class="row">
-			<div class="col-md-4">
+			<div class="col-md-4 col-sm-4">
 				<ul class="list-unstyled"> Condition
 					<li> D - Decayed (Caries Indicated for Filling) </li>
 					<li> M - Missing due to Caries </li>
@@ -93,7 +89,7 @@
 					<li> Im - Impacted Tooth </li>
 				</ul>
 			</div>
-			<div class="col-md-4">
+			<div class="col-md-4 col-sm-4">
 				<ul class="list-unstyled"> Restoration &amp; Prosthetics
 					<li> J - Jacket Crown </li>
 					<li> AM - Amalgam Filling </li>
@@ -104,7 +100,7 @@
 					<li> Rm - Removable Denture </li>
 				</ul>
 			</div>
-			<div class="col-md-4">
+			<div class="col-md-4 col-sm-4">
 				<ul class="list-unstyled"> Surgery
 					<li> X - Extraction due to Caries </li>
 					<li> XO - Extraction due to Other Causes </li>
@@ -124,7 +120,7 @@
 ?>
 
 	<div class="row">
-		<div class="col-md-3">
+		<div class="col-md-3 col-sm-3">
 			Periodical Screening:
 <?php
 		$periodical_screening_array = array('gingivitis', 'early_periodontics', 'moderate_periodontics', 'advanced_periodontics');
@@ -140,7 +136,7 @@
 		}
 ?>
 		</div>
-		<div class="col-md-3">
+		<div class="col-md-3 col-sm-3">
 			Occlusion:
 <?php
 		$occlusion_array = array('class_molar', 'overjet', 'overbite', 'midline_deviation', 'crossbite');
@@ -156,7 +152,7 @@
 		}
 ?>
 		</div>
-		<div class="col-md-3">
+		<div class="col-md-3 col-sm-3">
 			Appliances:
 <?php
 		$appliances_array = array('orthodontic', 'stayplate');
@@ -173,7 +169,7 @@
 ?>
 			<input type="text" class="form-control" id="other_appliances" placeholder="Other" name="appliances[others]" value="<?php echo isset($chart_info['appliances']['others']) ? $chart_info['appliances']['others'] : ''; ?>">
 		</div>
-		<div class="col-md-3">
+		<div class="col-md-3 col-sm-3">
 			TMD:
 <?php
 		$tmd_array = array('clenching', 'clicking', 'trismus', 'muscle_spasm');
@@ -192,7 +188,7 @@
 	</div>
 
 	<div class="row">
-		<div class="col-md-5">
+		<div class="col-md-6 col-sm-6">
 			<table class="table table-bordered" style="font-family:Arial, Helvetica, sans-serif; font-size:13px; font-weight:bold; color:#97999b;">
 				<thead>
 					<tr>
@@ -226,11 +222,11 @@
 			</tr></table>
 		</div>
 
-		<div class="col-md-6">
-			<div style="font-family:Arial, Helvetica, sans-serif;font-size:13px;font-weight:bold;color:#5f6060;">Remarks</div>
+		<div class="col-md-6 col-sm-6">
+			<div style="font-family:Arial, Helvetica, sans-serif;font-size:13px;font-weight:bold;color:#5f6060;border-top: 1px solid #ddd;border-left: 1px solid #ddd;border-right: 1px solid #ddd;">Remarks</div>
 			<div style=""><!--<input type="submit" name="save_rem" value="Save Remarks" class="submit2" style="margin-top:-5px;" onclick="return onSave();"/>--></div>
 			<div>
-				<textarea id="chart_remarks" name="remarks" style="font-size:15px;width:335px;height:137px;font-family:Arial, Helvetica, sans-serif;" disabled="disabled">
+				<textarea rows="4" class="col-sm-12 col-md-12" id="chart_remarks" name="remarks" style="font-size:15px;font-family:Arial, Helvetica, sans-serif;" disabled="disabled">
 <?php 				echo isset($rchart['chart_remarks']) ? $rchart['chart_remarks']: '';?>
 				</textarea>
 			</div>
@@ -238,7 +234,7 @@
 
 	</div>
 
-	<div class="row">
+	<div class="row" style="margin-top:15px;margin-bottom:15px;">
 
 			<input type="hidden" class="form-control" id="patient_id" name="patient_id" value="<?php echo $this->input->get('id'); ?>">
 			<input type="hidden" class="form-control" id="dentist_id" name="dentist_id" value="<?php echo $this->session->userdata('id'); ?>">
@@ -275,7 +271,7 @@
 	}; */
 ?>
 		<div class="col-md-3 pull-right text-right">
-			<button class="btn btn-primary btn-lg pull-right" type="submit" name="action" value="save"> SAVE </button>
+			<button class="btn btn-primary pull-right" type="submit" name="action" value="save"> SAVE </button>
 		</div>
 	</div>
 
