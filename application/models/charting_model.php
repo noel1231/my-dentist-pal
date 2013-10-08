@@ -191,6 +191,68 @@ CREATE TABLE IF NOT EXISTS `patient_tooth_chart_extra` (
 
 		return $this->db->insert_id();
 	}
+
+	function set_tooth($data) {
+		extract($data);
+
+		$callback = array();
+
+		$chart_id = $this->input->post('chart');
+		if($chart_id === '0') {
+			$new_chart = 'yes';
+			$chart_name = 'Chart '. date('Y-m-d', time());
+			$chart_id = $this->charting->insert_chart($chart_name, $dentist_id, $patient_id);
+		} else {
+			$new_chart = 'no';
+			$this->db->where('id', $chart_id);
+			$qptc = $this->db->get('patient_tooth_chart');
+			if($qptc->num_rows() > 0) {
+				$rptc = $qptc->row_array();
+				$chart_name = $rptc['chart_name'];
+			}
+		}
+
+		$this->db->where('chart_id', $chart_id);
+		$this->db->where('tooth_num', $tooth_num);
+		$qtc_exists = $this->db->get('patient_tooth_chart_extra');
+
+		if($qtc_exists->num_rows() > 0) {
+			$rtc_exists = $qtc_exists->row_array();
+			$tooth_updated = array(
+				'date_modified' => time()
+			);
+			$this->db->where('id', $rtc_exists['id']);
+			$this->db->update('patient_tooth_chart_extra', $tooth_updated);
+		}
+		// $legend = htmlentities($legend, ENT_XHTML);
+
+		$set_tooth_array = array(
+			'patient_id' => $patient_id,
+			'dentist_id' => $dentist_id,
+			'chart_id' => $chart_id,
+			'tooth_num' => $tooth_num,
+			'tooth_area' => str_pad($pic_num, 2, '0', STR_PAD_LEFT),
+			'tooth_procedure' => $legend,
+			'date_procedure' => date('Y-m-d', time()),
+			'timestamp' => time()
+		);
+		
+		$this->db->insert('patient_tooth_chart_extra', $set_tooth_array);
+		$callback['id'] = $this->db->insert_id();
+
+		$callback = $set_tooth_array;
+
+		$callback['new_chart'] = $new_chart;
+		$callback['chart_name'] = $chart_name;
+		
+		
+		$data_array_patient = array(
+			'last_procedure'=> date('Y-m-d', time())
+		);
+		$this->db->where('id',$patient_id)->update('patient_list',$data_array_patient);
+
+		return $callback;
+	}
 	
 }
 ?>

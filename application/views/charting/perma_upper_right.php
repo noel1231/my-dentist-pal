@@ -26,7 +26,7 @@
 	if(isset( ${'legend_'.$key} )) {
 			
 				if( ( ${'legend_'.$key} != "none" ) && ( ${'legend_'.$key}!="" ) ) {
-					echo ${'legend_'.$key}; 
+					echo str_replace('check', '&check;', ${'legend_'.$key}); 
 				} else if(${'legend_'.$key}=="") {
 					echo "&nbsp;";	
 				} else {

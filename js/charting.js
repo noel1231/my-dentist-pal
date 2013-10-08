@@ -17,7 +17,7 @@ $(function() {
 				
 				document.getElementById('ptc_'+newData.tooth_num).src = newData.id;
 				document.getElementById('tooth_'+newData.tooth_num).src = "img/Toothchart/" + newData.tooth_area + ".png";
-				document.getElementById('legend_'+newData.tooth_num).innerHTML = newData.tooth_procedure;
+				document.getElementById('legend_'+newData.tooth_num).innerHTML = newData.tooth_procedure.replace("check","&check;");
 			}
 			pullNotification(msg.timestamp);
 		},'json');
@@ -172,11 +172,14 @@ $(function() {
 				},
 				success: function(json_data) {
 					var data = JSON.parse(json_data);
-					$(e.target).parents('.editable').removeClass('.editable').html('<div class="form-control-static text-right">'+inputValue+'</div>');
+					for(var i=0; i < data.length; i++) {
+						var b_cont = $('#balance_' + data[i].chart_id );
+						var balance = Number(b_cont.html()) + Number(data[i].amount_charged);
+						b_cont.html(balance.toFixed(2));
+						$(e.target).parents('.editable').html('<div class="form-control-static text-right">'+Number(inputValue).toFixed(2)+'</div>');
+					}
 				}
 			}).submit();
-
-			
 		}
 	});
 
@@ -187,14 +190,25 @@ $(function() {
 				type: 'post',
 				data: { 'submit': 'payment' },
 				beforeSubmit: function(formData, jqForm, options) {
-					// console.log(formData);
 				},
 				success: function(json_data) {
 					var data = JSON.parse(json_data);
-					$(e.target).parents('.editable').find('.price').append('<div>'+inputValue+'</div>');
-					var balance = $('#balance_'+data.patient_tooth_chart_id).html();
-					var difference = parseFloat(balance) - parseFloat(data.amount_paid);
-					$('#balance_'+data.patient_tooth_chart_id).html(difference.toFixed(2));
+					for(var i=0;i<data.length;i++) {
+						var balance = $('#balance_'+data[i].patient_tooth_chart_id).html();
+						var difference = Number(balance) - Number(inputValue);
+						if(data[i].amount_paid != '') {
+							if(Number(data[i].amount_paid) > Number(balance)) {
+								alert('paid amount is greater than balance amount');
+							} else {
+								$('#balance_'+data[i].patient_tooth_chart_id).html(difference.toFixed(2));
+								$(e.target).val('').parents('.editable').find('.price').append('<div>'+Number(inputValue).toFixed(2)+'</div>');
+								if(difference == 0) {
+									$(e.target).remove();
+								}
+							}
+						}
+						$(e.target).val('');
+					}
 				}
 			}).submit();
 		}

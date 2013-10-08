@@ -19,7 +19,7 @@
 			<tr><td id="<?php echo 'legend_'.$value; ?>" class="tooth_legend">
 <?php 
 		if( isset( ${'legend_'.$value} ) && ${'legend_'.$value} != "none") {
-			echo ${'legend_'.$value};
+			echo str_replace('check', '&check;', ${'legend_'.$value});
 		} else {
 			echo "&nbsp;";	
 		}

@@ -1,5 +1,5 @@
 <?php
-	
+	extract($patient_query->row_array());
 ?>
 <!--wrapper-->
 <div style="background-color: #f6f5f5; padding-top: 70px; padding-bottom: 140px;">

@@ -153,7 +153,7 @@
 				'Rm' => 'Removable Denture',
 				'X' => 'Extraction due to Caries',
 				'XO' => 'Extraction due to Other Causes',
-				'&check;' => 'Present Teeth',
+				'check' => 'Present Teeth',
 				'Cm' => 'Congenitally Missing',
 				'Sp' => 'Supernumerary'
 			);
