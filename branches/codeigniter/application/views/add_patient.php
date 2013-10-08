@@ -7,9 +7,7 @@
 		$row = null;
 	}
 	
-	$access = $this->input->get('access');
-	
-	if(isset($access))
+	if(isset($patient_access_account))
 	{
 		$disabled = 'disabled';
 	}else

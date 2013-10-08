@@ -21,7 +21,10 @@
 	echo form_open_multipart('',$multipart);
 ?>
 		<div class="form-group">
-			<img src="<?php echo base_url('patient_picture/'.$row['patient_picture']); ?>" class="img-thumbnail col-md-5" onerror="this.src='http://www.placehold.it/200x150/EFEFEF/AAAAAA&text=no+image'">
+			<label for="" class="col-lg-4 col-md-4 col-sm-4 control-label"></label>
+			<div class="col-lg-5 col-md-5 col-sm-5">
+				<img src="<?php echo base_url('patient_picture/'.$row['patient_picture']); ?>" class="img-thumbnail col-md-12" onerror="this.src='http://www.placehold.it/200x150/EFEFEF/AAAAAA&text=no+image'">
+			</div>
 		</div>
 		<div class="form-group">
 			<label for="" class="col-lg-4 col-md-4 col-sm-4 control-label">Patient:</label>
@@ -50,8 +53,8 @@
 		</div>
 		<div class="form-group">
 			<div class="col-lg-6 col-md-6 col-sm-6 col-md-offset-3 col-lg-offset-3 col-sm-offset-3" style="text-align: right;">
-				<button type="submit" class="btn btn-default" value="save" name="submit_access">Save</button>
-				<button type="submit" class="btn btn-default" value="email_send" name="submit_access">Email Details</button>
+				<button type="submit" class="btn btn-primary" value="save" name="submit_access">Save</button>
+				<button type="submit" class="btn btn-primary" value="email_send" name="submit_access">Email Details</button>
 			</div>
 		</div>
 	</form>

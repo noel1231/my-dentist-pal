@@ -109,6 +109,7 @@ class Login extends CI_Controller {
 				'last_login'=> date('Y-m-d',time())
 			);
 			$this->db->where('email',$email)->update('patient_list',$data);
+			$this->session->sess_destroy();
 		}
 		else
 		{
