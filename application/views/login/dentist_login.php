@@ -27,7 +27,7 @@
                 <h1> Dentist Login </h1>
             </div>-->
 			<div class="row">
-				<div class="col-md-10"><!-- start center-->
+				<div class="col-lg-10 col-md-10 col-sm-10"><!-- start center-->
 					<div style=""><!--Dentist's Dashboard--><!--<img src="images/dentist_dashboard.png" />-->
 						<span style="font-size:40px;">Dentist Login</span>
 					</div>
@@ -86,23 +86,23 @@
 					<!--<div class="alert alert-success np_success_msg" style="text-align:center;margin-top:10px;display:none;"><?php //echo validation_errors(); ?></div>-->		
 					<div></div>&nbsp;
 					<div class="form-group"><!--start full name-->
-						<label for="" class="col-lg-4 control-label">New Password:</label>
-						<div class="col-lg-7">
+						<label for="" class="col-lg-4 col-md-4 col-sm-4 control-label">New Password:</label>
+						<div class="col-lg-7 col-md-7 col-sm-7">
 							<input type="hidden" name="accessId" class="form-control" value="<?php echo isset($_GET['reset']) ? $_GET['reset'] : ''; ?>" placeholder="">
 							<input type="hidden" name="accessKey" class="form-control" value="<?php echo isset($_GET['accessNumber']) ? $_GET['accessNumber'] : ''; ?>" placeholder="">
 							<input type="password" id="new_password" name="new_password" class="form-control" value="" placeholder="">
 						</div>	
 					</div>
 					<div class="form-group"><!--start full name-->
-						<label for="" class="col-lg-4 control-label">Re-type Password:</label>
-						<div class="col-lg-7">
+						<label for="" class="col-lg-4 col-md-4 col-sm-4 control-label">Re-type Password:</label>
+						<div class="col-lg-7 col-md-7 col-sm-7">
 							<input type="password" id="new_password1" name="new_password1" class="form-control" value="" placeholder="">
 						</div>	
 					</div>
 				</div>
 				<div class="modal-footer">
 					<div class="form-group">
-						<div class="col-lg-11">
+						<div class="col-lg-11 col-md-11 col-sm-11">
 							<button type="" name="submit_newpass" class="btn btn-default submit_newpass"/> Continue </button>
 						</div>
 					</div>
@@ -149,15 +149,15 @@
 					<div class="alert alert-danger error_msg" style="text-align:center;margin-top:10px;display:none;"></div>
 					<div></div>&nbsp;
 					<div class="form-group"><!--start full name-->
-						<label for="" class="col-lg-3 control-label">Email Address:</label>
-						<div class="col-lg-8">
+						<label for="" class="col-lg-3 col-md-3 col-sm-3 control-label">Email Address:</label>
+						<div class="col-lg-8 col-md-8 col-sm-8">
 							<input type="text" id="forgot_email" name="forgot_email" class="form-control" value="" placeholder="">
 						</div>	
 					</div>
 				</div>
 				<div class="modal-footer">
 					<div class="form-group">
-						<div class="col-lg-11">
+						<div class="col-lg-11 col-md-11 col-sm-11">
 							<button type="" class="btn btn-default submit_forgotpass" data-loading-text="Loading..."> Continue </button>
 						</div>
 					</div>
@@ -182,15 +182,15 @@
 					<div class="alert alert-danger resend_error_msg" style="text-align:center;margin-top:10px;display:none;"></div>
 					<div></div>&nbsp;
 					<div class="form-group"><!--start full name-->
-						<label for="" class="col-lg-3 control-label">Email Address:</label>
-						<div class="col-lg-8">
+						<label for="" class="col-lg-3 col-md-3 col-sm-3 control-label">Email Address:</label>
+						<div class="col-lg-8 col-md-8 col-sm-8">
 							<input type="text" id="resend_email" name="resend_email" class="form-control" value="<?php //echo set_value('resend_email') ?>" placeholder="">
 						</div>	
 					</div>
 				</div>
 				<div class="modal-footer">
 					<div class="form-group">
-						<div class="col-lg-11">
+						<div class="col-lg-11 col-md-11 col-sm-11">
 							<button type="" class="btn btn-default submit_resend_email" data-loading-text="Loading..."> Continue </button>
 						</div>
 					</div>
