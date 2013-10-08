@@ -6,7 +6,7 @@
 	<div class="well well-lg" style="border-top:solid 10px #42a9f6;">
 		
 		<div class="row">
-				<div class="col-md-10"><!-- start center-->
+				<div class="col-lg-10 col-md-10 col-sm-10"><!-- start center-->
 					<div style=""><!--Dentist's Dashboard--><!--<img src="images/dentist_dashboard.png" />-->
 						<span style="font-size:40px;">Patient Login</span>
 					</div>
@@ -15,24 +15,24 @@
 		<!--<div class="alert alert-danger invalid_login" style="display:none;text-align:center">Invalid email/password</div>-->
 		<form class="form-horizontal" role="form" method="post" id="form_patient_login" action="<?php echo base_url('login/patient_login'); ?>">
 			<div class="form-group">
-				<label for="inputEmail1" class="col-lg-3 control-label">Email:</label>
-				<div class="col-lg-7">
+				<label for="inputEmail1" class="col-lg-3 col-md-3 col-sm-3 control-label">Email:</label>
+				<div class="col-lg-7 col-md-7 col-sm-7">
 					<input type="email" class="form-control" id="inputEmail2" name="input_email" placeholder="">
 				</div>
 			</div>
 			<div class="form-group">
-				<label for="inputPassword1" class="col-lg-3 control-label">Password:</label>
-				<div class="col-lg-7">
+				<label for="inputPassword1" class="col-lg-3 col-md-3 col-sm-3 control-label">Password:</label>
+				<div class="col-lg-7 col-md-7 col-sm-7">
 					<input type="password" class="form-control" id="inputPassword2" name="input_pass" placeholder="">
 				</div>
 			</div>
 			<div class="form-group">
-				<div class="col-lg-offset-3 col-lg-10">
+				<div class="col-lg-offset-3 col-md-offset-3 col-sm-offset-3 col-lg-10 col-md-10 col-sm-10">
 					<a href="<?php echo base_url('login/patient'); ?>">Forgot Password?</a>
 				</div>
 			</div>
 			<div class="form-group">
-				<div class="col-lg-offset-3 col-lg-10">
+				<div class="col-lg-offset-3 col-md-offset-3 col-sm-offset-3 col-lg-10 col-md-10 col-sm-10">
 					<button type="submit" class="btn btn-default">Sign in</button>
 				</div>				
 			</div>
