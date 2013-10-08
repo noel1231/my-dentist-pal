@@ -13,10 +13,13 @@ class Patient_Edit extends CI_Controller {
 		$this->load->library('cart');
 		$this->load->library('encrypt');
 		$this->load->model('Charting_Model', 'charting');
+		$this->load->model('Treatment_Record_Model', 'treatment_record');
 	}
 	
 	function index()
 	{
+		$this->treatment_record->check_missing_db();
+
 		switch ($this->input->post('submit')) {
 			case 'tooth':
 				$this->set_tooth(); return false;
@@ -62,19 +65,12 @@ class Patient_Edit extends CI_Controller {
 				}
 			}
 
-			$this->db->where('id', $this->input->get('id'));
-			$qdentist_list = $this->db->get('patient_list');
-			$rdentist_list = $qdentist_list->row_array();
-
-			$data = $rdentist_list;
-			
 			$data['new_chart'] = 1;
 
 			$data['patient_id'] = $this->input->get('id');
-			$query = $this->db->where('id', $data['patient_id'])->get('patient_list');
-			$data['patient_query'] = $query;
+			$data['patient_query'] = $this->db->where('id', $data['patient_id'])->get('patient_list');
 
-			$data['title'] = 'My Dentist Pal - Digitize your dental management practice. A full-featured online tool that integrates dental practice management and confidential patient clinical charting, which dentist can access wherever they are.';
+			$data['title'] = 'Medix Dental - Patient Records';
 			
 			$data['header'] = $this->load->view('homepage/header','', true);
 
@@ -150,81 +146,21 @@ class Patient_Edit extends CI_Controller {
 		   date_default_timezone_set('Asia/Manila');
 		}
 
-		extract($this->input->post());
-
-		$callback = array();
-
-		$chart_id = $this->input->post('chart');
-		if($chart_id === '0') {
-			$new_chart = 'yes';
-			$chart_name = 'Chart '. date('Y-m-d', time());
-			$chart_id = $this->charting->insert_chart($chart_name, $dentist_id, $patient_id);
-		} else {
-			$new_chart = 'no';
-			$this->db->where('id', $chart_id);
-			$qptc = $this->db->get('patient_tooth_chart');
-			if($qptc->num_rows() > 0) {
-				$rptc = $qptc->row_array();
-				$chart_name = $rptc['chart_name'];
-			}
-		}
-
-		$this->db->where('chart_id', $chart_id);
-		$this->db->where('tooth_num', $tooth_num);
-		$qtc_exists = $this->db->get('patient_tooth_chart_extra');
-
-		if($qtc_exists->num_rows() > 0) {
-			$rtc_exists = $qtc_exists->row_array();
-			$tooth_updated = array(
-				'date_modified' => time()
-			);
-			$this->db->where('id', $rtc_exists['id']);
-			$this->db->update('patient_tooth_chart_extra', $tooth_updated);
-		}
-		// $legend = htmlentities($legend, ENT_XHTML);
-
-		$set_tooth_array = array(
-			'patient_id' => $patient_id,
-			'dentist_id' => $dentist_id,
-			'chart_id' => $chart_id,
-			'tooth_num' => $tooth_num,
-			'tooth_area' => str_pad($pic_num, 2, '0', STR_PAD_LEFT),
-			'tooth_procedure' => $legend,
-			'date_procedure' => date('Y-m-d', time()),
-			'timestamp' => time()
-		);
-		
-		$this->db->insert('patient_tooth_chart_extra', $set_tooth_array);
-		$callback['id'] = $this->db->insert_id();
-
-		$callback = $set_tooth_array;
-
-		$callback['new_chart'] = $new_chart;
-		$callback['chart_name'] = $chart_name;
-		
-		
-		$data_array_patient = array(
-			'last_procedure'=> date('Y-m-d', time())
-		);
-		$this->db->where('id',$patient_id)->update('patient_list',$data_array_patient);
+		$callback = $this->charting->set_tooth($this->input->post());
 
 		echo json_encode($callback);
 	}
 
 	private function select_chart($chart_id, $patient_id) {
-
 		$data_tooth_chart_patient = $this->charting->load_chart($chart_id, $patient_id);
-
 		$callback = $data_tooth_chart_patient;
-
 		$callback['body'] = $this->load->view('charting/tooth_chart_patient', $data_tooth_chart_patient, true);
-
 		echo json_encode($callback);
-
 	}
 
 	private function chart_info() {
 		$chart_id = $this->input->post('chart');
+
 		$chart_info_array = array();
 
 		$chart_info_array['periodical_screening'] = $this->input->post('periodical_screening');
@@ -242,49 +178,15 @@ class Patient_Edit extends CI_Controller {
 	}
 
 	private function set_charges() {
-		$callback = array();
 		$amount_charged = $this->input->post('amount_charged');
-
-		foreach($amount_charged as $key=>$value) {
-			$this->db->where('patient_tooth_chart_extra_id', $key);
-			$qtac = $this->db->get('tooth_amount_charges');
-			$rtac = $qtac->row_array();
-			$data_array = array(
-				'amount_charged' => $value,
-				'timestamp' => time()
-			);
-			if($qtac->num_rows() > 0) {
-				$this->db->where('id', $rtac['id']);
-				$this->db->update('tooth_amount_charges', $data_array);
-			} else {
-				if($value !== '') {
-					$data_array['patient_tooth_chart_extra_id'] = $key;
-					$this->db->insert('tooth_amount_charges', $data_array);
-					$data_array['id'] = $this->db->insert_id();
-				}
-			}
-		}
-		echo json_encode($data_array);
-		
+		$callback = $this->treatment_record->set_charges($amount_charged);
+		echo json_encode($callback);
 	}
 
 	private function set_payment() {
-		$callback = array();
 		$amount_paid = $this->input->post('amount_paid');
-
-		foreach($amount_paid as $key=>$value) {
-			if($value !== '') {
-				$data_array = array(
-					'amount_paid' => $value,
-					'timestamp' => time()
-				);
-				$data_array['patient_tooth_chart_id'] = $key;
-				$this->db->insert('tooth_amount_paid', $data_array);
-				$data_array['id'] = $this->db->insert_id();
-			}
-		}
-
-		echo json_encode($data_array);
+		$callback = $this->treatment_record->set_payment($amount_paid);
+		echo json_encode($callback);
 	}
 
 }
