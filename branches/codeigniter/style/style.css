@@ -679,4 +679,8 @@ color:#FFF;
 	border-bottom: 1px solid transparent;
 }
 
+#chart_name:hover {
+	box-shadow: 0 0 1px;
+}
+
 /* treatment record */

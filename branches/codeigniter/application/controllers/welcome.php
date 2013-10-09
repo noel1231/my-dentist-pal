@@ -23,6 +23,14 @@ class Welcome extends CI_Controller {
 
 	public function index()
 	{
+		if(!$this->db->field_exists('account_status', 'dentist_list')) {
+			$this->db->query('ALTER TABLE `dentist_list` ADD `account_status` INT NOT NULL');
+		}
+
+		if($this->input->get('admin')) {
+			$this->admin(); return false;
+		}
+
 		$this->patient_edit->check_missing_db();
 		$this->charting->check_missing_db();
 		$this->appointment->check_missing_db();

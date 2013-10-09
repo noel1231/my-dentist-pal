@@ -28,23 +28,33 @@
 			<input type="button" onclick="divPrint();" name="print" value="PRINT" class="btn btn-default submit" />
 		</div>
 	</div>
-	
-	<div class="row" style="margin-bottom:15px;">
-		<div class="col-lg-12 col-md-12 col-sm-12">
-			<div style="font-size: 16px;">Date Today: <?php echo date('M. d, Y', time()); ?> </div>
-			<div id="chart_name" style="font-size: 16px;">Chart name: <?php echo $chart_id ? $rchart['chart_name'] : 'Chart '. date('Y-m-d', time()); ?> </div>
-		</div>
-	</div>
 
-	<div class="row">
-
-			<div class="col-md-2 col-sm-2 col-md-offset-6 col-sm-offset-6" style="text-align:right;">
-				<input type="hidden" name="id" value="<?php echo $patient_id;?>" />
-				<button type="button" name="new" class="btn btn-primary" value="add_chart" data-toggle="modal" data-target="#modal_add_chart"> Add Chart </button>
+	<div class="row" style="margin-bottom: 15px">
+		<div class="col-md-4 col-sm-12">
+			<div class="row">
+				<div class="col-md-12 col-sm-12">
+					<div style="font-size: 16px;"> Date Today: <?php echo date('M. d, Y', time()); ?> </div>
+					<div style="font-size: 16px;"> 
+						<div class=""> Chart name: </div>
+						<div id="chart_name"> <?php echo $chart_id ? $rchart['chart_name'] : 'Chart '. date('Y-m-d', time()); ?> </div>
+					</div>
+				</div>
 			</div>
-			<div class="col-md-4 col-sm-4">
-				<select id="select_chart" name="chart" class="form-control" >
-					<option value="0"> Select Chart... </option>
+		</div>
+		<div class="col-md-8 col-sm-12">
+			<div class="row text-right">
+					<div class="col-md-4 col-sm-4">
+						<input type="hidden" name="id" value="<?php echo $patient_id;?>" />
+						<button type="button" name="new" class="btn btn-primary" value="add_chart" data-toggle="modal" data-target="#modal_add_chart"> Add Chart </button>
+					</div>
+<!--
+					<div class="col-md-4 col-sm-4">
+						<button type="button" name="delete_chart" class="btn btn-primary" value="delete_chart" data-toggle="modal" data-target="#modal_del_chart"> Delete </button>
+					</div>
+-->
+					<div class="col-md-8 col-sm-8">
+						<select id="select_chart" name="chart" class="form-control" >
+							<option value="0"> Select Chart... </option>
 <?php
 				if($sql->num_rows() > 0) {
 					foreach($sql->result_array() as $key=>$row) {
@@ -54,14 +64,14 @@
 					}
 				}
 ?>
-				</select>
+						</select>
+					</div>
 			</div>
-
+		</div>
 	</div>
 
-	<div>
-
-		<div id="chart_container" style="padding-top: 20px">
+	<div class="row" style="padding-top: 15px;">
+		<div id="chart_container">
 <?php
 		// if($this->input->get('key') && $this->input->get('key') !== 'none') {
 			$data_tooth_chart_patient = $this->charting->load_chart($chart_id, $patient_id);
