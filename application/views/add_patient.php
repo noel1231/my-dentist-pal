@@ -80,10 +80,12 @@
 								<div class="form-group">
 									<label for="patient_id" class="col-lg-4 col-md-4 col-sm-4 control-label">Patient ID number</label>
 									<div class="col-lg-5 col-md-5 col-sm-5">
-										<span style="line-height: 27px;"><?php echo isset($row) ? $row['id'] : time(); ?></span>
-										<input type="hidden" class="form-control" id="patient_id" name="patient_id" value="<?php echo isset($row) ? $row['id'] : time(); ?>">
-										<input type="hidden" class="form-control" id="dentist_id" name="dentist_id" value="<?php echo $this->session->userdata('id'); ?>">
+										<div class="form-control-static">
+											<span><?php echo isset($row) ? $row['id'] : time(); ?></span>
+										</div>
 									</div>
+									<input type="hidden" class="form-control" id="patient_id" name="patient_id" value="<?php echo isset($row) ? $row['id'] : time(); ?>">
+									<input type="hidden" class="form-control" id="dentist_id" name="dentist_id" value="<?php echo $this->session->userdata('id'); ?>">
 								</div>
 								<div class="form-group">
 									<label for="patient_date" class="col-lg-4 col-md-4 col-sm-4 control-label">Entry Date</label>
@@ -891,7 +893,7 @@
 							<?php echo isset($charting) ? $charting : ''; ?>
 						</div>
 					</div>
-					<div class="tab-pane" id="treatment_record">
+					<div class="tab-pane" id="treatment_record" style="min-height: 204px;">
 					</div>
 				</div>
 			</div>

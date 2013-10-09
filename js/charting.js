@@ -214,5 +214,9 @@ $(function() {
 		}
 	});
 
+	$('#charting').on('click', '#chart_name', function(e) {
+		var content = '<input type="text" class="form-control input-sm" id="inputChartName" placeholder="Chart Name">'
+		$(this).html(content);
+	});
 
 });

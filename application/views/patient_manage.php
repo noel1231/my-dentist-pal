@@ -23,7 +23,7 @@
 		<div class="form-group">
 			<label for="" class="col-lg-4 col-md-4 col-sm-4 control-label"></label>
 			<div class="col-lg-5 col-md-5 col-sm-5">
-				<img src="<?php echo base_url('patient_picture/'.$row['patient_picture']); ?>" class="img-thumbnail col-md-12" onerror="this.src='http://www.placehold.it/200x150/EFEFEF/AAAAAA&text=no+image'">
+				<img src="<?php echo base_url('patient_picture/'.$row['patient_picture']); ?>" class="img-thumbnail" onerror="this.src='http://www.placehold.it/200x150/EFEFEF/AAAAAA&text=no+image'">
 			</div>
 		</div>
 		<div class="form-group">
