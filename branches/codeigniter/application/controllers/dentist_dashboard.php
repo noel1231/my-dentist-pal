@@ -397,13 +397,13 @@ class Dentist_Dashboard extends CI_Controller {
 	function autocomplete()
 	{
 		$this->db->where('dentist_id',$this->session->userdata('id'));
-		$this->db->like('title',$this->input->get('term'));
-		$query = $this->db->get('dentist_appointments');
+		$this->db->like('patient_name',$this->input->get('term'));
+		$query = $this->db->get('patient_list');
 		$data = array();
 		if($query->num_rows() > 0)
 		{
 			foreach($query->result_array() as $row){
-				array_push($data,$row['title']);
+				array_push($data,$row['patient_name']);
 			}
 			echo json_encode($data);
 		}
