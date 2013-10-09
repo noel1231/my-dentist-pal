@@ -100,7 +100,7 @@
         </div>
     </div>
     <div class="content">
-        <div class="container">
+        <!--<div class="container">
             <div class="row">
                 <h2 id="prices" class="text-center">Pricing</h2>
                 <table class="col-md-8 col-md-offset-2 tbl_pricing">
@@ -172,7 +172,7 @@
 
             </table>
             </div>
-        </div>
+        </div>-->
         
     </div>
     
