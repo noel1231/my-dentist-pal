@@ -8,6 +8,7 @@ class Dentist_Dashboard extends CI_Controller {
 		$this->load->helper('url');
 		$this->load->helper('form');
 		$this->load->library('session');
+		$this->load->library('email');
 		$this->load->database();
 		$this->load->model('Patient_Edit_Model', 'patient_edit');
 		$this->load->model('Charting_Model', 'charting');
@@ -390,6 +391,55 @@ class Dentist_Dashboard extends CI_Controller {
 				$this->db->where('id',$id)->update('dentist_appointments',$data_array);
 			}
 			echo 1;
+		}
+	}
+	
+	function autocomplete()
+	{
+		$this->db->where('dentist_id',$this->session->userdata('id'));
+		$this->db->like('title',$this->input->get('term'));
+		$query = $this->db->get('dentist_appointments');
+		$data = array();
+		if($query->num_rows() > 0)
+		{
+			foreach($query->result_array() as $row){
+				array_push($data,$row['title']);
+			}
+			echo json_encode($data);
+		}
+	}
+	
+	function sendfeedback(){
+		extract($this->input->post());
+		
+		$config['protocol'] = 'smtp';
+		$config['smtp_host'] = 'mail.mydentistpal.com';
+		$config['smtp_user'] = 'info@mydentistpal.com';
+		$config['smtp_pass'] = 'mdp2468';
+		$config['smtp_port'] = '26';
+		$config['smtp_timeout'] = '10';
+		$config['mailtype'] = 'html';
+		$config['charset'] = 'iso-8859-1';
+
+		$this->email->initialize($config);
+		
+		$this->db->where('id',$this->session->userdata('id'));
+		$query = $this->db->get('dentist_list');
+		$row = $query->row_array();
+		
+		if($query->num_rows() > 0)
+		{
+			
+		
+			$this->email->from($row['email']);
+			$this->email->to('info@medix.ph');
+			$this->email->subject($feedbackTitle);
+			$this->email->message($feedbackMessage);
+			
+			if($this->email->send())
+			{
+				echo '1';
+			}
 		}
 	}
 	

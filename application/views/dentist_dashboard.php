@@ -1,6 +1,15 @@
 <?php
 	
 ?>
+
+<!--feedback content-->
+
+<div style="background-color: #3276b1;position: fixed;top: 24%;right: 0;box-shadow: -2px 1px 2px;">
+<a data-toggle="modal" href="#myModalFeedback" class="btn btn-primary btn-small" style="padding: 9px 5px;">
+	<img src="<?php echo base_url('img/feedback-tab.png'); ?>">
+</a>
+</div>
+
 <!--wrapper-->
 <div style="background-color: #f6f5f5; padding-top: 70px; padding-bottom: 140px;">
 	<div class="container">
@@ -192,4 +201,31 @@
       </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
   </div><!-- /.modal -->  
-<?php /* */
+
+  
+  
+  
+  <div class="modal fade" id="myModalFeedback" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title">Contact support</h4>
+        </div>
+        <div class="modal-body">
+			<form role="form" method="post" accept-charset="utf-8" name="form_feedback" id="form_feedback">
+				<div class="form-group">
+					<input type="text" class="form-control" id="feedbackTitle" name="feedbackTitle" placeholder="Message Subject">
+				</div>
+				<div class="form-group">
+					<textarea class="form-control" id="feedbackMessage" name="feedbackMessage" rows="6" placeholder="How can we help you?"></textarea>
+				</div>
+			</form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary send_feedback" data-loading-text="Loading...">Send message</button>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->  
