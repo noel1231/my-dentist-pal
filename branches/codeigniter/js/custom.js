@@ -1079,6 +1079,44 @@ $(function() {
 			// });
 		// }
 	// };
+	
+	
+	/* autocomplete */
+	$('#inputTitle1').autocomplete({
+		source: function(request, response){
+			$.getJSON( "dentist_dashboard/autocomplete", request, function( data, status, xhr ) {
+				console.log(request);
+				return response(data);
+			});
+		}
+	});
+	
+	$('.send_feedback').click(function(){
+		var dis = $(this);
+		
+		$('#form_feedback').ajaxForm({
+			type: 'POST',
+			url: 'dentist_dashboard/sendfeedback',
+			beforeSubmit: function(arr, jform, option){
+				var form = jform[0];
+				if(form.feedbackTitle.value.trim() == '')
+				{
+					form.feedbackTitle.focus();
+					return false;
+				}else if(form.feedbackMessage.value.trim() == '')
+				{
+					form.feedbackMessage.focus();
+					return false;
+				}
+				dis.button('loading');
+			},
+			success: function(html){
+				dis.button('reset');
+				$('#myModalFeedback').modal('hide');
+				
+			}
+		}).submit();
+	});
 });
 
 function handleFiles(files)

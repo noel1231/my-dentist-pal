@@ -2,7 +2,7 @@
 <!--    <div id="home"></div>-->
     <div class="head_content">
             <div class="container text-center">
-                    <h1> Digitize your <span> dental management practice</span>.</h1>
+                    <h1> Digitize your <span> clinic management practice</span>.</h1>
                     <p class="col-md-6 col-md-offset-3">
                         A full-featured online tool that integrates dental practice management
                         and confidential patient clinical charting,
