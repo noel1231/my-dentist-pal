@@ -21,7 +21,19 @@
 	?>
 	</div>
 </div>
-
+<div class="row" style="margin-bottom:15px;">
+	<div class="col-md-2 col-sm-6" style="margin-bottom:15px;">
+		<button class="btn btn-xs scheduler_prev"><span class="glyphicon glyphicon-chevron-left"></span></button>
+		<button class="btn btn-xs scheduler_next"><span class="glyphicon glyphicon-chevron-right"></span></button>
+		<button class="btn btn-xs scheduler_today">Today</button>
+	</div>
+	<div class="col-md-3 col-sm-6" style="text-align:right;">
+		<button class="btn btn-xs scheduler_month">Month</button>
+		<button class="btn btn-xs scheduler_week">Week</button>
+		<button class="btn btn-xs scheduler_day">Day</button>
+	</div>
+</div>
+<div class="row">
 <div id="scheduler" class="col-md-5" style="cursor: pointer;">
 	<div id="calendar"></div>
 </div>
@@ -104,6 +116,7 @@ if ($this->db->table_exists('dentist_appointments'))
 		</div>
 	</div>
 </div>
+</div>
 <?php
 }
 ?>					
@@ -119,5 +132,8 @@ if ($this->db->table_exists('dentist_appointments'))
 .fc-event.fc-event-hori.fc-event-start.fc-event-end {
 	width: 8px !important;
 	height: 8px;
+}
+.fc-header tbody {
+	border: 1px solid #ddd;
 }
 </style>

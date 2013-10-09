@@ -1,5 +1,4 @@
 $(function(){
-
 	function append_to_table(appointment_obj) {
 		$('#tbody_appointment').html('');
 		if(appointment_obj.length > 0) {
@@ -64,22 +63,17 @@ $(function(){
 	}
 
 	var calendar = $('#calendar');
-
+	
 	calendar.fullCalendar({
 		header: {
-			left:   'prev,next today',
+			left:   '',
 			center: 'title',
-			right:  'month,agendaWeek,agendaDay '
+			right:  ''
 		},
 		titleFormat:{
-			month: 'MMM yyyy',                      // September 2009
-			week: "MMM d{'-'MMM d}", 				// Sep 29-Oct 5
-			day: 'ddd, MMM dd'                      // Tue, Sep 08
-		},
-		buttonText: {
-			month: 'month',
-			week: 'week',
-			day: 'day'
+			month: 'MMMM yyyy'                     // September 2009
+			// week: "MMM d{'-'MMM d}", 				// Sep 29-Oct 5
+			// day: 'ddd, MMM dd'                      // Tue, Sep 08
 		},
 		selectable: true,
 		select: function( startDate, endDate, allDay, jsEvent, view ) {
@@ -100,7 +94,7 @@ $(function(){
 			
 			element.find('.fc-event-title').html(event.title);
 			element.find('.fc-event-time').html('');
-			console.log(event)
+			// console.log(event)
 			/* background color of events */
 			// element.css('background','#3A87AD');
 		},
@@ -191,6 +185,30 @@ $(function(){
 		}
     });
 	
+	
+	$('.scheduler_prev').click(function(){
+		calendar.fullCalendar('prev');
+	});
+	
+	$('.scheduler_month').click(function(){
+		calendar.fullCalendar( 'changeView', 'month' );
+	});
+	
+	$('.scheduler_week').click(function(){
+		calendar.fullCalendar( 'changeView', 'agendaWeek' );
+	});
+	
+	$('.scheduler_day').click(function(){
+		calendar.fullCalendar( 'changeView', 'agendaDay' );
+	});
+	
+	$('.scheduler_next').click(function(){
+		calendar.fullCalendar('next');
+	});
+	
+	$('.scheduler_today').click(function(){
+		calendar.fullCalendar('today');
+	});
 	
 	$('#show_add_sched').click(function(){
 		
