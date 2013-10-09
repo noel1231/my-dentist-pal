@@ -1,5 +1,5 @@
 
-<div class="pull-right">
+<div style="text-align:right;">
 	
 	<?php
 		$data_params = array(

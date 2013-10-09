@@ -53,7 +53,7 @@
 					</div>
 				</div>
 				<div class="row">
-					<div class="col-md-6 col-sm-5">
+					<div class="col-md-6 col-sm-5" style="margin-bottom:15px;">
 						<div style="font-size: 30px;line-height: 32px;">
 							<?php
 								if(isset($_GET['scheduler']))
@@ -70,7 +70,7 @@
 						</div>
 					</div>
                                     
-					<div class="col-md-6 col-xs-11 col-sm-7 get_centered">
+					<div class="col-md-6 col-xs-12 col-sm-7">
 						<?php 
 						if(isset($_GET['scheduler']))
 						{
