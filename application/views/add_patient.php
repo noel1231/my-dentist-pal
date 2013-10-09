@@ -96,7 +96,7 @@
 								<div class="form-group">
 									<label for="inputPassword1" class="col-lg-4 col-md-4 col-sm-4 control-label">Photo</label>
 									<div class="col-lg-5 col-md-5 col-sm-5">
-										<input type="file" id="patient_photo" name="patient_photo" <?php echo $disabled; ?>>
+										<input type="file" id="patient_photo" name="patient_photo" style="margin-top: 5px;" <?php echo $disabled; ?>>
 										<input type="hidden" id="patient_photo_existing_file" name="patient_photo_existing_file" value="<?php if(isset($row) && $row['patient_picture'] != ' '){ echo $row['patient_picture']; } ?>">
 										<input type="hidden" id="patient_photo_file" name="patient_photo_file" value="<?php if(isset($row) && $row['patient_picture'] != ' '){ echo $row['patient_picture']; } ?>">
 										<div class="col-sm-12" style="margin-top: 10px;">
