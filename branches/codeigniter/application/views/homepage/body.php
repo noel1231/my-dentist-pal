@@ -19,9 +19,9 @@
                 <a href="<?php echo base_url('login'); ?>" class="btn btn_margin">
                     <img class="register"src="images/dentist_access.png" alt="DENTIST ACCESS"/>
                 </a>
-                <a href="<?php echo base_url('login/patient'); ?>" class="btn btn_margin">
+                <!--<a href="<?php echo base_url('login/patient'); ?>" class="btn btn_margin">
                     <img class="register" src="images/patient_access.png" alt="PATIENT ACCESS"/>
-                </a>
+                </a>-->
                 <a id="watch" class="btn btn_margin">
                     <img class="register" src="images/watch_video.png" alt="WATCH VIDEO"/>
                 </a>

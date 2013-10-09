@@ -17,13 +17,13 @@
                   <li class="<?php echo uri_string() == null || uri_string() == 'welcome' ? "active" : " "; ?>">
                       <a href="<?php echo base_url();?>welcome" class="home">HOME</a>
                   </li>
-                  <li class="<?php
+                  <!--<li class="<?php
                                     $url_real = base_url() . "#prices";
                                     $to_compare_url = base_url() . uri_string();
                                     
                                 ?>">
                       <a href="<?php echo base_url();?>#prices" class="prices">PRICE</a>
-                  </li>
+                  </li>-->
                   <li class="<?php echo uri_string() == 'contact_us' ? "active" : " "; ?>">
                       <a href="<?php echo base_url();?>contact_us" class="contact_us">CONTACT US</a>
                   </li>
