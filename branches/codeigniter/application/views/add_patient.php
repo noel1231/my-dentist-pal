@@ -154,7 +154,7 @@
 								<div class="form-group">
 									<label for="patient_age" class="col-lg-4 col-md-4 col-sm-4 control-label">Age</label>
 									<div class="col-lg-2 col-md-2 col-sm-2">
-										<input type="number" class="form-control" id="patient_age" name="patient_age" value="<?php echo isset($row) ? $row['patient_age'] : null; ?>" <?php echo $disabled; ?>>
+										<input type="text" class="form-control" id="patient_age" name="patient_age" readonly value="<?php echo isset($row) ? $row['patient_age'] : null; ?>" <?php echo $disabled; ?>>
 									</div>
 								</div>
 								<div class="form-group">
@@ -279,7 +279,7 @@
 								<div class="form-group">
 									<label for="patient_last_visit" class="col-lg-4 col-md-4 col-sm-4 control-label">Last Dental Visit</label>
 									<div class="col-lg-5 col-md-5 col-sm-5">
-										<input type="text" class="form-control datepicker" id="patient_last_visit" name="patient_last_visit" placeholder="mm/dd/yy" value="<?php echo isset($row) ? $row['date_of_last_visit'] : null; ?>" <?php echo $disabled; ?>>
+										<input type="text" class="form-control datepicker" id="patient_last_visit" name="patient_last_visit" placeholder="mm/dd/yyyy" value="<?php echo isset($row) ? $row['date_of_last_visit'] : null; ?>" <?php echo $disabled; ?>>
 									</div>
 								</div>
 								<div class="form-group">
