@@ -283,7 +283,7 @@
 <!-- modals -->
 <div id="modal_add_chart" class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 <div class="modal-dialog">
-  <div class="modal-content">
+  <div class="modal-content modal_btop">
 <?php
 	$form_attrib = array(
 		'method' => 'post',
