@@ -122,7 +122,7 @@
   <!-- Modal -->
   <div class="modal fade" id="myModalAddingSaying" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
-      <div class="modal-content">
+      <div class="modal-content modal_btop">
         <div class="modal-body">
           Saved Successfully!
         </div>
