@@ -1039,7 +1039,46 @@ $(function() {
 			});
 		}
 	});
-
+	
+	
+	/* lazy load patient record list */
+	// var reachScroll = false;
+	// $(document).scroll(function(){
+		// var winScroll = $(window).scrollTop();
+		// var docuHeight = $(document).height();
+		// var winHeight = $(window).height();
+		// var docuHeight_winHeight = docuHeight - winHeight;
+		// if(winScroll >= docuHeight_winHeight)
+		// {
+			
+			// if(reachScroll === false)
+			// {
+				// load_more_function();
+			// }
+		// }  
+	// });
+	
+	// function load_more_function(){
+		// var lastId = $('.check_each:last').val();
+		// var type = $('th[class=sort_table]').attr('data-sorter');
+		// var word = $('th[class=sort_table]').attr('alt');
+		// var sort = $('.checkall').attr('alt');
+		
+		// if(typeof lastId != 'undefined')
+		// {
+			
+			// $.ajax({
+				// type: 'POST',
+				// data: {'p_id':lastId,'order_by':type,'by_word':word,'sort_by':sort},
+				// url: 'patient_records/load_patient',
+				// cache: false,
+				// success: function(html){
+					// alert(html);
+					// $('.item_row:last').after(html);
+				// }
+			// });
+		// }
+	// };
 });
 
 function handleFiles(files)

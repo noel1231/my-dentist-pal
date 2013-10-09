@@ -21,6 +21,7 @@
 		$this->db->where('dentist_id',$dentist_id);
 		$this->db->where($connect_query,null,false);
 		$this->db->order_by('id',$type);
+		// $this->db->limit(10);
 		$query = $this->db->get('patient_list');
 		
 	}else
@@ -31,19 +32,19 @@
 			$by = $_GET['by'];
 			if($by == 'name')
 			{
-				$query = $this->db->where('dentist_id',$session_dentist_id)->order_by('patient_name',$type)->get('patient_list');
+				$query = $this->db->where('dentist_id',$session_dentist_id)->order_by('patient_name',$type)->limit(10)->get('patient_list');
 			}else if($by == 'e_date')
 			{
-				$query = $this->db->where('dentist_id',$session_dentist_id)->order_by('date_of_entry',$type)->get('patient_list');
+				$query = $this->db->where('dentist_id',$session_dentist_id)->order_by('date_of_entry',$type)->limit(10)->get('patient_list');
 			}else if($by == 'l_visit')
 			{
-				$query = $this->db->where('dentist_id',$session_dentist_id)->order_by('last_procedure',$type)->get('patient_list');
+				$query = $this->db->where('dentist_id',$session_dentist_id)->order_by('last_procedure',$type)->limit(10)->get('patient_list');
 			}
 		}else
 		{
 			$type = 'desc';
 			$by = '';
-			$query = $this->db->where('dentist_id',$session_dentist_id)->order_by('id',$type)->get('patient_list');
+			$query = $this->db->where('dentist_id',$session_dentist_id)->order_by('id',$type)->limit(10)->get('patient_list');
 		}
 		
 	}
@@ -58,7 +59,7 @@
 			<div class="table-responsive">
 				<table class="table">
 					<thead>
-						<th><input type="checkbox" class="checkall"/></th>
+						<th><input type="checkbox" class="checkall" alt="<?php echo isset($_GET['by']) ? $_GET['by'] : ''; ?>"/></th>
 						<th>Picture</th>
 						<th class="sort_table" data-sorter="<?php echo $type ? $type : 'asc'; ?>" alt="<?php echo isset($word) ? $word : ''; ?>" id="name">Name</th>
 						<th class="sort_table" data-sorter="<?php echo $type ? $type : 'asc'; ?>" alt="<?php echo isset($word) ? $word : ''; ?>" id="e_date">Entry Date</th>
@@ -72,7 +73,7 @@
 		foreach($query->result_array() as $row)
 		{
 ?>	
-						<tr>
+						<tr class="item_row">
 							<td>
 								<input type="checkbox" class="check_each" value="<?php echo $row['id']; ?>">
 							</td>
@@ -86,9 +87,9 @@
 								<a href="<?php echo base_url('patient_edit?id='.$row['id']); ?>" style="color: #333;display: inline-block;margin-right: 8px;">
 									<span class="edit_patient glyphicon glyphicon-edit" title="Edit patient info" style="font-size:23px;"></span>
 								</a>
-								<a href="<?php echo base_url('patient_access?id='.$row['id']); ?>" style="color: #333;display: inline-block;margin-right: 8px;">
+								<!--<a href="<?php echo base_url('patient_access?id='.$row['id']); ?>" style="color: #333;display: inline-block;margin-right: 8px;">
 									<span class="glyphicon glyphicon-globe" title="Manage patient account access" style="font-size:23px;"></span>
-								</a>
+								</a>-->
 								<span class="glyphicon glyphicon-trash delete_patient" title="Delete patient" style="cursor:pointer;font-size:23px;" id="<?php echo $row['id']; ?>"></span>
 							</td>
 						</tr>

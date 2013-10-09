@@ -66,6 +66,77 @@ class Patient_Records extends CI_Controller {
 		echo $query1;
 	}
 	
+	// function load_patient(){
+		// extract($this->input->post());
+		// $limit = 10;
+		// if($order_by){
+			// if($order_by == 'desc')
+			// {
+				// $this->db->where('id <',$p_id);
+			// }else
+			// {
+				// $this->db->where('id >',$p_id);
+			// }
+		// }else
+		// {
+			// $this->db->where('id <',$p_id);
+		// }
+		
+		// if($by_word)
+		// {
+			// $connect_query = '(patient_name LIKE "%'.$by_word.'%" OR id LIKE "%'.$by_word.'%" OR patient_surname LIKE "%'.$by_word.'%" OR patient_middle_name LIKE "%'.$by_word.'%")';
+			// $this->db->where($connect_query,null,false);
+		// }
+		// if($sort_by)
+		// {
+			// if($sort_by == 'name')
+			// {
+				// $this->db->order_by('patient_surname',$order_by);
+			// }else if($sort_by == 'e_date')
+			// {
+				// $this->db->order_by('date_of_entry',$order_by);
+			// }else if($sort_by == 'l_visit')
+			// {
+				// $this->db->order_by('last_procedure',$order_by);
+			// }else
+			// {
+				// $this->db->order_by('id',$order_by);
+			// }
+		// }
+		
+		// $this->db->where('dentist_id',$this->session->userdata('id'));
+		// $query = $this->db->get('patient_list');
+		// echo $query->num_rows();
+		// if($query->num_rows() > 0)
+		// {
+			// foreach($query->result_array() as $row)
+			// {
+				// echo '
+					// <tr>
+						// <td>
+							// <input type="checkbox" class="check_each" value="'.$row['id'].'">
+						// </td>
+						// <td>
+							// <img src="'.base_url('patient_picture/'.str_replace('patient_picture/','',$row['patient_picture'])).'" style="width:60px;" onerror="this.src=\''.base_url('img/default_patient_pic.jpg').'\'">
+						// </td>
+						// <td><a href="'.base_url('patient_edit?id='.$row['id']).'">'.ucwords($row['patient_name']).'</a></td>
+						// <td>'.date('M-t-Y',strtotime($row['date_of_entry'])).'</td>
+						// <td>'.(trim(isset($row['last_procedure'])) != '' ? date('M-t-Y',strtotime($row['last_procedure'])) : 'Not visit').'</td>
+						// <td>
+							// <a href="'.base_url('patient_edit?id='.$row['id']).'" style="color: #333;display: inline-block;margin-right: 8px;">
+								// <span class="edit_patient glyphicon glyphicon-edit" title="Edit patient info" style="font-size:23px;"></span>
+							// </a>
+							// <a href="'.base_url('patient_access?id='.$row['id']).'" style="color: #333;display: inline-block;margin-right: 8px;">
+								// <span class="glyphicon glyphicon-globe" title="Manage patient account access" style="font-size:23px;"></span>
+							// </a>
+							// <span class="glyphicon glyphicon-trash delete_patient" title="Delete patient" style="cursor:pointer;font-size:23px;" id="'.$row['id'].'"></span>
+						// </td>
+					// </tr>
+				// ';
+			// }
+		// }
+	// }
+	
 }
 
 /* End of file patient_list.php */
