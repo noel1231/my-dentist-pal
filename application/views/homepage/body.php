@@ -11,7 +11,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-          <h4 class="modal-title">Contact support</h4>
+          <h4 class="modal-title">Feedback</h4>
         </div>
         <div class="modal-body">
 			<form role="form" method="post" accept-charset="utf-8" name="form_feedback_home" id="form_feedback_home">
