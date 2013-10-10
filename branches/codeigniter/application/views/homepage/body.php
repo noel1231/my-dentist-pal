@@ -1,8 +1,45 @@
+<!--feedback content-->
+
+<div style="background-color: #3276b1;position: fixed;top: 28%;right: 0;box-shadow: -2px 1px 2px;z-index: 99999;">
+<a data-toggle="modal" href="#myModalFeedbackHomepage" class="btn btn-primary btn-small" style="padding: 9px 5px;">
+	<img src="<?php echo base_url('img/feedback-tab.png'); ?>">
+</a>
+</div>
+
+  <div class="modal fade" id="myModalFeedbackHomepage" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title">Contact support</h4>
+        </div>
+        <div class="modal-body">
+			<form role="form" method="post" accept-charset="utf-8" name="form_feedback_home" id="form_feedback_home">
+				<div class="form-group">
+					<input type="text" class="form-control" id="feedbackHomeTitle" name="feedbackHomeTitle" placeholder="Message Subject">
+				</div>
+				<div class="form-group">
+					<textarea class="form-control" id="feedbackHomeMessage" name="feedbackHomeMessage" rows="6" placeholder="How can we help you?"></textarea>
+				</div>
+				<div class="form-group">
+					<input type="email" class="form-control" id="feedbackHomeEmail" name="feedbackHomeEmail" placeholder="Your email">
+				</div>
+			</form>
+			<div class="alert alert-success feed_alert_home" aria-hidden="true" style="display:none;">Message Sent!</div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary send_feedback_home" data-loading-text="Sending...">Send message</button>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal --> 
+
 <div class="wrapper">
 <!--    <div id="home"></div>-->
     <div class="head_content">
             <div class="container text-center">
-                    <h1> Digitize your <span> clinic management practice</span>.</h1>
+                    <h1> Digitize your <span> clinic management</span>.</h1>
                     <p class="col-md-6 col-md-offset-3">
                         A full-featured online tool that integrates dental practice management
                         and confidential patient clinical charting,
@@ -21,10 +58,10 @@
                 </a>
                 <!--<a href="<?php echo base_url('login/patient'); ?>" class="btn btn_margin">
                     <img class="register" src="images/patient_access.png" alt="PATIENT ACCESS"/>
-                </a>-->
+                </a>
                 <a id="watch" class="btn btn_margin">
                     <img class="register" src="images/watch_video.png" alt="WATCH VIDEO"/>
-                </a>
+                </a>-->
             </div>
             <div class="img_holder">
                 <img src="images/monitor.png" alt="monitor" />

@@ -221,10 +221,11 @@
 					<textarea class="form-control" id="feedbackMessage" name="feedbackMessage" rows="6" placeholder="How can we help you?"></textarea>
 				</div>
 			</form>
+			<div class="alert alert-success feed_alert" aria-hidden="true" style="display:none;">Message Sent!</div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary send_feedback" data-loading-text="Loading...">Send message</button>
+          <button type="button" class="btn btn-primary send_feedback" data-loading-text="Sending...">Send message</button>
         </div>
       </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
