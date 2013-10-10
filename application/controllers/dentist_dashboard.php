@@ -443,6 +443,32 @@ class Dentist_Dashboard extends CI_Controller {
 		}
 	}
 	
+	function sendfeedbackHome()
+	{
+		extract($this->input->post());
+		
+		$config['protocol'] = 'smtp';
+		$config['smtp_host'] = 'mail.mydentistpal.com';
+		$config['smtp_user'] = 'info@mydentistpal.com';
+		$config['smtp_pass'] = 'mdp2468';
+		$config['smtp_port'] = '26';
+		$config['smtp_timeout'] = '10';
+		$config['mailtype'] = 'html';
+		$config['charset'] = 'iso-8859-1';
+
+		$this->email->initialize($config);
+		
+		$this->email->from($feedbackHomeEmail);
+		$this->email->to('info@medix.ph');
+		$this->email->subject($feedbackHomeTitle);
+		$this->email->message($feedbackHomeMessage);
+		
+		if($this->email->send())
+		{
+			echo '1';
+		}
+	}
+	
 	function appointment_search()
 	{
 		$result = $this->input->post('appoinment_name');

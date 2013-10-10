@@ -1091,11 +1091,11 @@ $(function() {
 		}
 	});
 	
+	
 	$('.send_feedback').click(function(){
 		var dis = $(this);
-		
+		$('.feed_alert').hide();
 		$('#form_feedback').ajaxForm({
-			type: 'POST',
 			url: 'dentist_dashboard/sendfeedback',
 			beforeSubmit: function(arr, jform, option){
 				var form = jform[0];
@@ -1112,9 +1112,41 @@ $(function() {
 			},
 			success: function(html){
 				dis.button('reset');
-				$('#myModalFeedback').modal('hide');
+				$('.feed_alert').show();
+				// $('#myModalFeedback').modal('hide');
 				
 			}
+		}).submit();
+	});
+	
+	$('.send_feedback_home').click(function(){
+		$('.feed_alert_home').hide();
+		var dis = $(this);
+		$('#form_feedback_home').ajaxForm({
+			url: 'dentist_dashboard/sendfeedbackHome',
+			beforeSubmit: function(arr, jform, option){
+				var form = jform[0];
+				if(form.feedbackHomeTitle.value.trim() == '')
+				{
+					form.feedbackHomeTitle.focus();
+					return false;
+				}if(form.feedbackHomeMessage.value.trim() == '')
+				{
+					form.feedbackHomeMessage.focus();
+					return false;
+				}if(form.feedbackHomeEmail.value.trim() == '')
+				{
+					form.feedbackHomeEmail.focus();
+					return false;
+				}
+				dis.button('loading');
+			},
+			success: function(data){
+				alert(data);
+				dis.button('reset');
+				$('.feed_alert_home').show();
+			}
+			
 		}).submit();
 	});
 });
