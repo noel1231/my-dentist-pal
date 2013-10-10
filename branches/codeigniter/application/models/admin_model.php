@@ -115,14 +115,14 @@ class Admin_model  extends CI_Model
         
     }
     
-    public function dentist_list()
+    public function dentist_list($limit, $page)
     {
         $output = array();
         $output['td'] = "";
         
         $query =  $this->db->select('*')
                             ->from('dentist_list')
-                            ->limit('2','5')
+                            ->limit($limit, $page)
                             ->get();
         
         if ($query->num_rows() > 0)
@@ -157,6 +157,12 @@ class Admin_model  extends CI_Model
             return $output;
         }
     }
+    
+    public function record_count()
+    {
+        return $this->db->count_all("dentist_list");
+    }
+    
 }
 
 ?>

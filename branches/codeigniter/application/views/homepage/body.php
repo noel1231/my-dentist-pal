@@ -100,17 +100,8 @@
                     Track patient's medical information as basis on further
                     dental diagnosis.
                 </p>
-                <p class="skyblue">Treatment Record</p>
-                <p>
-                    Update and track procedures done to a patient on every visit.
-                </p>
                 
-                <p class="skyblue" id="prices">Clinic Analytics</p>
-                <p>
-                    Monitor your dental office activities online - appointments, 
-                    patient records and dental procedures done in a
-                    certain period. 
-                </p>
+                <img src="images/medical.png" alt="patient dashboard" />
             </div>
         </div>
         <div class="rightpanel">
@@ -132,7 +123,20 @@
                     Schedule appointments quickly and view appointment
                     schedules with online calendar system.
                 </p>
+                
                 <img src="images/scheduler.png" alt="patient dashboard" />
+                
+                <p class="skyblue">Treatment Record</p>
+                <p>
+                    Update and track procedures done to a patient on every visit.
+                </p>
+                
+                <p class="skyblue" id="prices">Clinic Analytics</p>
+                <p>
+                    Monitor your dental office activities online - appointments, 
+                    patient records and dental procedures done in a
+                    certain period. 
+                </p>
             </div>
         </div>
     </div>
