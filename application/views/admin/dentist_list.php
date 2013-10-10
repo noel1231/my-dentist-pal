@@ -78,6 +78,9 @@
                                 </tr>
                                 <?php echo $table_data ?>
                             </table>
+                            <div class="row text-right">
+                                <?php echo $links; ?>
+                            </div>
                         </div>
                     </div>
                 </div>
