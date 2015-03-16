@@ -1,0 +1,1 @@
+A full-featured online tool that integrates dental practice managementand confidential patient clinical charting,which dentist can access wherever they are.
